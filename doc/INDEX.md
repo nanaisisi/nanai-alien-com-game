@@ -50,9 +50,10 @@ doc/
     ├── ui_wiki/                            # UI・情報閲覧システム（2件）
     │   ├── concept_in_game_wiki.md
     │   └── concept_viewer_separation_wiki_and_live.md
-    └── world_progression/                  # 世界観・生態系・進行フェーズ（3件）
+    └── world_progression/                  # 世界観・生態系・進行フェーズ（4件）
         ├── concept_frontier_civilization_and_ecosystem_dynamics.md
         ├── concept_demographics_ectogenesis_and_speciation.md
+        ├── concept_environmental_dynamics_and_future_energy.md
         └── concept_game_progression_and_victory.md
 ```
 
@@ -181,6 +182,11 @@ doc/
 * **[concept_demographics_ectogenesis_and_speciation.md](./discussion/world_progression/concept_demographics_ectogenesis_and_speciation.md)**
   * **人口動態・人工子宮（エクトジェネシス）と種分化（適応進化）仕様書**。
   * 100年の時間差と人口爆発、人工子宮プラントの稼働、環境適応・遺伝子改変による人類の分岐・種分化。
+* **[concept_environmental_dynamics_and_future_energy.md](./discussion/world_progression/concept_environmental_dynamics_and_future_energy.md)**
+  * **環境保護・生態系フィードバックと未来エネルギー・熱量管理仕様検討書**。
+  * タイル熱収支方程式、熱過負荷（機器停止・人工スーパーセル誘発）ペナルティ。
+  * 海水電解グリーン水素・核融合（重水素濃縮）・海洋温度差発電（OTEC）・地熱発電のエネルギー体系。
+  * 3大環境負荷インジケーター（熱・化学/重金属・生息域破壊）とガイア・リアクション（好熱性害虫暴走・酸性嵐）。
 * **[concept_game_progression_and_victory.md](./discussion/world_progression/concept_game_progression_and_victory.md)**
   * ゲーム進行の3大フェーズ推移（第1期:降着生存 → 第2期:領土画定・冷戦 → 第3期:総力戦・クライシス）、および5大勝利条件の設計、クリア後継続プレイ保証。
 
