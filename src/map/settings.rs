@@ -3,7 +3,7 @@ use bevy::prelude::*;
 /// 惑星の環境タイプ
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Reflect, Default)]
 pub enum PlanetEnvironment {
-    /// テラ型バランス: 地球類似。平原、森林、海洋、山岳が適度に調和
+    /// テラ型バランス: 母星類似。平原、森林、海洋、山岳が適度に調和
     #[default]
     Terra,
     /// 乾燥砂漠惑星: 海洋が少なく、広大な平原と丘陵、乾燥地帯

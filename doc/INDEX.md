@@ -14,6 +14,8 @@ doc/
 ├── PENDING_ISSUES.md                       # 未確定・検討課題まとめ
 ├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
 └── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計41件）
+    ├── automation/                         # 自動化システム（1件）
+    │   └── concept_automation_systems.md
     ├── diplomacy_governance/               # 外交・占領統治・戦後処理（6件）
     │   ├── concept_diplomacy_relations.md
     │   ├── concept_alliance_system.md
@@ -27,7 +29,7 @@ doc/
     │   ├── concept_event_catalog_and_chains.md
     │   ├── concept_faction_consensus_and_standardization.md
     │   └── concept_diplomatic_incidents_and_crises.md
-    ├── industry_logistics/                 # 産業・サプライチェーン・組織（10件）
+    ├── industry_logistics/                 # 産業・サプライチェーン・組織（9件）
     │   ├── concept_resource_economy_and_logistics.md
     │   ├── concept_industry_structure.md
     │   ├── concept_industry_dynamics_novelty_continuity.md
@@ -35,7 +37,6 @@ doc/
     │   ├── concept_bootloader_and_national_supply_chains.md
     │   ├── concept_industry_module_mapping.md
     │   ├── concept_doctrine_and_equipment_steering.md
-    │   ├── concept_automation_systems.md
     │   ├── concept_transport_windows_and_infrastructure_bottlenecks.md
     │   └── concept_theater_operations_and_joint_sectors.md
     ├── map_tile/                           # マップ・サブタイル・領土拡張（6件）
@@ -58,7 +59,7 @@ doc/
     │   ├── concept_in_game_wiki.md
     │   ├── concept_viewer_separation_wiki_and_live.md
     │   └── concept_doctrine_steering_ui.md
-    └── world_progression/                  # 世界観・生態系・進行フェーズ（6件）
+    └── world_progression/                  # 世界観・生態系・進行フェーズ（7件）
         ├── concept_frontier_civilization_and_ecosystem_dynamics.md
         ├── concept_demographics_ectogenesis_and_speciation.md
         ├── concept_environmental_dynamics_and_future_energy.md
@@ -146,18 +147,20 @@ doc/
   * 過酷実戦環境が生むボトムアップ現場改修（Field Mod）と国家の制式採用承認イベント。
   * 新型・旧型混在による過渡期稼働率ペナルティ算出モデルと計画ロット更新の重要性。
 * **[concept_frontier_industry_and_weapon_generations.md](./discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md)**
-  * **入植産業構造と地球人類兵器体系・世代進化仕様書**。
-  * 地球の超精密ファブ・国際分業と、入植地の未熟なサプライチェーン・工作機械の落差が生む兵装の退行と再建プロセス。
-  * 兵器世代の5段階体系（Gen 0:地球遺産ストック ──► Gen 1:開拓急造 ──► Gen 2:独立軍制式重工業 ──► Gen 3:地球基準復元 ──► Gen 4:異星超克アフィニティ特化）。
-  * 複合装甲・ミリ波FCSから粗鋼多層溶接・光学測距へのダウンサイジングと、新旧混在部隊における整備・補給ペナルティのゲーム力学。
+  * **入植産業構造と母星人類兵器体系・世代進化仕様書**。
+  * 母星の超精密ファブ・国際分業と、入植地の未熟なサプライチェーン・工作機械の落差が生む兵装の退行と再建プロセス。
+  * 兵器世代の5段階体系（Gen 0:母星遺産ストック ──► Gen 1:開拓急造 ──► Gen 2:独立軍制式重工業 ──► Gen 3:母星基準復元 ──► Gen 4:異星超克アフィニティ特化）。
+  * 複合装甲・ミリ波FCSから粗鋼多層溶接・光学測距へのダウンサイジング、新旧混在部隊における整備・補給ペナルティのゲーム力学。
+  * ゲーム開始時の非資源消費型初期ユニット（探査バギー、治安警備、監視杭、共生体歩兵等）と虎の子機甲（Gen 0）の封印・戦略予備運用。
+  * 装備の有限寿命（物理的減耗・不可逆劣化）vs 人間の訓練可能性（適応・学習）の非対称性。
 
 ### ③ 産業・サプライチェーン・組織運用（`industry_logistics/`）
 
-生産ライン、モジュール製造、煩雑さを軽減する自動化システム、および広域指揮統治。
+生産ライン、モジュール製造、広域指揮統治および兵站輸送インフラ。
 
 * **[concept_resource_economy_and_logistics.md](./discussion/industry_logistics/concept_resource_economy_and_logistics.md)**
   * **資源カテゴリ・物資格納・食料と弾薬規格の進化流通仕様書**。
-  * 冷戦直後型地球共通規格から、同時並行開発による分化、後発追従・同盟協定・デファクトスタンダードによる再統合に至る弾薬規格の動的メカニクス。
+  * 冷戦直後型母星共通規格から、同時並行開発による分化、後発追従・同盟協定・デファクトスタンダードによる再統合に至る弾薬規格の動的メカニクス。
   * 陸（土壌・温室・畜産）／海（閉鎖養殖・海洋資源）／工業（細胞培養リアクター）の食料3大アプローチ、気候タイルの自活投資、および異星現地食品（あるものを食うリスク）。
   * 一次資源（エネルギー、構造/機能鉱物、バイオ原質）、二次中間財、軍事・兵站消費財の3層品目定義。
 * **[concept_industry_structure.md](./discussion/industry_logistics/concept_industry_structure.md)**
@@ -179,8 +182,6 @@ doc/
   * マクロ大戦略・戦域・個別兵器クラス・現場改修の4層ステアリングアーキテクチャ。
   * 主力装甲・IFV・砲兵・無人機等の兵器クラス別3軸RFPスライダー（防護/機動/火力）と共通化拘束。
   * 産業の慣性、工廠金型転換の移行ラグ（Tooling Friction）、過渡期整備ペナルティ、および現場ボトムアップ改修（Block Field）の追認・制式化。
-* **[concept_automation_systems.md](./discussion/automation/concept_automation_systems.md)**
-  * 自動輸送ルート設定、定期哨戒（パトロール）、前線への自動補給ロジック。
 * **[concept_transport_windows_and_infrastructure_bottlenecks.md](./discussion/industry_logistics/concept_transport_windows_and_infrastructure_bottlenecks.md)**
   * **輸送ウインドウ（タイムスロット）とインフラボトルネック検討仕様**。
   * 道路・鉄道・海上・航空・軌道の各輸送モードにおける時間枠・ノード/エッジ制約の構造的比較。
@@ -188,7 +189,14 @@ doc/
   * **方面軍（Theater Command）システムと自動指揮・管理・占領統治**。
   * 専念領域（Dedicated Sector）と方面間共同管理領域（Joint Sector）の分離・連携メカニクス。
 
-### ④ 外交・占領統治・戦後処理（`diplomacy_governance/`）
+### ④ 自動化システム（`automation/`）
+
+プレイヤーの操作負担を軽減し、前線と後方を結ぶ自律管理。
+
+* **[concept_automation_systems.md](./discussion/automation/concept_automation_systems.md)**
+  * 自動輸送ルート設定、定期哨戒（パトロール）、前線への自動補給ロジック。
+
+### ⑤ 外交・占領統治・戦後処理（`diplomacy_governance/`）
 
 勢力間の関係性、戦争終了後の国家解体と統治メカニクス。
 
@@ -233,7 +241,7 @@ doc/
 * **[concept_technology_tree_structure.md](./discussion/world_progression/concept_technology_tree_structure.md)**
   * **研究開発・技術ウェブ（Tech Web）およびアフィニティ進化設計仕様書**。
   * 放射状（Radial）Web構造、幹技術（Trunk）と葉技術（Leaf）の階層構造、民生・産業進化と連動した技術発展。
-  * 3大アフィニティ（Purity:純血地球化 / Harmony:調和共生 / Supremacy:超越自律）とハイブリッド混成進化（生体サイバネ・強化生態・自動重火工）。
+  * 3大アフィニティ（Purity:純血母星化 / Harmony:調和共生 / Supremacy:超越自律）とハイブリッド混成進化（生体サイバネ・強化生態・自動重火工）。
   * 現場起因の自律研究ベクトル（Research Momentum）と国家指導者によるステアリング（重点特許・奨励金・移行ラグ）。
   * 戦場残骸の法医学的精査（Forensics）による技術ブースト（リバースエンジニアリング）とサプライチェーン制約。
 * **[concept_game_progression_and_victory.md](./discussion/world_progression/concept_game_progression_and_victory.md)**
