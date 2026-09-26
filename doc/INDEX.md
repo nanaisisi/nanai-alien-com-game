@@ -13,7 +13,7 @@ doc/
 ├── Faction.md                              # 勢力一覧・固有ボーナス/特性定義
 ├── PENDING_ISSUES.md                       # 未確定・検討課題まとめ
 ├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
-└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計33件）
+└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計34件）
     ├── diplomacy_governance/               # 外交・占領統治・戦後処理（5件）
     │   ├── concept_diplomacy_relations.md
     │   ├── concept_alliance_system.md
@@ -50,10 +50,11 @@ doc/
     ├── ui_wiki/                            # UI・情報閲覧システム（2件）
     │   ├── concept_in_game_wiki.md
     │   └── concept_viewer_separation_wiki_and_live.md
-    └── world_progression/                  # 世界観・生態系・進行フェーズ（4件）
+    └── world_progression/                  # 世界観・生態系・進行フェーズ（5件）
         ├── concept_frontier_civilization_and_ecosystem_dynamics.md
         ├── concept_demographics_ectogenesis_and_speciation.md
         ├── concept_environmental_dynamics_and_future_energy.md
+        ├── concept_tectonics_volcanism_and_earthquake.md
         └── concept_game_progression_and_victory.md
 ```
 
@@ -187,6 +188,12 @@ doc/
   * タイル熱収支方程式、熱過負荷（機器停止・人工スーパーセル誘発）ペナルティ。
   * 海水電解グリーン水素・核融合（重水素濃縮）・海洋温度差発電（OTEC）・地熱発電のエネルギー体系。
   * 3大環境負荷インジケーター（熱・化学/重金属・生息域破壊）とガイア・リアクション（好熱性害虫暴走・酸性嵐）。
+* **[concept_tectonics_volcanism_and_earthquake.md](./discussion/world_progression/concept_tectonics_volcanism_and_earthquake.md)**
+  * **火山・地震災害およびプレートテクトニクス仕様検討書**。
+  * プレート境界（収束・発散・トランスフォーム）主体のマクロ設計と断層の抽象化（歪み蓄積モデル）。
+  * 火山灰雲（太陽光激減・航空停止）、溶岩流（サブタイル融解）、巨大地震・津波と海洋工法耐性（メガフロート/GBS）。
+  * **防潮堤・海岸堤防工学体系**: 規模（小型・大型・地嵩上げ式スーパー堤防）× 断面形状（緩傾斜・階段・垂直壁・湾曲型）の流体力学・越波特性と都市利用。
+  * 災害の二面性（超臨界地熱発電、マグマ性レアメタル濃集帯、肥沃土壌）と防災工学技術ツリー（減圧掘削・人工微小地震）。
 * **[concept_game_progression_and_victory.md](./discussion/world_progression/concept_game_progression_and_victory.md)**
   * ゲーム進行の3大フェーズ推移（第1期:降着生存 → 第2期:領土画定・冷戦 → 第3期:総力戦・クライシス）、および5大勝利条件の設計、クリア後継続プレイ保証。
 
