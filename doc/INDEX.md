@@ -39,13 +39,14 @@ doc/
     │   ├── concept_doctrine_and_equipment_steering.md
     │   ├── concept_transport_windows_and_infrastructure_bottlenecks.md
     │   └── concept_theater_operations_and_joint_sectors.md
-    ├── map_tile/                           # マップ・サブタイル・領土拡張（6件）
+    ├── map_tile/                           # マップ・サブタイル・領土拡張（7件）
     │   ├── sub_tile_seamless_connection.md
     │   ├── future_concept_subtile_industry.md
     │   ├── concept_tile_centric_expansion.md
     │   ├── concept_tile_progression_system.md
     │   ├── concept_maritime_governance_and_ocean_engineering.md
-    │   └── concept_subtile_combat_and_tactical_rules.md
+    │   ├── concept_subtile_combat_and_tactical_rules.md
+    │   └── concept_infrastructure_grid_and_transit_artery.md
     ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（9件）
     │   ├── concept_weapon_module_commonality.md
     │   ├── example_weapon_modules_cases.md
@@ -124,6 +125,13 @@ doc/
   * 親マップ1ターン＝最大12〜15サブターンの時間分割、未決着交戦（Grinding Combat）の膠着と次ターン持ち越し。
   * 隣接親タイルからの増援進入ラグ（地形・インフラ依存）と盤外長距離支援砲撃（Off-Map Artillery/Missiles）。
   * 外周エッジにおける戦術的離脱・追撃、敵陣突破（Breakthrough）、戦術マップ上の施設破壊による大戦略親タイルTierへの即時フィードバック。
+* **[concept_infrastructure_grid_and_transit_artery.md](./discussion/map_tile/concept_infrastructure_grid_and_transit_artery.md)**
+  * **大戦略インフラ・動脈網および中心サブタイル通過設計仕様書**。
+  * サブタイルの複雑化（個別の電線・線路引き）を排し、大戦略親タイル間で交通網・電力網・通信網を管理する抽象化設計。
+  * 高速道路・鉄道・リニアモーターカーの3段階交通網と、送電線・光ファイバー有線網の自動一体敷設。
+  * 陸上ユニットがそのまま通過可能な「1タイル橋（海峡架橋）」、海洋ユニットが陸を渡る「複数タイル運河（地峡開削）」。
+  * 冷却水と瘴気隔離を生かした「離島発電」、海底HVDC送電ケーブル網、および未電化・断絶沿岸を救済する「移動式給電船」。
+  * 戦術マップ（343サブタイル）との接続：幹線インフラは必ず**「中心サブタイル」を貫通・交差**し、中央ハブや駅舎・橋頭堡・水門をめぐるドラマチックな攻防を提供。
 
 ### ② 軍事・兵器モジュール・戦術運用（`military_tactics/`）
 
