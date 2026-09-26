@@ -13,13 +13,14 @@ doc/
 ├── Faction.md                              # 勢力一覧・固有ボーナス/特性定義
 ├── PENDING_ISSUES.md                       # 未確定・検討課題まとめ
 ├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
-└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計37件）
-    ├── diplomacy_governance/               # 外交・占領統治・戦後処理（5件）
+└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計40件）
+    ├── diplomacy_governance/               # 外交・占領統治・戦後処理（6件）
     │   ├── concept_diplomacy_relations.md
     │   ├── concept_alliance_system.md
     │   ├── concept_frontier_dissidents_and_territorial_claims.md
     │   ├── concept_occupation_governance_and_divided_economy.md
-    │   └── concept_capitulation_remnants_and_supply_chain.md
+    │   ├── concept_capitulation_remnants_and_supply_chain.md
+    │   └── concept_factions_detail_and_naming.md
     ├── events/                             # イベント・ナラティブシステム（5件）
     │   ├── concept_event_situational.md
     │   ├── concept_event_stochastic.md
@@ -37,19 +38,21 @@ doc/
     │   ├── concept_automation_systems.md
     │   ├── concept_transport_windows_and_infrastructure_bottlenecks.md
     │   └── concept_theater_operations_and_joint_sectors.md
-    ├── map_tile/                           # マップ・サブタイル・領土拡張（5件）
+    ├── map_tile/                           # マップ・サブタイル・領土拡張（6件）
     │   ├── sub_tile_seamless_connection.md
     │   ├── future_concept_subtile_industry.md
     │   ├── concept_tile_centric_expansion.md
     │   ├── concept_tile_progression_system.md
-    │   └── concept_maritime_governance_and_ocean_engineering.md
-    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（6件）
+    │   ├── concept_maritime_governance_and_ocean_engineering.md
+    │   └── concept_subtile_combat_and_tactical_rules.md
+    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（7件）
     │   ├── concept_weapon_module_commonality.md
     │   ├── example_weapon_modules_cases.md
     │   ├── concept_future_legged_unmanned_rules.md
     │   ├── concept_ethics_autonomous_and_surrender_dynamics.md
     │   ├── concept_salvage_scuttling_and_compatibility.md
-    │   └── concept_dynamic_arsenal_geospatial.md
+    │   ├── concept_dynamic_arsenal_geospatial.md
+    │   └── concept_combat_group_structure_and_rfp_cycle.md
     ├── ui_wiki/                            # UI・情報閲覧システム（3件）
     │   ├── concept_in_game_wiki.md
     │   ├── concept_viewer_separation_wiki_and_live.md
@@ -113,6 +116,11 @@ doc/
   * 埋め立て、固定式、半固定式、メガフロートの4大工法比較と水深別適性。
   * 海上都市（立体レイヤード構造）の市民生活、動力途絶による沈没パニック、塩害・生体付着、水中音共鳴によるリヴァイアサン級エイリアン誘引リスク。
   * 海洋タイルのTier 0〜4進展、シーレーン防衛、公海・国境未定地におけるメガフロート曳航による領海既成事実化（グレーゾーン紛争）。
+* **[concept_subtile_combat_and_tactical_rules.md](./discussion/map_tile/concept_subtile_combat_and_tactical_rules.md)**
+  * **サブタイル戦術戦闘・ターン構造および境界増援仕様書**。
+  * 親マップ1ターン＝最大12〜15サブターンの時間分割、未決着交戦（Grinding Combat）の膠着と次ターン持ち越し。
+  * 隣接親タイルからの増援進入ラグ（地形・インフラ依存）と盤外長距離支援砲撃（Off-Map Artillery/Missiles）。
+  * 外周エッジにおける戦術的離脱・追撃、敵陣突破（Breakthrough）、戦術マップ上の施設破壊による大戦略親タイルTierへの即時フィードバック。
 
 ### ② 軍事・兵器モジュール・戦術運用（`military_tactics/`）
 
@@ -130,6 +138,12 @@ doc/
   * 戦場での残骸回収（サルベージ）、鹵獲阻止のための自爆・自沈（スカットリング）、異文明・敵性技術モジュールの規格互換性とリバースエンジニアリング。
 * **[concept_dynamic_arsenal_geospatial.md](./discussion/military_tactics/concept_dynamic_arsenal_geospatial.md)**
   * 地理・地形特性に応じた戦力展開、補給工廠（アーセナル）の空間的配置と動的兵站ラインの防衛。
+* **[concept_combat_group_structure_and_rfp_cycle.md](./discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)**
+  * **戦闘団スロット構造・RFP自動更新および現場改修仕様書**。
+  * 戦闘団の固定16スロットTO&E（基幹打撃4、機械化歩兵4、間接火力3、偵察自律3、兵站2）。
+  * 国家RFP指示を受けた国内工廠の自動ブロック更新（Block I → II）と金型転換ラグ。
+  * 過酷実戦環境が生むボトムアップ現場改修（Field Mod）と国家の制式採用承認イベント。
+  * 新型・旧型混在による過渡期稼働率ペナルティ算出モデルと計画ロット更新の重要性。
 
 ### ③ 産業・サプライチェーン・組織運用（`industry_logistics/`）
 
@@ -182,6 +196,11 @@ doc/
   * 敵都市・領土の占領統治方式（軍政・傀儡政権・直接併合）、治安度維持、分断された経済圏の管理。
 * **[concept_capitulation_remnants_and_supply_chain.md](./discussion/diplomacy_governance/concept_capitulation_remnants_and_supply_chain.md)**
   * 敗戦国の無条件/条件付き降伏、残存武装勢力（レジスタンス/軍閥）のゲリラ化とサプライチェーンの寸断・再編。
+* **[concept_factions_detail_and_naming.md](./discussion/diplomacy_governance/concept_factions_detail_and_naming.md)**
+  * **架空6大国家の詳細設定・初期産業ブートローダーおよび命名プロトコル仕様書**。
+  * 帝国A、大公国B、連邦C、共和国D、共同体E、連合Fの深層社会設定、統治執政機関、初期ブートローダー産業と得意モジュール。
+  * 国家元首・前線最高司令官・主力兵器廠の公文書呼称体系、および各国の兵器型番命名プロトコル（Designator Standard）。
+  * 降着惑星における初期外交関係マトリクスと地政学的緊張要因（主権独立と母星不介入の確定）。
 
 ### ⑤ 世界観・人口・進行フェーズ（`world_progression/`）
 

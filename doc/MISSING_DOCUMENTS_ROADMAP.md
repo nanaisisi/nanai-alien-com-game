@@ -97,27 +97,26 @@
 | **[`./discussion/events/concept_diplomatic_incidents_and_crises.md`](./discussion/events/concept_diplomatic_incidents_and_crises.md)** | `events/` | 外交危機・偶発紛争およびエスカレーション・ラダー設計書（初版完了） |
 | **[`./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md`](./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md)** | `world_progression/` | エイリアン生態ライフサイクル・巣窟運用および環境インタラクション仕様書（初版完了） |
 | **[`./discussion/ui_wiki/concept_doctrine_steering_ui.md`](./discussion/ui_wiki/concept_doctrine_steering_ui.md)** | `ui_wiki/` | 国家ドクトリン・自動化ステアリングUI/UX仕様書（初版完了） |
+| **[`./discussion/map_tile/concept_subtile_combat_and_tactical_rules.md`](./discussion/map_tile/concept_subtile_combat_and_tactical_rules.md)** | `map_tile/` | サブタイル戦術戦闘・ターン構造（1親＝12〜15サブ）、増援ラグ、盤外砲撃、施設破壊即時反映（第2シリーズ完了） |
+| **[`./discussion/diplomacy_governance/concept_factions_detail_and_naming.md`](./discussion/diplomacy_governance/concept_factions_detail_and_naming.md)** | `diplomacy_governance/` | 架空6大国家の詳細設定、初期産業ブートローダー、得意モジュール、役職・兵器命名プロトコル（第2シリーズ完了） |
+| **[`./discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md`](./discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)** | `military_tactics/` | 戦闘団16スロット構成（TO&E）、RFP駆動型自動ブロック更新、現場改修承認、新旧混在ペナルティ（第2シリーズ完了） |
 
 ---
 
-## 4. 段階的作業ロードマップ（今後の実施順序）
+## 4. 段階的作業ロードマップ（進捗状況）
 
-不足ドキュメント間の依存関係（前提条件）に基づき、以下の順序で作成を進めます。
+ドキュメントの系統的整備ロードマップです。
 
 ```text
-【フェーズ1: 大戦略ゲームの数値・入力基盤（最優先）】
-  ├─ ① concept_resource_economy_and_logistics.md
-  │    └─ 採掘リソース、中間部品、弾薬消費、通貨の品目カタログを確定
-  └─ ② concept_technology_tree_structure.md
-       └─ Civ:BE型ウェブツリー、アフィニティ3大思想、残骸回収ブーストを確定
+【第1シリーズ: 大戦略の基本循環・外交・UI基盤（策定完了）】
+  ├─ ① concept_resource_economy_and_logistics.md（資源・食料・弾薬進化）
+  ├─ ② concept_technology_tree_structure.md（放射状Web・3大アフィニティ）
+  ├─ ③ concept_diplomatic_incidents_and_crises.md（外交危機・エスカレーション）
+  ├─ ④ concept_alien_lifecycle_and_nest_mechanics.md（巣窟・ミズマ動態）
+  └─ ⑤ concept_doctrine_steering_ui.md（大戦略ステアリングUI/UX）
 
-【フェーズ2: 外交緊張と生態系インタラクション】
-  ├─ ③ concept_diplomatic_incidents_and_crises.md
-  │    └─ 国境小競り合いから全面戦争へのエスカレーション・危機管理を確定
-  └─ ④ concept_alien_lifecycle_and_nest_mechanics.md
-       └─ 巣窟の活性・ミズマ拡散、誘導兵器、共生採取のルールを確定
-
-【フェーズ3: プレイヤー操作・統率インターフェース】
-  └─ ⑤ concept_doctrine_steering_ui.md
-       └─ 固定編成・自律産業への大戦略ステアリングUI/UX仕様を確定
+【第2シリーズ: 戦術戦闘・国家詳細・編成自律進化（策定完了）】
+  ├─ ⑥ concept_subtile_combat_and_tactical_rules.md（343マス戦術戦闘・増援ラグ・施設破壊）
+  ├─ ⑦ concept_factions_detail_and_naming.md（架空6大国詳細・ブートローダー産業・命名規則）
+  └─ ⑧ concept_combat_group_structure_and_rfp_cycle.md（戦闘団16スロット・RFP自動更新・現場改修）
 ```

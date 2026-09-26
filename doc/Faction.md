@@ -6,7 +6,8 @@
 ロマンを強調して込める。
 
 > [!NOTE]
-> 各国の具体的な「国名」は未確定であり、固定的な名称ではなく記号・役職名・国号（国A〜国F、帝国、大公国など）を軸とした継続検討事項とする。
+> 各国の具体的な「国名」は固定的な安易な固有名詞ではなく、記号・役職名・正式国号体系（国A〜国F、帝国、大公国など）を採用しています。
+> 各国家の深層社会設定、初期ブートローダー産業、得意モジュール、正式国号、公文書役職、兵器命名型式等の詳細仕様は [`./discussion/diplomacy_governance/concept_factions_detail_and_naming.md`](./discussion/diplomacy_governance/concept_factions_detail_and_naming.md) を参照してください。
 
 ## 概要
 
