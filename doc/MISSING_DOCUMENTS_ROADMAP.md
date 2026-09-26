@@ -19,9 +19,9 @@
 ──────────────────────────────────────────────────────────────────────────
 ・イベント・ナラティブ   : ★★★☆☆ (枠組み・カタログ連鎖完了。外交危機・偶発エスカレーションが未作成)
 ・基本経済・リソース品目 : ★★★★★ (完了：一次/二次/消費材、弾薬規格の分化再統合、陸海工業食料)
-・研究開発・技術ツリー   : ★☆☆☆☆ (ウェブ構造、アフィニティ分岐、リバース工学ブーストが未作成)
+・研究開発・技術ツリー   : ★★★★★ (完了：放射状Web構造、アフィニティ分岐、自律研究・ステアリング、残骸解析)
+・操作系UI・ステアリング : ★★★★★ (完了：4層ステアリング、兵器クラス別RFP制御、移行ラグ・現場改修)
 ・エイリアン生態・巣窟   : ★☆☆☆☆ (世界観はあるが、巣窟の繁殖・ミズマ拡散/浄化・誘導捕獲が未作成)
-・操作系UI・ステアリング : ★☆☆☆☆ (Wiki/Viewerはあるが、戦闘団・自動産業への政策ステアリングUIが未作成)
 ```
 
 ---
@@ -39,15 +39,15 @@
   - **食料システム（3大アプローチ）**: 陸（土壌・温室・畜産）／海（閉鎖養殖・海洋資源）／工業（細胞培養リアクター）。気候タイルの自活投資と、異星現地生物採取（あるものを食うリスク）。
   - **3層品目体系**: 一次資源（エネルギー、構造鉱物、機能鉱物、バイオ原質）、二次中間財（基礎部品、論理コア、装甲板、レーション）、消費財（弾薬、燃料、交換部品）。
 
-### ② 技術ツリー・研究開発（R&D）領域（最優先・ゲーム骨格）
+### ② 技術ツリー・研究開発（R&D）領域（策定済）
 
-- **ドキュメント候補名**: [`./discussion/world_progression/concept_technology_tree_structure.md`](./discussion/world_progression/concept_technology_tree_structure.md)（研究開発・技術ウェブ構造設計書）
-- **優先度**: **高（最優先）**
-- **目的・策定すべき内容**:
-  - **放射状Web構造**: Civ:BE型の中央から外縁へ広がる非線形ツリー（幹技術と枝技術）。
-  - **アフィニティ（適応思想）分岐**: 地球純正（地球型重工業・装甲重視）、現地適応（生体工学・ミズマ耐性・エイリアン共生）、サイバネティック（自律機械・電子知性・無人化）。
-  - **自律研究とステアリング**: 国内研究機関の自動進捗に対し、プレイヤーが予算・重点分野を介入（ステアリング）。
-  - **実戦・残骸ブースト**: 敵性残骸の回収・解析による特定技術の飛躍的アンロック。
+- **ドキュメント名**: [`./discussion/world_progression/concept_technology_tree_structure.md`](./discussion/world_progression/concept_technology_tree_structure.md)（研究開発・技術ウェブ構造設計書）
+- **ステータス**: **初版策定済**
+- **策定内容**:
+  - **放射状Web構造**: 中央の降着基盤から4層（Tier 0〜3）に広がる幹技術（Trunk）と葉技術（Leaf）の非線形展開。
+  - **3大アフィニティと混成**: Purity（純血・地球化）、Harmony（調和・共生）、Supremacy（超越・自律）の進化と二重混成（生体サイバネ等）。
+  - **自律研究とステアリング**: 現場の産業・交戦・環境刺激による研究ベクトルと、国家指導者の重点特許・奨励金・移行ラグ。
+  - **実戦・残骸ブースト**: 敵性残骸の法医学的精査（Forensics）による技術知見の抽出とサプライチェーン制約。
 
 ### ③ 外交危機・偶発紛争（エスカレーション）領域
 
@@ -92,6 +92,8 @@
 | **[`./discussion/industry_logistics/concept_theater_operations_and_joint_sectors.md`](./discussion/industry_logistics/concept_theater_operations_and_joint_sectors.md)** | `industry_logistics/` | 方面軍（Theater Command）組織、専念領域と共同管理領域（初版完了） |
 | **[`./discussion/events/concept_faction_consensus_and_standardization.md`](./discussion/events/concept_faction_consensus_and_standardization.md)** | `events/` | 空気感による完全合意吸収、相手国承認のタイル移管、通信規格調達3方式（初版完了） |
 | **[`./discussion/map_tile/concept_maritime_governance_and_ocean_engineering.md`](./discussion/map_tile/concept_maritime_governance_and_ocean_engineering.md)** | `map_tile/` | 海上統治・海洋工学（埋め立て/固定式/半固定式/メガフロート、海上都市、シーレーン）（初版完了） |
+| **[`./discussion/world_progression/concept_technology_tree_structure.md`](./discussion/world_progression/concept_technology_tree_structure.md)** | `world_progression/` | 研究開発・技術ウェブ（Tech Web）およびアフィニティ進化（初版完了） |
+| **[`./discussion/industry_logistics/concept_doctrine_and_equipment_steering.md`](./discussion/industry_logistics/concept_doctrine_and_equipment_steering.md)** | `industry_logistics/` | 国家制御・多層ステアリングシステム、兵器クラス別RFP制御と移行ラグ（初版完了） |
 
 ---
 

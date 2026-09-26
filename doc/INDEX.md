@@ -25,13 +25,14 @@ doc/
     │   ├── concept_event_stochastic.md
     │   ├── concept_event_catalog_and_chains.md
     │   └── concept_faction_consensus_and_standardization.md
-    ├── industry_logistics/                 # 産業・サプライチェーン・組織（9件）
+    ├── industry_logistics/                 # 産業・サプライチェーン・組織（10件）
     │   ├── concept_resource_economy_and_logistics.md
     │   ├── concept_industry_structure.md
     │   ├── concept_industry_dynamics_novelty_continuity.md
     │   ├── concept_industrial_evolution_and_supply_chains.md
     │   ├── concept_bootloader_and_national_supply_chains.md
     │   ├── concept_industry_module_mapping.md
+    │   ├── concept_doctrine_and_equipment_steering.md
     │   ├── concept_automation_systems.md
     │   ├── concept_transport_windows_and_infrastructure_bottlenecks.md
     │   └── concept_theater_operations_and_joint_sectors.md
@@ -148,8 +149,11 @@ doc/
 * **[concept_bootloader_and_national_supply_chains.md](./discussion/industry_logistics/concept_bootloader_and_national_supply_chains.md)**
   * **機械を作る機械（ブートローダー産業）と国家サプライチェーン仕様書**。
   * 母機・工作機械・金型と歩留まり（Yield）の力学、他国規格・鹵獲兵器の「自国化改修（国産化）」およびライセンス生産の現実的制約。
-* **[concept_industry_module_mapping.md](./discussion/industry_logistics/concept_industry_module_mapping.md)**
-  * 工業施設と生産モジュールのマッピング、工場ラインの構成と兵器生産の接続。
+* **[concept_doctrine_and_equipment_steering.md](./discussion/industry_logistics/concept_doctrine_and_equipment_steering.md)**
+  * **国家制御・多層ステアリングシステム仕様書**。
+  * マクロ大戦略・戦域・個別兵器クラス・現場改修の4層ステアリングアーキテクチャ。
+  * 主力装甲・IFV・砲兵・無人機等の兵器クラス別3軸RFPスライダー（防護/機動/火力）と共通化拘束。
+  * 産業の慣性、工廠金型転換の移行ラグ（Tooling Friction）、過渡期整備ペナルティ、および現場ボトムアップ改修（Block Field）の追認・制式化。
 * **[concept_automation_systems.md](./discussion/automation/concept_automation_systems.md)**
   * 自動輸送ルート設定、定期哨戒（パトロール）、前線への自動補給ロジック。
 * **[concept_transport_windows_and_infrastructure_bottlenecks.md](./discussion/industry_logistics/concept_transport_windows_and_infrastructure_bottlenecks.md)**
@@ -196,6 +200,12 @@ doc/
   * **ゲーム全体の倫理観体系と地殻介入**: ゲームを貫く3大倫理軸（生存至上 vs ガイア共生 vs 工学至上）の激突点としての防災工学（命の選別、心理的閉塞、ガイア反発、地震誘発の外交危機）。
   * **現実の自然災害をゲーム化することの倫理的配慮と設計規律**: 実名・実被害の模倣排除、理不尽なランダム全壊（即死）の否定と予兆・観測・防災努力の尊重、センセーショナルな悲惨さ演出の排除、自然を単なる敵ではなく「惑星の息吹（恩恵と畏怖）」として昇華する制作姿勢。
   * 災害の二面性（超臨界地熱発電、マグマ性レアメタル濃集帯、肥沃土壌）と防災工学技術ツリー（減圧掘削・人工微小地震）。
+* **[concept_technology_tree_structure.md](./discussion/world_progression/concept_technology_tree_structure.md)**
+  * **研究開発・技術ウェブ（Tech Web）およびアフィニティ進化設計仕様書**。
+  * 放射状（Radial）Web構造、幹技術（Trunk）と葉技術（Leaf）の階層構造、民生・産業進化と連動した技術発展。
+  * 3大アフィニティ（Purity:純血地球化 / Harmony:調和共生 / Supremacy:超越自律）とハイブリッド混成進化（生体サイバネ・強化生態・自動重火工）。
+  * 現場起因の自律研究ベクトル（Research Momentum）と国家指導者によるステアリング（重点特許・奨励金・移行ラグ）。
+  * 戦場残骸の法医学的精査（Forensics）による技術ブースト（リバースエンジニアリング）とサプライチェーン制約。
 * **[concept_game_progression_and_victory.md](./discussion/world_progression/concept_game_progression_and_victory.md)**
   * ゲーム進行の3大フェーズ推移（第1期:降着生存 → 第2期:領土画定・冷戦 → 第3期:総力戦・クライシス）、および5大勝利条件の設計、クリア後継続プレイ保証。
 
