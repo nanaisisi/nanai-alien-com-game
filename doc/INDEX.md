@@ -13,18 +13,19 @@ doc/
 ├── Faction.md                              # 勢力一覧・固有ボーナス/特性定義
 ├── PENDING_ISSUES.md                       # 未確定・検討課題まとめ
 ├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
-└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計34件）
+└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計37件）
     ├── diplomacy_governance/               # 外交・占領統治・戦後処理（5件）
     │   ├── concept_diplomacy_relations.md
     │   ├── concept_alliance_system.md
     │   ├── concept_frontier_dissidents_and_territorial_claims.md
     │   ├── concept_occupation_governance_and_divided_economy.md
     │   └── concept_capitulation_remnants_and_supply_chain.md
-    ├── events/                             # イベント・ナラティブシステム（4件）
+    ├── events/                             # イベント・ナラティブシステム（5件）
     │   ├── concept_event_situational.md
     │   ├── concept_event_stochastic.md
     │   ├── concept_event_catalog_and_chains.md
-    │   └── concept_faction_consensus_and_standardization.md
+    │   ├── concept_faction_consensus_and_standardization.md
+    │   └── concept_diplomatic_incidents_and_crises.md
     ├── industry_logistics/                 # 産業・サプライチェーン・組織（10件）
     │   ├── concept_resource_economy_and_logistics.md
     │   ├── concept_industry_structure.md
@@ -40,7 +41,8 @@ doc/
     │   ├── sub_tile_seamless_connection.md
     │   ├── future_concept_subtile_industry.md
     │   ├── concept_tile_centric_expansion.md
-    │   └── concept_tile_progression_system.md
+    │   ├── concept_tile_progression_system.md
+    │   └── concept_maritime_governance_and_ocean_engineering.md
     ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（6件）
     │   ├── concept_weapon_module_commonality.md
     │   ├── example_weapon_modules_cases.md
@@ -48,15 +50,18 @@ doc/
     │   ├── concept_ethics_autonomous_and_surrender_dynamics.md
     │   ├── concept_salvage_scuttling_and_compatibility.md
     │   └── concept_dynamic_arsenal_geospatial.md
-    ├── ui_wiki/                            # UI・情報閲覧システム（2件）
+    ├── ui_wiki/                            # UI・情報閲覧システム（3件）
     │   ├── concept_in_game_wiki.md
-    │   └── concept_viewer_separation_wiki_and_live.md
-    └── world_progression/                  # 世界観・生態系・進行フェーズ（5件）
+    │   ├── concept_viewer_separation_wiki_and_live.md
+    │   └── concept_doctrine_steering_ui.md
+    └── world_progression/                  # 世界観・生態系・進行フェーズ（6件）
         ├── concept_frontier_civilization_and_ecosystem_dynamics.md
         ├── concept_demographics_ectogenesis_and_speciation.md
         ├── concept_environmental_dynamics_and_future_energy.md
         ├── concept_tectonics_volcanism_and_earthquake.md
-        └── concept_game_progression_and_victory.md
+        ├── concept_technology_tree_structure.md
+        ├── concept_game_progression_and_victory.md
+        └── concept_alien_lifecycle_and_nest_mechanics.md
 ```
 
 ---
@@ -208,6 +213,10 @@ doc/
   * 戦場残骸の法医学的精査（Forensics）による技術ブースト（リバースエンジニアリング）とサプライチェーン制約。
 * **[concept_game_progression_and_victory.md](./discussion/world_progression/concept_game_progression_and_victory.md)**
   * ゲーム進行の3大フェーズ推移（第1期:降着生存 → 第2期:領土画定・冷戦 → 第3期:総力戦・クライシス）、および5大勝利条件の設計、クリア後継続プレイ保証。
+* **[concept_alien_lifecycle_and_nest_mechanics.md](./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md)**
+  * **エイリアン生態ライフサイクル・巣窟運用および環境インタラクション仕様書**。
+  * 巣窟の5大フェーズ（休眠/活性/繁殖/暴走スウォーム/枯渇）、瘴気（ミズマ）の動的変容と流体拡散・浄化・環境適応。
+  * フェロモン誘導兵器による他国タイルへの意図的誘導（間接戦争）と、共生採取協定（高品位バイオ原質採取と破滅リスク）。
 
 ### ⑥ イベントシステム（`events/`）
 
@@ -221,6 +230,10 @@ doc/
   * イベントの8大ジャンル体系、現場エンティティ結合型の具体的イベントカタログ、不可逆な連鎖イベント（Event Chains）の設計。
 * **[concept_faction_consensus_and_standardization.md](./discussion/events/concept_faction_consensus_and_standardization.md)**
   * 空気感による完全合意吸収、相手国承認に基づく平和的タイル移管、および通信非対応兵器の配備不可と3大調達アプローチ。
+* **[concept_diplomatic_incidents_and_crises.md](./discussion/events/concept_diplomatic_incidents_and_crises.md)**
+  * **外交危機・偶発紛争およびエスカレーション・ラダー設計書**。
+  * 平時と戦時の間のグレーゾーン事態、危機段階メーター（Lv 0〜5）、民間船拿捕・亡命・回廊封鎖インシデント。
+  * 第三極（自発的失踪者）を介した偽装代理紛争（ブラックオプス）と、開戦事由（Casus Belli）が戦後講和・吸収へ与える影響。
 
 ### ⑦ UI・情報閲覧システム（`ui_wiki/`）
 
@@ -230,3 +243,7 @@ doc/
   * ゲーム内百科事典（Civopedia相当）の構造、調査・研究進捗に応じた動的記事アンロック。
 * **[concept_viewer_separation_wiki_and_live.md](./discussion/ui_wiki/concept_viewer_separation_wiki_and_live.md)**
   * 静的情報（Wiki）とリアルタイム戦況・ユニット状態（Live Viewer）のUI分離・統合アプローチ。
+* **[concept_doctrine_steering_ui.md](./discussion/ui_wiki/concept_doctrine_steering_ui.md)**
+  * **国家ドクトリン・自動化ステアリングUI/UX仕様書**。
+  * 指示せず誘導するダッシュボードレイアウト、兵器クラス別RFP要求仕様カード、ゴーストゲージによる移行ラグ可視化。
+  * 現場ボトムアップ改修（Field Mod）の制式化承認トレイ、および方面軍・戦闘団の弾薬互換警告インスペクター。

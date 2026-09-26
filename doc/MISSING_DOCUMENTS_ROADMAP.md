@@ -17,18 +17,18 @@
 ・外交・統治・方面軍     : ★★★★☆ (充実：方面軍統治、合意吸収、降伏処理、二重経済、失踪者・自然国境)
 ・世界観・人口・進行骨格 : ★★★★☆ (充実：人工子宮・種分化、開拓生態、動的情勢推移、勝利条件骨格)
 ──────────────────────────────────────────────────────────────────────────
-・イベント・ナラティブ   : ★★★☆☆ (枠組み・カタログ連鎖完了。外交危機・偶発エスカレーションが未作成)
+・イベント・ナラティブ   : ★★★★★ (完了：カタログ連鎖、完全合意吸収、外交危機・偶発エスカレーション)
 ・基本経済・リソース品目 : ★★★★★ (完了：一次/二次/消費材、弾薬規格の分化再統合、陸海工業食料)
 ・研究開発・技術ツリー   : ★★★★★ (完了：放射状Web構造、アフィニティ分岐、自律研究・ステアリング、残骸解析)
-・操作系UI・ステアリング : ★★★★★ (完了：4層ステアリング、兵器クラス別RFP制御、移行ラグ・現場改修)
-・エイリアン生態・巣窟   : ★☆☆☆☆ (世界観はあるが、巣窟の繁殖・ミズマ拡散/浄化・誘導捕獲が未作成)
+・操作系UI・ステアリング : ★★★★★ (完了：4層ステアリング、兵器クラス別RFP制御、移行ラグ・現場改修、操作UI仕様)
+・エイリアン生態・巣窟   : ★★★★★ (完了：巣窟ライフサイクル、ミズマ動的変容、フェロモン誘導兵器、共生採取)
 ```
 
 ---
 
-## 2. 不足ドキュメント一覧（作成すべき仕様書群）
+## 2. 不足ドキュメント一覧（作成状況）
 
-今後、段階的に策定・保存していくべきドキュメントを以下の4領域・計5件として定義します。
+定義された5大領域の基本仕様書はすべて初版策定を完了しました。
 
 ### ① 経済・資源品目・物流循環領域（策定済）
 
@@ -49,29 +49,29 @@
   - **自律研究とステアリング**: 現場の産業・交戦・環境刺激による研究ベクトルと、国家指導者の重点特許・奨励金・移行ラグ。
   - **実戦・残骸ブースト**: 敵性残骸の法医学的精査（Forensics）による技術知見の抽出とサプライチェーン制約。
 
-### ③ 外交危機・偶発紛争（エスカレーション）領域
+### ③ 外交危機・偶発紛争（エスカレーション）領域（策定済）
 
-- **ドキュメント候補名**: [`./discussion/events/concept_diplomatic_incidents_and_crises.md`](./discussion/events/concept_diplomatic_incidents_and_crises.md)（外交危機・偶発紛争イベント設計書）
-- **優先度**: **中**
-- **目的・策定すべき内容**:
+- **ドキュメント名**: [`./discussion/events/concept_diplomatic_incidents_and_crises.md`](./discussion/events/concept_diplomatic_incidents_and_crises.md)（外交危機・偶発紛争およびエスカレーション・ラダー設計書）
+- **ステータス**: **初版策定済**
+- **策定内容**:
   - **グレーゾーン事態**: 国境未定地での密輸・不法資源採掘、民間探査船の領犯・拿捕、通商破壊工作。
   - **エスカレーション・ラダー**: 警告・抗議 → 経済制裁・資産凍結 → 局地衝突・代理紛争 → 最後通牒・全面戦争に至る動的な緊張度メーター。
   - **第三極（失踪者・軍閥）の介在**: 国境地帯の自発的失踪者コミュニティを巡る情報戦と宣戦口実（開戦事由/Casus Belli）の生成。
 
-### ④ エイリアン生態サイクル・巣窟（Nest）運用領域
+### ④ エイリアン生態サイクル・巣窟（Nest）運用領域（策定済）
 
-- **ドキュメント候補名**: [`./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md`](./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md)（エイリアン生態・巣窟インタラクション詳細仕様書）
-- **優先度**: **中**
-- **目的・策定すべき内容**:
+- **ドキュメント名**: [`./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md`](./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md)（エイリアン生態ライフサイクル・巣窟運用および環境インタラクション仕様書）
+- **ステータス**: **初版策定済**
+- **策定内容**:
   - **巣窟（Nest）のライフサイクル**: 休眠、活性化、繁殖期、暴走（大侵入/Swarm）のトリガー。
   - **瘴気（ミズマ）ダイナミクス**: 巣窟からの自律拡散、地形侵食、人類部隊への継続腐食ダメージと現地適応部隊のステルス/回復バフ、浄化プラントによる抑制。
   - **生態兵站・外交的利用**: フェロモン誘引弾による敵対国タイルへの誘導、生体組織の定期採取（共生協定）と報復襲撃リスク。
 
-### ⑤ プレイヤー操作・ステアリングUI/UX領域
+### ⑤ プレイヤー操作・ステアリングUI/UX領域（策定済）
 
-- **ドキュメント候補名**: [`./discussion/ui_wiki/concept_doctrine_steering_ui.md`](./discussion/ui_wiki/concept_doctrine_steering_ui.md)（国家ドクトリン・自動化ステアリングUI仕様書）
-- **優先度**: **中**
-- **目的・策定すべき内容**:
+- **ドキュメント名**: [`./discussion/ui_wiki/concept_doctrine_steering_ui.md`](./discussion/ui_wiki/concept_doctrine_steering_ui.md)（国家ドクトリン・自動化ステアリングUI/UX仕様書）
+- **ステータス**: **初版策定済**
+- **策定内容**:
   - **「指示せず誘導する」UI設計**: 戦闘団の固定編成や国内産業の自動更新に対し、プレイヤーがどのようなスライダー・ドクトリン方針カードで干渉するか。
   - **移行ラグの視覚化**: ドクトリン変更（例: 共通化率優先から新鋭テック導入へ）に伴う工廠ライン転換と、前線部隊の整備ペナルティ期間のダッシュボード表示。
 
@@ -94,6 +94,9 @@
 | **[`./discussion/map_tile/concept_maritime_governance_and_ocean_engineering.md`](./discussion/map_tile/concept_maritime_governance_and_ocean_engineering.md)** | `map_tile/` | 海上統治・海洋工学（埋め立て/固定式/半固定式/メガフロート、海上都市、シーレーン）（初版完了） |
 | **[`./discussion/world_progression/concept_technology_tree_structure.md`](./discussion/world_progression/concept_technology_tree_structure.md)** | `world_progression/` | 研究開発・技術ウェブ（Tech Web）およびアフィニティ進化（初版完了） |
 | **[`./discussion/industry_logistics/concept_doctrine_and_equipment_steering.md`](./discussion/industry_logistics/concept_doctrine_and_equipment_steering.md)** | `industry_logistics/` | 国家制御・多層ステアリングシステム、兵器クラス別RFP制御と移行ラグ（初版完了） |
+| **[`./discussion/events/concept_diplomatic_incidents_and_crises.md`](./discussion/events/concept_diplomatic_incidents_and_crises.md)** | `events/` | 外交危機・偶発紛争およびエスカレーション・ラダー設計書（初版完了） |
+| **[`./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md`](./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md)** | `world_progression/` | エイリアン生態ライフサイクル・巣窟運用および環境インタラクション仕様書（初版完了） |
+| **[`./discussion/ui_wiki/concept_doctrine_steering_ui.md`](./discussion/ui_wiki/concept_doctrine_steering_ui.md)** | `ui_wiki/` | 国家ドクトリン・自動化ステアリングUI/UX仕様書（初版完了） |
 
 ---
 
