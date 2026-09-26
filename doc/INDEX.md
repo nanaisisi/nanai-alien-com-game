@@ -13,7 +13,7 @@ doc/
 ├── Faction.md                              # 勢力一覧・固有ボーナス/特性定義
 ├── PENDING_ISSUES.md                       # 未確定・検討課題まとめ
 ├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
-└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計40件）
+└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計41件）
     ├── diplomacy_governance/               # 外交・占領統治・戦後処理（6件）
     │   ├── concept_diplomacy_relations.md
     │   ├── concept_alliance_system.md
@@ -45,14 +45,15 @@ doc/
     │   ├── concept_tile_progression_system.md
     │   ├── concept_maritime_governance_and_ocean_engineering.md
     │   └── concept_subtile_combat_and_tactical_rules.md
-    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（7件）
+    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（8件）
     │   ├── concept_weapon_module_commonality.md
     │   ├── example_weapon_modules_cases.md
     │   ├── concept_future_legged_unmanned_rules.md
     │   ├── concept_ethics_autonomous_and_surrender_dynamics.md
     │   ├── concept_salvage_scuttling_and_compatibility.md
     │   ├── concept_dynamic_arsenal_geospatial.md
-    │   └── concept_combat_group_structure_and_rfp_cycle.md
+    │   ├── concept_combat_group_structure_and_rfp_cycle.md
+    │   └── concept_frontier_industry_and_weapon_generations.md
     ├── ui_wiki/                            # UI・情報閲覧システム（3件）
     │   ├── concept_in_game_wiki.md
     │   ├── concept_viewer_separation_wiki_and_live.md
@@ -144,6 +145,11 @@ doc/
   * 国家RFP指示を受けた国内工廠の自動ブロック更新（Block I → II）と金型転換ラグ。
   * 過酷実戦環境が生むボトムアップ現場改修（Field Mod）と国家の制式採用承認イベント。
   * 新型・旧型混在による過渡期稼働率ペナルティ算出モデルと計画ロット更新の重要性。
+* **[concept_frontier_industry_and_weapon_generations.md](./discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md)**
+  * **入植産業構造と地球人類兵器体系・世代進化仕様書**。
+  * 地球の超精密ファブ・国際分業と、入植地の未熟なサプライチェーン・工作機械の落差が生む兵装の退行と再建プロセス。
+  * 兵器世代の5段階体系（Gen 0:地球遺産ストック ──► Gen 1:開拓急造 ──► Gen 2:独立軍制式重工業 ──► Gen 3:地球基準復元 ──► Gen 4:異星超克アフィニティ特化）。
+  * 複合装甲・ミリ波FCSから粗鋼多層溶接・光学測距へのダウンサイジングと、新旧混在部隊における整備・補給ペナルティのゲーム力学。
 
 ### ③ 産業・サプライチェーン・組織運用（`industry_logistics/`）
 
