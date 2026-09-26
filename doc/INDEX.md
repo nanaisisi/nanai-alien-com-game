@@ -13,7 +13,7 @@ doc/
 ├── Faction.md                              # 勢力一覧・固有ボーナス/特性定義
 ├── PENDING_ISSUES.md                       # 未確定・検討課題まとめ
 ├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
-└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計45件）
+└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計46件）
     ├── automation/                         # 自動化システム（1件）
     │   └── concept_automation_systems.md
     ├── diplomacy_governance/               # 外交・占領統治・戦後処理（6件）
@@ -47,7 +47,7 @@ doc/
     │   ├── concept_maritime_governance_and_ocean_engineering.md
     │   ├── concept_subtile_combat_and_tactical_rules.md
     │   └── concept_infrastructure_grid_and_transit_artery.md
-    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（9件）
+    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（10件）
     │   ├── concept_weapon_module_commonality.md
     │   ├── example_weapon_modules_cases.md
     │   ├── concept_future_legged_unmanned_rules.md
@@ -56,7 +56,8 @@ doc/
     │   ├── concept_dynamic_arsenal_geospatial.md
     │   ├── concept_combat_group_structure_and_rfp_cycle.md
     │   ├── concept_frontier_industry_and_weapon_generations.md
-    │   └── concept_homeworld_roadmaps_and_niche_industries.md
+    │   ├── concept_homeworld_roadmaps_and_niche_industries.md
+    │   └── concept_starter_modules_and_common_chassis_catalog.md
     ├── ui_wiki/                            # UI・情報閲覧システム（3件）
     │   ├── concept_in_game_wiki.md
     │   ├── concept_viewer_separation_wiki_and_live.md
@@ -168,6 +169,12 @@ doc/
   * 自治体推進の産業振興と安価な無人化・民需転用キットを結ぶ「ハブ・コンソーシアム企業（血流）」。
   * 開拓農業・超深地採石・廃船解体・極地測量などの異業種からスピンオフし、現場の極限環境・エイリアン脅威に対処する「強烈なクセを持つ特化ニッチモジュール（スパイス）」。
   * 現場改修（Field Mod）と重工監査官の反発、産業振興イベントチェーンによる動的ドラマの調和。
+* **[concept_starter_modules_and_common_chassis_catalog.md](./discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md)**
+  * **初期モジュール・基本シャシー共通カタログ仕様書 (Turn 0〜Gen 1)**。
+  * スタート時の完全な平等性（競技的公平性）を担保する、全国家共通の母星標準規格（ISO-Terran Baseline）モジュール群。
+  * 3大基本シャシー（装輪・装軌・多脚）の走破係数・積載スペック、基本武装・パワーパック・装甲モジュール定義。
+  * Turn 0 初期配備戦力（Mk.0遠征戦車、探査バギー、治安警備小隊、受動監視杭）と初期ブートローダー工廠値。
+  * 国家ごとの没入感を高めるフレーバー呼称マッピング（内部共通データと表示文字列の対応）。
 
 ### ③ 産業・サプライチェーン・組織運用（`industry_logistics/`）
 
