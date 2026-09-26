@@ -266,16 +266,24 @@ civ6の圧力と忠誠度は一考の価値はあるかな。あの長尺でも�
     - 製造業や外交姿勢などカジュアル目に反映。
     - 詳細は [concept_faction_consensus_and_standardization.md](./discussion/events/concept_faction_consensus_and_standardization.md) を参照。
 
-### 5.2 ゲームシステムイメージ
+### 5.3 産業基盤・兵器世代と国家ステアリング（発展コア仕様）
 
-1. **オリジナル国家**
-   - 現実との整合性などを避けて他の星の話にする。
-   - 帝国・連邦・共和国などのような小説における国名を使わず国号だけ出したり、人名ではなく役職名のみのようなふうに。
-2. **タイル機能の自由化**
-   - 事実上の制約をなくす。
-   - 道路や鉄道、空港などを自由化。出力上はデメリットか。
-3. **システマチックなゲームシステム**
-   - 非ノベルゲームチック・非アドベンチャーチックでシミュレーションゲームチックかつ幅広く平和を愛せるようなシステム。
+本作の深層シミュレーション性を支える根幹メカニクス群（詳細は `doc/discussion/` 参照）。
+
+1. **兵器世代（Gen 0〜Gen 4）と入植産業の落差**:
+   - 母星の高度な設計図を持ちながら、現地の未熟な工作機械・素材に合わせて兵器をダウンサイジング・再建していくプロセス。
+   - **Gen 0（母星遺産・虎の子）**: 最強だが再生産・部品補充不能。初期拠点の中央戦略予備として温存。
+   - **初期の非資源消費部隊**: 弾薬・燃料を消費せず、食料・生命維持パックのみで動く探査バギー、治安警備兵、監視杭。
+   - **Gen 1（開拓急造） ──► Gen 2（独立軍制式） ──► Gen 3（母星基準復元） ──► Gen 4（異星超克アフィニティ特化）** へと産業発展に伴い進化。
+   - 詳細は [concept_frontier_industry_and_weapon_generations.md](./discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md) 参照。
+2. **多層ステアリングと産業の自律性**:
+   - プレイヤーは1両ずつのマイクロマネジメントではなく、大戦略ドクトリンや兵器クラス別RFP（防護/機動/火力・共通化率）を指示・誘導（ステアリング）。
+   - 国内工廠が自律的にブロック更新（Block I → II）を行い、金型転換ラグ（Tooling Friction）や新旧混在ペナルティを経て配備車両が更新される。
+   - 詳細は [concept_doctrine_and_equipment_steering.md](./discussion/industry_logistics/concept_doctrine_and_equipment_steering.md) 参照。
+3. **脱・都市中心（Post-City Centric）のタイル個別進展**:
+   - 万能都市を廃止し、タイル自体を前哨(FOB)・採掘・重工・居住区画などの個別機能サイトとして定義。
+   - インフラ延伸（道路・送電線・パイプライン）と進展度（Tier 0〜4）により広域に分散展開。
+   - 詳細は [concept_tile_centric_expansion.md](./discussion/map_tile/concept_tile_centric_expansion.md) 参照。
 
 ---
 
