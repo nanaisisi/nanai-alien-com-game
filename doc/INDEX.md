@@ -13,7 +13,7 @@ doc/
 ├── Faction.md                              # 勢力一覧・固有ボーナス/特性定義
 ├── PENDING_ISSUES.md                       # 未確定・検討課題まとめ
 ├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
-└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計41件）
+└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計45件）
     ├── automation/                         # 自動化システム（1件）
     │   └── concept_automation_systems.md
     ├── diplomacy_governance/               # 外交・占領統治・戦後処理（6件）
