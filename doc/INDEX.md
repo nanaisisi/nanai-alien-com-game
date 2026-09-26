@@ -46,7 +46,7 @@ doc/
     │   ├── concept_tile_progression_system.md
     │   ├── concept_maritime_governance_and_ocean_engineering.md
     │   └── concept_subtile_combat_and_tactical_rules.md
-    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（8件）
+    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（9件）
     │   ├── concept_weapon_module_commonality.md
     │   ├── example_weapon_modules_cases.md
     │   ├── concept_future_legged_unmanned_rules.md
@@ -54,7 +54,8 @@ doc/
     │   ├── concept_salvage_scuttling_and_compatibility.md
     │   ├── concept_dynamic_arsenal_geospatial.md
     │   ├── concept_combat_group_structure_and_rfp_cycle.md
-    │   └── concept_frontier_industry_and_weapon_generations.md
+    │   ├── concept_frontier_industry_and_weapon_generations.md
+    │   └── concept_homeworld_roadmaps_and_niche_industries.md
     ├── ui_wiki/                            # UI・情報閲覧システム（3件）
     │   ├── concept_in_game_wiki.md
     │   ├── concept_viewer_separation_wiki_and_live.md
@@ -153,6 +154,12 @@ doc/
   * 複合装甲・ミリ波FCSから粗鋼多層溶接・光学測距へのダウンサイジング、新旧混在部隊における整備・補給ペナルティのゲーム力学。
   * ゲーム開始時の非資源消費型初期ユニット（探査バギー、治安警備、監視杭、共生体歩兵等）と虎の子機甲（Gen 0）の封印・戦略予備運用。
   * 装備の有限寿命（物理的減耗・不可逆劣化）vs 人間の訓練可能性（適応・学習）の非対称性。
+* **[concept_homeworld_roadmaps_and_niche_industries.md](./discussion/military_tactics/concept_homeworld_roadmaps_and_niche_industries.md)**
+  * **母星企業ロードマップ・現地重工と特化企業エコシステム仕様書**。
+  * 母星企業が出発前に策定していた「段階的産業再建ロードマップ用モジュール規格」と、現地でそれを具現化・量産・改良するパワフルな「現地国策重工（背骨）」。
+  * 自治体推進の産業振興と安価な無人化・民需転用キットを結ぶ「ハブ・コンソーシアム企業（血流）」。
+  * 開拓農業・超深地採石・廃船解体・極地測量などの異業種からスピンオフし、現場の極限環境・エイリアン脅威に対処する「強烈なクセを持つ特化ニッチモジュール（スパイス）」。
+  * 現場改修（Field Mod）と重工監査官の反発、産業振興イベントチェーンによる動的ドラマの調和。
 
 ### ③ 産業・サプライチェーン・組織運用（`industry_logistics/`）
 
