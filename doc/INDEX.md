@@ -47,9 +47,10 @@ doc/
     │   ├── concept_maritime_governance_and_ocean_engineering.md
     │   ├── concept_subtile_combat_and_tactical_rules.md
     │   └── concept_infrastructure_grid_and_transit_artery.md
-    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（10件）
+    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（11件）
     │   ├── concept_weapon_module_commonality.md
     │   ├── example_weapon_modules_cases.md
+    │   ├── concept_ammunition_caliber_standards_c.md
     │   ├── concept_future_legged_unmanned_rules.md
     │   ├── concept_ethics_autonomous_and_surrender_dynamics.md
     │   ├── concept_salvage_scuttling_and_compatibility.md
@@ -142,6 +143,12 @@ doc/
   * 車体／シャシーと兵装モジュールの共通化設計（モジュラー兵器システム）。生産効率と改修自由度の両立。
 * **[example_weapon_modules_cases.md](./discussion/military_tactics/example_weapon_modules_cases.md)**
   * 兵装モジュール・シャシー組み合わせの実装具体例（対空砲架、レールガン、ミサイルポッド、電子戦装備等）。
+* **[concept_ammunition_caliber_standards_c.md](./discussion/military_tactics/concept_ammunition_caliber_standards_c.md)**
+  * **弾薬・火砲規格体系（C規格 / 単位：C）仕様書**。
+  * 母星文明の度量衡・工業規格において、弾丸の太さ（ボア径）を表す普遍単位「C（シー）」の成立と継承。
+  * 英語略称ではなく単位記号そのものが「C」（1C ≒ 1mm相当のスケール感で直感性を担保）。
+  * 完全整数ピッチの口径階層体系（6C/8C小銃、15C重機、30C機関砲、75C軽砲、105C主砲、150C重砲）。
+  * 薬莢長表記を排したクラス・モジュラー方式、ケースレス（CT）・電熱化学（ETC）・電磁加速（Rail）の世代進化とサプライチェーン・兵站統合。
 * **[concept_future_legged_unmanned_rules.md](./discussion/military_tactics/concept_future_legged_unmanned_rules.md)**
   * 多脚・二脚歩行兵器の特性検討（万能ではなく構造の複雑さ・整備負荷・脆弱性等の「不便さ」を伴うロマン枠としての議論深化）、無人ドローン・自律機械ユニットの階層（Tier）と通信途絶時の行動ルーチン。
 * **[concept_ethics_autonomous_and_surrender_dynamics.md](./discussion/military_tactics/concept_ethics_autonomous_and_surrender_dynamics.md)**

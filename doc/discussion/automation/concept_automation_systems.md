@@ -78,7 +78,7 @@ $$\text{補充判定} = f(\text{Similarity}(M_{\text{req}}, M_{\text{stock}}))$$
 
 #### (3) 弾薬・火工品の自動平準化
 
-弾薬の口径（105mm/120mm/155mm等）や炸薬原料の配分は、プレイヤーが工場ごとに指示するのではなく、軍団全体の需要予測に基づき自動平準化される。
+弾薬の口径（105C/120C/155C等）や炸薬原料の配分は、プレイヤーが工場ごとに指示するのではなく、軍団全体の需要予測に基づき自動平準化される。
 口径統合を進めているプレイヤー国家は「調達・補給コストの逓減（スケールメリット）」を自動的に享受できる。
 
 ---
@@ -151,7 +151,7 @@ $$\Delta Exp_{\text{target}} = \Delta Exp_{\text{source}} \times \text{Similarit
 |                                                                   |
 |  【装備構成・産業サプライチェーン情報】                           |
 |  - 主車体: 帝国重工 T-72改 シャシー (重工IND-2 類似度: 1.0)       |
-|  - 主砲: 120mm 滑腔砲 Mk-IV [共通砲身規格] (火薬IND-4)            |
+|  - 主砲: 120C 滑腔砲 Mk-IV [共通砲身規格] (火薬IND-4)            |
 |  - FCS/AI: オプティマ・テック製 自律射撃管制 Ver 4.1 (電子IND-7)  |
 |  - 補給元: 首都第1工業コンビナート (道路・鉄道 複線直結)           |
 |  - 部品品質評価: 「高精度熟練工加工 (故障率 -15%, 命中精度 +8%)」 |
@@ -166,7 +166,7 @@ $$\Delta Exp_{\text{target}} = \Delta Exp_{\text{source}} \times \text{Similarit
 - **多口径工場の立ち上げトラブルに悩む大国**:
   - 急速に軍備拡張したNPC国が、工場の段取り替えトラブルで弾薬不足に陥り、プレイヤーに「弾薬・火工原料の緊急融通」を打診してくる。
 - **前線での口径乱立・兵站破綻**:
-  - 各国からバラバラに兵器を買い集めたNPC軍が、前線で「105mmと155mmの砲弾補給が混乱して砲兵が射撃不能」に陥る様子を偵察で確認できる。
+  - 各国からバラバラに兵器を買い集めたNPC軍が、前線で「105Cと155Cの砲弾補給が混乱して砲兵が射撃不能」に陥る様子を偵察で確認できる。
 
 ---
 
@@ -199,7 +199,7 @@ $$\Delta Exp_{\text{target}} = \Delta Exp_{\text{source}} \times \text{Similarit
 - 基本ゲームデザイン: [`GAME_DESIGN.md`](../../GAME_DESIGN.md)
 - 産業・モジュール相互接続マッピング: [`concept_industry_module_mapping.md`](./concept_industry_module_mapping.md)
 - サブタイル産業エコシステム構想: [`future_concept_subtile_industry.md`](../map_tile/future_concept_subtile_industry.md)
-- 兵器モジュール共通化・ドクトリン設計: [`concept_weapon_module_commonality.md`](../military_tactics/concept_weapon_module_commonality.md)
+- 兵器モジュール共通化・ドクトリン設計: [`concept_weapon_module_coConality.md`](../military_tactics/concept_weapon_module_coConality.md)
 - 個別モジュール事例集: [`example_weapon_modules_cases.md`](../military_tactics/example_weapon_modules_cases.md)
 - 状況依存型兵器体系・産業形成: [`concept_dynamic_arsenal_geospatial.md`](../military_tactics/concept_dynamic_arsenal_geospatial.md)
 - ゲーム内Wikiシステム計画: [`concept_in_game_wiki.md`](../ui_wiki/concept_in_game_wiki.md)

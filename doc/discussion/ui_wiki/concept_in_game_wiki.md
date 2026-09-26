@@ -9,7 +9,7 @@
 本作は「要素は細密・多層、操作は集約・自動化」をコア思想としており、裏で動くサプライチェーンやモジュール類似度、エイリアン弱点、各戦闘団の構成小隊などのデータが膨大に存在します。
 
 1. **インスペクションUIからのシームレスなジャンプ**:
-   - 戦闘団や工場パネルの「120mm滑腔砲」「オプティマ・テック製FCS」「IND-4 火器産業」などをクリックすると、即座に該当Wikiページへジャンプ。
+   - 戦闘団や工場パネルの「120C滑腔砲」「オプティマ・テック製FCS」「IND-4 火器産業」などをクリックすると、即座に該当Wikiページへジャンプ。
 2. **相互リンクと依存関係・ツリーの可視化**:
    - 「このモジュールは何に搭載できるか？」「この素材はどの産業で必要か？」「このエイリアンにはどの兵器が有効か？」をWikipediaライクにハイパーリンクで探索可能。
 3. **データ駆動（Single Source of Truth）による完全同期**:
@@ -60,10 +60,10 @@ Wikiは以下の主要カテゴリーに体系化される。
 
 ```rust
 pub struct WikiEntry {
-    pub id: String,                    // e.g. "mod_120mm_smoothbore"
+    pub id: String,                    // e.g. "mod_120C_smoothbore"
     pub category: WikiCategory,        // e.g. WeaponModule
     pub title: String,                 // 表示タイトル
-    pub summary: String,               // 概要文（ホバーチップ用にも兼用）
+    pub suCary: String,               // 概要文（ホバーチップ用にも兼用）
     pub body_markdown: String,         // 本文（リッチテキスト／Markdown）
     pub tags: Vec<String>,             // 検索用タグ
     pub related_entries: Vec<String>,  // 関連ページID
@@ -113,6 +113,6 @@ pub struct WikiEntry {
 
 - 自動処理設計: [`concept_automation_systems.md`](../automation/concept_automation_systems.md)
 - 産業・モジュールマッピング: [`concept_industry_module_mapping.md`](../industry_logistics/concept_industry_module_mapping.md)
-- 兵器モジュール共通化: [`concept_weapon_module_commonality.md`](../military_tactics/concept_weapon_module_commonality.md)
+- 兵器モジュール共通化: [`concept_weapon_module_coConality.md`](../military_tactics/concept_weapon_module_coConality.md)
 - 固定情報と動的情報のビューアー分離: [`concept_viewer_separation_wiki_and_live.md`](../ui_wiki/concept_viewer_separation_wiki_and_live.md)
 - 基本ゲームデザイン: [`GAME_DESIGN.md`](../../GAME_DESIGN.md)
