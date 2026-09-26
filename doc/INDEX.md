@@ -150,7 +150,7 @@ doc/
   * 母機・工作機械・金型と歩留まり（Yield）の力学、他国規格・鹵獲兵器の「自国化改修（国産化）」およびライセンス生産の現実的制約。
 * **[concept_industry_module_mapping.md](./discussion/industry_logistics/concept_industry_module_mapping.md)**
   * 工業施設と生産モジュールのマッピング、工場ラインの構成と兵器生産の接続。
-* **[concept_automation_systems.md](./discussion/industry_logistics/concept_automation_systems.md)**
+* **[concept_automation_systems.md](./discussion/automation/concept_automation_systems.md)**
   * 自動輸送ルート設定、定期哨戒（パトロール）、前線への自動補給ロジック。
 * **[concept_transport_windows_and_infrastructure_bottlenecks.md](./discussion/industry_logistics/concept_transport_windows_and_infrastructure_bottlenecks.md)**
   * **輸送ウインドウ（タイムスロット）とインフラボトルネック検討仕様**。

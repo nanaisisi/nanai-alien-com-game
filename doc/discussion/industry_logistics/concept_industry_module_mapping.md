@@ -293,4 +293,4 @@ impl ModuleSpec {
 - 基本設計仕様書: [`concept_weapon_module_commonality.md`](../military_tactics/concept_weapon_module_commonality.md)
 - 個別事例・ケーススタディ: [`example_weapon_modules_cases.md`](../military_tactics/example_weapon_modules_cases.md)
 - 産業構造・サブタイル連携: [`concept_industry_structure.md`](concept_industry_structure.md)
-- 自動処理・全体設計仕様書: [`concept_automation_systems.md`](concept_automation_systems.md)
+- 自動処理・全体設計仕様書: [`concept_automation_systems.md`](../automation/concept_automation_systems.md)
