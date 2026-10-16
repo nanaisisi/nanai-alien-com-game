@@ -7,9 +7,10 @@ pub mod types;
 pub mod view;
 
 #[allow(unused_imports)]
+#[allow(unused_imports)]
 pub use interaction::{
     button_action_system, button_interaction_system, execute_title_action,
-    title_keyboard_navigation_system,
+    title_keyboard_navigation_system, update_title_focus_highlight_system,
 };
 #[allow(unused_imports)]
 pub use types::{
@@ -32,6 +33,7 @@ impl Plugin for TitleUiPlugin {
                     title_keyboard_navigation_system,
                     button_interaction_system,
                     button_action_system,
+                    update_title_focus_highlight_system,
                 )
                     .run_if(in_state(AppState::Title)),
             )

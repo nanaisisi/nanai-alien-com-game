@@ -47,58 +47,41 @@ pub type TitleButtonInteractionQuery<'world, 'state> = Query<
     'state,
     (
         &'static Interaction,
-        &'static mut BackgroundColor,
-        &'static mut BorderColor,
         &'static TitleMenuButton,
+        &'static MenuButtonAction,
     ),
     With<Button>,
 >;
 
-pub type TitleButtonActionQuery<'world, 'state> = Query<
-    'world,
-    'state,
-    (&'static Interaction, &'static MenuButtonAction),
-    With<Button>,
->;
-
 pub fn button_interaction_system(
-    mut interaction_query: TitleButtonInteractionQuery,
+    interaction_query: TitleButtonInteractionQuery,
     mut focus: ResMut<TitleMenuFocus>,
 ) {
     // マウスホバーされた場合はフォーカスインデックスを更新
-    for (interaction, _, _, menu_btn) in &interaction_query {
+    for (interaction, menu_btn, _) in &interaction_query {
         if *interaction == Interaction::Hovered || *interaction == Interaction::Pressed {
             focus.selected_index = Some(menu_btn.0);
         }
     }
+}
 
-    let current_selected = focus.selected_index;
-
+/// フォーカス状態（キーボード選択・マウスホバー）に応じてボタンの枠線と背景色を同期更新
+pub fn update_title_focus_highlight_system(
+    focus: Res<TitleMenuFocus>,
+    mut query: Query<(&TitleMenuButton, &mut BorderColor, &mut BackgroundColor), With<Button>>,
+) {
     let standard_btn = UiTheme::button(false);
     let surfaces = UiTheme::surfaces();
 
-    // スタイルの同期
-    for (interaction, mut bg_color, mut border_color, menu_btn) in &mut interaction_query {
-        let is_selected = current_selected == Some(menu_btn.0);
+    for (menu_btn, mut border_color, mut bg_color) in &mut query {
+        let is_selected = focus.selected_index == Some(menu_btn.0);
 
-        match *interaction {
-            Interaction::Pressed => {
-                *bg_color = BackgroundColor(standard_btn.pressed());
-                *border_color = BorderColor::all(surfaces.accent());
-            }
-            Interaction::Hovered => {
-                *bg_color = BackgroundColor(standard_btn.hovered());
-                *border_color = BorderColor::all(surfaces.accent());
-            }
-            Interaction::None => {
-                if is_selected {
-                    *bg_color = BackgroundColor(standard_btn.hovered());
-                    *border_color = BorderColor::all(surfaces.accent());
-                } else {
-                    *bg_color = BackgroundColor(standard_btn.normal());
-                    *border_color = BorderColor::all(Color::srgb(0.25, 0.38, 0.50));
-                }
-            }
+        if is_selected {
+            *bg_color = BackgroundColor(standard_btn.hovered());
+            *border_color = BorderColor::all(surfaces.accent());
+        } else {
+            *bg_color = BackgroundColor(standard_btn.normal());
+            *border_color = BorderColor::all(Color::srgb(0.25, 0.38, 0.50));
         }
     }
 }
@@ -130,9 +113,8 @@ pub fn execute_title_action(
 }
 
 pub fn button_action_system(
-    interaction_query: TitleButtonActionQuery,
+    interaction_query: TitleButtonInteractionQuery,
     mouse_button: Res<ButtonInput<MouseButton>>,
-    focus: Res<TitleMenuFocus>,
     mut settings: ResMut<crate::ui::settings::GameSettings>,
     mut next_state: ResMut<NextState<AppState>>,
     mut exit_events: bevy::ecs::message::MessageWriter<AppExit>,
@@ -147,20 +129,17 @@ pub fn button_action_system(
     let mut triggered_action = None;
 
     // 1. Interaction::Pressed による押下検知
-    for (interaction, action) in &interaction_query {
+    for (interaction, _, action) in &interaction_query {
         if *interaction == Interaction::Pressed {
             triggered_action = Some(*action);
             break;
         }
     }
 
-    // 2. マウスクリック時にホバーまたはフォーカス中のボタンがあれば確実に実行
+    // 2. マウスクリック時にホバー中のボタンがあれば実行
     if triggered_action.is_none() && mouse_button.just_pressed(MouseButton::Left) {
-        for (interaction, action) in &interaction_query {
-            let is_focused = focus
-                .selected_index
-                .is_some_and(|idx| idx < MENU_ACTIONS.len() && MENU_ACTIONS[idx] == *action);
-            if *interaction == Interaction::Hovered || is_focused {
+        for (interaction, _, action) in &interaction_query {
+            if *interaction == Interaction::Hovered {
                 triggered_action = Some(*action);
                 break;
             }
