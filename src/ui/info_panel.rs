@@ -164,7 +164,7 @@ pub fn update_info_panel_system(
 
         let info = format!(
             "【部隊選択中】\n  {}\n  所属: 国{}【{}】\n\n\
-             【ステータス】\n  HP: {} / {}\n  残り移動力: {} / {}\n  攻撃力: {} (射程: {}マス)\n  態勢/状態: {}\n  行動可否: {}\n\n\
+             【ステータス】\n  HP: {} / {}\n  残り移動力: {} / {}\n  攻撃力: {} (射程: {}マス)\n  態勢/状態: {}\n  配備状態: {}\n  行動可否: {}\n\n\
              【現在位置】\n  col: {}, row: {} (q: {}, r: {})\n\n\
              {}\n\n\
              ※移動: 右クリックドラッグ（ドラッグ中[M]で移動モードへ移行可）、または [M] キー移動モード",
@@ -178,6 +178,7 @@ pub fn update_info_panel_system(
             unit.group_type.attack_power(),
             unit.group_type.attack_range(),
             unit.action_state.display_name(),
+            unit.deployment_status.display_name(),
             if unit.is_exhausted {
                 "行動終了 (待機中)"
             } else {
@@ -245,16 +246,42 @@ pub fn update_info_panel_system(
                 String::new()
             };
 
-            // タイル上の駐留部隊
-            let stationed_unit = units_query.iter().find(|u| u.coord == coord);
-            let unit_str = if let Some(u) = stationed_unit {
-                format!(
-                    "\n\n【駐留部隊】\n  {} (国{}) - 残移動力: {}/{}",
-                    u.group_type.display_name(),
-                    u.faction.code(),
-                    u.current_movement,
-                    u.max_movement
-                )
+            // タイル上の駐留部隊および非表示予備スタック
+            let tile_units: Vec<&Unit> = units_query.iter().filter(|u| u.coord == coord).collect();
+            let unit_str = if !tile_units.is_empty() {
+                let active = tile_units
+                    .iter()
+                    .find(|u| u.deployment_status.is_active_garrison());
+                let reserves: Vec<&&Unit> = tile_units
+                    .iter()
+                    .filter(|u| !u.deployment_status.is_active_garrison())
+                    .collect();
+
+                let mut s = String::new();
+                if let Some(act) = active {
+                    s.push_str(&format!(
+                        "\n\n【アクティブ防衛部隊】\n  {} (国{}) [残移動力: {}/{}]",
+                        act.group_type.display_name(),
+                        act.faction.code(),
+                        act.current_movement,
+                        act.max_movement
+                    ));
+                }
+                if !reserves.is_empty() {
+                    s.push_str(&format!(
+                        "\n\n【内部非表示スタック・予備】({}部隊待機中)",
+                        reserves.len()
+                    ));
+                    for res in reserves {
+                        s.push_str(&format!(
+                            "\n  ・{} (国{}) - {}",
+                            res.group_type.display_name(),
+                            res.faction.code(),
+                            res.deployment_status.display_name()
+                        ));
+                    }
+                }
+                s
             } else {
                 String::new()
             };

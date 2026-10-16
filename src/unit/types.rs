@@ -103,6 +103,73 @@ impl UnitActionState {
     }
 }
 
+/// ユニットの現在の配備・格納ステータス
+#[derive(Component, Debug, Clone, PartialEq, Eq, Reflect, Default)]
+pub enum DeploymentStatus {
+    /// 地表アクティブ駐留 (大戦略マップに表示される主部隊: 1タイル最大1つ)
+    #[default]
+    ActiveGarrison,
+    /// 地下要塞・シェルター待機 (非表示スタック: アクティブ部隊の予備)
+    BunkerReserve { priority_order: u8 },
+    /// 輸送艦・母艦・列車への積載中 (非表示スタック: ホスト追従)
+    Embarked { carrier_entity: Entity },
+    /// 港湾・基地でのモスボール休役保管 (非配備兵器: 出渠ラグあり)
+    Mothballed { reactivation_turns_remaining: u8 },
+    /// 工廠・デポ内の資材・予備役プール (実体ユニットではなく兵装ストック)
+    DepotInventory,
+}
+
+impl DeploymentStatus {
+    pub fn is_active_garrison(&self) -> bool {
+        matches!(self, Self::ActiveGarrison)
+    }
+
+    pub fn is_hidden_stack(&self) -> bool {
+        !self.is_active_garrison()
+    }
+
+    pub fn display_name(&self) -> &'static str {
+        match self {
+            Self::ActiveGarrison => "アクティブ駐留 (地表露出)",
+            Self::BunkerReserve { .. } => "地下要塞・シェルター待機 (非表示予備)",
+            Self::Embarked { .. } => "輸送母艦/輸送機関に積載中",
+            Self::Mothballed { .. } => "モスボール休役保管中 (港湾/基地)",
+            Self::DepotInventory => "工廠/兵站デポ保管品",
+        }
+    }
+}
+
+/// 輸送母艦・格納施設コンポーネント (他のユニットを内部スタック可能)
+#[derive(Component, Debug, Clone, Reflect)]
+pub struct HangarBay {
+    /// 最大積載スロット容量 (トン数または小隊数)
+    pub capacity: u32,
+    /// 現在内部に非表示格納されているユニットエンティティのリスト
+    pub stored_units: Vec<Entity>,
+}
+
+impl Default for HangarBay {
+    fn default() -> Self {
+        Self {
+            capacity: 4,
+            stored_units: Vec::new(),
+        }
+    }
+}
+
+/// 国家・方面軍工廠の非配備兵器・艦艇プール
+#[derive(Resource, Debug, Clone, Default)]
+pub struct NationalArsenalPool {
+    /// 勢力識別子
+    pub faction_id: FactionId,
+    /// 未配備・予備役の完成品車台ストック (シャシー名/ID -> 保管数)
+    pub chassis_stock: std::collections::HashMap<String, u32>,
+    /// 未配備の兵装モジュールストック (モジュール名/ID -> 保管数)
+    pub weapon_module_stock: std::collections::HashMap<String, u32>,
+    /// 母星遺産（Gen 0）の封印保管ストック
+    pub legacy_gen0_sealed_units: Vec<String>,
+}
+
 /// 全体マップ上で活動する戦闘団ユニット
 #[derive(Component, Debug, Clone, Reflect)]
 pub struct Unit {
@@ -115,6 +182,7 @@ pub struct Unit {
     pub max_hp: u32,
     pub is_exhausted: bool,
     pub action_state: UnitActionState,
+    pub deployment_status: DeploymentStatus,
 }
 
 impl Unit {
@@ -131,6 +199,7 @@ impl Unit {
             max_hp,
             is_exhausted: false,
             action_state: UnitActionState::Idle,
+            deployment_status: DeploymentStatus::ActiveGarrison,
         }
     }
 

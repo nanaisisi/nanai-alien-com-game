@@ -8,8 +8,8 @@ use crate::map::interaction::{HoveredTile, SelectedTile};
 use crate::state::AppState;
 
 use super::types::{
-    MoveModeState, MoveTargetMarker, RightDragMoveState, SelectedUnit, Unit, UnitActionState,
-    UnitSelectionRing,
+    DeploymentStatus, MoveModeState, MoveTargetMarker, RightDragMoveState, SelectedUnit, Unit,
+    UnitActionState, UnitSelectionRing,
 };
 
 pub struct UnitInteractionPlugin;
@@ -27,6 +27,7 @@ impl Plugin for UnitInteractionPlugin {
                     handle_unit_selection_and_move,
                     update_reachable_tiles,
                     update_selection_visuals,
+                    update_unit_visibility_system,
                     process_unit_turn_updates,
                 )
                     .run_if(in_state(AppState::InGame)),
@@ -1126,6 +1127,31 @@ pub fn process_unit_turn_updates(
                 }
             }
             UnitActionState::Idle => {}
+        }
+    }
+}
+
+/// ユニットの配備ステータスに応じた大戦略マップ上の表示/非表示切り替えシステム
+pub fn update_unit_visibility_system(
+    mut query: Query<(&Unit, &mut Visibility), Changed<Unit>>,
+) {
+    for (unit, mut visibility) in &mut query {
+        match unit.deployment_status {
+            DeploymentStatus::ActiveGarrison => {
+                // アクティブ駐留部隊のみ地表に描画
+                if *visibility == Visibility::Hidden {
+                    *visibility = Visibility::Inherited;
+                }
+            }
+            DeploymentStatus::BunkerReserve { .. }
+            | DeploymentStatus::Embarked { .. }
+            | DeploymentStatus::Mothballed { .. }
+            | DeploymentStatus::DepotInventory => {
+                // 内部スタック・格納部隊・非配備兵器は非表示
+                if *visibility != Visibility::Hidden {
+                    *visibility = Visibility::Hidden;
+                }
+            }
         }
     }
 }
