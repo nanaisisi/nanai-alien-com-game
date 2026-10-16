@@ -15,7 +15,7 @@ doc/
 ├── PENDING_ISSUES.md                       # 未確定・検討課題まとめ
 ├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
 ├── BEVY_0_20_INTEGRATION_REVIEW.md         # Bevy 0.20 仕様照合・技術検討書
-└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計46件）
+└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計48件）
     ├── automation/                         # 自動化システム（1件）
     │   └── concept_automation_systems.md
     ├── diplomacy_governance/               # 外交・占領統治・戦後処理（6件）
@@ -49,7 +49,7 @@ doc/
     │   ├── concept_maritime_governance_and_ocean_engineering.md
     │   ├── concept_subtile_combat_and_tactical_rules.md
     │   └── concept_infrastructure_grid_and_transit_artery.md
-    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（11件）
+    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（13件）
     │   ├── concept_weapon_module_commonality.md
     │   ├── example_weapon_modules_cases.md
     │   ├── concept_ammunition_caliber_standards_c.md
@@ -59,6 +59,8 @@ doc/
     │   ├── concept_dynamic_arsenal_geospatial.md
     │   ├── concept_combat_group_structure_and_rfp_cycle.md
     │   ├── concept_frontier_industry_and_weapon_generations.md
+    │   ├── concept_hidden_stacks_and_reserve_arsenal.md
+    │   ├── concept_non_unit_sea_and_vehicle_transport.md
     │   ├── concept_homeworld_roadmaps_and_niche_industries.md
     │   └── concept_starter_modules_and_common_chassis_catalog.md
     ├── ui_wiki/                            # UI・情報閲覧システム（3件）
@@ -185,6 +187,13 @@ doc/
   * 艦艇・大型兵器のモスボール（保管役）メカニクス（維持費20%への圧縮、出渠・再活性化ラグ、港湾空襲リスク）。
   * 揚陸母艦・輸送列車への搭載スタックとサブタイル戦術戦闘（343マス）への実体化展開フロー、母艦被雷時の連鎖喪失リスク。
   * Bevy ECS（`DeploymentStatus`, `HangarBay`, `NationalArsenalPool`）データ構造とUIスタックピクトグラム表示。
+* **[concept_non_unit_sea_and_vehicle_transport.md](./discussion/military_tactics/concept_non_unit_sea_and_vehicle_transport.md)**
+  * **非ユニット輸送体系仕様書（非ユニット船舶海上輸送と徒歩部隊・車両輸送）**。
+  * 「輸送船ユニットが海を埋め尽くす」欠陥を排除し、港湾間の海上回廊（シーレーン）および国家・港湾船腹プール（Sea Lift Capacity: SLC）を消費して陸上部隊を非ユニット航行させるシーリフト力学。
+  * 哨戒艦艇・潜水艦網による通商破壊・航路安全度判定と、船団被襲撃による部隊損耗・水没沈没リスク。
+  * 徒歩・軽装歩兵戦闘団による非戦闘車両・汎用トラック（GUV）・牽引トレーラーのアタッチ（モーターライズ化）。
+  * 道路・平原での高速移動力向上と、下車戦闘ラグ、悪路進入不可、奇襲被弾時の脆弱性（防御力ペナルティ）の二律背反。
+  * Bevy ECS（`SeaTransitRoute`, `PortSeaLiftCapability`, `UnitMobility`, `MobilityDoctrine`）設計。
 * **[concept_homeworld_roadmaps_and_niche_industries.md](./discussion/military_tactics/concept_homeworld_roadmaps_and_niche_industries.md)**
   * **母星企業ロードマップ・現地重工と特化企業エコシステム仕様書**。
   * 母星企業が出発前に策定していた「段階的産業再建ロードマップ用モジュール規格」と、現地でそれを具現化・量産・改良するパワフルな「現地国策重工（背骨）」。

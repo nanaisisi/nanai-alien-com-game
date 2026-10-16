@@ -564,6 +564,31 @@ struct UnitAttackContext<'a, 'w, 's> {
     pub move_mode: &'a mut MoveModeState,
 }
 
+/// 同一タイルの格納予備部隊への波及被害。
+/// アクティブ部隊が全滅した場合は予備も壊滅、そうでなければ被害の半分（HPは最低1を維持）。
+fn apply_reserve_damage(
+    units: &mut Query<(Entity, &mut Unit, &mut Transform)>,
+    commands: &mut Commands,
+    coord: HexCoord,
+    faction: crate::faction::types::FactionId,
+    damage: u32,
+    active_died: bool,
+) {
+    for (entity, mut unit, _) in units.iter_mut() {
+        if unit.coord != coord
+            || unit.faction != faction
+            || !unit.deployment_status.is_hidden_stack()
+        {
+            continue;
+        }
+        if active_died {
+            commands.entity(entity).despawn();
+        } else {
+            unit.hp = unit.hp.saturating_sub(damage / 2).max(1);
+        }
+    }
+}
+
 /// ユニットの戦闘・突撃・遠隔攻撃を実行
 fn execute_unit_attack_action(
     attacker_entity: Entity,
@@ -603,7 +628,7 @@ fn execute_unit_attack_action(
     // 射程内の敵ユニットを検索
     let mut targets: Vec<(Entity, HexCoord, i32)> = Vec::new();
     for (target_e, target_u, _) in units.iter() {
-        if target_u.faction != player_fac {
+        if target_u.faction != player_fac && target_u.deployment_status.is_active_garrison() {
             let dist = attacker_coord.distance_with_width(target_u.coord, map_w);
             if dist <= max_range && dist > 0 {
                 targets.push((target_e, target_u.coord, dist));
@@ -687,6 +712,27 @@ fn execute_unit_attack_action(
             }
         }
     }
+
+    // 格納予備部隊は勝敗に関わらず、アクティブ部隊と同時に被害を受けるだけ
+    let target_faction = units.get(target_e).map(|(_, u, _)| u.faction).ok();
+    if let Some(target_faction) = target_faction {
+        apply_reserve_damage(
+            units,
+            commands,
+            target_coord,
+            target_faction,
+            damage_to_target,
+            target_died,
+        );
+    }
+    apply_reserve_damage(
+        units,
+        commands,
+        attacker_coord,
+        player_fac,
+        damage_to_attacker,
+        attacker_died,
+    );
 
     if target_died {
         commands.entity(target_e).despawn();
