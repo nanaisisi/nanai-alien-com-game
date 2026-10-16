@@ -161,7 +161,7 @@ pub type PauseButtonInteractionQuery<'world, 'state> = Query<
         &'static mut BorderColor,
         &'static PauseButtonAction,
     ),
-    (Changed<Interaction>, With<Button>),
+    With<Button>,
 >;
 
 pub fn pause_button_interaction_system(

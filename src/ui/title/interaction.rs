@@ -58,7 +58,7 @@ pub type TitleButtonActionQuery<'world, 'state> = Query<
     'world,
     'state,
     (&'static Interaction, &'static MenuButtonAction),
-    (Changed<Interaction>, With<Button>),
+    With<Button>,
 >;
 
 pub fn button_interaction_system(
@@ -154,16 +154,18 @@ pub fn button_action_system(
         }
     }
 
-    // 2. マウスクリック時にフォーカス中のボタンがあれば確実に実行
-    if triggered_action.is_none() && mouse_button.just_pressed(MouseButton::Left)
-        && let Some(selected_idx) = focus.selected_index {
-            for (interaction, action) in &interaction_query {
-                if *interaction == Interaction::Hovered && selected_idx < MENU_ACTIONS.len() && MENU_ACTIONS[selected_idx] == *action {
-                    triggered_action = Some(*action);
-                    break;
-                }
+    // 2. マウスクリック時にホバーまたはフォーカス中のボタンがあれば確実に実行
+    if triggered_action.is_none() && mouse_button.just_pressed(MouseButton::Left) {
+        for (interaction, action) in &interaction_query {
+            let is_focused = focus
+                .selected_index
+                .is_some_and(|idx| idx < MENU_ACTIONS.len() && MENU_ACTIONS[idx] == *action);
+            if *interaction == Interaction::Hovered || is_focused {
+                triggered_action = Some(*action);
+                break;
             }
         }
+    }
 
     if let Some(action) = triggered_action {
         execute_title_action(action, &mut settings, &mut next_state, &mut exit_events);
