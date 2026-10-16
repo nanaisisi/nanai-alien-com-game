@@ -452,34 +452,33 @@ type DiplomacyButtonInteractionQuery<'world, 'state> = Query<
     'world,
     'state,
     (
-        &'static Interaction,
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
         &'static DiplomacyButtonAction,
         &'static mut BackgroundColor,
         &'static mut BorderColor,
     ),
-    (Changed<Interaction>, With<Button>),
+    With<Button>,
 >;
 
 type DiplomacyActionQuery<'world, 'state> = Query<
     'world,
     'state,
-    (&'static Interaction, &'static DiplomacyButtonAction),
-    (Changed<Interaction>, With<Button>),
+    (Option<&'static bevy::ui::Pressed>, &'static DiplomacyButtonAction),
+    With<Button>,
 >;
 
 fn diplomacy_button_system(mut query: DiplomacyButtonInteractionQuery) {
     let surfaces = UiTheme::surfaces();
 
-    for (interaction, action, mut bg_color, mut border_color) in &mut query {
-        match *interaction {
-            Interaction::Pressed => {
-                *bg_color = BackgroundColor(Color::srgb(0.20, 0.38, 0.50));
-            }
-            Interaction::Hovered => {
-                *bg_color = BackgroundColor(Color::srgb(0.16, 0.28, 0.38));
-                *border_color = BorderColor::all(surfaces.accent());
-            }
-            Interaction::None => match action {
+    for (hovered, pressed, action, mut bg_color, mut border_color) in &mut query {
+        if pressed.is_some() {
+            *bg_color = BackgroundColor(Color::srgb(0.20, 0.38, 0.50));
+        } else if hovered.is_some() {
+            *bg_color = BackgroundColor(Color::srgb(0.16, 0.28, 0.38));
+            *border_color = BorderColor::all(surfaces.accent());
+        } else {
+            match action {
                 DiplomacyButtonAction::SendGift => {
                     *bg_color = BackgroundColor(Color::srgb(0.12, 0.25, 0.32));
                     *border_color = BorderColor::all(surfaces.accent());
@@ -488,7 +487,7 @@ fn diplomacy_button_system(mut query: DiplomacyButtonInteractionQuery) {
                     *bg_color = BackgroundColor(surfaces.card());
                     *border_color = BorderColor::all(surfaces.border());
                 }
-            },
+            }
         }
     }
 }
@@ -505,8 +504,8 @@ fn diplomacy_action_system(
     mut notice_query: Query<&mut Text, (With<DiplomacyNoticeText>, Without<TargetRelationText>)>,
     mut rel_query: Query<&mut Text, (With<TargetRelationText>, Without<DiplomacyNoticeText>)>,
 ) {
-    for (interaction, action) in &query {
-        if *interaction != Interaction::Pressed {
+    for (pressed, action) in &query {
+        if pressed.is_none() {
             continue;
         }
 

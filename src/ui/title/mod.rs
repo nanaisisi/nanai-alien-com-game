@@ -7,7 +7,6 @@ pub mod types;
 pub mod view;
 
 #[allow(unused_imports)]
-#[allow(unused_imports)]
 pub use interaction::{
     button_action_system, button_interaction_system, execute_title_action,
     title_keyboard_navigation_system, update_title_focus_highlight_system,

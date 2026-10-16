@@ -11,76 +11,72 @@ type ButtonInteractionQuery<'world, 'state> = Query<
     'world,
     'state,
     (
-        &'static Interaction,
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
         &'static mut BackgroundColor,
         &'static mut BorderColor,
         &'static HudAction,
     ),
-    (Changed<Interaction>, With<Button>),
+    With<Button>,
 >;
 
 pub fn hud_button_interaction_system(mut query: ButtonInteractionQuery) {
     let surfaces = UiTheme::surfaces();
     let standard_btn = UiTheme::button(false);
 
-    for (interaction, mut bg_color, mut border_color, action) in &mut query {
+    for (hovered, pressed, mut bg_color, mut border_color, action) in &mut query {
+        let is_pressed = pressed.is_some();
+        let is_hovered = hovered.is_some();
+
         match action {
-            HudAction::EndTurn => match *interaction {
-                Interaction::Pressed => {
+            HudAction::EndTurn => {
+                if is_pressed {
                     *bg_color = BackgroundColor(END_TURN_PRESSED);
                     *border_color = BorderColor::all(Color::WHITE);
-                }
-                Interaction::Hovered => {
+                } else if is_hovered {
                     *bg_color = BackgroundColor(END_TURN_HOVER);
                     *border_color = BorderColor::all(Color::srgb(0.5, 0.95, 0.9));
-                }
-                Interaction::None => {
+                } else {
                     *bg_color = BackgroundColor(END_TURN_NORMAL);
                     *border_color = BorderColor::all(surfaces.accent());
                 }
-            },
-            HudAction::OpenCity => match *interaction {
-                Interaction::Pressed => {
+            }
+            HudAction::OpenCity => {
+                if is_pressed {
                     *bg_color = BackgroundColor(standard_btn.pressed());
                     *border_color = BorderColor::all(Color::WHITE);
-                }
-                Interaction::Hovered => {
+                } else if is_hovered {
                     *bg_color = BackgroundColor(Color::srgb(0.18, 0.38, 0.48));
                     *border_color = BorderColor::all(Color::WHITE);
-                }
-                Interaction::None => {
+                } else {
                     *bg_color = BackgroundColor(Color::srgba(0.12, 0.28, 0.38, 0.85));
                     *border_color = BorderColor::all(surfaces.accent());
                 }
-            },
-            HudAction::OpenDiplomacy => match *interaction {
-                Interaction::Pressed => {
+            }
+            HudAction::OpenDiplomacy => {
+                if is_pressed {
                     *bg_color = BackgroundColor(standard_btn.pressed());
                     *border_color = BorderColor::all(Color::WHITE);
-                }
-                Interaction::Hovered => {
+                } else if is_hovered {
                     *bg_color = BackgroundColor(Color::srgb(0.16, 0.35, 0.44));
                     *border_color = BorderColor::all(Color::WHITE);
-                }
-                Interaction::None => {
+                } else {
                     *bg_color = BackgroundColor(Color::srgba(0.10, 0.25, 0.32, 0.85));
                     *border_color = BorderColor::all(surfaces.accent());
                 }
-            },
-            HudAction::OpenMenu => match *interaction {
-                Interaction::Pressed => {
+            }
+            HudAction::OpenMenu => {
+                if is_pressed {
                     *bg_color = BackgroundColor(standard_btn.pressed());
                     *border_color = BorderColor::all(surfaces.accent());
-                }
-                Interaction::Hovered => {
+                } else if is_hovered {
                     *bg_color = BackgroundColor(standard_btn.hovered());
                     *border_color = BorderColor::all(surfaces.accent());
-                }
-                Interaction::None => {
+                } else {
                     *bg_color = BackgroundColor(standard_btn.normal());
                     *border_color = BorderColor::all(surfaces.border());
                 }
-            },
+            }
         }
     }
 }
@@ -88,8 +84,8 @@ pub fn hud_button_interaction_system(mut query: ButtonInteractionQuery) {
 type ButtonActionQuery<'world, 'state> = Query<
     'world,
     'state,
-    (&'static Interaction, &'static HudAction),
-    (Changed<Interaction>, With<Button>),
+    (Option<&'static bevy::ui::Pressed>, &'static HudAction),
+    With<Button>,
 >;
 
 #[allow(clippy::too_many_arguments)]
@@ -107,8 +103,8 @@ pub fn hud_button_action_system(
     outposts_query: Query<(Entity, &crate::faction::FactionOutpost)>,
     selected_tile: Res<crate::map::interaction::SelectedTile>,
 ) {
-    for (interaction, action) in &query {
-        if *interaction == Interaction::Pressed {
+    for (pressed, action) in &query {
+        if pressed.is_some() {
             match action {
                 HudAction::EndTurn => {
                     advance_turn(&mut resources);

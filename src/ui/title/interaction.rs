@@ -46,7 +46,8 @@ pub type TitleButtonInteractionQuery<'world, 'state> = Query<
     'world,
     'state,
     (
-        &'static Interaction,
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
         &'static TitleMenuButton,
         &'static MenuButtonAction,
     ),
@@ -58,8 +59,8 @@ pub fn button_interaction_system(
     mut focus: ResMut<TitleMenuFocus>,
 ) {
     // マウスホバーされた場合はフォーカスインデックスを更新
-    for (interaction, menu_btn, _) in &interaction_query {
-        if *interaction == Interaction::Hovered || *interaction == Interaction::Pressed {
+    for (hovered, pressed, menu_btn, _) in &interaction_query {
+        if hovered.is_some() || pressed.is_some() {
             focus.selected_index = Some(menu_btn.0);
         }
     }
@@ -128,9 +129,9 @@ pub fn button_action_system(
 
     let mut triggered_action = None;
 
-    // 1. Interaction::Pressed による押下検知
-    for (interaction, _, action) in &interaction_query {
-        if *interaction == Interaction::Pressed {
+    // 1. Pressed コンポーネントによる押下検知
+    for (_, pressed, _, action) in &interaction_query {
+        if pressed.is_some() {
             triggered_action = Some(*action);
             break;
         }
@@ -138,8 +139,8 @@ pub fn button_action_system(
 
     // 2. マウスクリック時にホバー中のボタンがあれば実行
     if triggered_action.is_none() && mouse_button.just_pressed(MouseButton::Left) {
-        for (interaction, _, action) in &interaction_query {
-            if *interaction == Interaction::Hovered {
+        for (hovered, _, _, action) in &interaction_query {
+            if hovered.is_some() {
                 triggered_action = Some(*action);
                 break;
             }

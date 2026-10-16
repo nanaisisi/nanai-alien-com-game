@@ -126,7 +126,6 @@ pub fn setup_minimap_ui(
                 .spawn((
                     Button,
                     MinimapImageNode,
-                    Interaction::default(),
                     bevy::ui::RelativeCursorPosition::default(),
                     Node {
                         width: Val::Px(MINIMAP_WIDTH),

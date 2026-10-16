@@ -17,7 +17,7 @@ pub fn handle_minimap_interaction_system(
         (
             &GlobalTransform,
             &ComputedNode,
-            &Interaction,
+            Option<&bevy::ui::Pressed>,
             &bevy::ui::RelativeCursorPosition,
         ),
         With<MinimapImageNode>,
@@ -27,7 +27,7 @@ pub fn handle_minimap_interaction_system(
     let Ok(window) = windows.single() else {
         return;
     };
-    let Ok((gt, computed_node, interaction, rel_cursor)) = image_query.single() else {
+    let Ok((gt, computed_node, pressed, rel_cursor)) = image_query.single() else {
         return;
     };
     let Ok(mut map_cam) = camera_query.single_mut() else {
@@ -57,7 +57,7 @@ pub fn handle_minimap_interaction_system(
             && cursor_pos.y <= max.y);
 
     // ミニマップ上でクリック（またはタップ）された瞬間に追随状態を開始
-    if *interaction == Interaction::Pressed
+    if pressed.is_some()
         || (mouse_button.just_pressed(MouseButton::Left) && is_inside)
     {
         minimap_state.is_dragging = true;

@@ -10,51 +10,52 @@ type SettingsButtonInteractionQuery<'world, 'state> = Query<
     'world,
     'state,
     (
-        &'static Interaction,
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
         &'static mut BackgroundColor,
         &'static mut BorderColor,
         &'static SettingsButtonAction,
     ),
-    (Changed<Interaction>, With<Button>),
+    With<Button>,
 >;
 
 type SettingsButtonActionQuery<'world, 'state> = Query<
     'world,
     'state,
-    (&'static Interaction, &'static SettingsButtonAction),
+    (
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
+        &'static SettingsButtonAction,
+    ),
     With<Button>,
 >;
 
 pub fn settings_button_interaction_system(mut query: SettingsButtonInteractionQuery) {
-    for (interaction, mut bg_color, mut border_color, action) in &mut query {
+    for (hovered, pressed, mut bg_color, mut border_color, action) in &mut query {
         let is_danger = matches!(action, SettingsButtonAction::ConfirmReturnToTitle);
-        match *interaction {
-            Interaction::Pressed => {
-                if is_danger {
-                    *bg_color = BackgroundColor(DANGER_PRESSED_BUTTON);
-                    *border_color = BorderColor::all(Color::WHITE);
-                } else {
-                    *bg_color = BackgroundColor(PRESSED_BUTTON);
-                    *border_color = BorderColor::all(ACCENT_COLOR);
-                }
+        if pressed.is_some() {
+            if is_danger {
+                *bg_color = BackgroundColor(DANGER_PRESSED_BUTTON);
+                *border_color = BorderColor::all(Color::WHITE);
+            } else {
+                *bg_color = BackgroundColor(PRESSED_BUTTON);
+                *border_color = BorderColor::all(ACCENT_COLOR);
             }
-            Interaction::Hovered => {
-                if is_danger {
-                    *bg_color = BackgroundColor(DANGER_HOVERED_BUTTON);
-                    *border_color = BorderColor::all(DANGER_BORDER);
-                } else {
-                    *bg_color = BackgroundColor(HOVERED_BUTTON);
-                    *border_color = BorderColor::all(ACCENT_COLOR);
-                }
+        } else if hovered.is_some() {
+            if is_danger {
+                *bg_color = BackgroundColor(DANGER_HOVERED_BUTTON);
+                *border_color = BorderColor::all(DANGER_BORDER);
+            } else {
+                *bg_color = BackgroundColor(HOVERED_BUTTON);
+                *border_color = BorderColor::all(ACCENT_COLOR);
             }
-            Interaction::None => {
-                if is_danger {
-                    *bg_color = BackgroundColor(DANGER_NORMAL_BUTTON);
-                    *border_color = BorderColor::all(DANGER_BORDER);
-                } else {
-                    *bg_color = BackgroundColor(NORMAL_BUTTON);
-                    *border_color = BorderColor::all(BORDER_COLOR);
-                }
+        } else {
+            if is_danger {
+                *bg_color = BackgroundColor(DANGER_NORMAL_BUTTON);
+                *border_color = BorderColor::all(DANGER_BORDER);
+            } else {
+                *bg_color = BackgroundColor(NORMAL_BUTTON);
+                *border_color = BorderColor::all(BORDER_COLOR);
             }
         }
     }
@@ -79,9 +80,9 @@ pub fn settings_button_action_system(
 ) {
     let mut triggered_action = None;
 
-    // 1. Interaction::Pressed による押下検知
-    for (interaction, action) in &interaction_query {
-        if *interaction == Interaction::Pressed {
+    // 1. Pressed コンポーネントによる押下検知
+    for (_, pressed, action) in &interaction_query {
+        if pressed.is_some() {
             triggered_action = Some(*action);
             break;
         }
@@ -89,8 +90,8 @@ pub fn settings_button_action_system(
 
     // 2. マウスクリック時にホバー中のボタンがあれば実行
     if triggered_action.is_none() && ctx.mouse_button.just_pressed(MouseButton::Left) {
-        for (interaction, action) in &interaction_query {
-            if *interaction == Interaction::Hovered {
+        for (hovered, _, action) in &interaction_query {
+            if hovered.is_some() {
                 triggered_action = Some(*action);
                 break;
             }

@@ -156,7 +156,8 @@ pub type PauseButtonInteractionQuery<'world, 'state> = Query<
     'world,
     'state,
     (
-        &'static Interaction,
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
         &'static mut BackgroundColor,
         &'static mut BorderColor,
         &'static PauseButtonAction,
@@ -164,27 +165,49 @@ pub type PauseButtonInteractionQuery<'world, 'state> = Query<
     With<Button>,
 >;
 
+pub type PauseModalButtonFocusQuery<'world, 'state> = Query<
+    'world,
+    'state,
+    (
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
+        &'static PauseModalButton,
+    ),
+    With<Button>,
+>;
+
+pub type PauseMenuButtonFocusQuery<'world, 'state> = Query<
+    'world,
+    'state,
+    (
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
+        &'static PauseMenuButton,
+    ),
+    With<Button>,
+>;
+
 pub fn pause_button_interaction_system(
     mut query: PauseButtonInteractionQuery,
     mut focus: ResMut<PauseMenuFocus>,
-    modal_button_query: Query<(&Interaction, &PauseModalButton), With<Button>>,
-    menu_button_query: Query<(&Interaction, &PauseMenuButton), With<Button>>,
+    modal_button_query: PauseModalButtonFocusQuery,
+    menu_button_query: PauseMenuButtonFocusQuery,
 ) {
     if focus.modal_open {
-        for (interaction, modal_btn) in &modal_button_query {
-            if *interaction == Interaction::Hovered || *interaction == Interaction::Pressed {
+        for (hovered, pressed, modal_btn) in &modal_button_query {
+            if hovered.is_some() || pressed.is_some() {
                 focus.modal_focus = modal_btn.0;
             }
         }
     } else {
-        for (interaction, menu_btn) in &menu_button_query {
-            if *interaction == Interaction::Hovered || *interaction == Interaction::Pressed {
+        for (hovered, pressed, menu_btn) in &menu_button_query {
+            if hovered.is_some() || pressed.is_some() {
                 focus.current_item = menu_btn.0;
             }
         }
     }
 
-    for (interaction, mut bg_color, mut border_color, action) in &mut query {
+    for (hovered, pressed, mut bg_color, mut border_color, action) in &mut query {
         let is_danger = matches!(
             action,
             PauseButtonAction::ConfirmModal
@@ -194,34 +217,30 @@ pub fn pause_button_interaction_system(
         let btn_style = UiTheme::button(is_danger);
         let surfaces = UiTheme::surfaces();
 
-        match *interaction {
-            Interaction::Pressed => {
-                *bg_color = BackgroundColor(btn_style.pressed());
-                if is_danger {
-                    *border_color = BorderColor::all(Color::WHITE);
-                } else {
-                    *border_color = BorderColor::all(surfaces.accent());
-                }
+        if pressed.is_some() {
+            *bg_color = BackgroundColor(btn_style.pressed());
+            if is_danger {
+                *border_color = BorderColor::all(Color::WHITE);
+            } else {
+                *border_color = BorderColor::all(surfaces.accent());
             }
-            Interaction::Hovered => {
-                *bg_color = BackgroundColor(btn_style.hovered());
-                if is_danger {
-                    *border_color = BorderColor::all(btn_style.border());
-                } else {
-                    *border_color = BorderColor::all(surfaces.accent());
-                }
+        } else if hovered.is_some() {
+            *bg_color = BackgroundColor(btn_style.hovered());
+            if is_danger {
+                *border_color = BorderColor::all(btn_style.border());
+            } else {
+                *border_color = BorderColor::all(surfaces.accent());
             }
-            Interaction::None => {
-                if matches!(action, PauseButtonAction::ConfirmModal) {
-                    *bg_color = BackgroundColor(btn_style.normal());
-                    *border_color = BorderColor::all(btn_style.border());
-                } else if is_danger {
-                    *bg_color = BackgroundColor(UiTheme::button(false).normal());
-                    *border_color = BorderColor::all(Color::srgb(0.55, 0.25, 0.25));
-                } else {
-                    *bg_color = BackgroundColor(btn_style.normal());
-                    *border_color = BorderColor::all(surfaces.border());
-                }
+        } else {
+            if matches!(action, PauseButtonAction::ConfirmModal) {
+                *bg_color = BackgroundColor(btn_style.normal());
+                *border_color = BorderColor::all(btn_style.border());
+            } else if is_danger {
+                *bg_color = BackgroundColor(UiTheme::button(false).normal());
+                *border_color = BorderColor::all(Color::srgb(0.55, 0.25, 0.25));
+            } else {
+                *bg_color = BackgroundColor(btn_style.normal());
+                *border_color = BorderColor::all(surfaces.border());
             }
         }
     }
@@ -231,7 +250,8 @@ pub type PauseButtonActionQuery<'world, 'state> = Query<
     'world,
     'state,
     (
-        &'static Interaction,
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
         &'static PauseButtonAction,
         Option<&'static PauseMenuButton>,
         Option<&'static PauseModalButton>,
@@ -268,9 +288,9 @@ pub fn pause_button_action_system(
 
     let mut triggered_action = None;
 
-    // 1. Interaction::Pressed による押下検知
-    for (interaction, action, _, _) in &interaction_query {
-        if *interaction == Interaction::Pressed {
+    // 1. Pressed コンポーネントによる押下検知
+    for (_, pressed, action, _, _) in &interaction_query {
+        if pressed.is_some() {
             triggered_action = Some(*action);
             break;
         }
@@ -279,17 +299,17 @@ pub fn pause_button_action_system(
     // 2. マウスクリック時にホバーまたはフォーカス中のボタンがあれば確実に実行
     if triggered_action.is_none() && mouse_button.just_pressed(MouseButton::Left) {
         if focus.modal_open {
-            for (interaction, action, _, modal_btn) in &interaction_query {
+            for (hovered, _, action, _, modal_btn) in &interaction_query {
                 if let Some(modal_btn) = modal_btn
-                    && (*interaction == Interaction::Hovered || modal_btn.0 == focus.modal_focus) {
+                    && (hovered.is_some() || modal_btn.0 == focus.modal_focus) {
                         triggered_action = Some(*action);
                         break;
                     }
             }
         } else {
-            for (interaction, action, menu_btn, _) in &interaction_query {
+            for (hovered, _, action, menu_btn, _) in &interaction_query {
                 if let Some(menu_btn) = menu_btn
-                    && (*interaction == Interaction::Hovered || menu_btn.0 == focus.current_item) {
+                    && (hovered.is_some() || menu_btn.0 == focus.current_item) {
                         triggered_action = Some(*action);
                         break;
                     }

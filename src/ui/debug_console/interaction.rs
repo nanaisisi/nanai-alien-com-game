@@ -11,15 +11,19 @@ use crate::ui::theme::{BUTTON_HOVERED, BUTTON_NORMAL, BUTTON_PRESSED};
 type WarningButtonQuery<'w, 's> = Query<
     'w,
     's,
-    (&'static Interaction, &'static DebugWarningAction),
-    (Changed<Interaction>, With<Button>),
+    (Option<&'static bevy::ui::Pressed>, &'static DebugWarningAction),
+    With<Button>,
 >;
 
 type CloseButtonQuery<'w, 's> = Query<
     'w,
     's,
-    (&'static Interaction, &'static mut BackgroundColor),
-    (Changed<Interaction>, With<DebugConsoleCloseButton>),
+    (
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
+        &'static mut BackgroundColor,
+    ),
+    With<DebugConsoleCloseButton>,
 >;
 
 #[derive(SystemParam)]
@@ -44,10 +48,10 @@ pub fn handle_secret_trigger_click(
     asset_server: Res<AssetServer>,
     modal_query: Query<Entity, With<DebugWarningModal>>,
     console_query: Query<Entity, With<DebugConsoleRoot>>,
-    trigger_query: Query<&Interaction, (Changed<Interaction>, With<DebugSecretTriggerArea>)>,
+    trigger_query: Query<Option<&bevy::ui::Pressed>, With<DebugSecretTriggerArea>>,
 ) {
-    for interaction in &trigger_query {
-        if *interaction == Interaction::Pressed {
+    for pressed in &trigger_query {
+        if pressed.is_some() {
             let triggered = state.register_secret_click(time.elapsed_secs());
             if triggered {
                 // 既にモーダルが開いている場合 -> 閉じる
@@ -154,8 +158,8 @@ pub fn handle_warning_modal_interaction(
     }
 
     // ボタンクリック判定
-    for (interaction, action) in &btn_query {
-        if *interaction == Interaction::Pressed {
+    for (pressed, action) in &btn_query {
+        if pressed.is_some() {
             match action {
                 DebugWarningAction::Enable => enable = true,
                 DebugWarningAction::Cancel => cancel = true,
@@ -190,21 +194,17 @@ pub fn handle_console_close_button(
         return;
     }
 
-    for (interaction, mut bg_color) in &mut btn_query {
-        match *interaction {
-            Interaction::Pressed => {
-                *bg_color = BackgroundColor(BUTTON_PRESSED);
-                for entity in &console_query {
-                    commands.entity(entity).despawn();
-                }
-                state.is_open = false;
+    for (hovered, pressed, mut bg_color) in &mut btn_query {
+        if pressed.is_some() {
+            *bg_color = BackgroundColor(BUTTON_PRESSED);
+            for entity in &console_query {
+                commands.entity(entity).despawn();
             }
-            Interaction::Hovered => {
-                *bg_color = BackgroundColor(BUTTON_HOVERED);
-            }
-            Interaction::None => {
-                *bg_color = BackgroundColor(BUTTON_NORMAL);
-            }
+            state.is_open = false;
+        } else if hovered.is_some() {
+            *bg_color = BackgroundColor(BUTTON_HOVERED);
+        } else {
+            *bg_color = BackgroundColor(BUTTON_NORMAL);
         }
     }
 }

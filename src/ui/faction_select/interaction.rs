@@ -11,19 +11,20 @@ pub type FactionSelectInteractionQuery<'world, 'state> = Query<
     'world,
     'state,
     (
-        &'static Interaction,
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
         &'static SelectAction,
         &'static mut BorderColor,
         &'static mut BackgroundColor,
     ),
-    (Changed<Interaction>, With<Button>),
+    With<Button>,
 >;
 
 pub type FactionSelectActionQuery<'world, 'state> = Query<
     'world,
     'state,
-    (&'static Interaction, &'static SelectAction),
-    (Changed<Interaction>, With<Button>),
+    (Option<&'static bevy::ui::Pressed>, &'static SelectAction),
+    With<Button>,
 >;
 
 pub type DetailTitleTextQuery<'world, 'state> = Query<
@@ -43,93 +44,78 @@ pub fn faction_select_button_system(
 ) {
     let surfaces = UiTheme::surfaces();
 
-    for (interaction, action, mut border_color, mut bg_color) in &mut interaction_query {
+    for (hovered, pressed, action, mut border_color, mut bg_color) in &mut interaction_query {
+        let is_hover_or_press = hovered.is_some() || pressed.is_some();
+        let is_pressed = pressed.is_some();
+        let is_hovered = hovered.is_some();
+
         match action {
             SelectAction::Choose(f) => {
                 let is_active = *f == selected_menu.faction;
-                match *interaction {
-                    Interaction::Pressed | Interaction::Hovered => {
-                        *border_color = BorderColor::all(f.accent_color());
-                        *bg_color = BackgroundColor(Color::srgba(0.20, 0.30, 0.42, 0.9));
-                    }
-                    Interaction::None => {
-                        if is_active {
-                            *border_color = BorderColor::all(f.primary_color());
-                            *bg_color = BackgroundColor(Color::srgba(0.15, 0.22, 0.32, 0.9));
-                        } else {
-                            *border_color = BorderColor::all(surfaces.border());
-                            *bg_color = BackgroundColor(surfaces.card());
-                        }
-                    }
+                if is_hover_or_press {
+                    *border_color = BorderColor::all(f.accent_color());
+                    *bg_color = BackgroundColor(Color::srgba(0.20, 0.30, 0.42, 0.9));
+                } else if is_active {
+                    *border_color = BorderColor::all(f.primary_color());
+                    *bg_color = BackgroundColor(Color::srgba(0.15, 0.22, 0.32, 0.9));
+                } else {
+                    *border_color = BorderColor::all(surfaces.border());
+                    *bg_color = BackgroundColor(surfaces.card());
                 }
             }
             SelectAction::ChooseEnvironment(env) => {
                 let is_active = *env == map_config.environment;
-                match *interaction {
-                    Interaction::Pressed | Interaction::Hovered => {
-                        *border_color = BorderColor::all(env.theme_color());
-                        *bg_color = BackgroundColor(Color::srgba(0.22, 0.32, 0.45, 0.9));
-                    }
-                    Interaction::None => {
-                        if is_active {
-                            *border_color = BorderColor::all(env.theme_color());
-                            *bg_color = BackgroundColor(Color::srgba(0.18, 0.26, 0.38, 0.9));
-                        } else {
-                            *border_color = BorderColor::all(surfaces.border());
-                            *bg_color = BackgroundColor(surfaces.card());
-                        }
-                    }
+                if is_hover_or_press {
+                    *border_color = BorderColor::all(env.theme_color());
+                    *bg_color = BackgroundColor(Color::srgba(0.22, 0.32, 0.45, 0.9));
+                } else if is_active {
+                    *border_color = BorderColor::all(env.theme_color());
+                    *bg_color = BackgroundColor(Color::srgba(0.18, 0.26, 0.38, 0.9));
+                } else {
+                    *border_color = BorderColor::all(surfaces.border());
+                    *bg_color = BackgroundColor(surfaces.card());
                 }
             }
             SelectAction::ChooseSize(sz) => {
                 let is_active = *sz == map_config.size;
-                match *interaction {
-                    Interaction::Pressed | Interaction::Hovered => {
-                        *border_color = BorderColor::all(surfaces.accent());
-                        *bg_color = BackgroundColor(Color::srgba(0.25, 0.40, 0.50, 0.9));
-                    }
-                    Interaction::None => {
-                        if is_active {
-                            *border_color = BorderColor::all(surfaces.accent());
-                            *bg_color = BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9));
-                        } else {
-                            *border_color = BorderColor::all(surfaces.border());
-                            *bg_color = BackgroundColor(surfaces.card());
-                        }
-                    }
+                if is_hover_or_press {
+                    *border_color = BorderColor::all(surfaces.accent());
+                    *bg_color = BackgroundColor(Color::srgba(0.25, 0.40, 0.50, 0.9));
+                } else if is_active {
+                    *border_color = BorderColor::all(surfaces.accent());
+                    *bg_color = BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9));
+                } else {
+                    *border_color = BorderColor::all(surfaces.border());
+                    *bg_color = BackgroundColor(surfaces.card());
                 }
             }
-            SelectAction::RerollSeed => match *interaction {
-                Interaction::Pressed | Interaction::Hovered => {
+            SelectAction::RerollSeed => {
+                if is_hover_or_press {
                     *border_color = BorderColor::all(surfaces.accent());
                     *bg_color = BackgroundColor(Color::srgba(0.18, 0.28, 0.38, 0.9));
-                }
-                Interaction::None => {
+                } else {
                     *border_color = BorderColor::all(surfaces.border());
                     *bg_color = BackgroundColor(surfaces.card());
                 }
-            },
-            SelectAction::Confirm => match *interaction {
-                Interaction::Pressed => {
+            }
+            SelectAction::Confirm => {
+                if is_pressed {
                     *bg_color = BackgroundColor(Color::srgb(0.25, 0.65, 0.70));
-                }
-                Interaction::Hovered => {
+                } else if is_hovered {
                     *bg_color = BackgroundColor(Color::srgb(0.18, 0.48, 0.55));
-                }
-                Interaction::None => {
+                } else {
                     *bg_color = BackgroundColor(Color::srgb(0.12, 0.35, 0.40));
                 }
-            },
-            SelectAction::Back => match *interaction {
-                Interaction::Pressed | Interaction::Hovered => {
+            }
+            SelectAction::Back => {
+                if is_hover_or_press {
                     *border_color = BorderColor::all(surfaces.accent());
                     *bg_color = BackgroundColor(Color::srgb(0.15, 0.24, 0.35));
-                }
-                Interaction::None => {
+                } else {
                     *border_color = BorderColor::all(surfaces.border());
                     *bg_color = BackgroundColor(surfaces.card());
                 }
-            },
+            }
         }
     }
 }
@@ -183,8 +169,8 @@ pub fn faction_select_action_system(
         ),
     >,
 ) {
-    for (interaction, action) in &query {
-        if *interaction != Interaction::Pressed {
+    for (pressed, action) in &query {
+        if pressed.is_none() {
             continue;
         }
 

@@ -667,30 +667,27 @@ type CityButtonInteractionQuery<'world, 'state> = Query<
     'world,
     'state,
     (
-        &'static Interaction,
+        Option<&'static bevy::picking::hover::Hovered>,
+        Option<&'static bevy::ui::Pressed>,
         &'static mut BackgroundColor,
         &'static mut BorderColor,
     ),
-    (Changed<Interaction>, With<CityButtonAction>),
+    With<CityButtonAction>,
 >;
 
 /// ボタンのホバーエフェクト
 pub fn city_modal_button_interaction_system(mut interaction_query: CityButtonInteractionQuery) {
     let surfaces = UiTheme::surfaces();
     let btn_theme = UiTheme::button(false);
-    for (interaction, mut bg_color, mut border_color) in &mut interaction_query {
-        match *interaction {
-            Interaction::Hovered => {
-                *bg_color = BackgroundColor(btn_theme.hovered());
-                *border_color = BorderColor::all(surfaces.accent());
-            }
-            Interaction::Pressed => {
-                *bg_color = BackgroundColor(btn_theme.pressed());
-            }
-            Interaction::None => {
-                *bg_color = BackgroundColor(surfaces.panel());
-                *border_color = BorderColor::all(surfaces.border());
-            }
+    for (hovered, pressed, mut bg_color, mut border_color) in &mut interaction_query {
+        if pressed.is_some() {
+            *bg_color = BackgroundColor(btn_theme.pressed());
+        } else if hovered.is_some() {
+            *bg_color = BackgroundColor(btn_theme.hovered());
+            *border_color = BorderColor::all(surfaces.accent());
+        } else {
+            *bg_color = BackgroundColor(surfaces.panel());
+            *border_color = BorderColor::all(surfaces.border());
         }
     }
 }
@@ -699,7 +696,7 @@ pub fn city_modal_button_interaction_system(mut interaction_query: CityButtonInt
 #[allow(clippy::too_many_arguments)]
 pub fn city_production_action_system(
     mut commands: Commands,
-    interaction_query: Query<(&Interaction, &CityButtonAction), Changed<Interaction>>,
+    interaction_query: Query<(Option<&bevy::ui::Pressed>, &CityButtonAction)>,
     mut modal_state: ResMut<CityModalState>,
     mut faction_res: ResMut<FactionResources>,
     mut outposts_query: Query<(Entity, &mut FactionOutpost)>,
@@ -710,8 +707,8 @@ pub fn city_production_action_system(
     mut notice_query: Query<&mut Text, With<CityNoticeText>>,
     modal_roots: Query<Entity, With<CityModalRoot>>,
 ) {
-    for (interaction, action) in &interaction_query {
-        if *interaction != Interaction::Pressed {
+    for (pressed, action) in &interaction_query {
+        if pressed.is_none() {
             continue;
         }
 
