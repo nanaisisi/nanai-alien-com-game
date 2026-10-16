@@ -121,5 +121,5 @@
 
 - 通知システム・プリセット仕様書: [`./concept_notification_system_and_presets.md`](./concept_notification_system_and_presets.md)
 - 国家ドクトリン・ステアリングUI: [`./concept_doctrine_steering_ui.md`](./concept_doctrine_steering_ui.md)
-- 非ユニット海上・車両輸送体系: [`../military_tactics/concept_non_unit_sea_and_vehicle_transport.md`](../military_tactics/concept_non_unit_sea_and_vehicle_transport.md)
-- 自律制御と集団合意ダイナミクス: [`../automation/concept_autonomous_control_and_atmospheric_consensus.md`](../automation/concept_autonomous_control_and_atmospheric_consensus.md)
+- 非ユニット海上・車両輸送体系: [`../military_tactics/concept_non_unit_sea_and_vehicle_transport.md`](./../military_tactics/concept_non_unit_sea_and_vehicle_transport.md)
+- 自律制御と集団合意ダイナミクス: [`../automation/concept_autonomous_control_and_atmospheric_consensus.md`](./../automation/concept_autonomous_control_and_atmospheric_consensus.md)

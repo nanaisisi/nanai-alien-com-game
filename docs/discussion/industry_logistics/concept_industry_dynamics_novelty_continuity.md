@@ -157,7 +157,7 @@
 
 ## 5. 植民惑星環境における「世代交代」と「適応の不可逆性」
 
-本作特有の世界観設定（[future_concept_subtile_industry.md](../map_tile/future_concept_subtile_industry.md) 参照）である「世代概念」と「変化後（ポスト・アライバル）の定常化」が産業構造に与える影響。
+本作特有の世界観設定（[future_concept_subtile_industry.md](./../map_tile/future_concept_subtile_industry.md) 参照）である「世代概念」と「変化後（ポスト・アライバル）の定常化」が産業構造に与える影響。
 
 ### 5.1 母星型工業（純粋継続性）vs 惑星適応型工業（不可逆な新規性）
 

@@ -240,9 +240,9 @@ Tier 4: 海上都市環 / 人工島複合都市 / 機動洋上基地 (Oceanic Me
    * 埋め立て用急速硬化スラグ、消波ブロック、海底杭打ち用グラウト材。
 4. **エネルギー・推進動力・核融合チェーン (Energy, Marine Propulsion & Fusion)**:
    * **海洋艦船の推進思想（巡航低燃費 vs 戦闘急加速）**:
-     - **大型低速水素直噴機関（HD系列）**: 海洋輸送船・補給艦・長期哨戒フリゲートの主機。「程々の出力」で数千時間の連続航海に耐え、水素消費と熱疲労を最小化。
-     - **戦闘急加速用水素ガスタービン（GT系列）**: 高速ミサイル艇や護衛駆逐艦が敵魚雷回避・突撃時のみ点火するピークパワー機関。
-     - **CODLAG/統合電気推進 ＆ 中間バッファ（VRM方式）**: 
+     * **大型低速水素直噴機関（HD系列）**: 海洋輸送船・補給艦・長期哨戒フリゲートの主機。「程々の出力」で数千時間の連続航海に耐え、水素消費と熱疲労を最小化。
+     * **戦闘急加速用水素ガスタービン（GT系列）**: 高速ミサイル艇や護衛駆逐艦が敵魚雷回避・突撃時のみ点火するピークパワー機関。
+     * **CODLAG/統合電気推進 ＆ 中間バッファ（VRM方式）**:
        * 巡航主機は「程々の出力」の低速水素直噴機関で定常発電。変換ロス（数%）はあるものの、機関室容積と整備負担を最小化。
        * マザーボードのVRM（コンデンサ・チョークコイル群）のように、大容量キャパシタや全固体バッファセルを「中間エネルギーバッファ」として介装。
        * 魚雷回避ダッシュや電磁レールガン斉射の**「瞬間的な大電力スパイク（高出力の時間的制約）」**をバッファ放電で受け持ち、主機のエンストや巨大化を防ぐ。
@@ -260,8 +260,8 @@ Tier 4: 海上都市環 / 人工島複合都市 / 機動洋上基地 (Oceanic Me
   * [`./concept_tile_progression_system.md`](./concept_tile_progression_system.md) - 全タイル共通のTier進展、海洋タイルの位置づけ
   * [`./concept_tile_centric_expansion.md`](./concept_tile_centric_expansion.md) - タイル中心主義とインフラ延伸
 * **産業・サプライチェーン仕様**:
-  * [`../industry_logistics/concept_resource_economy_and_logistics.md`](../industry_logistics/concept_resource_economy_and_logistics.md) - 食料3大アプローチ（海のアプローチ）、海洋重工
-  * [`../industry_logistics/concept_industry_module_mapping.md`](../industry_logistics/concept_industry_module_mapping.md) - IND-6造船・海洋重工モジュール定義
+  * [`../industry_logistics/concept_resource_economy_and_logistics.md`](./../industry_logistics/concept_resource_economy_and_logistics.md) - 食料3大アプローチ（海のアプローチ）、海洋重工
+  * [`../industry_logistics/concept_industry_module_mapping.md`](./../industry_logistics/concept_industry_module_mapping.md) - IND-6造船・海洋重工モジュール定義
 * **軍事・外交仕様**:
-  * [`../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md`](../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md) - 公海・国境未定地における主権主張
-  * [`../events/concept_event_stochastic.md`](../events/concept_event_stochastic.md) - 海洋巨大エイリアン発生イベント
+  * [`../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md`](./../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md) - 公海・国境未定地における主権主張
+  * [`../events/concept_event_stochastic.md`](./../events/concept_event_stochastic.md) - 海洋巨大エイリアン発生イベント

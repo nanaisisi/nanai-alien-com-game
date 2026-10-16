@@ -171,6 +171,6 @@ pub struct NotificationConfig {
 
 ## 6. 関連ドキュメント
 
-- 自律制御と集団合意: [`../automation/concept_autonomous_control_and_atmospheric_consensus.md`](../automation/concept_autonomous_control_and_atmospheric_consensus.md)
+- 自律制御と集団合意: [`../automation/concept_autonomous_control_and_atmospheric_consensus.md`](./../automation/concept_autonomous_control_and_atmospheric_consensus.md)
 - ドクトリン・ステアリングUI: [`./concept_doctrine_steering_ui.md`](./concept_doctrine_steering_ui.md)
-- 全体実装依存関係: [`../../SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md`](../../SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md)
+- 全体実装依存関係: [`../../SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md`](./../../SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md)

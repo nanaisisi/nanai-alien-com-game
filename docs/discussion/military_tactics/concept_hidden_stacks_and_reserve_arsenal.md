@@ -261,10 +261,9 @@ pub fn update_unit_visibility_system(
 
 ## 8. まとめと他システムとの連携
 
-
-- **[`../map_tile/concept_tile_progression_system.md`](../map_tile/concept_tile_progression_system.md) との連携**:
+- **[`../map_tile/concept_tile_progression_system.md`](./../map_tile/concept_tile_progression_system.md) との連携**:
   - タイルの「1タイル1部隊」の原則を崩すことなく、要塞Tierの上昇（Tier 2前哨→Tier 4要塞中枢）に伴って地下格納スタックの許容量（Bunker Capacity）が拡張される。
-- **[`../map_tile/concept_maritime_governance_and_ocean_engineering.md`](../map_tile/concept_maritime_governance_and_ocean_engineering.md) との連携**:
+- **[`../map_tile/concept_maritime_governance_and_ocean_engineering.md`](./../map_tile/concept_maritime_governance_and_ocean_engineering.md) との連携**:
   - メガフロート都市や浮ドックにおける「モスボール艦隊」の維持・展開。荒天や深海エイリアン襲撃時に係留艦が受ける被災リスク。
 - **[`./concept_frontier_industry_and_weapon_generations.md`](./concept_frontier_industry_and_weapon_generations.md) との連携**:
   - 母星から持ち込んだ虎の子の**「Gen 0 遺産兵器」**を、安易に前線で使い潰さず、デポ内に「非配備戦略備蓄」として封印温存するプレイスタイルを正当化・支援する。

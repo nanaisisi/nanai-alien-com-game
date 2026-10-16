@@ -107,6 +107,6 @@
 ## 5. 関連ドキュメント
 
 - ゲーム内Wikiシステム計画: [`concept_in_game_wiki.md`](concept_in_game_wiki.md)
-- 状況依存型兵器体系・産業形成: [`concept_dynamic_arsenal_geospatial.md`](../military_tactics/concept_dynamic_arsenal_geospatial.md)
-- 自動処理システム全体仕様: [`concept_automation_systems.md`](../automation/concept_automation_systems.md)
-- 産業・モジュール相互接続マッピング: [`concept_industry_module_mapping.md`](../industry_logistics/concept_industry_module_mapping.md)
+- 状況依存型兵器体系・産業形成: [`concept_dynamic_arsenal_geospatial.md`](./../military_tactics/concept_dynamic_arsenal_geospatial.md)
+- 自動処理システム全体仕様: [`concept_automation_systems.md`](./../automation/concept_automation_systems.md)
+- 産業・モジュール相互接続マッピング: [`concept_industry_module_mapping.md`](./../industry_logistics/concept_industry_module_mapping.md)

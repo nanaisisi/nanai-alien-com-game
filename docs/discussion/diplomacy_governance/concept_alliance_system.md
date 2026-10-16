@@ -48,7 +48,7 @@
 ### 2.2 合意に基づく平和的タイル移管
 
 - **摩擦なき前線・後方の調整**:
-  - [`concept_faction_consensus_and_standardization.md`](../events/concept_faction_consensus_and_standardization.md) に基づき、領土の奪い合いではなく、防衛線維持や補給効率を高めるための「合理的なタイル割譲・管轄移管」が同盟国間で平和的に行われる。
+  - [`concept_faction_consensus_and_standardization.md`](./../events/concept_faction_consensus_and_standardization.md) に基づき、領土の奪い合いではなく、防衛線維持や補給効率を高めるための「合理的なタイル割譲・管轄移管」が同盟国間で平和的に行われる。
   - 駐留部隊は友好的に本国領内へ後退し、インフラ・施設は完全な状態で引き継がれる。
 
 ### 2.3 作戦・防衛線の連帯
@@ -82,7 +82,7 @@
 
 ## 5. 関連ドキュメントとの接続
 
-- **[`concept_game_progression_and_victory.md`](../world_progression/concept_game_progression_and_victory.md)**: 3大思想ルートと終局の力学の詳細。
-- **[`concept_faction_consensus_and_standardization.md`](../events/concept_faction_consensus_and_standardization.md)**: 同盟ブロック内での平和的タイル移管・規格問題。
+- **[`concept_game_progression_and_victory.md`](./../world_progression/concept_game_progression_and_victory.md)**: 3大思想ルートと終局の力学の詳細。
+- **[`concept_faction_consensus_and_standardization.md`](./../events/concept_faction_consensus_and_standardization.md)**: 同盟ブロック内での平和的タイル移管・規格問題。
 - **[`concept_diplomacy_relations.md`](./concept_diplomacy_relations.md)**: 国家間の多層的利害・本星のしがらみと入植惑星の秩序。
-- **[`concept_dynamic_arsenal_geospatial.md`](../military_tactics/concept_dynamic_arsenal_geospatial.md)**: 同盟規格圏における兵器ファミリーとサプライチェーンの形成。
+- **[`concept_dynamic_arsenal_geospatial.md`](./../military_tactics/concept_dynamic_arsenal_geospatial.md)**: 同盟規格圏における兵器ファミリーとサプライチェーンの形成。

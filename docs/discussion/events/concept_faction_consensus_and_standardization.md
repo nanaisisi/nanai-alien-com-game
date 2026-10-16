@@ -146,7 +146,7 @@
 
 ## 5. 関連ドキュメントとの接続
 
-- **[`GAME_DESIGN.md`](../../GAME_DESIGN.md)**: 5.1節「イベントカテゴリ」の他派閥取り込み・インフラ規格の基本設定と直結。
-- **[`concept_diplomacy_relations.md`](../diplomacy_governance/concept_diplomacy_relations.md)**: 国家間の多層的利害・条約・合意形成メカニクス。
-- **[`concept_salvage_scuttling_and_compatibility.md`](../military_tactics/concept_salvage_scuttling_and_compatibility.md)**: 兵器モジュールの規格互換性・アダプター設計との連動。
-- **[`concept_tile_centric_expansion.md`](../map_tile/concept_tile_centric_expansion.md)**: タイルの主権移管およびインフラ自由化との連動。
+- **[`GAME_DESIGN.md`](./../../GAME_DESIGN.md)**: 5.1節「イベントカテゴリ」の他派閥取り込み・インフラ規格の基本設定と直結。
+- **[`concept_diplomacy_relations.md`](./../diplomacy_governance/concept_diplomacy_relations.md)**: 国家間の多層的利害・条約・合意形成メカニクス。
+- **[`concept_salvage_scuttling_and_compatibility.md`](./../military_tactics/concept_salvage_scuttling_and_compatibility.md)**: 兵器モジュールの規格互換性・アダプター設計との連動。
+- **[`concept_tile_centric_expansion.md`](./../map_tile/concept_tile_centric_expansion.md)**: タイルの主権移管およびインフラ自由化との連動。

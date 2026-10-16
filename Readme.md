@@ -13,8 +13,8 @@
 
 プロジェクトの設計書・アイデア検討資料の構成や索引は以下にまとめています。
 
-- [ドキュメント構成・目録 (doc/INDEX.md)](doc/INDEX.md)
-- [ゲーム基本仕様設計書 (doc/GAME_DESIGN.md)](doc/GAME_DESIGN.md)
+- [ドキュメント構成・目録 (doc/INDEX.md)](docs/INDEX.md)
+- [ゲーム基本仕様設計書 (doc/GAME_DESIGN.md)](docs/GAME_DESIGN.md)
 
 ## 実装済み内容
 

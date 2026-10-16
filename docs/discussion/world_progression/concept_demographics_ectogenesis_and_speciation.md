@@ -168,7 +168,7 @@
 
 ## 5. まとめと他仕様書との接続
 
-- **入植ブートローダー ([concept_bootloader_and_national_supply_chains.md](../industry_logistics/concept_bootloader_and_national_supply_chains.md)) との連携**:
+- **入植ブートローダー ([concept_bootloader_and_national_supply_chains.md](./../industry_logistics/concept_bootloader_and_national_supply_chains.md)) との連携**:
   - 工作機械の自己複製（ハードウェアのブート）と並び、人工子宮ポッドの稼働・消耗品代替が**「生物学的ブートローダー（ソフトウェア/労働力のブート）」**として同期する。
 - **文明適応・生態系 ([concept_frontier_civilization_and_ecosystem_dynamics.md](./concept_frontier_civilization_and_ecosystem_dynamics.md)) との連携**:
   - 先行文明が100年で土着化できた理由が、「自然淘汰＋人工子宮による積極的ゲノム適応」として裏付けられる。

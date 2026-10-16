@@ -196,10 +196,10 @@ $$\Delta Exp_{\text{target}} = \Delta Exp_{\text{source}} \times \text{Similarit
 
 ## 7. 関連ドキュメント
 
-- 基本ゲームデザイン: [`GAME_DESIGN.md`](../../GAME_DESIGN.md)
+- 基本ゲームデザイン: [`GAME_DESIGN.md`](./../../GAME_DESIGN.md)
 - 産業・モジュール相互接続マッピング: [`concept_industry_module_mapping.md`](./concept_industry_module_mapping.md)
-- サブタイル産業エコシステム構想: [`future_concept_subtile_industry.md`](../map_tile/future_concept_subtile_industry.md)
-- 兵器モジュール共通化・ドクトリン設計: [`concept_weapon_module_coConality.md`](../military_tactics/concept_weapon_module_coConality.md)
-- 個別モジュール事例集: [`example_weapon_modules_cases.md`](../military_tactics/example_weapon_modules_cases.md)
-- 状況依存型兵器体系・産業形成: [`concept_dynamic_arsenal_geospatial.md`](../military_tactics/concept_dynamic_arsenal_geospatial.md)
-- ゲーム内Wikiシステム計画: [`concept_in_game_wiki.md`](../ui_wiki/concept_in_game_wiki.md)
+- サブタイル産業エコシステム構想: [`future_concept_subtile_industry.md`](./../map_tile/future_concept_subtile_industry.md)
+- 兵器モジュール共通化・ドクトリン設計: [`concept_weapon_module_coConality.md`](./../military_tactics/concept_weapon_module_coConality.md)
+- 個別モジュール事例集: [`example_weapon_modules_cases.md`](./../military_tactics/example_weapon_modules_cases.md)
+- 状況依存型兵器体系・産業形成: [`concept_dynamic_arsenal_geospatial.md`](./../military_tactics/concept_dynamic_arsenal_geospatial.md)
+- ゲーム内Wikiシステム計画: [`concept_in_game_wiki.md`](./../ui_wiki/concept_in_game_wiki.md)

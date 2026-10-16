@@ -148,8 +148,8 @@
 
 ## 6. 関連ドキュメント
 
-- 国家間関係・外交システム: [`concept_diplomacy_relations.md`](../diplomacy_governance/concept_diplomacy_relations.md)
-- サブタイル産業エコシステム: [`future_concept_subtile_industry.md`](../map_tile/future_concept_subtile_industry.md)
-- 産業・モジュール相互接続マッピング: [`concept_industry_module_mapping.md`](../industry_logistics/concept_industry_module_mapping.md)
-- 自動処理システム全体仕様: [`concept_automation_systems.md`](../automation/concept_automation_systems.md)
-- ゲーム内Wikiシステム計画: [`concept_in_game_wiki.md`](../ui_wiki/concept_in_game_wiki.md)
+- 国家間関係・外交システム: [`concept_diplomacy_relations.md`](./../diplomacy_governance/concept_diplomacy_relations.md)
+- サブタイル産業エコシステム: [`future_concept_subtile_industry.md`](./../map_tile/future_concept_subtile_industry.md)
+- 産業・モジュール相互接続マッピング: [`concept_industry_module_mapping.md`](./../industry_logistics/concept_industry_module_mapping.md)
+- 自動処理システム全体仕様: [`concept_automation_systems.md`](./../automation/concept_automation_systems.md)
+- ゲーム内Wikiシステム計画: [`concept_in_game_wiki.md`](./../ui_wiki/concept_in_game_wiki.md)

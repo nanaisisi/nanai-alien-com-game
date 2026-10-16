@@ -8,7 +8,7 @@
 
 ## 1. UI/UX設計のコアコンセプト
 
-本作は「都市や兵器を1つずつ手動生産キューに入れる」伝統的な4X型マイクロマネジメントではなく、**「国家指導者としての大方針（ドクトリン・RFP）を発令し、現場の自律工廠と方面軍司令部を意図した方向へ誘導する」マクロステアリング**（[`../industry_logistics/concept_doctrine_and_equipment_steering.md`](../industry_logistics/concept_doctrine_and_equipment_steering.md)）を最大の特徴とする。
+本作は「都市や兵器を1つずつ手動生産キューに入れる」伝統的な4X型マイクロマネジメントではなく、**「国家指導者としての大方針（ドクトリン・RFP）を発令し、現場の自律工廠と方面軍司令部を意図した方向へ誘導する」マクロステアリング**（[`../industry_logistics/concept_doctrine_and_equipment_steering.md`](./../industry_logistics/concept_doctrine_and_equipment_steering.md)）を最大の特徴とする。
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -88,7 +88,7 @@
 1. **基本スタンスのトグル**:
    * `[生存・防護重視]` / `[火力・射程重視]` / `[機動・展開力重視]` / `[生産性・消耗戦重視]`
 2. **モジュール固定（Lockdown）指定**:
-   * 「主砲口径は 120C 共通規格のまま維持せよ」「動力は核融合セルを強制指定」など、特定の既存インフラ・弾薬サプライチェーン（[`../industry_logistics/concept_resource_economy_and_logistics.md`](../industry_logistics/concept_resource_economy_and_logistics.md)）を破壊しないための制約条件ピン留め機能。
+   * 「主砲口径は 120C 共通規格のまま維持せよ」「動力は核融合セルを強制指定」など、特定の既存インフラ・弾薬サプライチェーン（[`../industry_logistics/concept_resource_economy_and_logistics.md`](./../industry_logistics/concept_resource_economy_and_logistics.md)）を破壊しないための制約条件ピン留め機能。
 
 ### 3.3 現場発議（ボトムアップ・イノベーション）の承認ポップアップ
 

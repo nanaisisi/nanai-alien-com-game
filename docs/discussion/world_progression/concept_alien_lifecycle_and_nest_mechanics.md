@@ -56,10 +56,10 @@
    - 濃密なミズマの霧に包まれており、外見上は巨大な岩石・植物の塊に見える。
    - 人類部隊が近接サブタイルへ進入しない限り、外に出撃することはなく、周囲の探査難易度を跳ね上げるステルス特性を持つ。
 2. **活性期 (Active)**:
-   - 近隣での人類による採掘掘削、重工業プラントの熱・振動、または送電線（[`../map_tile/concept_tile_centric_expansion.md`](../map_tile/concept_tile_centric_expansion.md)）の電磁波を検知して覚醒。
+   - 近隣での人類による採掘掘削、重工業プラントの熱・振動、または送電線（[`../map_tile/concept_tile_centric_expansion.md`](./../map_tile/concept_tile_centric_expansion.md)）の電磁波を検知して覚醒。
    - 周囲数サブタイルに小型の偵察・採餌個体（ドローン型エイリアン）を放出し、哨戒を開始。
 3. **繁殖・拡張期 (Spawning)**:
-   - 巣窟内部のバイオ原質（[`../industry_logistics/concept_resource_economy_and_logistics.md`](../industry_logistics/concept_resource_economy_and_logistics.md)）が一定値に達すると、中型・大型の戦闘種を生成。
+   - 巣窟内部のバイオ原質（[`../industry_logistics/concept_resource_economy_and_logistics.md`](./../industry_logistics/concept_resource_economy_and_logistics.md)）が一定値に達すると、中型・大型の戦闘種を生成。
    - 一定期間放置されると、胞子ポッドを隣接タイルへ射出して「副巣（Satellite Nest）」を増殖させる。
 4. **暴走・群れ大侵入 (Swarm Outbreak)**:
    - 大気汚染指数の急上昇、あるいは人類側の攻撃によって巣窟の「女王核（Brood Queen）」に一定以上のダメージが与えられた際、非常警報フェロモンが分泌される。

@@ -110,7 +110,7 @@ graph TD
 
 | 開発領域 | 依存先（前提コンポーネント） | 依存元（波及・利用するシステム） | 結合インターフェース・要件 |
 | :--- | :--- | :--- | :--- |
-| **空間・地理基盤** ([`src/map/`](../src/map/)) | Bevy ECS | インフラ、移動判定、都市、戦闘 | 親タイル（大戦略）とサブタイル（12〜15小タイル）の二重解像度マッピング。 |
+| **空間・地理基盤** ([`src/map/`](../src/map)) | Bevy ECS | インフラ、移動判定、都市、戦闘 | 親タイル（大戦略）とサブタイル（12〜15小タイル）の二重解像度マッピング。 |
 | **動脈インフラ・施設** ([concept_infrastructure_grid_and_transit_artery.md](./discussion/map_tile/concept_infrastructure_grid_and_transit_artery.md)) | 地形グリッド、勢力 | 資源輸送、部隊移動力、後方補給線 | 線路・道路・パイプラインのネットワーク連結度（ボトルネック検知）。 |
 | **資源・サプライチェーン** ([concept_resource_economy_and_logistics.md](./discussion/industry_logistics/concept_resource_economy_and_logistics.md)) | 施設（工廠）、動脈インフラ | 兵器生産、維持コスト、技術開発 | 3層品目（一次/二次/消費材）。弾薬規格（C規格・口径）の分化と事実上の標準化。 |
 | **兵器・戦闘団** ([concept_combat_group_structure_and_rfp_cycle.md](./discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)) | 資源、工廠、技術モジュール | 戦闘解決、非ユニット輸送、領土確保 | 1タイル1戦闘団（増強師団制）。非表示スタック管理とモジュール換装。 |

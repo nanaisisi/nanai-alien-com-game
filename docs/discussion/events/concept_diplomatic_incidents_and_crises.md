@@ -10,7 +10,7 @@
 
 従来の多くの4Xゲームでは、「宣戦布告」ボタンを押せば瞬時に平時状態から総力戦へと移行し、それ以前の国境小競り合いや探り合いは単なる「国境侵入による外交ペナルティの累積」として抽象化されてきた。
 
-本作では、大戦終結後の星間入植という設定（[`../../Faction.md`](../../Faction.md)）および未確定国境・自発的失踪者（[`../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md`](../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md)）を踏まえ、**「平時と戦時の間のグラデーション（グレーゾーン）」をゲームメカニクスとして具現化**する。
+本作では、大戦終結後の星間入植という設定（[`../../Faction.md`](./../../Faction.md)）および未確定国境・自発的失踪者（[`../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md`](./../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md)）を踏まえ、**「平時と戦時の間のグラデーション（グレーゾーン）」をゲームメカニクスとして具現化**する。
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -56,7 +56,7 @@
 ### 2.1 緊張値の動的変動メカニクス
 
 1. **緊張値の上昇要因（インシデントトリガー）**:
-   - 自然国境を越えた先での資源採掘インフラ設営（[`../map_tile/concept_tile_centric_expansion.md`](../map_tile/concept_tile_centric_expansion.md)）。
+   - 自然国境を越えた先での資源採掘インフラ設営（[`../map_tile/concept_tile_centric_expansion.md`](./../map_tile/concept_tile_centric_expansion.md)）。
    - 相手国領域周辺への戦闘団（増強師団）の異常集中配置。
    - 相手国出身の失踪者コミュニティに対する一方的武力弾圧、または彼らへの兵器横流し。
    - 通商回廊（シーレーン・陸上鉄道）の傍受・監視インフラ建設。
@@ -106,7 +106,7 @@
 ### シナリオ3: 航行の自由作戦と海上・回廊封鎖
 
 - **発生契機**:
-  - 海洋タイル（[`../map_tile/concept_maritime_governance_and_ocean_engineering.md`](../map_tile/concept_maritime_governance_and_ocean_engineering.md)）または重要峡谷回廊において、自国の海上輸送プラットフォームが相手国の排他的経済水域主張ラインを横断。
+  - 海洋タイル（[`../map_tile/concept_maritime_governance_and_ocean_engineering.md`](./../map_tile/concept_maritime_governance_and_ocean_engineering.md)）または重要峡谷回廊において、自国の海上輸送プラットフォームが相手国の排他的経済水域主張ラインを横断。
 - **事象の推移**:
   - 相手国による警告射撃・停船要求 → 護衛戦闘団の現場展開 → 対艦ミサイル照準ロックの応酬。
   - プレイヤーは「危険海域を迂回して兵站遅延を甘受する」か、「駆逐・揚陸戦闘団を投入して強行突破（エスカレーション）」するかの決断を迫られる。
@@ -127,7 +127,7 @@
 ```
 
 1. **ブラックオプス（偽装支援）**:
-   - 自国の刻印・兵器識別コードを削り落とした「規格化以前の旧式装備（[`../industry_logistics/concept_resource_economy_and_logistics.md`](../industry_logistics/concept_resource_economy_and_logistics.md)）」を失踪者勢力に供与。
+   - 自国の刻印・兵器識別コードを削り落とした「規格化以前の旧式装備（[`../industry_logistics/concept_resource_economy_and_logistics.md`](./../industry_logistics/concept_resource_economy_and_logistics.md)）」を失踪者勢力に供与。
    - 失踪者が敵国の資源パイプラインや送電線を襲撃しても、自国の公式関与は否定可能（Denial of Responsibility）。
 2. **露呈リスクとスキャンダル**:
    - 作戦が敵諜報機関や法医学調査（Forensics）によって露呈した場合、国際連合会議での信用失墜と、相手国に「テロ支援国家認定」による正当な全面開戦事由を献上することになる。
@@ -136,7 +136,7 @@
 
 ## 5. 開戦事由（Casus Belli）と戦後講和・吸収への影響
 
-エスカレーションを経て戦争に突入した際、「どのような開戦事由で戦争が始まったか」が、その後の戦闘団の士気、国内世論の継戦能力、および終戦時の**合意吸収・領土割譲交渉**（[`../events/concept_faction_consensus_and_standardization.md`](../events/concept_faction_consensus_and_standardization.md)）に決定的な影響を与える。
+エスカレーションを経て戦争に突入した際、「どのような開戦事由で戦争が始まったか」が、その後の戦闘団の士気、国内世論の継戦能力、および終戦時の**合意吸収・領土割譲交渉**（[`../events/concept_faction_consensus_and_standardization.md`](./concept_faction_consensus_and_standardization.md)）に決定的な影響を与える。
 
 | 開戦事由 (Casus Belli) | 発生契機 | 戦争目的の制限 | 国内厭戦感の増加速度 | 講和・併合時の国際反発 |
 | :--- | :--- | :--- | :--- | :--- |

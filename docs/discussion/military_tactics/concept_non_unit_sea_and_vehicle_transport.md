@@ -259,9 +259,9 @@ pub struct UnitMobility {
 
 ## 7. 関連ドキュメントとの連携
 
-- [**`../map_tile/concept_maritime_governance_and_ocean_engineering.md`**](../map_tile/concept_maritime_governance_and_ocean_engineering.md):
+- [**`../map_tile/concept_maritime_governance_and_ocean_engineering.md`**](./../map_tile/concept_maritime_governance_and_ocean_engineering.md):
   - メガフロート港湾や浮ドックによる海上輸送船腹（SLC）の拡張。
 - [**`./concept_hidden_stacks_and_reserve_arsenal.md`**](./concept_hidden_stacks_and_reserve_arsenal.md):
   - 港湾や輸送母艦における「非表示スタック（Embarked / Bunker）」との親和性とステータス遷移。
-- [**`../industry_logistics/concept_transport_windows_and_infrastructure_bottlenecks.md`**](../industry_logistics/concept_transport_windows_and_infrastructure_bottlenecks.md):
+- [**`../industry_logistics/concept_transport_windows_and_infrastructure_bottlenecks.md`**](./../industry_logistics/concept_transport_windows_and_infrastructure_bottlenecks.md):
   - 幹線道路・鉄道網とトラック牽引部隊の輸送ウィンドウ・ボトルネック連動。
