@@ -10,7 +10,7 @@
 
 従来の多くの4Xゲームでは、「宣戦布告」ボタンを押せば瞬時に平時状態から総力戦へと移行し、それ以前の国境小競り合いや探り合いは単なる「国境侵入による外交ペナルティの累積」として抽象化されてきた。
 
-本作では、大戦終結後の星間入植という設定（[`../../Faction.md`](./../../Faction.md)）および未確定国境・自発的失踪者（[`../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md`](./../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md)）を踏まえ、**「平時と戦時の間のグラデーション（グレーゾーン）」をゲームメカニクスとして具現化**する。
+本作では、大戦終結後の星間入植という設定（[`../../specs/Faction.md`](./../../specs/Faction.md)）および未確定国境・自発的失踪者（[`../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md`](./../diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md)）を踏まえ、**「平時と戦時の間のグラデーション（グレーゾーン）」をゲームメカニクスとして具現化**する。
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐

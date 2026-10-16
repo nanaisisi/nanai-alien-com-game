@@ -192,7 +192,7 @@ impl Default for FactionManager {
 }
 
 impl FactionManager {
-    /// doc/Faction.md の初期外交関係マトリクスを反映
+    /// docs/specs/Faction.md の初期外交関係マトリクスを反映
     /// 表:外交関係
     /// ◎:良好、◯:普通、△:微妙
     ///  ABCDEF

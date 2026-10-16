@@ -7,15 +7,19 @@
 ## 📁 全体ディレクトリ構造
 
 ```text
-doc/
+docs/
 ├── INDEX.md                                # 本ファイル（ドキュメント目録）
-├── GAME_DESIGN.md                          # ゲーム企画・コア仕様設計書
-├── RESOURCE_ECONOMY_SYSTEM.md              # 資源・経済・サプライチェーン体系目録
-├── Faction.md                              # 勢力一覧・固有ボーナス/特性定義
-├── PENDING_ISSUES.md                       # 未確定・検討課題まとめ
-├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
-├── BEVY_0_20_INTEGRATION_REVIEW.md         # Bevy 0.20 仕様照合・技術検討書
-├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
+├── GAME_DESIGN.md                          # ゲーム企画・コア仕様設計書（マスター）
+├── specs/                                  # 個別確定・基本仕様書
+│   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
+│   └── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
+├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計
+│   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
+│   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
+│   └── RESOURCE_IMPLEMENTATION_BRIDGE.md   # 資源系 実装橋渡し案
+├── planning/                               # 開発計画・ロードマップ・課題管理
+│   ├── MISSING_DOCUMENTS_ROADMAP.md        # 未作成・不足ドキュメント体系と開発ロードマップ
+│   └── PENDING_ISSUES.md                   # 未確定・検討課題まとめ
 └── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計51件）
     ├── automation/                         # 自動化システム（2件）
     │   ├── concept_automation_systems.md
@@ -83,7 +87,7 @@ doc/
 
 ---
 
-## 📑 1. ルート基本ドキュメント
+## 📑 1. ゲーム企画・仕様書（`GAME_DESIGN.md`, `specs/`）
 
 * **[GAME_DESIGN.md](./GAME_DESIGN.md)**：ゲーム企画・基本仕様設計書（マスタードキュメント）
   * ゲームコンセプト（4X SFターン制戦略、Civ:BEライク）
@@ -91,27 +95,39 @@ doc/
   * 固定編成・戦闘団制（増強師団相当）による小部隊運用
   * 原住エイリアンとの共存／支配／排除の関係性システム
   * 技術ツリー、内政・資源、外交の基本方針
-* **[RESOURCE_ECONOMY_SYSTEM.md](./RESOURCE_ECONOMY_SYSTEM.md)**：資源・経済・サプライチェーン体系目録（インデックス）
+* **[specs/RESOURCE_ECONOMY_SYSTEM.md](./specs/RESOURCE_ECONOMY_SYSTEM.md)**：資源・経済・サプライチェーン体系目録（インデックス）
   * 一次資源（4種）・二次中間財・兵站消費財・食料・弾薬の加工流通フロー図
   * 産業構造、ブートローダー工廠、弾薬C規格、動脈インフラに関するドキュメント体系リンク集
   * Rust/Bevy実装用データ型マッピング
-* **[Faction.md](./Faction.md)**：登場勢力設定仕様書
+* **[specs/Faction.md](./specs/Faction.md)**：登場勢力設定仕様書
   * 母星の歴史・大戦停戦を経て入植した架空の6大国家概念（帝国A、大公国B、連邦C、共和国D、共同体E、連合F）
   * 各国の体制・文化圏背景、母星と入植惑星での外交関係（具体的な国名は未確定・継続検討事項）
   * アフィニティ（思想・適応路線）や経済/軍事ボーナスの基本方向性
   * ゲーム実装用データ: [`../assets/data/factions.csv`](../assets/data/factions.csv), [`../assets/data/city_names.csv`](../assets/data/city_names.csv)（勢力マスター＆全192都市名リスト）
-* **[PENDING_ISSUES.md](./PENDING_ISSUES.md)**：未確定・検討課題まとめ（論点整理）
-  * 歩行兵器の定義と不便さの具現化、国家概念の肉付け、戦闘団×モジュール共通化の接続など、掘り下げ不足な論点と今後の検討課題一覧。
-* **[MISSING_DOCUMENTS_ROADMAP.md](./MISSING_DOCUMENTS_ROADMAP.md)**：未作成・不足ドキュメント体系と開発ロードマップ
-  * 全体ドキュメントの最新成熟度マトリクス、明確に不足している5大領域（資源品目定義、技術ツリー、外交危機、エイリアン生態巣窟、ステアリングUI）、および開発ロードマップ。
-* **[BEVY_0_20_INTEGRATION_REVIEW.md](./BEVY_0_20_INTEGRATION_REVIEW.md)**：Bevy 0.20 仕様照合・技術検討書
-  * Bevy 0.20 新機能（Weak System Ordering、`Val::Em`/`Rem`、`FixedNode`、WESL、標準カメラ等）と現行実装の適合状況、およびUIレスポンシブ化・並列化等の拡張ロードマップ。
-* **[SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md](./SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md)**：全体実装依存関係・アーキテクチャ仕様書
-  * システム全体の6層アーキテクチャ（エンジン・空間・経済・軍事・動態・UI）、モジュール間依存関係マトリクス、およびボトムアップ実装ロードマップ。
 
 ---
 
-## 💡 2. 詳細検討・発展仕様（`doc/discussion/`）
+## 🛠️ 2. 技術設計・アーキテクチャ（`tech/`）
+
+* **[tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md](./tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md)**：全体実装依存関係・アーキテクチャ仕様書
+  * システム全体の6層アーキテクチャ（エンジン・空間・経済・軍事・動態・UI）、モジュール間依存関係マトリクス、およびボトムアップ実装ロードマップ。
+* **[tech/BEVY_0_20_INTEGRATION_REVIEW.md](./tech/BEVY_0_20_INTEGRATION_REVIEW.md)**：Bevy 0.20 仕様照合・技術検討書
+  * Bevy 0.20 新機能（Weak System Ordering、`Val::Em`/`Rem`、`FixedNode`、WESL、標準カメラ等）と現行実装の適合状況、およびUIレスポンシブ化・並列化等の拡張ロードマップ。
+* **[tech/RESOURCE_IMPLEMENTATION_BRIDGE.md](./tech/RESOURCE_IMPLEMENTATION_BRIDGE.md)**：資源系 実装橋渡し案
+  * 資源経済設計とBevy実装コードを繋ぐ暫定ブリッジ仕様（データ構造、タイル収支、段階的実装フェーズ計画）。
+
+---
+
+## 📋 3. 開発計画・ロードマップ・課題（`planning/`）
+
+* **[planning/PENDING_ISSUES.md](./planning/PENDING_ISSUES.md)**：未確定・検討課題まとめ（論点整理）
+  * 歩行兵器の定義と不便さの具現化、国家概念の肉付け、戦闘団×モジュール共通化の接続など、掘り下げ不足な論点と今後の検討課題一覧。
+* **[planning/MISSING_DOCUMENTS_ROADMAP.md](./planning/MISSING_DOCUMENTS_ROADMAP.md)**：未作成・不足ドキュメント体系と開発ロードマップ
+  * 全体ドキュメントの最新成熟度マトリクス、明確に不足している5大領域（資源品目定義、技術ツリー、外交危機、エイリアン生態巣窟、ステアリングUI）、および開発ロードマップ。
+
+---
+
+## 💡 4. 詳細検討・発展仕様（`discussion/`）
 
 各システム・メカニクスごとに最新のサブディレクトリ分類（7分野）で体系的に管理されています。
 

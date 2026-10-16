@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-/// 内部資源の品目（設計: doc/RESOURCE_ECONOMY_SYSTEM.md）
+/// 内部資源の品目（設計: docs/specs/RESOURCE_ECONOMY_SYSTEM.md）
 #[allow(dead_code)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum RawResource {

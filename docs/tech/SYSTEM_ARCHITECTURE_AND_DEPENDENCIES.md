@@ -153,8 +153,8 @@ graph TD
 
 ## 4. 関連ドキュメント
 
-- コア企画設計書: [`./GAME_DESIGN.md`](./GAME_DESIGN.md)
-- 資源・経済インデックス: [`./RESOURCE_ECONOMY_SYSTEM.md`](./RESOURCE_ECONOMY_SYSTEM.md)
-- 非ユニット輸送仕様書: [`./discussion/military_tactics/concept_non_unit_sea_and_vehicle_transport.md`](./discussion/military_tactics/concept_non_unit_sea_and_vehicle_transport.md)
-- サブタイル戦術戦闘仕様書: [`./discussion/map_tile/concept_subtile_combat_and_tactical_rules.md`](./discussion/map_tile/concept_subtile_combat_and_tactical_rules.md)
-- 国家ドクトリン・ステアリングUI仕様書: [`./discussion/ui_wiki/concept_doctrine_steering_ui.md`](./discussion/ui_wiki/concept_doctrine_steering_ui.md)
+- コア企画設計書: [`../GAME_DESIGN.md`](../GAME_DESIGN.md)
+- 資源・経済インデックス: [`../specs/RESOURCE_ECONOMY_SYSTEM.md`](../specs/RESOURCE_ECONOMY_SYSTEM.md)
+- 非ユニット輸送仕様書: [`../discussion/military_tactics/concept_non_unit_sea_and_vehicle_transport.md`](../discussion/military_tactics/concept_non_unit_sea_and_vehicle_transport.md)
+- サブタイル戦術戦闘仕様書: [`../discussion/map_tile/concept_subtile_combat_and_tactical_rules.md`](../discussion/map_tile/concept_subtile_combat_and_tactical_rules.md)
+- 国家ドクトリン・ステアリングUI仕様書: [`../discussion/ui_wiki/concept_doctrine_steering_ui.md`](../discussion/ui_wiki/concept_doctrine_steering_ui.md)

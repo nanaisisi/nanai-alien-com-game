@@ -7,12 +7,12 @@
 
 > [!NOTE]
 > 各国の具体的な「国名」は固定的な安易な固有名詞ではなく、記号・役職名・正式国号体系（国A〜国F、帝国、大公国など）を採用しています。
-> 各国家の深層社会設定、初期ブートローダー産業、得意モジュール、正式国号、公文書役職、兵器命名型式等の詳細仕様は [`./discussion/diplomacy_governance/concept_factions_detail_and_naming.md`](./discussion/diplomacy_governance/concept_factions_detail_and_naming.md) を参照してください。
+> 各国家の深層社会設定、初期ブートローダー産業、得意モジュール、正式国号、公文書役職、兵器命名型式等の詳細仕様は [`../discussion/diplomacy_governance/concept_factions_detail_and_naming.md`](../discussion/diplomacy_governance/concept_factions_detail_and_naming.md) を参照してください。
 >
 > また、ゲーム実装用のマスターデータ定義および都市名リスト（首都・各都市）は以下に配置されています：
 >
-> - 勢力マスターCSV: [`../assets/data/factions.csv`](../assets/data/factions.csv)
-> - 勢力別都市名リストCSV（全192都市）: [`../assets/data/city_names.csv`](../assets/data/city_names.csv)
+> - 勢力マスターCSV: [`../../assets/data/factions.csv`](../../assets/data/factions.csv)
+> - 勢力別都市名リストCSV（全192都市）: [`../../assets/data/city_names.csv`](../../assets/data/city_names.csv)
 
 ## 概要
 

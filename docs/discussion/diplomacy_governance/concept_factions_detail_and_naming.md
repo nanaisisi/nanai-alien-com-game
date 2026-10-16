@@ -198,6 +198,6 @@
   - 勢力マスターデータ: [`../../../assets/data/factions.csv`](../../../assets/data/factions.csv)（ID、コード、正式国号、象徴色、元首呼称、文化圏スタイル）
   - 勢力別都市名リスト: [`../../../assets/data/city_names.csv`](../../../assets/data/city_names.csv)（各勢力32都市・全192都市、首都・通常都市区分、英語名対応）
 - **関連ドキュメント**:
-  - 勢力基本設定仕様書: [`../../Faction.md`](./../../Faction.md)
+  - 勢力基本設定仕様書: [`../../specs/Faction.md`](./../../specs/Faction.md)
   - ドキュメント目録: [`../../INDEX.md`](./../../INDEX.md)
   - ゲーム内Wikiシステム設計書: [`../ui_wiki/concept_in_game_wiki.md`](./../ui_wiki/concept_in_game_wiki.md)

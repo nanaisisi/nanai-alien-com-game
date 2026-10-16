@@ -1,6 +1,6 @@
 # 資源系 実装橋渡し案 (Resource Implementation Bridge)
 
-設計（[RESOURCE_ECONOMY_SYSTEM.md](./RESOURCE_ECONOMY_SYSTEM.md)）と現行コードの間を埋め、段階的に実装するための暫定案です。確定仕様ではなく、叩き台です。
+設計（[RESOURCE_ECONOMY_SYSTEM.md](../specs/RESOURCE_ECONOMY_SYSTEM.md)）と現行コードの間を埋め、段階的に実装するための暫定案です。確定仕様ではなく、叩き台です。
 
 ※リンクはすべてリポジトリ内相対パスです。
 
@@ -100,7 +100,7 @@ pub struct FactionStockpile(pub HashMap<FactionId, ResourceAmounts>);
 
 ## 8. 関連ドキュメント
 
-- [RESOURCE_ECONOMY_SYSTEM.md](./RESOURCE_ECONOMY_SYSTEM.md)
-- [concept_resource_economy_and_logistics.md](./discussion/industry_logistics/concept_resource_economy_and_logistics.md)
-- [concept_tile_progression_system.md](./discussion/map_tile/concept_tile_progression_system.md)
+- [RESOURCE_ECONOMY_SYSTEM.md](../specs/RESOURCE_ECONOMY_SYSTEM.md)
+- [concept_resource_economy_and_logistics.md](../discussion/industry_logistics/concept_resource_economy_and_logistics.md)
+- [concept_tile_progression_system.md](../discussion/map_tile/concept_tile_progression_system.md)
 - [SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md](./SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md)
