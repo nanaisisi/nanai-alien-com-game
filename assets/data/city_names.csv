@@ -1,0 +1,193 @@
+faction_id,priority,city_name,name_en,city_type
+Empire,1,ニュー・ソフィア,New Sophia,Capital
+Empire,2,カイザー・アウグスタ,Kaiser Augusta,City
+Empire,3,クロンシュタット,Kronstadt,City
+Empire,4,グラン・オルディス,Grand Ordis,City
+Empire,5,ポルタ・インペリアリス,Porta Imperialis,City
+Empire,6,フリードリヒ要港,Friedrich Port,City
+Empire,7,ハイリゲンブルク,Heiligenburg,City
+Empire,8,アルブレヒトスブルク,Albrechtsburg,City
+Empire,9,ノイ・ハプスブルク,Neu-Habsburg,City
+Empire,10,レオポルト要塞都市,Leopold Fortress,City
+Empire,11,アレクサンドリア新都,New Alexandria,City
+Empire,12,ホーエンツォレルン,Hohenzollern,City
+Empire,13,コンスタンティノス,Constantinos,City
+Empire,14,ゲルマニア・ノヴァ,Germania Nova,City
+Empire,15,マクシミリアン堡塁,Maximilian Bastion,City
+Empire,16,バーデン＝アルク,Baden-Ark,City
+Empire,17,ヴュルテンベルク開拓区,Wurttemberg Sector,City
+Empire,18,バイエルン・プラトー,Bayern Plateau,City
+Empire,19,ザクセン製鉄市,Sachsen Steel Works,City
+Empire,20,ハノーファー前進基地,Hannover Outpost,City
+Empire,21,プロイセン記念港,Preussen Memorial Port,City
+Empire,22,ルートヴィヒスハーフェン,Ludwigshafen,City
+Empire,23,エーデルシュタット,Edelstadt,City
+Empire,24,シュヴァルツヴァルト,Schwarzwald,City
+Empire,25,インペリアル・ゲート,Imperial Gate,City
+Empire,26,ロートリンゲン採掘区,Lothringen Mining,City
+Empire,27,カールスルーエ工廠,Karlsruhe Arsenal,City
+Empire,28,ヴィルヘルムスヘーエ,Wilhelmshohe,City
+Empire,29,プファルツ宮廷区,Pfalz Court District,City
+Empire,30,フランケンベルク,Frankenberg,City
+Empire,31,オストマルク辺境砦,Ostmark Frontier Fort,City
+Empire,32,グロリア・コロナ,Gloria Corona,City
+GrandDuchy,1,ハイムダール・ドーム,Heimdall Dome,Capital
+GrandDuchy,2,ウプサラ中央区,Uppsala Center,City
+GrandDuchy,3,スヴァールバル観測所,Svalbard Station,City
+GrandDuchy,4,ナルヴィク工廠,Narvik Works,City
+GrandDuchy,5,フロスト・ヴェール,Frost Vale,City
+GrandDuchy,6,ノールカップ開拓地,Nordkapp Settlement,City
+GrandDuchy,7,キルナ鉱山ドーム,Kiruna Dome,City
+GrandDuchy,8,トロンハイム港,Trondheim Port,City
+GrandDuchy,9,ユヴァスキュラ技術都市,Jyvaskyla Tech City,City
+GrandDuchy,10,オウル前進ドーム,Oulu Advance Dome,City
+GrandDuchy,11,ロヴァニエミ極点基地,Rovaniemi Polar Base,City
+GrandDuchy,12,ベルゲン沿岸区,Bergen Coastal District,City
+GrandDuchy,13,エステルスンド居住区,Ostersund Sector,City
+GrandDuchy,14,ルレオ重工ドーム,Lulea Heavy Dome,City
+GrandDuchy,15,ボードー防空哨戒区,Bodo Patrol Sector,City
+GrandDuchy,16,ハマル氷河観測所,Hamar Glacial Station,City
+GrandDuchy,17,ヴァドソー港,Vadso Port,City
+GrandDuchy,18,タンペレ機械化地区,Tampere Machinery District,City
+GrandDuchy,19,ラーハティ精密工区,Lahti Precision Sector,City
+GrandDuchy,20,ポルヴォー保全林区,Porvoo Forestry Zone,City
+GrandDuchy,21,オーランド自律港,Aland Autonomous Port,City
+GrandDuchy,22,ヤルヴィ水利ハブ,Jarvi Hydro Hub,City
+GrandDuchy,23,トロムソ天体観測区,Tromso Observatory,City
+GrandDuchy,24,ソダンキュラ採掘区,Sodankyla Mining,City
+GrandDuchy,25,イヴァロ極光ドーム,Ivalo Aurora Dome,City
+GrandDuchy,26,アルタ地熱プラント,Alta Geothermal Plant,City
+GrandDuchy,27,シェレフテオ精錬所,Skelleftea Smelter,City
+GrandDuchy,28,ピテオ木材加工区,Pitea Woodworks,City
+GrandDuchy,29,ウメオ総合学究都市,Umea Academic City,City
+GrandDuchy,30,コッコラ化学コンビナート,Kokkola Chemical Complex,City
+GrandDuchy,31,カヤーニ辺境観測所,Kajaani Frontier Station,City
+GrandDuchy,32,ヴァルハラ・アーク,Valhalla Ark,City
+Federation,1,フォート・リバティ,Fort Liberty,Capital
+Federation,2,ユニオン・ジャンクション,Union Junction,City
+Federation,3,ニュー・プロビデンス,New Providence,City
+Federation,4,アイアン・レンジ,Iron Range,City
+Federation,5,ホープウェル,Hopewell,City
+Federation,6,キーストーン・コロニー,Keystone Colony,City
+Federation,7,フリーダム・ヒル,Freedom Hill,City
+Federation,8,パイオニア・クリーク,Pioneer Creek,City
+Federation,9,ボルダー・リッジ,Boulder Ridge,City
+Federation,10,フロンティア・クロス,Frontier Cross,City
+Federation,11,グランド・ベイスン,Grand Basin,City
+Federation,12,コングレス・シティ,Congress City,City
+Federation,13,レッド・ロック採掘区,Red Rock Mining,City
+Federation,14,インデペンデンス,Independence,City
+Federation,15,プレーンズ・ビュート,Plains Butte,City
+Federation,16,サミット・スプリングス,Summit Springs,City
+Federation,17,マーシャル・ヤード,Marshall Yard,City
+Federation,18,ビクトリー・フォールズ,Victory Falls,City
+Federation,19,オースティン開拓区,Austin Settlement,City
+Federation,20,デコタ・ジャンクション,Dakota Junction,City
+Federation,21,シルバー・ホーン,Silver Horn,City
+Federation,22,メサ・ヴェルデ居住区,Mesa Verde Sector,City
+Federation,23,コッパー・バレー,Copper Valley,City
+Federation,24,セントラル・ゲート,Central Gate,City
+Federation,25,サンダー・リッジ,Thunder Ridge,City
+Federation,26,ニュー・ヘリテージ,New Heritage,City
+Federation,27,ビッグ・スカイ採掘所,Big Sky Mine,City
+Federation,28,リライアンス工廠,Reliance Arsenal,City
+Federation,29,フェリシティ鉱山街,Felicity Mining Town,City
+Federation,30,ハーモニー・スプリングス,Harmony Springs,City
+Federation,31,プロスペリティ・プラント,Prosperity Plant,City
+Federation,32,フロンティア・エンド,Frontier End,City
+Republic,1,紅星・第一人民工廠,Red Star Plant 01,Capital
+Republic,2,新光・第二工業区,Xinguang District 02,City
+Republic,3,勝利・第三鉱業市,Shengli Mining 03,City
+Republic,4,進歩・第四重機市,Jinbu Heavy 04,City
+Republic,5,先鋒・第五開発基地,Vanguard Base 05,City
+Republic,6,大同総合居住区,Datong Sector,City
+Republic,7,建設・第六インフラ区,Jianshe District 06,City
+Republic,8,東風・第七精錬所,Dongfeng Smelter 07,City
+Republic,9,解放・第八農場群,Jiefang Farm 08,City
+Republic,10,燎原・第九化学区,Liaoyuan Chemical 09,City
+Republic,11,躍進・第十組立工区,Yuejin Assembly 10,City
+Republic,12,光明・第十一発電市,Guangming Power 11,City
+Republic,13,朝陽総合行政市,Chaoyang Admin City,City
+Republic,14,富強・第十二鉄鋼所,Fuqiang Steel 12,City
+Republic,15,前進・第十三物資集積所,Qianjin Depot 13,City
+Republic,16,友誼・第十四共同区,Youyi Joint Zone 14,City
+Republic,17,自力・第十五工作所,Zili Machine Works 15,City
+Republic,18,群星・第十六観測所,Qunxing Observatory 16,City
+Republic,19,鉄流・第十七軌道基地,Tieliu Rail Base 17,City
+Republic,20,鋼鉄・第十八採掘区,Gangtie Mining 18,City
+Republic,21,宏図・第十九開発区,Hongtu Dev Zone 19,City
+Republic,22,衛星・第二十通信区,Weixing Comms 20,City
+Republic,23,黎明第二十一居住区,Liming Sector 21,City
+Republic,24,奮闘第二十二工廠,Fendou Works 22,City
+Republic,25,争光第二十三集約地,Zhengguang Hub 23,City
+Republic,26,永安第二十四防災区,Yongan Relief Zone 24,City
+Republic,27,衛国第二十五防空砦,Weiguo Fortress 25,City
+Republic,28,拓荒第二十六開拓区,Tuohuang Frontier 26,City
+Republic,29,厚徳第二十七保全区,Houde Reserve 27,City
+Republic,30,万里第二十八中継地,Wanli Transit 28,City
+Republic,31,長征第二十九前進基地,Changzheng Base 29,City
+Republic,32,理想第三十総合科学都市,Lixiang Science City 30,City
+Commonwealth,1,オセアニア・バイオハブ,Oceania Bio-Hub,Capital
+Commonwealth,2,ポート・ネプチューン,Port Neptune,City
+Commonwealth,3,アクアポリスVII,Aquapolis VII,City
+Commonwealth,4,コーラル・リッジ共同区,Coral Ridge,City
+Commonwealth,5,タスマン・バイオファーム,Tasman Bio-Farm,City
+Commonwealth,6,ペラジック・センター,Pelagic Center,City
+Commonwealth,7,マリーナ・メガフロート,Marina Megafloat,City
+Commonwealth,8,ノーチラス海洋工廠,Nautilus Marine Works,City
+Commonwealth,9,アトール・リング,Atoll Ring,City
+Commonwealth,10,ブルー・ホライズン,Blue Horizon,City
+Commonwealth,11,ラグーン・ターミナル,Lagoon Terminal,City
+Commonwealth,12,ベリョーゾフ海中採掘区,Beryozov Subsea Mining,City
+Commonwealth,13,シー・ブリーズ第IV区,Sea Breeze Sector IV,City
+Commonwealth,14,ヴォストーク洋上ハブ,Vostok Offshore Hub,City
+Commonwealth,15,タイド・ウォーター港,Tidewater Port,City
+Commonwealth,16,サンゴ礁生体研究所,Coral Bio Lab,City
+Commonwealth,17,パール・ベイ居住区,Pearl Bay District,City
+Commonwealth,18,マングローブ養殖基地,Mangrove Aquaculture,City
+Commonwealth,19,ケルプ・フォレスト抽出所,Kelp Forest Extraction,City
+Commonwealth,20,デルタ・ジャンクション,Delta Junction,City
+Commonwealth,21,深海資源第IIIプラットフォーム,Abyssal Platform III,City
+Commonwealth,22,オフショア・ベイ,Offshore Bay,City
+Commonwealth,23,ウェイブ・クレスト工廠,Wave Crest Works,City
+Commonwealth,24,シンドバッド浮体市,Sindbad Float City,City
+Commonwealth,25,マリアナ・ベース,Mariana Base,City
+Commonwealth,26,パシフィック・ゲート,Pacific Gate,City
+Commonwealth,27,オーシャン・アーク,Ocean Ark,City
+Commonwealth,28,コーラル・シー精錬所,Coral Sea Refinery,City
+Commonwealth,29,ハイドロ・パワー第IX区,Hydro Power Sector IX,City
+Commonwealth,30,サザン・クロス港,Southern Cross Port,City
+Commonwealth,31,トロピカル・ドーム,Tropical Dome,City
+Commonwealth,32,ネクスト・オーシャン統合区,Next Ocean Complex,City
+Union,1,アヴァロン統合司令部,Avalon Command,Capital
+Union,2,コンコード・プライム,Concord Prime,City
+Union,3,ヘリックス先端研究所,Helix Arcology,City
+Union,4,キャメロット統治区,Camelot Sector,City
+Union,5,ロゴス・アーコロジー,Logos Arcology,City
+Union,6,シンギュラリティ・ベイ,Singularity Bay,City
+Union,7,アイギス中継ハブ,Aegis Hub,City
+Union,8,ノウアスフィア居住区,Noosphere District,City
+Union,9,セレスティア中枢,Celestia Nexus,City
+Union,10,プロメテウス反応炉区,Prometheus Reactor,City
+Union,11,イデア・ネクサス,Idea Nexus,City
+Union,12,ネオ・アレクサンドリア,Neo Alexandria,City
+Union,13,アルゴ・探査基地,Argo Research Base,City
+Union,14,エリュシオン研究区,Elysium Science Zone,City
+Union,15,ハイペリオン観測所,Hyperion Observatory,City
+Union,16,サイバネティクス第I工区,Cybernetics Sector I,City
+Union,17,シナプス・ジャンクション,Synapse Junction,City
+Union,18,クォンタム・コア,Quantum Core,City
+Union,19,クロノス時間同期局,Chronos Sync Station,City
+Union,20,オリンポス・アーク,Olympus Ark,City
+Union,21,エデン・シミュレータ,Eden Simulator,City
+Union,22,ソラリス光工学区,Solaris Optics Zone,City
+Union,23,パネル・ネクサス,Panel Nexus,City
+Union,24,メタフィジクス工廠,Metaphysics Arsenal,City
+Union,25,アテナ戦略研究所,Athena Strategic Lab,City
+Union,26,パルテノン統制区,Parthenon Control Zone,City
+Union,27,テトラグラマトン,Tetragrammaton,City
+Union,28,ユークリッド幾何都市,Euclid Geometric City,City
+Union,29,オメガ・ディメンション,Omega Dimension,City
+Union,30,エーテル・リンク,Aether Link,City
+Union,31,アルファ・セントラル,Alpha Central,City
+Union,32,インフィニティ・ドーム,Infinity Dome,City
