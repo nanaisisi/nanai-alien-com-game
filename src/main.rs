@@ -11,6 +11,7 @@ mod world;
 use camera::CameraPlugin;
 use faction::FactionPlugin;
 use map::MapPlugin;
+use state::AppState;
 use ui::GameUiPlugin;
 use unit::UnitPlugin;
 use world::WorldPlugin;
@@ -32,6 +33,7 @@ fn main() {
                     ..default()
                 }),
         )
+        .init_state::<AppState>()
         // Custom Plugins (Initialization and Logic Modules)
         .add_plugins((
             CameraPlugin,
