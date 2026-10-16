@@ -28,11 +28,61 @@ impl Plugin for UnitInteractionPlugin {
                     update_reachable_tiles,
                     update_selection_visuals,
                     update_unit_visibility_system,
+                    update_stack_badges,
                     process_unit_turn_updates,
                 )
                     .run_if(in_state(AppState::InGame)),
             )
             .add_systems(OnEnter(AppState::Title), cleanup_selection_visuals);
+    }
+}
+
+/// アクティブ部隊の上に表示する「+N（格納予備あり）」バッジ
+#[derive(Component)]
+pub struct StackBadge;
+
+/// 同一タイルの非表示スタック数をアクティブ部隊の子バッジとして表示する
+pub fn update_stack_badges(
+    mut commands: Commands,
+    asset_server: Res<AssetServer>,
+    changed: Query<(), Changed<Unit>>,
+    units: Query<(Entity, &Unit)>,
+    badges: Query<Entity, With<StackBadge>>,
+) {
+    if changed.is_empty() {
+        return;
+    }
+    for badge in &badges {
+        commands.entity(badge).despawn();
+    }
+    let font = asset_server.load(crate::ui::theme::FONT_REGULAR);
+    for (entity, unit) in &units {
+        if !unit.deployment_status.is_active_garrison() {
+            continue;
+        }
+        let hidden = units
+            .iter()
+            .filter(|(_, u)| {
+                u.coord == unit.coord
+                    && u.faction == unit.faction
+                    && u.deployment_status.is_hidden_stack()
+            })
+            .count();
+        if hidden == 0 {
+            continue;
+        }
+        commands.entity(entity).with_child((
+            StackBadge,
+            Text2d::new(format!("+{hidden}")),
+            TextFont {
+                font: font.clone().into(),
+                font_size: FontSize::Px(16.0),
+                ..default()
+            },
+            TextColor(Color::srgb(1.0, 0.85, 0.3)),
+            Transform::from_xyz(0.4, 0.9, 0.4)
+                .with_rotation(Quat::from_rotation_x(-std::f32::consts::FRAC_PI_2)),
+        ));
     }
 }
 
