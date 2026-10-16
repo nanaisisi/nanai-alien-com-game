@@ -16,9 +16,10 @@ doc/
 ├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
 ├── BEVY_0_20_INTEGRATION_REVIEW.md         # Bevy 0.20 仕様照合・技術検討書
 ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
-└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計48件）
-    ├── automation/                         # 自動化システム（1件）
-    │   └── concept_automation_systems.md
+└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計50件）
+    ├── automation/                         # 自動化システム（2件）
+    │   ├── concept_automation_systems.md
+    │   └── concept_autonomous_control_and_atmospheric_consensus.md
     ├── diplomacy_governance/               # 外交・占領統治・戦後処理（6件）
     │   ├── concept_diplomacy_relations.md
     │   ├── concept_alliance_system.md
@@ -64,10 +65,11 @@ doc/
     │   ├── concept_non_unit_sea_and_vehicle_transport.md
     │   ├── concept_homeworld_roadmaps_and_niche_industries.md
     │   └── concept_starter_modules_and_common_chassis_catalog.md
-    ├── ui_wiki/                            # UI・情報閲覧システム（3件）
+    ├── ui_wiki/                            # UI・情報閲覧システム（4件）
     │   ├── concept_in_game_wiki.md
     │   ├── concept_viewer_separation_wiki_and_live.md
-    │   └── concept_doctrine_steering_ui.md
+    │   ├── concept_doctrine_steering_ui.md
+    │   └── concept_notification_system_and_presets.md
     └── world_progression/                  # 世界観・生態系・進行フェーズ（7件）
         ├── concept_frontier_civilization_and_ecosystem_dynamics.md
         ├── concept_demographics_ectogenesis_and_speciation.md
@@ -251,6 +253,12 @@ doc/
 
 * **[concept_automation_systems.md](./discussion/automation/concept_automation_systems.md)**
   * 自動輸送ルート設定、定期哨戒（パトロール）、前線への自動補給ロジック。
+* **[concept_autonomous_control_and_atmospheric_consensus.md](./discussion/automation/concept_autonomous_control_and_atmospheric_consensus.md)**
+  * **自律制御アーキテクチャと集団合意ダイナミクス仕様書**。
+  * 指導者（プレイヤー）の操作を「神の指」ではなく「社会の空気・暗黙の合意」として定義。
+  * **過程と結果の分離**: 自動制御バランサーはUIを持たずバックグラウンドで平滑化に徹し、制御された結果は兵器カタログ・部隊移動力・弾薬混用率といった既存システム上に自然に表出。
+  * 集団心理ゆえの「うっかり・行き過ぎ（極地で標準化車両立ち往生、流行への過剰陶酔）」の発生メカニクス。
+  * LLMに一切依存しない、超軽量ルールベース判定＋システム間プロパティ反映による決定論的設計。
 
 ### ⑤ 外交・占領統治・戦後処理（`diplomacy_governance/`）
 
@@ -337,3 +345,8 @@ doc/
   * **国家ドクトリン・自動化ステアリングUI/UX仕様書**。
   * 指示せず誘導するダッシュボードレイアウト、兵器クラス別RFP要求仕様カード、ゴーストゲージによる移行ラグ可視化。
   * 現場ボトムアップ改修（Field Mod）の制式化承認トレイ、および方面軍・戦闘団の弾薬互換警告インスペクター。
+* **[concept_notification_system_and_presets.md](./discussion/ui_wiki/concept_notification_system_and_presets.md)**
+  * **通知システム・プリセット仕様書**。
+  * 自動制御が裏方で帳尻を合わせた結果（新モジュール誕生、代替ロット出荷、踏破デバフ、弾薬混用率等）をシステマチックに伝達。
+  * プレイヤーの好みに合わせた通知プリセット機構（大局統帥／バランス型／現場ウォッチャー）およびユーザーカスタムプリセット保存機能。
+  * トースト通知・チッカーログ・重要警告インジケータによる非侵入型の多層提示UI。
