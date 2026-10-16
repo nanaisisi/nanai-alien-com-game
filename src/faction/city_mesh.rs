@@ -115,20 +115,6 @@ pub fn spawn_city_model(
                 .with_rotation(Quat::from_rotation_x(std::f32::consts::FRAC_PI_4)),
         ));
 
-        // 8. 都市上空のステータスバナー（夜間・俯瞰視点でも一目で自国・他国都市を視認できる）
-        builder.spawn((
-            Text::new(format!(
-                "⬢ 国{}【{}】 Lv.{}",
-                faction.code(),
-                faction.name_ja(),
-                level
-            )),
-            TextFont {
-                font_size: FontSize::Px(13.0),
-                ..default()
-            },
-            TextColor(Color::srgb(1.0, 1.0, 1.0)),
-            Transform::from_xyz(0.0, tower_height + 0.65, 0.0).with_scale(Vec3::splat(0.016)),
-        ));
+        // 都市名ラベルは画面座標へ投影するUIとして faction::territory 側で生成する
     });
 }

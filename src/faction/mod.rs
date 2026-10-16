@@ -30,7 +30,11 @@ impl Plugin for FactionPlugin {
             )
             .add_systems(
                 Update,
-                update_territory_overlays.run_if(in_state(AppState::InGame)),
+                (
+                    update_territory_overlays,
+                    territory::update_city_labels.after(TransformSystems::Propagate),
+                )
+                    .run_if(in_state(AppState::InGame)),
             )
             .add_systems(OnEnter(AppState::Title), cleanup_territories);
     }

@@ -43,6 +43,7 @@ impl TerritoryMap {
 /// 各派閥の初期着陸位置と領土の初期化システム
 pub fn setup_initial_faction_territories(
     mut commands: Commands,
+    asset_server: Res<AssetServer>,
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
     map_grid: Res<MapGrid>,
@@ -154,6 +155,26 @@ pub fn setup_initial_faction_territories(
             1,
         );
 
+        // 都市名ラベル（画面座標へ投影されるUI）
+        commands.spawn((
+            CityLabel {
+                target: outpost_entity,
+            },
+            Text::new(outpost_name),
+            TextFont {
+                font: asset_server.load(crate::ui::theme::FONT_BOLD).into(),
+                font_size: FontSize::Px(14.0),
+                ..default()
+            },
+            TextColor(faction.accent_color()),
+            Node {
+                position_type: PositionType::Absolute,
+                ..default()
+            },
+            Visibility::Hidden,
+            Pickable::IGNORE,
+        ));
+
         // 中心と隣接タイル（半径1）を自国領土に
         let mut claimed = 0;
         territory_map.tile_owners.insert(center, faction);
@@ -178,6 +199,47 @@ pub fn setup_initial_faction_territories(
 /// 領土オーバーレイ表示用マーカーコンポーネント
 #[derive(Component, Debug, Clone, Copy)]
 pub struct TerritoryOverlay;
+
+/// 都市名ラベル（拠点エンティティを画面座標へ投影して表示）
+#[derive(Component, Debug, Clone, Copy)]
+pub struct CityLabel {
+    pub target: Entity,
+}
+
+/// 都市ラベルを毎フレーム拠点の画面位置へ追従させる
+pub fn update_city_labels(
+    camera_q: Query<(&Camera, &GlobalTransform), With<Camera3d>>,
+    outposts: Query<(&FactionOutpost, &GlobalTransform)>,
+    mut labels: Query<(&CityLabel, &mut Node, &mut Visibility, &mut Text)>,
+) {
+    let Ok((camera, cam_tf)) = camera_q.single() else {
+        return;
+    };
+    for (label, mut node, mut vis, mut text) in &mut labels {
+        let Ok((outpost, tf)) = outposts.get(label.target) else {
+            *vis = Visibility::Hidden;
+            continue;
+        };
+        let pos = tf.translation() + Vec3::Y * (1.6 + outpost.level as f32 * 0.15);
+        match camera.world_to_viewport(cam_tf, pos) {
+            Ok(p) => {
+                node.left = Val::Px(p.x - 70.0);
+                node.top = Val::Px(p.y);
+                *vis = Visibility::Inherited;
+            }
+            Err(_) => *vis = Visibility::Hidden,
+        }
+        let s = format!(
+            "⬢ {} (国{}) Lv.{}",
+            outpost.name,
+            outpost.faction.code(),
+            outpost.level
+        );
+        if text.0 != s {
+            text.0 = s;
+        }
+    }
+}
 
 /// 領土変更・初期化時にメインマップ上に透過メッシュオーバーレイを生成・更新するシステム
 pub fn update_territory_overlays(
@@ -408,8 +470,12 @@ pub fn cleanup_territories(
     mut territory_map: ResMut<TerritoryMap>,
     outposts: Query<Entity, With<FactionOutpost>>,
     overlays: Query<Entity, With<TerritoryOverlay>>,
+    labels: Query<Entity, With<CityLabel>>,
 ) {
     territory_map.tile_owners.clear();
+    for entity in &labels {
+        commands.entity(entity).despawn();
+    }
     for entity in &outposts {
         commands.entity(entity).despawn();
     }
