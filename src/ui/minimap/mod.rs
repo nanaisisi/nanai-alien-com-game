@@ -7,8 +7,6 @@ use bevy::prelude::*;
 
 use crate::state::AppState;
 
-
-
 pub struct MinimapPlugin;
 
 impl Plugin for MinimapPlugin {

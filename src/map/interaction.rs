@@ -57,13 +57,16 @@ struct MapCursorInteractionParam<'w, 's> {
     selected_tile: ResMut<'w, SelectedTile>,
     drag_tracker: ResMut<'w, LeftDragTracker>,
     map_camera_query: Query<'w, 's, &'static mut MapCamera>,
-    ui_blockers: Query<'w, 's, (&'static GlobalTransform, &'static ComputedNode), With<crate::ui::UiBlockMapInteraction>>,
+    ui_blockers: Query<
+        'w,
+        's,
+        (&'static GlobalTransform, &'static ComputedNode),
+        With<crate::ui::UiBlockMapInteraction>,
+    >,
     minimap_state: Option<Res<'w, crate::ui::minimap::MinimapState>>,
 }
 
-fn handle_tile_hover_and_click(
-    params: MapCursorInteractionParam,
-) {
+fn handle_tile_hover_and_click(params: MapCursorInteractionParam) {
     let MapCursorInteractionParam {
         windows,
         cameras,

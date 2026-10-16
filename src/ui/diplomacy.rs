@@ -464,7 +464,10 @@ type DiplomacyButtonInteractionQuery<'world, 'state> = Query<
 type DiplomacyActionQuery<'world, 'state> = Query<
     'world,
     'state,
-    (Option<&'static bevy::ui::Pressed>, &'static DiplomacyButtonAction),
+    (
+        Option<&'static bevy::ui::Pressed>,
+        &'static DiplomacyButtonAction,
+    ),
     With<Button>,
 >;
 
@@ -502,14 +505,13 @@ struct DiplomacyActionContext<'w, 's> {
     faction_mgr: ResMut<'w, FactionManager>,
     existing: Query<'w, 's, Entity, With<DiplomacyModalRoot>>,
     asset_server: Res<'w, AssetServer>,
-    notice_query: Query<'w, 's, &'static mut Text, (With<DiplomacyNoticeText>, Without<TargetRelationText>)>,
-    rel_query: Query<'w, 's, &'static mut Text, (With<TargetRelationText>, Without<DiplomacyNoticeText>)>,
+    notice_query:
+        Query<'w, 's, &'static mut Text, (With<DiplomacyNoticeText>, Without<TargetRelationText>)>,
+    rel_query:
+        Query<'w, 's, &'static mut Text, (With<TargetRelationText>, Without<DiplomacyNoticeText>)>,
 }
 
-fn diplomacy_action_system(
-    query: DiplomacyActionQuery,
-    ctx: DiplomacyActionContext,
-) {
+fn diplomacy_action_system(query: DiplomacyActionQuery, ctx: DiplomacyActionContext) {
     let DiplomacyActionContext {
         mut commands,
         mut modal_state,

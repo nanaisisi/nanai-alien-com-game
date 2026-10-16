@@ -64,21 +64,33 @@ pub type SeedTextQuery<'world, 'state> = Query<
 pub type FactionCardsQuery<'world, 'state> = Query<
     'world,
     'state,
-    (&'static FactionCard, &'static mut BorderColor, &'static mut BackgroundColor),
+    (
+        &'static FactionCard,
+        &'static mut BorderColor,
+        &'static mut BackgroundColor,
+    ),
     (Without<EnvButton>, Without<SizeButton>),
 >;
 
 pub type EnvButtonsQuery<'world, 'state> = Query<
     'world,
     'state,
-    (&'static EnvButton, &'static mut BorderColor, &'static mut BackgroundColor),
+    (
+        &'static EnvButton,
+        &'static mut BorderColor,
+        &'static mut BackgroundColor,
+    ),
     (Without<FactionCard>, Without<SizeButton>),
 >;
 
 pub type SizeButtonsQuery<'world, 'state> = Query<
     'world,
     'state,
-    (&'static SizeButton, &'static mut BorderColor, &'static mut BackgroundColor),
+    (
+        &'static SizeButton,
+        &'static mut BorderColor,
+        &'static mut BackgroundColor,
+    ),
     (Without<FactionCard>, Without<EnvButton>),
 >;
 

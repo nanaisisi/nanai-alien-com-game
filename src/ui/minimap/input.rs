@@ -57,9 +57,7 @@ pub fn handle_minimap_interaction_system(
             && cursor_pos.y <= max.y);
 
     // ミニマップ上でクリック（またはタップ）された瞬間に追随状態を開始
-    if pressed.is_some()
-        || (mouse_button.just_pressed(MouseButton::Left) && is_inside)
-    {
+    if pressed.is_some() || (mouse_button.just_pressed(MouseButton::Left) && is_inside) {
         minimap_state.is_dragging = true;
     }
 

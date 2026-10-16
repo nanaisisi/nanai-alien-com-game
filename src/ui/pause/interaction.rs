@@ -301,18 +301,20 @@ pub fn pause_button_action_system(
         if focus.modal_open {
             for (hovered, _, action, _, modal_btn) in &interaction_query {
                 if let Some(modal_btn) = modal_btn
-                    && (hovered.is_some() || modal_btn.0 == focus.modal_focus) {
-                        triggered_action = Some(*action);
-                        break;
-                    }
+                    && (hovered.is_some() || modal_btn.0 == focus.modal_focus)
+                {
+                    triggered_action = Some(*action);
+                    break;
+                }
             }
         } else {
             for (hovered, _, action, menu_btn, _) in &interaction_query {
                 if let Some(menu_btn) = menu_btn
-                    && (hovered.is_some() || menu_btn.0 == focus.current_item) {
-                        triggered_action = Some(*action);
-                        break;
-                    }
+                    && (hovered.is_some() || menu_btn.0 == focus.current_item)
+                {
+                    triggered_action = Some(*action);
+                    break;
+                }
             }
         }
     }

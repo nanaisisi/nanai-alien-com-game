@@ -11,7 +11,10 @@ use crate::ui::theme::{BUTTON_HOVERED, BUTTON_NORMAL, BUTTON_PRESSED};
 type WarningButtonQuery<'w, 's> = Query<
     'w,
     's,
-    (Option<&'static bevy::ui::Pressed>, &'static DebugWarningAction),
+    (
+        Option<&'static bevy::ui::Pressed>,
+        &'static DebugWarningAction,
+    ),
     With<Button>,
 >;
 

@@ -92,8 +92,8 @@ pub fn cleanup_info_panel_ui(mut commands: Commands, query: Query<Entity, With<I
     }
 }
 
-use bevy::ecs::system::SystemParam;
 use crate::unit::{MoveModeState, SelectedUnit, Unit};
+use bevy::ecs::system::SystemParam;
 
 #[derive(SystemParam)]
 pub struct InfoPanelContext<'w, 's> {

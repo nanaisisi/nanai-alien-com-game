@@ -81,12 +81,8 @@ pub fn hud_button_interaction_system(mut query: ButtonInteractionQuery) {
     }
 }
 
-type ButtonActionQuery<'world, 'state> = Query<
-    'world,
-    'state,
-    (Option<&'static bevy::ui::Pressed>, &'static HudAction),
-    With<Button>,
->;
+type ButtonActionQuery<'world, 'state> =
+    Query<'world, 'state, (Option<&'static bevy::ui::Pressed>, &'static HudAction), With<Button>>;
 
 use bevy::ecs::system::SystemParam;
 
@@ -106,10 +102,7 @@ pub struct HudActionContext<'w, 's> {
     pub turn_messages: MessageWriter<'w, crate::turn::AdvanceTurnMessage>,
 }
 
-pub fn hud_button_action_system(
-    query: ButtonActionQuery,
-    ctx: HudActionContext,
-) {
+pub fn hud_button_action_system(query: ButtonActionQuery, ctx: HudActionContext) {
     let HudActionContext {
         resources,
         mut settings,

@@ -144,7 +144,6 @@ impl Unit {
 #[derive(Resource, Default, Debug)]
 pub struct SelectedUnit(pub Option<Entity>);
 
-
 /// Mキーによるユニット移動指示モードの状態（後方互換）
 #[derive(Resource, Default, Debug)]
 pub struct MoveModeState(pub bool);

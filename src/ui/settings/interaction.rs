@@ -100,106 +100,106 @@ pub fn settings_button_action_system(
 
     if let Some(action) = triggered_action {
         match action {
-                SettingsButtonAction::MasterVolumeDown => {
-                    ctx.settings.master_volume = ctx.settings.master_volume.saturating_sub(10);
+            SettingsButtonAction::MasterVolumeDown => {
+                ctx.settings.master_volume = ctx.settings.master_volume.saturating_sub(10);
+            }
+            SettingsButtonAction::MasterVolumeUp => {
+                ctx.settings.master_volume = (ctx.settings.master_volume + 10).min(100);
+            }
+            SettingsButtonAction::BgmVolumeDown => {
+                ctx.settings.bgm_volume = ctx.settings.bgm_volume.saturating_sub(10);
+            }
+            SettingsButtonAction::BgmVolumeUp => {
+                ctx.settings.bgm_volume = (ctx.settings.bgm_volume + 10).min(100);
+            }
+            SettingsButtonAction::SfxVolumeDown => {
+                ctx.settings.sfx_volume = ctx.settings.sfx_volume.saturating_sub(10);
+            }
+            SettingsButtonAction::SfxVolumeUp => {
+                ctx.settings.sfx_volume = (ctx.settings.sfx_volume + 10).min(100);
+            }
+            SettingsButtonAction::ResolutionPrev => {
+                if ctx.settings.resolution_index == 0 {
+                    ctx.settings.resolution_index = RESOLUTION_PRESETS.len() - 1;
+                } else {
+                    ctx.settings.resolution_index -= 1;
                 }
-                SettingsButtonAction::MasterVolumeUp => {
-                    ctx.settings.master_volume = (ctx.settings.master_volume + 10).min(100);
+            }
+            SettingsButtonAction::ResolutionNext => {
+                ctx.settings.resolution_index =
+                    (ctx.settings.resolution_index + 1) % RESOLUTION_PRESETS.len();
+            }
+            SettingsButtonAction::ToggleFullscreen => {
+                ctx.settings.fullscreen = !ctx.settings.fullscreen;
+            }
+            SettingsButtonAction::FpsLimitPrev => {
+                ctx.settings.fps_limit = ctx.settings.fps_limit.prev();
+            }
+            SettingsButtonAction::FpsLimitNext => {
+                ctx.settings.fps_limit = ctx.settings.fps_limit.next();
+            }
+            SettingsButtonAction::ToggleVsync => {
+                ctx.settings.vsync = !ctx.settings.vsync;
+            }
+            SettingsButtonAction::ToggleShadows => {
+                ctx.settings.shadows_enabled = !ctx.settings.shadows_enabled;
+            }
+            SettingsButtonAction::AntiAliasingPrev => {
+                ctx.settings.anti_aliasing = ctx.settings.anti_aliasing.prev();
+            }
+            SettingsButtonAction::AntiAliasingNext => {
+                ctx.settings.anti_aliasing = ctx.settings.anti_aliasing.next();
+            }
+            SettingsButtonAction::ResetDefaults => {
+                info!("Resetting settings to system environment default values...");
+                let defaults = GameSettings::default_for_environment(
+                    ctx.adapter_info.as_deref(),
+                    ctx.system_info.as_deref(),
+                );
+                ctx.settings.master_volume = defaults.master_volume;
+                ctx.settings.bgm_volume = defaults.bgm_volume;
+                ctx.settings.sfx_volume = defaults.sfx_volume;
+                ctx.settings.fullscreen = defaults.fullscreen;
+                ctx.settings.resolution_index = defaults.resolution_index;
+                ctx.settings.fps_limit = defaults.fps_limit;
+                ctx.settings.vsync = defaults.vsync;
+                ctx.settings.shadows_enabled = defaults.shadows_enabled;
+                ctx.settings.anti_aliasing = defaults.anti_aliasing;
+                if let Ok(mut window) = ctx.windows.single_mut() {
+                    window.mode = bevy::window::WindowMode::Windowed;
                 }
-                SettingsButtonAction::BgmVolumeDown => {
-                    ctx.settings.bgm_volume = ctx.settings.bgm_volume.saturating_sub(10);
+            }
+            SettingsButtonAction::ResumeGame => {
+                info!("Resuming game...");
+                ctx.next_state.set(AppState::InGame);
+            }
+            SettingsButtonAction::RequestReturnToTitle => {
+                info!("Requesting return to title (opening confirmation modal)...");
+                if ctx.modal_query.is_empty() {
+                    spawn_confirm_return_modal(&mut commands, &ctx.asset_server);
                 }
-                SettingsButtonAction::BgmVolumeUp => {
-                    ctx.settings.bgm_volume = (ctx.settings.bgm_volume + 10).min(100);
+            }
+            SettingsButtonAction::ConfirmReturnToTitle => {
+                info!("Agreed to return to title. Discarding unsaved session...");
+                for entity in &ctx.modal_query {
+                    commands.entity(entity).despawn();
                 }
-                SettingsButtonAction::SfxVolumeDown => {
-                    ctx.settings.sfx_volume = ctx.settings.sfx_volume.saturating_sub(10);
+                ctx.settings.return_state = AppState::Title;
+                ctx.next_state.set(AppState::Title);
+            }
+            SettingsButtonAction::CancelReturnToTitle => {
+                info!("Cancelled return to title.");
+                for entity in &ctx.modal_query {
+                    commands.entity(entity).despawn();
                 }
-                SettingsButtonAction::SfxVolumeUp => {
-                    ctx.settings.sfx_volume = (ctx.settings.sfx_volume + 10).min(100);
-                }
-                SettingsButtonAction::ResolutionPrev => {
-                    if ctx.settings.resolution_index == 0 {
-                        ctx.settings.resolution_index = RESOLUTION_PRESETS.len() - 1;
-                    } else {
-                        ctx.settings.resolution_index -= 1;
-                    }
-                }
-                SettingsButtonAction::ResolutionNext => {
-                    ctx.settings.resolution_index =
-                        (ctx.settings.resolution_index + 1) % RESOLUTION_PRESETS.len();
-                }
-                SettingsButtonAction::ToggleFullscreen => {
-                    ctx.settings.fullscreen = !ctx.settings.fullscreen;
-                }
-                SettingsButtonAction::FpsLimitPrev => {
-                    ctx.settings.fps_limit = ctx.settings.fps_limit.prev();
-                }
-                SettingsButtonAction::FpsLimitNext => {
-                    ctx.settings.fps_limit = ctx.settings.fps_limit.next();
-                }
-                SettingsButtonAction::ToggleVsync => {
-                    ctx.settings.vsync = !ctx.settings.vsync;
-                }
-                SettingsButtonAction::ToggleShadows => {
-                    ctx.settings.shadows_enabled = !ctx.settings.shadows_enabled;
-                }
-                SettingsButtonAction::AntiAliasingPrev => {
-                    ctx.settings.anti_aliasing = ctx.settings.anti_aliasing.prev();
-                }
-                SettingsButtonAction::AntiAliasingNext => {
-                    ctx.settings.anti_aliasing = ctx.settings.anti_aliasing.next();
-                }
-                SettingsButtonAction::ResetDefaults => {
-                    info!("Resetting settings to system environment default values...");
-                    let defaults = GameSettings::default_for_environment(
-                        ctx.adapter_info.as_deref(),
-                        ctx.system_info.as_deref(),
-                    );
-                    ctx.settings.master_volume = defaults.master_volume;
-                    ctx.settings.bgm_volume = defaults.bgm_volume;
-                    ctx.settings.sfx_volume = defaults.sfx_volume;
-                    ctx.settings.fullscreen = defaults.fullscreen;
-                    ctx.settings.resolution_index = defaults.resolution_index;
-                    ctx.settings.fps_limit = defaults.fps_limit;
-                    ctx.settings.vsync = defaults.vsync;
-                    ctx.settings.shadows_enabled = defaults.shadows_enabled;
-                    ctx.settings.anti_aliasing = defaults.anti_aliasing;
-                    if let Ok(mut window) = ctx.windows.single_mut() {
-                        window.mode = bevy::window::WindowMode::Windowed;
-                    }
-                }
-                SettingsButtonAction::ResumeGame => {
-                    info!("Resuming game...");
-                    ctx.next_state.set(AppState::InGame);
-                }
-                SettingsButtonAction::RequestReturnToTitle => {
-                    info!("Requesting return to title (opening confirmation modal)...");
-                    if ctx.modal_query.is_empty() {
-                        spawn_confirm_return_modal(&mut commands, &ctx.asset_server);
-                    }
-                }
-                SettingsButtonAction::ConfirmReturnToTitle => {
-                    info!("Agreed to return to title. Discarding unsaved session...");
-                    for entity in &ctx.modal_query {
-                        commands.entity(entity).despawn();
-                    }
-                    ctx.settings.return_state = AppState::Title;
-                    ctx.next_state.set(AppState::Title);
-                }
-                SettingsButtonAction::CancelReturnToTitle => {
-                    info!("Cancelled return to title.");
-                    for entity in &ctx.modal_query {
-                        commands.entity(entity).despawn();
-                    }
-                }
-                SettingsButtonAction::Back => {
-                    info!("Returning to {:?}...", ctx.settings.return_state);
-                    ctx.next_state.set(ctx.settings.return_state);
-                }
+            }
+            SettingsButtonAction::Back => {
+                info!("Returning to {:?}...", ctx.settings.return_state);
+                ctx.next_state.set(ctx.settings.return_state);
             }
         }
     }
+}
 
 pub fn update_settings_display_system(
     settings: Res<GameSettings>,
