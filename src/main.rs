@@ -35,7 +35,7 @@ fn main() {
                     ..default()
                 }),
         )
-        .init_state::<AppState>()
+        .insert_state(AppState::from_args())
         // Custom Plugins (Initialization and Logic Modules)
         .add_plugins((
             CameraPlugin,
