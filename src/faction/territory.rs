@@ -40,12 +40,20 @@ impl TerritoryMap {
     }
 }
 
+use bevy::ecs::system::SystemParam;
+
+/// 初期拠点・領土生成に必要なアセット関連リソース
+#[derive(SystemParam)]
+pub struct InitialTerritoryAssets<'w> {
+    pub asset_server: Res<'w, AssetServer>,
+    pub meshes: ResMut<'w, Assets<Mesh>>,
+    pub materials: ResMut<'w, Assets<StandardMaterial>>,
+}
+
 /// 各派閥の初期着陸位置と領土の初期化システム
 pub fn setup_initial_faction_territories(
     mut commands: Commands,
-    asset_server: Res<AssetServer>,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>,
+    mut assets: InitialTerritoryAssets,
     map_grid: Res<MapGrid>,
     map_config: Res<crate::map::settings::MapConfig>,
     mut territory_map: ResMut<TerritoryMap>,
@@ -149,8 +157,8 @@ pub fn setup_initial_faction_territories(
         crate::faction::city_mesh::spawn_city_model(
             &mut commands,
             outpost_entity,
-            &mut meshes,
-            &mut materials,
+            &mut assets.meshes,
+            &mut assets.materials,
             faction,
             1,
         );
@@ -162,7 +170,7 @@ pub fn setup_initial_faction_territories(
             },
             Text::new(outpost_name),
             TextFont {
-                font: asset_server.load(crate::ui::theme::FONT_BOLD).into(),
+                font: assets.asset_server.load(crate::ui::theme::FONT_BOLD).into(),
                 font_size: FontSize::Px(14.0),
                 ..default()
             },

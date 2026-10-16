@@ -438,7 +438,8 @@ pub fn setup_map_overlays(
             ));
 
             // タイル産出（Yield）3D Text表示 (食料, 生産力, エネルギー, 科学力)
-            let (food, prod, energy, science) = terrain.base_yields();
+            // 内部値はf32、表示は四捨五入した整数
+            let (food, prod, energy, science) = terrain.base_output().rounded();
             let mut yield_parts = Vec::new();
             if food > 0 {
                 yield_parts.push(format!("{}食", food));

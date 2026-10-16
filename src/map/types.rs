@@ -26,7 +26,7 @@ impl Default for MapDisplaySettings {
     fn default() -> Self {
         Self {
             show_grid: true,
-            show_yields: false,
+            show_yields: true,
         }
     }
 }

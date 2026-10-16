@@ -256,9 +256,8 @@ pub fn handle_unit_keyboard_shortcuts(
                     if let Ok((_, mut unit, _)) = units.get_mut(selected_entity)
                         && own_outpost_at(unit.coord)
                     {
-                        unit.deployment_status = DeploymentStatus::BunkerReserve {
-                            priority_order: 0,
-                        };
+                        unit.deployment_status =
+                            DeploymentStatus::BunkerReserve { priority_order: 0 };
                         unit.is_exhausted = true;
                         unit.current_movement = 0;
                         move_mode.0 = false;
@@ -1274,9 +1273,7 @@ pub fn process_unit_turn_updates(
 }
 
 /// ユニットの配備ステータスに応じた大戦略マップ上の表示/非表示切り替えシステム
-pub fn update_unit_visibility_system(
-    mut query: Query<(&Unit, &mut Visibility), Changed<Unit>>,
-) {
+pub fn update_unit_visibility_system(mut query: Query<(&Unit, &mut Visibility), Changed<Unit>>) {
     for (unit, mut visibility) in &mut query {
         let target = if unit.deployment_status.is_hidden_stack() {
             Visibility::Hidden

@@ -3,6 +3,7 @@ use bevy::prelude::*;
 use crate::state::AppState;
 
 pub mod city_mesh;
+pub mod stockpile;
 pub mod territory;
 pub mod types;
 
@@ -16,7 +17,8 @@ pub struct FactionPlugin;
 
 impl Plugin for FactionPlugin {
     fn build(&self, app: &mut App) {
-        app.init_resource::<PlayerFaction>()
+        app.add_plugins(stockpile::StockpilePlugin)
+            .init_resource::<PlayerFaction>()
             .init_resource::<FactionManager>()
             .init_resource::<FactionResources>()
             .init_resource::<TerritoryMap>()

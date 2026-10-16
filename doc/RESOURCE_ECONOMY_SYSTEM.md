@@ -51,7 +51,7 @@ flowchart TD
     %% 製品化フロー
     M_Part --> A_Ammo
     R_Eng --> A_Fuel
-    M_Bio --> A_Fuel
+    R_Bio --> A_Fuel
     M_Part --> A_Spares
     M_Core --> A_Spares
     M_Part --> W_Chassis

@@ -23,7 +23,9 @@ impl AppState {
                     "settings" | "setting" => return Self::Settings,
                     "title" => return Self::Title,
                     other => {
-                        eprintln!("[WARN] 不明なステート引数: '{other}'. デフォルト (Title) を使用します。");
+                        eprintln!(
+                            "[WARN] 不明なステート引数: '{other}'. デフォルト (Title) を使用します。"
+                        );
                     }
                 }
             }

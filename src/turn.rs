@@ -29,13 +29,9 @@ fn handle_turn_advance_messages(
     }
 }
 
-/// ターン進行の基本処理（ターン数インクリメントおよび各種毎ターン資源産出の加算）
+/// ターン進行の基本処理（ターン数インクリメント。資源加算はTileStockpileから派生同期）
 pub fn advance_turn(resources: &mut FactionResources) {
     resources.turn += 1;
-    resources.energy += resources.energy_per_turn;
-    resources.production += resources.production_per_turn;
-    resources.science += resources.science_per_turn;
-    resources.food += resources.food_per_turn;
     info!("Advancing to Turn {}", resources.turn);
 }
 
@@ -47,11 +43,9 @@ mod tests {
     fn test_advance_turn() {
         let mut resources = FactionResources::default();
         let initial_turn = resources.turn;
-        let initial_energy = resources.energy;
 
         advance_turn(&mut resources);
 
         assert_eq!(resources.turn, initial_turn + 1);
-        assert_eq!(resources.energy, initial_energy + resources.energy_per_turn);
     }
 }

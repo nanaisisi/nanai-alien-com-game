@@ -6,6 +6,7 @@ pub mod generation;
 pub mod hex;
 pub mod input;
 pub mod interaction;
+pub mod resource;
 pub mod settings;
 pub mod terrain;
 pub mod types;
