@@ -95,10 +95,10 @@
 
 ## 4. 今後のロードマップとアクションアイテム
 
-- [ ] **Phase 1: UIレスポンシブ化検証**
-  - [src/ui/pause/view.rs](../src/ui/pause/view.rs) のモーダルに `FixedNode` を導入し挙動確認。
-  - [src/ui/theme.rs](../src/ui/theme.rs) における余白定義の `Val::Em` 化。
-- [ ] **Phase 2: スケジューラの弱順序化**
-  - 主要システムチェーンにおける `.chain()` から `.chain_weak()` への段階的移行とプロファイリング。
+- [x] **Phase 1: UIレスポンシブ化・独立配置検証**
+  - [src/ui/pause/view.rs](../src/ui/pause/view.rs) および [src/ui/title/view.rs](../src/ui/title/view.rs) に `FixedNode` を導入（ビューポート固定・レイアウト完全分離）。
+  - ポーズメニューおよび確認モーダルのパディング・余白を `Val::Em` に移行。
+- [x] **Phase 2: スケジューラの弱順序化 (Weak Ordering)**
+  - UIシステム群（`PauseMenuPlugin`, `TitleUiPlugin`）の更新ループを `.chain_weak()` に移行し、非競合並列化を最適化。
 - [ ] **Phase 3: CI/テストへの Schedule Randomization 導入**
   - 暗黙のシステム実行順依存に起因する非決定論的バグの早期検知。

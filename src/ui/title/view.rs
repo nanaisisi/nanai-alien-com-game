@@ -15,6 +15,7 @@ pub fn setup_title_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands
         .spawn((
             TitleRootUi,
+            FixedNode,
             Node {
                 width: Val::Percent(100.0),
                 height: Val::Percent(100.0),

@@ -15,6 +15,7 @@ pub fn setup_pause_menu_ui(mut commands: Commands, asset_server: Res<AssetServer
     commands
         .spawn((
             PauseMenuRootUi,
+            FixedNode,
             Node {
                 width: Val::Percent(100.0),
                 height: Val::Percent(100.0),
@@ -177,6 +178,7 @@ pub fn spawn_pause_confirm_modal(
     commands
         .spawn((
             PauseConfirmModal,
+            FixedNode,
             Node {
                 position_type: PositionType::Absolute,
                 width: Val::Percent(100.0),

@@ -34,6 +34,7 @@ impl Plugin for TitleUiPlugin {
                     button_action_system,
                     update_title_focus_highlight_system,
                 )
+                    .chain_weak()
                     .run_if(in_state(AppState::Title)),
             )
             .add_systems(OnExit(AppState::Title), cleanup_title_ui);

@@ -35,6 +35,7 @@ impl Plugin for PauseMenuPlugin {
                     pause_button_action_system,
                     update_pause_focus_highlight_system,
                 )
+                    .chain_weak()
                     .run_if(in_state(AppState::PauseMenu)),
             )
             .add_systems(OnExit(AppState::PauseMenu), cleanup_pause_menu_ui);
