@@ -1,6 +1,7 @@
 use super::types::*;
 use crate::state::AppState;
 use bevy::prelude::*;
+use bevy::ui_widgets::Button;
 
 pub fn setup_settings_ui(
     mut commands: Commands,

@@ -1,6 +1,7 @@
 use bevy::asset::RenderAssetUsages;
 use bevy::prelude::*;
 use bevy::render::render_resource::{Extent3d, TextureDimension, TextureFormat};
+use bevy::ui_widgets::Button;
 
 use super::MinimapState;
 use crate::ui::theme::UiTheme;
