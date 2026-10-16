@@ -16,7 +16,7 @@ doc/
 ├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
 ├── BEVY_0_20_INTEGRATION_REVIEW.md         # Bevy 0.20 仕様照合・技術検討書
 ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
-└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計50件）
+└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計51件）
     ├── automation/                         # 自動化システム（2件）
     │   ├── concept_automation_systems.md
     │   └── concept_autonomous_control_and_atmospheric_consensus.md
@@ -65,11 +65,12 @@ doc/
     │   ├── concept_non_unit_sea_and_vehicle_transport.md
     │   ├── concept_homeworld_roadmaps_and_niche_industries.md
     │   └── concept_starter_modules_and_common_chassis_catalog.md
-    ├── ui_wiki/                            # UI・情報閲覧システム（4件）
+    ├── ui_wiki/                            # UI・情報閲覧システム（5件）
     │   ├── concept_in_game_wiki.md
     │   ├── concept_viewer_separation_wiki_and_live.md
     │   ├── concept_doctrine_steering_ui.md
-    │   └── concept_notification_system_and_presets.md
+    │   ├── concept_notification_system_and_presets.md
+    │   └── concept_directive_manual_control_and_intent_ui.md
     └── world_progression/                  # 世界観・生態系・進行フェーズ（7件）
         ├── concept_frontier_civilization_and_ecosystem_dynamics.md
         ├── concept_demographics_ectogenesis_and_speciation.md
@@ -350,3 +351,7 @@ doc/
   * 自動制御が裏方で帳尻を合わせた結果（新モジュール誕生、代替ロット出荷、踏破デバフ、弾薬混用率等）をシステマチックに伝達。
   * プレイヤーの好みに合わせた通知プリセット機構（大局統帥／バランス型／現場ウォッチャー）およびユーザーカスタムプリセット保存機能。
   * トースト通知・チッカーログ・重要警告インジケータによる非侵入型の多層提示UI。
+* **[concept_directive_manual_control_and_intent_ui.md](./discussion/ui_wiki/concept_directive_manual_control_and_intent_ui.md)**
+  * **指針ベース手動操作・意図伝達UI/UX仕様書**。
+  * 手続き（HOW）の強制入力を排し、大局的な意図（WHAT/GOAL）を直感的に伝える3大指針インターフェース（作戦ベクトル描画・要求仕様タグ指定・交戦姿勢トグル）。
+  * 矢印を引くだけで道路トラック牽引・海上SLC消費・下車警戒隊形を自動選択する現場バランサー連携。
