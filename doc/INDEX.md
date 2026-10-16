@@ -92,6 +92,7 @@ doc/
   * 母星の歴史・大戦停戦を経て入植した架空の6大国家概念（帝国A、大公国B、連邦C、共和国D、共同体E、連合F）
   * 各国の体制・文化圏背景、母星と入植惑星での外交関係（具体的な国名は未確定・継続検討事項）
   * アフィニティ（思想・適応路線）や経済/軍事ボーナスの基本方向性
+  * ゲーム実装用データ: [`../assets/data/factions.csv`](../assets/data/factions.csv), [`../assets/data/city_names.csv`](../assets/data/city_names.csv)（勢力マスター＆全192都市名リスト）
 * **[PENDING_ISSUES.md](./PENDING_ISSUES.md)**：未確定・検討課題まとめ（論点整理）
   * 歩行兵器の定義と不便さの具現化、国家概念の肉付け、戦闘団×モジュール共通化の接続など、掘り下げ不足な論点と今後の検討課題一覧。
 * **[MISSING_DOCUMENTS_ROADMAP.md](./MISSING_DOCUMENTS_ROADMAP.md)**：未作成・不足ドキュメント体系と開発ロードマップ
@@ -249,6 +250,7 @@ doc/
   * 帝国A、大公国B、連邦C、共和国D、共同体E、連合Fの深層社会設定、統治執政機関、初期ブートローダー産業と得意モジュール。
   * 国家元首・前線最高司令官・主力兵器廠の公文書呼称体系、および各国の兵器型番命名プロトコル（Designator Standard）。
   * 降着惑星における初期外交関係マトリクスと地政学的緊張要因（主権独立と母星不介入の確定）。
+  * ゲーム実装用データ: [`../assets/data/factions.csv`](../assets/data/factions.csv), [`../assets/data/city_names.csv`](../assets/data/city_names.csv)
 
 ### ⑤ 世界観・人口・進行フェーズ（`world_progression/`）
 
