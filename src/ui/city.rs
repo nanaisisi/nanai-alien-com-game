@@ -51,19 +51,35 @@ pub enum CityButtonAction {
 #[derive(Component)]
 pub struct CityNoticeText;
 
+use bevy::ecs::system::SystemParam;
+
+#[derive(SystemParam)]
+pub struct CityToggleContext<'w, 's> {
+    pub modal_state: ResMut<'w, CityModalState>,
+    pub commands: Commands<'w, 's>,
+    pub asset_server: Res<'w, AssetServer>,
+    pub selected_tile: Res<'w, SelectedTile>,
+    pub player_faction: Res<'w, PlayerFaction>,
+    pub outposts_query: Query<'w, 's, (Entity, &'static FactionOutpost)>,
+    pub faction_res: Res<'w, FactionResources>,
+    pub existing: Query<'w, 's, Entity, With<CityModalRoot>>,
+}
+
 /// [C]キー または [Escape]キー、およびHUDボタン等による都市モーダルの開閉
-#[allow(clippy::too_many_arguments)]
 pub fn toggle_city_modal_system(
     mut action_events: MessageReader<crate::map::input::InGameActionEvent>,
-    mut modal_state: ResMut<CityModalState>,
-    mut commands: Commands,
-    asset_server: Res<AssetServer>,
-    selected_tile: Res<SelectedTile>,
-    player_faction: Res<PlayerFaction>,
-    outposts_query: Query<(Entity, &FactionOutpost)>,
-    faction_res: Res<FactionResources>,
-    existing: Query<Entity, With<CityModalRoot>>,
+    ctx: CityToggleContext,
 ) {
+    let CityToggleContext {
+        mut modal_state,
+        mut commands,
+        asset_server,
+        selected_tile,
+        player_faction,
+        outposts_query,
+        faction_res,
+        existing,
+    } = ctx;
     let mut should_toggle = false;
 
     for event in action_events.read() {
@@ -133,20 +149,34 @@ pub fn close_city_modal(
     }
 }
 
+#[derive(SystemParam)]
+pub struct CityProductionContext<'w, 's> {
+    pub faction_res: ResMut<'w, FactionResources>,
+    pub outposts_query: Query<'w, 's, (Entity, &'static mut FactionOutpost)>,
+    pub map_grid: Res<'w, MapGrid>,
+    pub units_query: Query<'w, 's, &'static Unit>,
+    pub commands: Commands<'w, 's>,
+    pub meshes: ResMut<'w, Assets<Mesh>>,
+    pub materials: ResMut<'w, Assets<StandardMaterial>>,
+    pub notice_query: Query<'w, 's, &'static mut Text, With<CityNoticeText>>,
+}
+
 /// 都市管理画面表示中のキーボードショートカット ([1], [2], [3]: 部隊生産, [U]: 基地拡張)
-#[allow(clippy::too_many_arguments)]
 pub fn city_modal_keyboard_shortcuts(
     mut action_events: MessageReader<crate::map::input::InGameActionEvent>,
     modal_state: Res<CityModalState>,
-    mut faction_res: ResMut<FactionResources>,
-    mut outposts_query: Query<(Entity, &mut FactionOutpost)>,
-    map_grid: Res<MapGrid>,
-    units_query: Query<&Unit>,
-    mut commands: Commands,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>,
-    mut notice_query: Query<&mut Text, With<CityNoticeText>>,
+    prod_ctx: CityProductionContext,
 ) {
+    let CityProductionContext {
+        mut faction_res,
+        mut outposts_query,
+        map_grid,
+        units_query,
+        mut commands,
+        mut meshes,
+        mut materials,
+        mut notice_query,
+    } = prod_ctx;
     if !modal_state.is_open {
         return;
     }
@@ -693,20 +723,22 @@ pub fn city_modal_button_interaction_system(mut interaction_query: CityButtonInt
 }
 
 /// 部隊生産・都市アップグレード実行システム
-#[allow(clippy::too_many_arguments)]
 pub fn city_production_action_system(
-    mut commands: Commands,
     interaction_query: Query<(Option<&bevy::ui::Pressed>, &CityButtonAction)>,
     mut modal_state: ResMut<CityModalState>,
-    mut faction_res: ResMut<FactionResources>,
-    mut outposts_query: Query<(Entity, &mut FactionOutpost)>,
-    map_grid: Res<MapGrid>,
-    units_query: Query<&Unit>,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>,
-    mut notice_query: Query<&mut Text, With<CityNoticeText>>,
     modal_roots: Query<Entity, With<CityModalRoot>>,
+    prod_ctx: CityProductionContext,
 ) {
+    let CityProductionContext {
+        mut faction_res,
+        mut outposts_query,
+        map_grid,
+        units_query,
+        mut commands,
+        mut meshes,
+        mut materials,
+        mut notice_query,
+    } = prod_ctx;
     for (pressed, action) in &interaction_query {
         if pressed.is_none() {
             continue;

@@ -10,13 +10,8 @@ pub use interaction::{
     pause_button_action_system, pause_button_interaction_system, pause_keyboard_navigation_system,
     update_pause_focus_highlight_system,
 };
-#[allow(unused_imports)]
-pub use types::{
-    PAUSE_MENU_ITEMS, PauseButtonAction, PauseMenuFocus, PauseMenuItem, PauseModalFocusItem,
-    PauseModalType, reset_pause_focus,
-};
-#[allow(unused_imports)]
-pub use view::{cleanup_pause_menu_ui, setup_pause_menu_ui, spawn_pause_confirm_modal};
+pub use types::{PauseMenuFocus, reset_pause_focus};
+pub use view::{cleanup_pause_menu_ui, setup_pause_menu_ui};
 
 pub struct PauseMenuPlugin;
 

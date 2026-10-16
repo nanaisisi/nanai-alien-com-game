@@ -37,6 +37,63 @@ pub type DetailTitleTextQuery<'world, 'state> = Query<
 pub type DetailDescTextQuery<'world, 'state> =
     Query<'world, 'state, &'static mut Text, (With<DetailDescText>, Without<DetailTitleText>)>;
 
+pub type EnvDescTextQuery<'world, 'state> = Query<
+    'world,
+    'state,
+    &'static mut Text,
+    (
+        With<EnvDescText>,
+        Without<DetailTitleText>,
+        Without<DetailDescText>,
+        Without<SeedDisplayText>,
+    ),
+>;
+
+pub type SeedTextQuery<'world, 'state> = Query<
+    'world,
+    'state,
+    &'static mut Text,
+    (
+        With<SeedDisplayText>,
+        Without<DetailTitleText>,
+        Without<DetailDescText>,
+        Without<EnvDescText>,
+    ),
+>;
+
+pub type FactionCardsQuery<'world, 'state> = Query<
+    'world,
+    'state,
+    (&'static FactionCard, &'static mut BorderColor, &'static mut BackgroundColor),
+    (Without<EnvButton>, Without<SizeButton>),
+>;
+
+pub type EnvButtonsQuery<'world, 'state> = Query<
+    'world,
+    'state,
+    (&'static EnvButton, &'static mut BorderColor, &'static mut BackgroundColor),
+    (Without<FactionCard>, Without<SizeButton>),
+>;
+
+pub type SizeButtonsQuery<'world, 'state> = Query<
+    'world,
+    'state,
+    (&'static SizeButton, &'static mut BorderColor, &'static mut BackgroundColor),
+    (Without<FactionCard>, Without<EnvButton>),
+>;
+
+pub type DetailPanelBorderQuery<'world, 'state> = Query<
+    'world,
+    'state,
+    &'static mut BorderColor,
+    (
+        With<DetailPanelRoot>,
+        Without<FactionCard>,
+        Without<EnvButton>,
+        Without<SizeButton>,
+    ),
+>;
+
 pub fn faction_select_button_system(
     mut interaction_query: FactionSelectInteractionQuery,
     selected_menu: Res<SelectedFactionMenu>,
@@ -120,55 +177,39 @@ pub fn faction_select_button_system(
     }
 }
 
-#[allow(clippy::too_many_arguments, clippy::type_complexity)]
+use bevy::ecs::system::SystemParam;
+
+#[derive(SystemParam)]
+pub struct FactionSelectStateParams<'w> {
+    pub selected_menu: ResMut<'w, SelectedFactionMenu>,
+    pub player_faction: ResMut<'w, PlayerFaction>,
+    pub map_config: ResMut<'w, MapConfig>,
+    pub next_state: ResMut<'w, NextState<AppState>>,
+}
+
+#[derive(SystemParam)]
+pub struct FactionSelectUiQueries<'w, 's> {
+    pub title_query: DetailTitleTextQuery<'w, 's>,
+    pub desc_query: DetailDescTextQuery<'w, 's>,
+    pub env_desc_query: EnvDescTextQuery<'w, 's>,
+    pub seed_text_query: SeedTextQuery<'w, 's>,
+    pub cards_query: FactionCardsQuery<'w, 's>,
+    pub env_btn_query: EnvButtonsQuery<'w, 's>,
+    pub size_btn_query: SizeButtonsQuery<'w, 's>,
+    pub panel_query: DetailPanelBorderQuery<'w, 's>,
+}
+
 pub fn faction_select_action_system(
     query: FactionSelectActionQuery,
-    mut selected_menu: ResMut<SelectedFactionMenu>,
-    mut player_faction: ResMut<PlayerFaction>,
-    mut map_config: ResMut<MapConfig>,
-    mut next_state: ResMut<NextState<AppState>>,
-    mut title_query: DetailTitleTextQuery,
-    mut desc_query: DetailDescTextQuery,
-    mut env_desc_query: Query<
-        &mut Text,
-        (
-            With<EnvDescText>,
-            Without<DetailTitleText>,
-            Without<DetailDescText>,
-            Without<SeedDisplayText>,
-        ),
-    >,
-    mut seed_text_query: Query<
-        &mut Text,
-        (
-            With<SeedDisplayText>,
-            Without<DetailTitleText>,
-            Without<DetailDescText>,
-            Without<EnvDescText>,
-        ),
-    >,
-    mut cards_query: Query<
-        (&FactionCard, &mut BorderColor, &mut BackgroundColor),
-        (Without<EnvButton>, Without<SizeButton>),
-    >,
-    mut env_btn_query: Query<
-        (&EnvButton, &mut BorderColor, &mut BackgroundColor),
-        (Without<FactionCard>, Without<SizeButton>),
-    >,
-    mut size_btn_query: Query<
-        (&SizeButton, &mut BorderColor, &mut BackgroundColor),
-        (Without<FactionCard>, Without<EnvButton>),
-    >,
-    mut panel_query: Query<
-        &mut BorderColor,
-        (
-            With<DetailPanelRoot>,
-            Without<FactionCard>,
-            Without<EnvButton>,
-            Without<SizeButton>,
-        ),
-    >,
+    mut state: FactionSelectStateParams,
+    mut ui: FactionSelectUiQueries,
 ) {
+    let FactionSelectStateParams {
+        ref mut selected_menu,
+        ref mut player_faction,
+        ref mut map_config,
+        ref mut next_state,
+    } = state;
     for (pressed, action) in &query {
         if pressed.is_none() {
             continue;
@@ -178,22 +219,22 @@ pub fn faction_select_action_system(
             SelectAction::Choose(faction) => {
                 selected_menu.faction = *faction;
 
-                if let Ok((mut text, mut text_color)) = title_query.single_mut() {
+                if let Ok((mut text, mut text_color)) = ui.title_query.single_mut() {
                     **text = format!("{} ({})", faction.formal_title(), faction.name_ja());
                     *text_color = TextColor(faction.accent_color());
                 }
-                if let Ok(mut text) = desc_query.single_mut() {
+                if let Ok(mut text) = ui.desc_query.single_mut() {
                     **text = faction.description().to_string();
                 }
 
-                if let Ok(mut panel_border) = panel_query.single_mut() {
+                if let Ok(mut panel_border) = ui.panel_query.single_mut() {
                     *panel_border = BorderColor::all(faction.primary_color());
                 }
 
                 let surfaces = UiTheme::surfaces();
 
                 // カード枠のスタイル更新
-                for (card, mut border_color, mut bg_color) in &mut cards_query {
+                for (card, mut border_color, mut bg_color) in &mut ui.cards_query {
                     let is_active = card.0 == *faction;
                     if is_active {
                         *border_color = BorderColor::all(card.0.primary_color());
@@ -207,12 +248,12 @@ pub fn faction_select_action_system(
             SelectAction::ChooseEnvironment(env) => {
                 map_config.environment = *env;
 
-                if let Ok(mut text) = env_desc_query.single_mut() {
+                if let Ok(mut text) = ui.env_desc_query.single_mut() {
                     **text = env.description().to_string();
                 }
 
                 let surfaces = UiTheme::surfaces();
-                for (btn, mut border_color, mut bg_color) in &mut env_btn_query {
+                for (btn, mut border_color, mut bg_color) in &mut ui.env_btn_query {
                     let is_active = btn.0 == *env;
                     if is_active {
                         *border_color = BorderColor::all(btn.0.theme_color());
@@ -227,7 +268,7 @@ pub fn faction_select_action_system(
                 map_config.size = *sz;
 
                 let surfaces = UiTheme::surfaces();
-                for (btn, mut border_color, mut bg_color) in &mut size_btn_query {
+                for (btn, mut border_color, mut bg_color) in &mut ui.size_btn_query {
                     let is_active = btn.0 == *sz;
                     if is_active {
                         *border_color = BorderColor::all(surfaces.accent());
@@ -241,7 +282,7 @@ pub fn faction_select_action_system(
             SelectAction::RerollSeed => {
                 let display_seed = map_config.reroll_seed();
 
-                if let Ok(mut text) = seed_text_query.single_mut() {
+                if let Ok(mut text) = ui.seed_text_query.single_mut() {
                     **text = format!("🎲 SEED: {}", display_seed);
                 }
             }

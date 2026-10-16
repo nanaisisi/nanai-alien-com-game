@@ -16,11 +16,7 @@ pub use interaction::{
     settings_keyboard_navigation_system, update_settings_display_system,
     update_settings_focus_highlight_system,
 };
-#[allow(unused_imports)]
-pub use types::{
-    AntiAliasingMode, FpsLimitMode, GameSettings, ModalFocusItem, RESOLUTION_PRESETS,
-    SettingsFocusItem, SettingsNavFocus, reset_settings_focus,
-};
+pub use types::{GameSettings, SettingsNavFocus, reset_settings_focus};
 pub use view::{cleanup_settings_ui, setup_settings_ui};
 
 pub struct SettingsUiPlugin;

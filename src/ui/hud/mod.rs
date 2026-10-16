@@ -10,8 +10,7 @@ pub use interaction::{
     handle_keyboard_shortcuts, hud_button_action_system, hud_button_interaction_system,
     update_hud_display_system,
 };
-#[allow(unused_imports)]
-pub use types::{HudAction, HudLabel, HudRoot};
+
 pub use view::{cleanup_hud, setup_hud};
 
 pub struct InGameHudPlugin;

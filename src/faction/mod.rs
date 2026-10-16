@@ -6,9 +6,8 @@ pub mod city_mesh;
 pub mod territory;
 pub mod types;
 
-#[allow(unused_imports)]
 pub use territory::{
-    FactionOutpost, TerritoryMap, TerritoryOverlay, TileTerritory, cleanup_territories,
+    FactionOutpost, TerritoryMap, TileTerritory, cleanup_territories,
     setup_initial_faction_territories, update_territory_overlays,
 };
 pub use types::{DiplomaticRelation, FactionId, FactionManager, FactionResources, PlayerFaction};

@@ -2,11 +2,11 @@ use bevy::prelude::*;
 use bevy::window::PrimaryWindow;
 
 use super::hex::HexCoord;
-use super::{HEX_RADIUS, HexTile, MapGrid};
+use super::{HEX_RADIUS, MapGrid};
 use crate::camera::MapCamera;
 use crate::state::AppState;
 
-use super::types::{GridOverlayLine, MapDisplaySettings, YieldOverlayTag};
+use super::types::{GridOverlayLine, HexTile, MapDisplaySettings, YieldOverlayTag};
 
 pub struct MapInteractionPlugin;
 
@@ -45,19 +45,38 @@ struct LeftDragTracker {
     has_dragged: bool,
 }
 
-#[allow(clippy::too_many_arguments)]
+use bevy::ecs::system::SystemParam;
+
+#[derive(SystemParam)]
+struct MapCursorInteractionParam<'w, 's> {
+    windows: Query<'w, 's, &'static Window, With<PrimaryWindow>>,
+    cameras: Query<'w, 's, (&'static Camera, &'static GlobalTransform)>,
+    mouse_button: Res<'w, ButtonInput<MouseButton>>,
+    map_grid: Res<'w, MapGrid>,
+    hovered_tile: ResMut<'w, HoveredTile>,
+    selected_tile: ResMut<'w, SelectedTile>,
+    drag_tracker: ResMut<'w, LeftDragTracker>,
+    map_camera_query: Query<'w, 's, &'static mut MapCamera>,
+    ui_blockers: Query<'w, 's, (&'static GlobalTransform, &'static ComputedNode), With<crate::ui::UiBlockMapInteraction>>,
+    minimap_state: Option<Res<'w, crate::ui::minimap::MinimapState>>,
+}
+
 fn handle_tile_hover_and_click(
-    windows: Query<&Window, With<PrimaryWindow>>,
-    cameras: Query<(&Camera, &GlobalTransform)>,
-    mouse_button: Res<ButtonInput<MouseButton>>,
-    map_grid: Res<MapGrid>,
-    mut hovered_tile: ResMut<HoveredTile>,
-    mut selected_tile: ResMut<SelectedTile>,
-    mut drag_tracker: ResMut<LeftDragTracker>,
-    mut map_camera_query: Query<&mut MapCamera>,
-    ui_blockers: Query<(&GlobalTransform, &ComputedNode), With<crate::ui::UiBlockMapInteraction>>,
-    minimap_state: Option<Res<crate::ui::minimap::MinimapState>>,
+    params: MapCursorInteractionParam,
 ) {
+    let MapCursorInteractionParam {
+        windows,
+        cameras,
+        mouse_button,
+        map_grid,
+        mut hovered_tile,
+        mut selected_tile,
+        mut drag_tracker,
+        mut map_camera_query,
+        ui_blockers,
+        minimap_state,
+    } = params;
+
     let Ok(window) = windows.single() else {
         return;
     };
@@ -281,20 +300,30 @@ pub fn sync_yield_overlay_visibility(
     }
 }
 
+#[derive(SystemParam)]
+pub struct MapOverlayAssets<'w> {
+    pub meshes: ResMut<'w, Assets<Mesh>>,
+    pub materials: ResMut<'w, Assets<StandardMaterial>>,
+    pub asset_server: Res<'w, AssetServer>,
+}
+
 /// マップ生成時等にグリッド線・産出マーカーを生成
-#[allow(clippy::too_many_arguments)]
 pub fn setup_map_overlays(
     mut commands: Commands,
     map_grid: Res<MapGrid>,
     display_settings: Res<MapDisplaySettings>,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>,
+    assets: MapOverlayAssets,
     existing_grids: Query<Entity, With<GridOverlayLine>>,
-    asset_server: Res<AssetServer>,
 ) {
     if !existing_grids.is_empty() || map_grid.tiles.is_empty() {
         return;
     }
+
+    let MapOverlayAssets {
+        mut meshes,
+        mut materials,
+        asset_server,
+    } = assets;
 
     let hex_r = HEX_RADIUS;
     let map_w = map_grid.width.max(1);

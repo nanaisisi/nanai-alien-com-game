@@ -2,10 +2,9 @@ use bevy::prelude::*;
 use std::collections::HashMap;
 
 use super::hex::{self, HexCoord};
-#[allow(unused_imports)]
-use super::settings::{MapConfig, MapSize, PlanetEnvironment};
+use super::settings::{MapConfig, PlanetEnvironment};
 use super::terrain::TerrainType;
-use super::{HEX_RADIUS, HexTile, MapGrid, MapRoot};
+use super::types::{HEX_RADIUS, HexTile, MapGrid, MapRoot};
 
 /// 周期的な円筒座標におけるハッシュ/疑似乱数（マップ幅・高さ・シード可変）
 pub fn cylinder_noise_with_size(col: i32, row: i32, seed: u32, map_w: i32, map_h: i32) -> f32 {
@@ -294,6 +293,7 @@ pub fn cleanup_hex_map(
 mod tests {
     use super::*;
     use crate::map::hex::{MAP_HEIGHT, MAP_WIDTH};
+    use crate::map::settings::MapSize;
 
     #[test]
     fn test_no_mountains_in_ocean() {

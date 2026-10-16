@@ -88,22 +88,42 @@ type ButtonActionQuery<'world, 'state> = Query<
     With<Button>,
 >;
 
-#[allow(clippy::too_many_arguments)]
+use bevy::ecs::system::SystemParam;
+
+#[derive(SystemParam)]
+pub struct HudActionContext<'w, 's> {
+    pub resources: Res<'w, FactionResources>,
+    pub settings: ResMut<'w, crate::ui::settings::GameSettings>,
+    pub next_state: ResMut<'w, NextState<AppState>>,
+    pub commands: Commands<'w, 's>,
+    pub asset_server: Res<'w, AssetServer>,
+    pub player_faction: Res<'w, PlayerFaction>,
+    pub faction_mgr: Res<'w, FactionManager>,
+    pub modal_state: ResMut<'w, crate::ui::diplomacy::DiplomacyModalState>,
+    pub city_modal_state: ResMut<'w, crate::ui::city::CityModalState>,
+    pub outposts_query: Query<'w, 's, (Entity, &'static crate::faction::FactionOutpost)>,
+    pub selected_tile: Res<'w, crate::map::interaction::SelectedTile>,
+    pub turn_messages: MessageWriter<'w, crate::turn::AdvanceTurnMessage>,
+}
+
 pub fn hud_button_action_system(
     query: ButtonActionQuery,
-    resources: Res<FactionResources>,
-    mut settings: ResMut<crate::ui::settings::GameSettings>,
-    mut next_state: ResMut<NextState<AppState>>,
-    mut commands: Commands,
-    asset_server: Res<AssetServer>,
-    player_faction: Res<PlayerFaction>,
-    faction_mgr: Res<FactionManager>,
-    mut modal_state: ResMut<crate::ui::diplomacy::DiplomacyModalState>,
-    mut city_modal_state: ResMut<crate::ui::city::CityModalState>,
-    outposts_query: Query<(Entity, &crate::faction::FactionOutpost)>,
-    selected_tile: Res<crate::map::interaction::SelectedTile>,
-    mut turn_messages: MessageWriter<crate::turn::AdvanceTurnMessage>,
+    ctx: HudActionContext,
 ) {
+    let HudActionContext {
+        resources,
+        mut settings,
+        mut next_state,
+        mut commands,
+        asset_server,
+        player_faction,
+        faction_mgr,
+        mut modal_state,
+        mut city_modal_state,
+        outposts_query,
+        selected_tile,
+        mut turn_messages,
+    } = ctx;
     for (pressed, action) in &query {
         if pressed.is_some() {
             match action {

@@ -92,20 +92,35 @@ pub fn cleanup_info_panel_ui(mut commands: Commands, query: Query<Entity, With<I
     }
 }
 
+use bevy::ecs::system::SystemParam;
 use crate::unit::{MoveModeState, SelectedUnit, Unit};
 
+#[derive(SystemParam)]
+pub struct InfoPanelContext<'w, 's> {
+    pub selected: Res<'w, SelectedTile>,
+    pub selected_unit: Res<'w, SelectedUnit>,
+    pub move_mode: Res<'w, MoveModeState>,
+    pub units_query: Query<'w, 's, &'static Unit>,
+    pub map_grid: Res<'w, MapGrid>,
+    pub territory_map: Res<'w, TerritoryMap>,
+    pub outposts_query: Query<'w, 's, &'static FactionOutpost>,
+}
+
 /// 選択中タイルの情報を左下HUDに反映
-#[allow(clippy::too_many_arguments)]
 pub fn update_info_panel_system(
-    selected: Res<SelectedTile>,
-    selected_unit: Res<SelectedUnit>,
-    move_mode: Res<MoveModeState>,
-    units_query: Query<&Unit>,
-    map_grid: Res<MapGrid>,
-    territory_map: Res<TerritoryMap>,
-    outposts_query: Query<&FactionOutpost>,
+    ctx: InfoPanelContext,
     mut query: Query<&mut Text, With<InfoPanelText>>,
 ) {
+    let InfoPanelContext {
+        selected,
+        selected_unit,
+        move_mode,
+        units_query,
+        map_grid,
+        territory_map,
+        outposts_query,
+    } = ctx;
+
     if !selected.is_changed() && !selected_unit.is_changed() && !move_mode.is_changed() {
         return;
     }

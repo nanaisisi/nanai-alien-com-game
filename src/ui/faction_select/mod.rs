@@ -7,11 +7,7 @@ pub mod types;
 pub mod view;
 
 pub use interaction::{faction_select_action_system, faction_select_button_system};
-#[allow(unused_imports)]
-pub use types::{
-    DetailDescText, DetailPanelRoot, DetailTitleText, EnvButton, EnvDescText, FactionCard,
-    FactionSelectRoot, SeedDisplayText, SelectAction, SelectedFactionMenu, SizeButton,
-};
+pub use types::SelectedFactionMenu;
 pub use view::{cleanup_faction_select_ui, setup_faction_select_ui};
 
 pub struct FactionSelectPlugin;

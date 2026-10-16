@@ -492,18 +492,34 @@ fn diplomacy_button_system(mut query: DiplomacyButtonInteractionQuery) {
     }
 }
 
-#[allow(clippy::too_many_arguments)]
+use bevy::ecs::system::SystemParam;
+
+#[derive(SystemParam)]
+struct DiplomacyActionContext<'w, 's> {
+    commands: Commands<'w, 's>,
+    modal_state: ResMut<'w, DiplomacyModalState>,
+    player_faction: Res<'w, PlayerFaction>,
+    faction_mgr: ResMut<'w, FactionManager>,
+    existing: Query<'w, 's, Entity, With<DiplomacyModalRoot>>,
+    asset_server: Res<'w, AssetServer>,
+    notice_query: Query<'w, 's, &'static mut Text, (With<DiplomacyNoticeText>, Without<TargetRelationText>)>,
+    rel_query: Query<'w, 's, &'static mut Text, (With<TargetRelationText>, Without<DiplomacyNoticeText>)>,
+}
+
 fn diplomacy_action_system(
     query: DiplomacyActionQuery,
-    mut commands: Commands,
-    mut modal_state: ResMut<DiplomacyModalState>,
-    player_faction: Res<PlayerFaction>,
-    mut faction_mgr: ResMut<FactionManager>,
-    existing: Query<Entity, With<DiplomacyModalRoot>>,
-    asset_server: Res<AssetServer>,
-    mut notice_query: Query<&mut Text, (With<DiplomacyNoticeText>, Without<TargetRelationText>)>,
-    mut rel_query: Query<&mut Text, (With<TargetRelationText>, Without<DiplomacyNoticeText>)>,
+    ctx: DiplomacyActionContext,
 ) {
+    let DiplomacyActionContext {
+        mut commands,
+        mut modal_state,
+        player_faction,
+        mut faction_mgr,
+        existing,
+        asset_server,
+        mut notice_query,
+        mut rel_query,
+    } = ctx;
     for (pressed, action) in &query {
         if pressed.is_none() {
             continue;

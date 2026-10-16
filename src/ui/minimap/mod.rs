@@ -7,11 +7,7 @@ use bevy::prelude::*;
 
 use crate::state::AppState;
 
-#[allow(unused_imports)]
-pub use view::{
-    MINIMAP_HEIGHT, MINIMAP_WIDTH, MinimapCameraBoxPart, MinimapCoordText, MinimapImageNode,
-    MinimapRoot,
-};
+
 
 pub struct MinimapPlugin;
 

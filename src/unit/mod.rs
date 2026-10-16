@@ -7,15 +7,9 @@ pub mod mesh;
 pub mod spawn;
 pub mod types;
 
-#[allow(unused_imports)]
-pub use interaction::{ReachableTiles, UnitInteractionPlugin};
-#[allow(unused_imports)]
+pub use interaction::UnitInteractionPlugin;
 pub use spawn::{cleanup_units, spawn_initial_units};
-#[allow(unused_imports)]
-pub use types::{
-    ActiveCommandMode, AttackTargetMarker, CombatGroupType, MoveModeState, MoveTargetMarker,
-    SelectedUnit, Unit, UnitActionState, UnitCommandMode, UnitSelectionRing,
-};
+pub use types::{CombatGroupType, MoveModeState, SelectedUnit, Unit, UnitActionState};
 
 pub struct UnitPlugin;
 

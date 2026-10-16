@@ -134,7 +134,6 @@ impl Unit {
         }
     }
 
-    #[allow(dead_code)]
     pub fn reset_turn(&mut self) {
         self.current_movement = self.max_movement;
         self.is_exhausted = false;
@@ -145,19 +144,6 @@ impl Unit {
 #[derive(Resource, Default, Debug)]
 pub struct SelectedUnit(pub Option<Entity>);
 
-/// ユニット操作モード
-#[allow(dead_code)]
-#[derive(Resource, Default, Debug, Clone, Copy, PartialEq, Eq)]
-pub enum UnitCommandMode {
-    #[default]
-    None,
-    /// Mキー: 移動先指定モード
-    Move,
-    /// Aキー: 突撃・近接攻撃指定モード
-    Charge,
-    /// Rキー: 遠隔射撃指定モード
-    RangedAttack,
-}
 
 /// Mキーによるユニット移動指示モードの状態（後方互換）
 #[derive(Resource, Default, Debug)]
@@ -171,25 +157,9 @@ pub struct RightDragMoveState {
     pub current_target: Option<HexCoord>,
 }
 
-/// ユニット操作コマンドモード
-#[allow(dead_code)]
-#[derive(Resource, Default, Debug)]
-pub struct ActiveCommandMode(pub UnitCommandMode);
-
 /// ユニット移動可能タイルの表示用マーカー
 #[derive(Component)]
-pub struct MoveTargetMarker {
-    #[allow(dead_code)]
-    pub target_coord: HexCoord,
-}
-
-/// 攻撃可能ターゲットタイルの表示用マーカー
-#[allow(dead_code)]
-#[derive(Component)]
-pub struct AttackTargetMarker {
-    pub target_entity: Entity,
-    pub target_coord: HexCoord,
-}
+pub struct MoveTargetMarker;
 
 /// ユニット選択リング表示用マーカー
 #[derive(Component)]

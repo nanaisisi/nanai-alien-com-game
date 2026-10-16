@@ -41,25 +41,59 @@ pub struct ReachableTiles {
     pub tiles: HashMap<HexCoord, u32>, // HexCoord -> 消費移動力
 }
 
+use bevy::ecs::system::SystemParam;
+
+/// ユニット選択および移動入力・状態リソース
+#[derive(SystemParam)]
+pub struct UnitSelectionState<'w> {
+    pub selected_unit: ResMut<'w, SelectedUnit>,
+    pub selected_tile: ResMut<'w, SelectedTile>,
+    pub move_mode: ResMut<'w, MoveModeState>,
+    pub right_drag: ResMut<'w, RightDragMoveState>,
+}
+
+/// ユニット操作に関連するワールド環境・リソース
+#[derive(SystemParam)]
+pub struct UnitWorldContext<'w, 's> {
+    pub player_faction: Res<'w, PlayerFaction>,
+    pub map_grid: Res<'w, MapGrid>,
+    pub outposts_query: Query<'w, 's, (Entity, &'static crate::faction::FactionOutpost)>,
+    pub faction_resources: ResMut<'w, crate::faction::FactionResources>,
+}
+
+/// ユニット選択リングおよびマーカーの描画コンテキスト
+#[derive(SystemParam)]
+pub struct UnitVisualContext<'w, 's> {
+    pub selected_unit: Res<'w, SelectedUnit>,
+    pub reachable_tiles: Res<'w, ReachableTiles>,
+    pub move_mode: Res<'w, MoveModeState>,
+    pub right_drag: Res<'w, RightDragMoveState>,
+    pub map_grid: Res<'w, MapGrid>,
+    pub meshes: ResMut<'w, Assets<Mesh>>,
+    pub materials: ResMut<'w, Assets<StandardMaterial>>,
+    pub existing_rings: Query<'w, 's, Entity, With<UnitSelectionRing>>,
+    pub existing_markers: Query<'w, 's, Entity, With<MoveTargetMarker>>,
+}
+
 /// キーボードによるユニット操作（M: 移動モード／移動、Tab/Shift+Tab: ユニット巡回、Escape: 選択解除等）
-#[allow(clippy::too_many_arguments)]
 pub fn handle_unit_keyboard_shortcuts(
     mut commands: Commands,
     mut action_events: MessageReader<crate::map::input::InGameActionEvent>,
-    mut selected_unit: ResMut<SelectedUnit>,
-    mut selected_tile: ResMut<SelectedTile>,
-    _hovered_tile: Res<HoveredTile>,
-    mut move_mode: ResMut<MoveModeState>,
-    mut right_drag: ResMut<RightDragMoveState>,
-    _reachable_tiles: Res<ReachableTiles>,
-    player_faction: Res<PlayerFaction>,
-    map_grid: Res<MapGrid>,
+    sel: UnitSelectionState,
+    mut world: UnitWorldContext,
     mut units: Query<(Entity, &mut Unit, &mut Transform)>,
     mut map_camera: Query<&mut crate::camera::MapCamera>,
-    outposts_query: Query<(Entity, &crate::faction::FactionOutpost)>,
-    mut faction_resources: ResMut<crate::faction::FactionResources>,
 ) {
-    let player_fac = player_faction.0;
+    let player_fac = world.player_faction.0;
+    let map_grid = &world.map_grid;
+    let outposts_query = &world.outposts_query;
+    let faction_resources = &mut world.faction_resources;
+    let UnitSelectionState {
+        mut selected_unit,
+        mut selected_tile,
+        mut move_mode,
+        mut right_drag,
+    } = sel;
 
     for event in action_events.read() {
         match event.0 {
@@ -184,14 +218,16 @@ pub fn handle_unit_keyboard_shortcuts(
                 if let Some(selected_entity) = selected_unit.0 {
                     execute_unit_attack_action(
                         selected_entity,
-                        false,
-                        &mut commands,
                         &mut units,
-                        &map_grid,
-                        player_fac,
-                        &mut selected_unit,
-                        &mut selected_tile,
-                        &mut move_mode,
+                        UnitAttackContext {
+                            is_ranged: false,
+                            commands: &mut commands,
+                            map_grid,
+                            player_fac,
+                            selected_unit: &mut selected_unit,
+                            selected_tile: &mut selected_tile,
+                            move_mode: &mut move_mode,
+                        },
                     );
                 }
             }
@@ -201,14 +237,16 @@ pub fn handle_unit_keyboard_shortcuts(
                 if let Some(selected_entity) = selected_unit.0 {
                     execute_unit_attack_action(
                         selected_entity,
-                        true,
-                        &mut commands,
                         &mut units,
-                        &map_grid,
-                        player_fac,
-                        &mut selected_unit,
-                        &mut selected_tile,
-                        &mut move_mode,
+                        UnitAttackContext {
+                            is_ranged: true,
+                            commands: &mut commands,
+                            map_grid,
+                            player_fac,
+                            selected_unit: &mut selected_unit,
+                            selected_tile: &mut selected_tile,
+                            move_mode: &mut move_mode,
+                        },
                     );
                 }
             }
@@ -219,9 +257,9 @@ pub fn handle_unit_keyboard_shortcuts(
                     execute_unit_transfer_action(
                         selected_entity,
                         &mut units,
-                        &outposts_query,
+                        outposts_query,
                         player_fac,
-                        &map_grid,
+                        map_grid,
                     );
                 }
             }
@@ -419,19 +457,31 @@ fn select_next_ready_unit(
     }
 }
 
+struct UnitAttackContext<'a, 'w, 's> {
+    pub is_ranged: bool,
+    pub commands: &'a mut Commands<'w, 's>,
+    pub map_grid: &'a MapGrid,
+    pub player_fac: crate::faction::types::FactionId,
+    pub selected_unit: &'a mut SelectedUnit,
+    pub selected_tile: &'a mut SelectedTile,
+    pub move_mode: &'a mut MoveModeState,
+}
+
 /// ユニットの戦闘・突撃・遠隔攻撃を実行
-#[allow(clippy::too_many_arguments)]
 fn execute_unit_attack_action(
     attacker_entity: Entity,
-    is_ranged: bool,
-    commands: &mut Commands,
     units: &mut Query<(Entity, &mut Unit, &mut Transform)>,
-    map_grid: &MapGrid,
-    player_fac: crate::faction::types::FactionId,
-    selected_unit: &mut ResMut<SelectedUnit>,
-    selected_tile: &mut ResMut<SelectedTile>,
-    move_mode: &mut ResMut<MoveModeState>,
+    ctx: UnitAttackContext,
 ) {
+    let UnitAttackContext {
+        is_ranged,
+        commands,
+        map_grid,
+        player_fac,
+        selected_unit,
+        selected_tile,
+        move_mode,
+    } = ctx;
     let map_w = map_grid.width.max(1);
 
     // 攻撃側の座標・基本攻撃力を取得
@@ -639,20 +689,22 @@ fn execute_unit_transfer_action(
 }
 
 /// ユニットの選択および移動（右クリックドラッグまたはMキー移動モード）を処理
-#[allow(clippy::too_many_arguments)]
 pub fn handle_unit_selection_and_move(
     mouse_button: Res<ButtonInput<MouseButton>>,
     hovered_tile: Res<HoveredTile>,
-    mut selected_tile: ResMut<SelectedTile>,
-    mut selected_unit: ResMut<SelectedUnit>,
-    mut move_mode: ResMut<MoveModeState>,
-    mut right_drag: ResMut<RightDragMoveState>,
+    sel: UnitSelectionState,
     reachable_tiles: Res<ReachableTiles>,
     player_faction: Res<PlayerFaction>,
     map_grid: Res<MapGrid>,
     mut units: Query<(Entity, &mut Unit, &mut Transform)>,
 ) {
     let player_fac = player_faction.0;
+    let UnitSelectionState {
+        mut selected_unit,
+        mut selected_tile,
+        mut move_mode,
+        mut right_drag,
+    } = sel;
 
     // --- 1. 右クリック長押しドラッグ処理 (Civ方式 2a) ---
     if mouse_button.just_pressed(MouseButton::Right) {
@@ -842,20 +894,22 @@ pub fn update_reachable_tiles(
 }
 
 /// 選択リングおよび移動可能範囲マーカーの3D描画更新
-#[allow(clippy::too_many_arguments)]
 pub fn update_selection_visuals(
     mut commands: Commands,
-    selected_unit: Res<SelectedUnit>,
-    reachable_tiles: Res<ReachableTiles>,
-    move_mode: Res<MoveModeState>,
-    right_drag: Res<RightDragMoveState>,
     units: Query<(&Unit, &Transform)>,
-    map_grid: Res<MapGrid>,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>,
-    existing_rings: Query<Entity, With<UnitSelectionRing>>,
-    existing_markers: Query<Entity, With<MoveTargetMarker>>,
+    mut visuals: UnitVisualContext,
 ) {
+    let UnitVisualContext {
+        ref selected_unit,
+        ref reachable_tiles,
+        ref move_mode,
+        ref right_drag,
+        ref map_grid,
+        ref mut meshes,
+        ref mut materials,
+        ref existing_rings,
+        ref existing_markers,
+    } = visuals;
     if !selected_unit.is_changed()
         && !reachable_tiles.is_changed()
         && !move_mode.is_changed()
@@ -865,10 +919,10 @@ pub fn update_selection_visuals(
     }
 
     // 既存のリングとマーカーを全削除
-    for entity in &existing_rings {
+    for entity in existing_rings {
         commands.entity(entity).despawn();
     }
-    for entity in &existing_markers {
+    for entity in existing_markers {
         commands.entity(entity).despawn();
     }
 
@@ -957,18 +1011,14 @@ pub fn update_selection_visuals(
 
         if is_drag_target {
             commands.spawn((
-                MoveTargetMarker {
-                    target_coord: coord,
-                },
+                MoveTargetMarker,
                 Mesh3d(drag_target_mesh.clone()),
                 MeshMaterial3d(drag_target_mat.clone()),
                 Transform::from_xyz(pos.x, height + 0.05, pos.z),
             ));
         } else {
             commands.spawn((
-                MoveTargetMarker {
-                    target_coord: coord,
-                },
+                MoveTargetMarker,
                 Mesh3d(marker_mesh.clone()),
                 MeshMaterial3d(marker_mat.clone()),
                 Transform::from_xyz(pos.x, height + 0.04, pos.z),
@@ -1012,8 +1062,7 @@ pub fn process_unit_turn_updates(
         let coord = unit.coord;
 
         // 1. 移動力リセット
-        unit.current_movement = unit.max_movement;
-        unit.is_exhausted = false;
+        unit.reset_turn();
 
         // 2. 状態ごとのターン更新処理
         match unit.action_state {

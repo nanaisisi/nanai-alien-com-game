@@ -6,15 +6,11 @@ pub mod interaction;
 pub mod types;
 pub mod view;
 
-#[allow(unused_imports)]
 pub use interaction::{
-    button_action_system, button_interaction_system, execute_title_action,
-    title_keyboard_navigation_system, update_title_focus_highlight_system,
+    button_action_system, button_interaction_system, title_keyboard_navigation_system,
+    update_title_focus_highlight_system,
 };
-#[allow(unused_imports)]
-pub use types::{
-    MENU_ACTIONS, MenuButtonAction, TitleMenuButton, TitleMenuFocus, TitleRootUi, reset_title_focus,
-};
+pub use types::{TitleMenuFocus, reset_title_focus};
 pub use view::{cleanup_title_ui, setup_title_ui};
 
 pub struct TitleUiPlugin;
