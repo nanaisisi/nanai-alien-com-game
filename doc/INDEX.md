@@ -179,6 +179,12 @@ doc/
   * 複合装甲・ミリ波FCSから粗鋼多層溶接・光学測距へのダウンサイジング、新旧混在部隊における整備・補給ペナルティのゲーム力学。
   * ゲーム開始時の非資源消費型初期ユニット（探査バギー、治安警備、監視杭、共生体歩兵等）と虎の子機甲（Gen 0）の封印・戦略予備運用。
   * 装備の有限寿命（物理的減耗・不可逆劣化）vs 人間の訓練可能性（適応・学習）の非対称性。
+* **[concept_hidden_stacks_and_reserve_arsenal.md](./discussion/military_tactics/concept_hidden_stacks_and_reserve_arsenal.md)**
+  * **ユニット非表示スタック・非配備兵器および艦艇格納仕様書**。
+  * 「1タイル1アクティブ駐留部隊」の原則を維持しつつ、地下要塞、輸送母艦、軍港、国家兵器庫（Arsenal）に部隊・兵装を多層格納する非表示スタック構造。
+  * 艦艇・大型兵器のモスボール（保管役）メカニクス（維持費20%への圧縮、出渠・再活性化ラグ、港湾空襲リスク）。
+  * 揚陸母艦・輸送列車への搭載スタックとサブタイル戦術戦闘（343マス）への実体化展開フロー、母艦被雷時の連鎖喪失リスク。
+  * Bevy ECS（`DeploymentStatus`, `HangarBay`, `NationalArsenalPool`）データ構造とUIスタックピクトグラム表示。
 * **[concept_homeworld_roadmaps_and_niche_industries.md](./discussion/military_tactics/concept_homeworld_roadmaps_and_niche_industries.md)**
   * **母星企業ロードマップ・現地重工と特化企業エコシステム仕様書**。
   * 母星企業が出発前に策定していた「段階的産業再建ロードマップ用モジュール規格」と、現地でそれを具現化・量産・改良するパワフルな「現地国策重工（背骨）」。
