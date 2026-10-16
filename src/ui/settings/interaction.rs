@@ -22,7 +22,7 @@ type SettingsButtonActionQuery<'world, 'state> = Query<
     'world,
     'state,
     (&'static Interaction, &'static SettingsButtonAction),
-    (Changed<Interaction>, With<Button>),
+    With<Button>,
 >;
 
 pub fn settings_button_interaction_system(mut query: SettingsButtonInteractionQuery) {
@@ -69,6 +69,7 @@ pub struct SettingsButtonActionContext<'w, 's> {
     pub modal_query: Query<'w, 's, Entity, With<ReturnToTitleConfirmModal>>,
     pub adapter_info: Option<Res<'w, bevy::render::renderer::RenderAdapterInfo>>,
     pub system_info: Option<Res<'w, bevy::diagnostic::SystemInfo>>,
+    pub mouse_button: Res<'w, ButtonInput<MouseButton>>,
 }
 
 pub fn settings_button_action_system(
@@ -76,9 +77,28 @@ pub fn settings_button_action_system(
     interaction_query: SettingsButtonActionQuery,
     mut ctx: SettingsButtonActionContext,
 ) {
+    let mut triggered_action = None;
+
+    // 1. Interaction::Pressed による押下検知
     for (interaction, action) in &interaction_query {
         if *interaction == Interaction::Pressed {
-            match action {
+            triggered_action = Some(*action);
+            break;
+        }
+    }
+
+    // 2. マウスクリック時にホバー中のボタンがあれば実行
+    if triggered_action.is_none() && ctx.mouse_button.just_pressed(MouseButton::Left) {
+        for (interaction, action) in &interaction_query {
+            if *interaction == Interaction::Hovered {
+                triggered_action = Some(*action);
+                break;
+            }
+        }
+    }
+
+    if let Some(action) = triggered_action {
+        match action {
                 SettingsButtonAction::MasterVolumeDown => {
                     ctx.settings.master_volume = ctx.settings.master_volume.saturating_sub(10);
                 }
@@ -179,7 +199,6 @@ pub fn settings_button_action_system(
             }
         }
     }
-}
 
 pub fn update_settings_display_system(
     settings: Res<GameSettings>,

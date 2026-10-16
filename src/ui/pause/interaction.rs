@@ -164,7 +164,26 @@ pub type PauseButtonInteractionQuery<'world, 'state> = Query<
     (Changed<Interaction>, With<Button>),
 >;
 
-pub fn pause_button_interaction_system(mut query: PauseButtonInteractionQuery) {
+pub fn pause_button_interaction_system(
+    mut query: PauseButtonInteractionQuery,
+    mut focus: ResMut<PauseMenuFocus>,
+    modal_button_query: Query<(&Interaction, &PauseModalButton), With<Button>>,
+    menu_button_query: Query<(&Interaction, &PauseMenuButton), With<Button>>,
+) {
+    if focus.modal_open {
+        for (interaction, modal_btn) in &modal_button_query {
+            if *interaction == Interaction::Hovered || *interaction == Interaction::Pressed {
+                focus.modal_focus = modal_btn.0;
+            }
+        }
+    } else {
+        for (interaction, menu_btn) in &menu_button_query {
+            if *interaction == Interaction::Hovered || *interaction == Interaction::Pressed {
+                focus.current_item = menu_btn.0;
+            }
+        }
+    }
+
     for (interaction, mut bg_color, mut border_color, action) in &mut query {
         let is_danger = matches!(
             action,
@@ -211,8 +230,13 @@ pub fn pause_button_interaction_system(mut query: PauseButtonInteractionQuery) {
 pub type PauseButtonActionQuery<'world, 'state> = Query<
     'world,
     'state,
-    (&'static Interaction, &'static PauseButtonAction),
-    (Changed<Interaction>, With<Button>),
+    (
+        &'static Interaction,
+        &'static PauseButtonAction,
+        Option<&'static PauseMenuButton>,
+        Option<&'static PauseModalButton>,
+    ),
+    With<Button>,
 >;
 
 #[derive(SystemParam)]
@@ -224,6 +248,7 @@ pub struct PauseActionContext<'w, 's> {
     exit_events: MessageWriter<'w, AppExit>,
     asset_server: Res<'w, AssetServer>,
     modal_query: Query<'w, 's, Entity, With<PauseConfirmModal>>,
+    mouse_button: Res<'w, ButtonInput<MouseButton>>,
 }
 
 pub fn pause_button_action_system(
@@ -238,69 +263,100 @@ pub fn pause_button_action_system(
         ref mut exit_events,
         ref asset_server,
         ref modal_query,
+        ref mouse_button,
     } = ctx;
-    for (interaction, action) in &interaction_query {
+
+    let mut triggered_action = None;
+
+    // 1. Interaction::Pressed による押下検知
+    for (interaction, action, _, _) in &interaction_query {
         if *interaction == Interaction::Pressed {
-            match action {
-                PauseButtonAction::Resume => {
-                    info!("Resuming game from Pause Menu...");
-                    next_state.set(AppState::InGame);
+            triggered_action = Some(*action);
+            break;
+        }
+    }
+
+    // 2. マウスクリック時にホバーまたはフォーカス中のボタンがあれば確実に実行
+    if triggered_action.is_none() && mouse_button.just_pressed(MouseButton::Left) {
+        if focus.modal_open {
+            for (interaction, action, _, modal_btn) in &interaction_query {
+                if let Some(modal_btn) = modal_btn
+                    && (*interaction == Interaction::Hovered || modal_btn.0 == focus.modal_focus) {
+                        triggered_action = Some(*action);
+                        break;
+                    }
+            }
+        } else {
+            for (interaction, action, menu_btn, _) in &interaction_query {
+                if let Some(menu_btn) = menu_btn
+                    && (*interaction == Interaction::Hovered || menu_btn.0 == focus.current_item) {
+                        triggered_action = Some(*action);
+                        break;
+                    }
+            }
+        }
+    }
+
+    if let Some(action) = triggered_action {
+        match action {
+            PauseButtonAction::Resume => {
+                info!("Resuming game from Pause Menu...");
+                next_state.set(AppState::InGame);
+            }
+            PauseButtonAction::Settings => {
+                info!("Opening Settings from Pause Menu...");
+                settings.return_state = AppState::PauseMenu;
+                next_state.set(AppState::Settings);
+            }
+            PauseButtonAction::RequestReturnToTitle => {
+                info!("Requesting return to title modal...");
+                if modal_query.is_empty() {
+                    focus.modal_open = true;
+                    focus.modal_type = PauseModalType::ReturnToTitle;
+                    focus.modal_focus = PauseModalFocusItem::Cancel;
+                    spawn_pause_confirm_modal(
+                        commands,
+                        asset_server,
+                        PauseModalType::ReturnToTitle,
+                    );
                 }
-                PauseButtonAction::Settings => {
-                    info!("Opening Settings from Pause Menu...");
-                    settings.return_state = AppState::PauseMenu;
-                    next_state.set(AppState::Settings);
+            }
+            PauseButtonAction::RequestQuitToDesktop => {
+                info!("Requesting quit to desktop modal...");
+                if modal_query.is_empty() {
+                    focus.modal_open = true;
+                    focus.modal_type = PauseModalType::QuitToDesktop;
+                    focus.modal_focus = PauseModalFocusItem::Cancel;
+                    spawn_pause_confirm_modal(
+                        commands,
+                        asset_server,
+                        PauseModalType::QuitToDesktop,
+                    );
                 }
-                PauseButtonAction::RequestReturnToTitle => {
-                    info!("Requesting return to title modal...");
-                    if modal_query.is_empty() {
-                        focus.modal_open = true;
-                        focus.modal_type = PauseModalType::ReturnToTitle;
-                        focus.modal_focus = PauseModalFocusItem::Cancel;
-                        spawn_pause_confirm_modal(
-                            commands,
-                            asset_server,
-                            PauseModalType::ReturnToTitle,
-                        );
+            }
+            PauseButtonAction::ConfirmModal => {
+                for entity in modal_query {
+                    commands.entity(entity).despawn();
+                }
+                focus.modal_open = false;
+                match focus.modal_type {
+                    PauseModalType::ReturnToTitle => {
+                        info!("Agreed to return to title.");
+                        settings.return_state = AppState::Title;
+                        next_state.set(AppState::Title);
+                    }
+                    PauseModalType::QuitToDesktop => {
+                        info!("Agreed to quit to desktop.");
+                        exit_events.write(AppExit::Success);
                     }
                 }
-                PauseButtonAction::RequestQuitToDesktop => {
-                    info!("Requesting quit to desktop modal...");
-                    if modal_query.is_empty() {
-                        focus.modal_open = true;
-                        focus.modal_type = PauseModalType::QuitToDesktop;
-                        focus.modal_focus = PauseModalFocusItem::Cancel;
-                        spawn_pause_confirm_modal(
-                            commands,
-                            asset_server,
-                            PauseModalType::QuitToDesktop,
-                        );
-                    }
+            }
+            PauseButtonAction::CancelModal => {
+                info!("Cancelled pause modal.");
+                for entity in modal_query {
+                    commands.entity(entity).despawn();
                 }
-                PauseButtonAction::ConfirmModal => {
-                    for entity in modal_query {
-                        commands.entity(entity).despawn();
-                    }
-                    focus.modal_open = false;
-                    match focus.modal_type {
-                        PauseModalType::ReturnToTitle => {
-                            info!("Agreed to return to title.");
-                            settings.return_state = AppState::Title;
-                            next_state.set(AppState::Title);
-                        }
-                        PauseModalType::QuitToDesktop => {
-                            info!("Agreed to quit to desktop.");
-                            exit_events.write(AppExit::Success);
-                        }
-                    }
-                }
-                PauseButtonAction::CancelModal => {
-                    info!("Cancelled pause modal.");
-                    for entity in modal_query {
-                        commands.entity(entity).despawn();
-                    }
-                    focus.modal_open = false;
-                }
+                focus.modal_open = false;
             }
         }
     }

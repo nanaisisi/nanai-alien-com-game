@@ -131,6 +131,8 @@ pub fn execute_title_action(
 
 pub fn button_action_system(
     interaction_query: TitleButtonActionQuery,
+    mouse_button: Res<ButtonInput<MouseButton>>,
+    focus: Res<TitleMenuFocus>,
     mut settings: ResMut<crate::ui::settings::GameSettings>,
     mut next_state: ResMut<NextState<AppState>>,
     mut exit_events: bevy::ecs::message::MessageWriter<AppExit>,
@@ -142,9 +144,28 @@ pub fn button_action_system(
         return;
     }
 
+    let mut triggered_action = None;
+
+    // 1. Interaction::Pressed による押下検知
     for (interaction, action) in &interaction_query {
         if *interaction == Interaction::Pressed {
-            execute_title_action(*action, &mut settings, &mut next_state, &mut exit_events);
+            triggered_action = Some(*action);
+            break;
         }
+    }
+
+    // 2. マウスクリック時にフォーカス中のボタンがあれば確実に実行
+    if triggered_action.is_none() && mouse_button.just_pressed(MouseButton::Left)
+        && let Some(selected_idx) = focus.selected_index {
+            for (interaction, action) in &interaction_query {
+                if *interaction == Interaction::Hovered && selected_idx < MENU_ACTIONS.len() && MENU_ACTIONS[selected_idx] == *action {
+                    triggered_action = Some(*action);
+                    break;
+                }
+            }
+        }
+
+    if let Some(action) = triggered_action {
+        execute_title_action(action, &mut settings, &mut next_state, &mut exit_events);
     }
 }

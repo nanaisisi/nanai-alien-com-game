@@ -83,6 +83,7 @@ pub fn setup_title_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
                             ..default()
                         },
                         BackgroundColor(Color::NONE),
+                        GlobalZIndex(10),
                     ));
                 });
 
@@ -119,6 +120,7 @@ pub fn setup_title_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
                         } else {
                             standard_btn.normal()
                         }),
+                        GlobalZIndex(20),
                     ))
                     .with_children(|btn| {
                         btn.spawn((
