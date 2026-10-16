@@ -38,6 +38,8 @@ pub enum InGameAction {
     UnitTransfer,
     UnitWait,
     UnitDisband,
+    /// 拠点内の非表示スタックへ格納 / 選択タイルの格納部隊を展開
+    UnitStash,
 
     // --- 都市モーダル内ショートカット ---
     CityProduceScout,
@@ -165,6 +167,10 @@ pub fn evaluate_ingame_actions(
         if keys.just_pressed(KeyCode::KeyF) {
             actions.push(InGameAction::ToggleDiplomacyModal);
         }
+    }
+
+    if keys.just_pressed(KeyCode::KeyB) {
+        actions.push(InGameAction::UnitStash);
     }
 
     // 3-D. 共通のマップ表示・ナビゲーション

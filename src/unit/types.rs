@@ -159,6 +159,7 @@ impl Default for HangarBay {
 
 /// 国家・方面軍工廠の非配備兵器・艦艇プール
 #[derive(Resource, Debug, Clone, Default)]
+#[allow(dead_code)] // 工廠・備蓄ロジック実装まで未使用
 pub struct NationalArsenalPool {
     /// 勢力識別子
     pub faction_id: FactionId,

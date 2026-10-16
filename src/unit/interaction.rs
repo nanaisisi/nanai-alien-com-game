@@ -194,6 +194,51 @@ pub fn handle_unit_keyboard_shortcuts(
                 }
             }
 
+            // 5.5 非表示スタックへの格納 / 展開 (B)
+            crate::map::input::InGameAction::UnitStash => {
+                let own_outpost_at = |c: HexCoord| {
+                    outposts_query
+                        .iter()
+                        .any(|(_, o)| o.faction == player_fac && o.coord == c)
+                };
+                if let Some(selected_entity) = selected_unit.0 {
+                    // 格納: 自拠点タイル上のユニットを BunkerReserve へ
+                    if let Ok((_, mut unit, _)) = units.get_mut(selected_entity)
+                        && own_outpost_at(unit.coord)
+                    {
+                        unit.deployment_status = DeploymentStatus::BunkerReserve {
+                            priority_order: 0,
+                        };
+                        unit.is_exhausted = true;
+                        unit.current_movement = 0;
+                        move_mode.0 = false;
+                        info!("Unit {:?} stashed into bunker reserve.", unit.group_type);
+                        select_next_ready_unit(
+                            &units,
+                            player_fac,
+                            &mut selected_unit,
+                            &mut selected_tile,
+                            &mut map_camera,
+                        );
+                    }
+                } else if let Some(tile) = selected_tile.0 {
+                    // 展開: 選択タイルにアクティブ部隊がいなければ格納部隊を1つ出す
+                    let has_active = units.iter().any(|(_, u, _)| {
+                        u.coord == tile && u.deployment_status.is_active_garrison()
+                    });
+                    if !has_active
+                        && let Some((_, mut unit, _)) = units.iter_mut().find(|(_, u, _)| {
+                            u.faction == player_fac
+                                && u.coord == tile
+                                && u.deployment_status.is_hidden_stack()
+                        })
+                    {
+                        unit.deployment_status = DeploymentStatus::ActiveGarrison;
+                        info!("Unit {:?} deployed from hidden stack.", unit.group_type);
+                    }
+                }
+            }
+
             // 6. 休眠待機 (Sleep)
             crate::map::input::InGameAction::UnitSleep => {
                 if let Some(selected_entity) = selected_unit.0
@@ -433,6 +478,7 @@ fn select_next_ready_unit(
         .iter()
         .filter(|(e, u, _)| {
             u.faction == player_fac
+                && u.deployment_status.is_active_garrison()
                 && !u.is_exhausted
                 && u.current_movement > 0
                 && !matches!(
@@ -1136,22 +1182,13 @@ pub fn update_unit_visibility_system(
     mut query: Query<(&Unit, &mut Visibility), Changed<Unit>>,
 ) {
     for (unit, mut visibility) in &mut query {
-        match unit.deployment_status {
-            DeploymentStatus::ActiveGarrison => {
-                // アクティブ駐留部隊のみ地表に描画
-                if *visibility == Visibility::Hidden {
-                    *visibility = Visibility::Inherited;
-                }
-            }
-            DeploymentStatus::BunkerReserve { .. }
-            | DeploymentStatus::Embarked { .. }
-            | DeploymentStatus::Mothballed { .. }
-            | DeploymentStatus::DepotInventory => {
-                // 内部スタック・格納部隊・非配備兵器は非表示
-                if *visibility != Visibility::Hidden {
-                    *visibility = Visibility::Hidden;
-                }
-            }
+        let target = if unit.deployment_status.is_hidden_stack() {
+            Visibility::Hidden
+        } else {
+            Visibility::Inherited
+        };
+        if *visibility != target {
+            *visibility = target;
         }
     }
 }
