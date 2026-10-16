@@ -91,7 +91,7 @@ type ButtonActionQuery<'world, 'state> = Query<
 #[allow(clippy::too_many_arguments)]
 pub fn hud_button_action_system(
     query: ButtonActionQuery,
-    mut resources: ResMut<FactionResources>,
+    resources: Res<FactionResources>,
     mut settings: ResMut<crate::ui::settings::GameSettings>,
     mut next_state: ResMut<NextState<AppState>>,
     mut commands: Commands,
@@ -102,12 +102,13 @@ pub fn hud_button_action_system(
     mut city_modal_state: ResMut<crate::ui::city::CityModalState>,
     outposts_query: Query<(Entity, &crate::faction::FactionOutpost)>,
     selected_tile: Res<crate::map::interaction::SelectedTile>,
+    mut turn_messages: MessageWriter<crate::turn::AdvanceTurnMessage>,
 ) {
     for (pressed, action) in &query {
         if pressed.is_some() {
             match action {
                 HudAction::EndTurn => {
-                    advance_turn(&mut resources);
+                    turn_messages.write(crate::turn::AdvanceTurnMessage);
                 }
                 HudAction::OpenCity => {
                     city_modal_state.is_open = !city_modal_state.is_open;
@@ -172,18 +173,18 @@ pub fn hud_button_action_system(
 
 pub fn handle_keyboard_shortcuts(
     mut action_events: MessageReader<crate::map::input::InGameActionEvent>,
-    mut resources: ResMut<FactionResources>,
     mut settings: ResMut<crate::ui::settings::GameSettings>,
     mut next_state: ResMut<NextState<AppState>>,
+    mut turn_messages: MessageWriter<crate::turn::AdvanceTurnMessage>,
 ) {
     for event in action_events.read() {
         match event.0 {
             crate::map::input::InGameAction::ForceEndTurn => {
                 info!("Shift+Enter: Forced Turn Advance");
-                advance_turn(&mut resources);
+                turn_messages.write(crate::turn::AdvanceTurnMessage);
             }
             crate::map::input::InGameAction::EndTurn => {
-                advance_turn(&mut resources);
+                turn_messages.write(crate::turn::AdvanceTurnMessage);
             }
             crate::map::input::InGameAction::OpenPauseMenu => {
                 info!("ESC pressed: Opening Pause Menu...");
@@ -193,15 +194,6 @@ pub fn handle_keyboard_shortcuts(
             _ => {}
         }
     }
-}
-
-fn advance_turn(resources: &mut FactionResources) {
-    resources.turn += 1;
-    resources.energy += resources.energy_per_turn;
-    resources.production += resources.production_per_turn;
-    resources.science += resources.science_per_turn;
-    resources.food += resources.food_per_turn;
-    info!("Advancing to Turn {}", resources.turn);
 }
 
 pub fn update_hud_display_system(
