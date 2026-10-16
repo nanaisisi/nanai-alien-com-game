@@ -15,6 +15,7 @@ doc/
 ├── PENDING_ISSUES.md                       # 未確定・検討課題まとめ
 ├── MISSING_DOCUMENTS_ROADMAP.md            # 未作成・不足ドキュメント体系と開発ロードマップ
 ├── BEVY_0_20_INTEGRATION_REVIEW.md         # Bevy 0.20 仕様照合・技術検討書
+├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 └── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計48件）
     ├── automation/                         # 自動化システム（1件）
     │   └── concept_automation_systems.md
@@ -102,6 +103,8 @@ doc/
   * 全体ドキュメントの最新成熟度マトリクス、明確に不足している5大領域（資源品目定義、技術ツリー、外交危機、エイリアン生態巣窟、ステアリングUI）、および開発ロードマップ。
 * **[BEVY_0_20_INTEGRATION_REVIEW.md](./BEVY_0_20_INTEGRATION_REVIEW.md)**：Bevy 0.20 仕様照合・技術検討書
   * Bevy 0.20 新機能（Weak System Ordering、`Val::Em`/`Rem`、`FixedNode`、WESL、標準カメラ等）と現行実装の適合状況、およびUIレスポンシブ化・並列化等の拡張ロードマップ。
+* **[SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md](./SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md)**：全体実装依存関係・アーキテクチャ仕様書
+  * システム全体の6層アーキテクチャ（エンジン・空間・経済・軍事・動態・UI）、モジュール間依存関係マトリクス、およびボトムアップ実装ロードマップ。
 
 ---
 
