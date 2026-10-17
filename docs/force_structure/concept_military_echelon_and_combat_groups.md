@@ -208,8 +208,9 @@
 
 ## 7. 各種個別戦闘団仕様書へのリンク
 
-* **増強機甲戦闘団**: [`../toe_definitions/concept_combat_group_heavy_armored.md`](../toe_definitions/concept_combat_group_heavy_armored.md)（戦車232両基幹、連隊付装軌偵察、装甲化歩兵連隊、師団装輪偵察2個大隊）
+* **増強機甲戦闘団**: [`../toe_definitions/toe_combat_group_heavy_armored.md`](../toe_definitions/toe_combat_group_heavy_armored.md)（戦車128両＋随伴歩兵128両基幹、連隊付装軌偵察、装甲化歩兵連隊、師団装輪偵察大隊）
 * **戦闘団階層・RFPサイクル基本仕様**: [`./concept_combat_group_structure_and_rfp_cycle.md`](./concept_combat_group_structure_and_rfp_cycle.md)
 * **兵站・共食い整備統合データ仕様**: [`./COMBAT_GROUP_LOGISTICS_INTEGRATION.md`](./COMBAT_GROUP_LOGISTICS_INTEGRATION.md)
-* **戦闘団航空統合・TO&Eバリエーション**: [`../toe_definitions/COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md`](../toe_definitions/COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md)
-* **二脚歩行戦闘車両仕様**: [`../toe_definitions/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md`](../toe_definitions/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md)
+* **戦闘団TO&Eバリエーション定義**: [`../toe_definitions/toe_combat_group_variants.md`](../toe_definitions/toe_combat_group_variants.md)
+* **師団直協航空運用仕様**: [`../specs/AVIATION_ASSETS_AND_DOCTRINE.md`](../specs/AVIATION_ASSETS_AND_DOCTRINE.md)
+* **二脚歩行戦闘車両仕様**: [`../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md`](../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md)

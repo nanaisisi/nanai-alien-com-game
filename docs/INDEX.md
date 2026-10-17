@@ -14,13 +14,14 @@ docs/
 │   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および戦闘団概念仕様書
 │   ├── concept_combat_group_structure_and_rfp_cycle.md # 戦闘団TO&E構造・RFP自動更新および現場改修仕様書
 │   └── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
-├── toe_definitions/                        # 具体的部隊編成（TO&E）・兵器詳細定義（3件）
-│   ├── COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md # 戦闘団航空統合（ヘリ・UAV）および部隊規模別TO&Eバリエーション仕様書
-│   ├── concept_combat_group_heavy_armored.md # 増強機甲戦闘団 詳細編成・運用仕様書
-│   └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md  # 二脚歩行戦闘車両（高級装甲部隊）仕様書
-├── specs/                                  # 個別確定・基本仕様書
+├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（2件）
+│   ├── toe_combat_group_heavy_armored.md   # 増強機甲戦闘団 詳細編成・運用仕様書
+│   └── toe_combat_group_variants.md        # 諸兵科連合戦闘団（TO&E）バリエーション編成定義書
+├── specs/                                  # 個別兵器・システム確定・基本仕様書（4件）
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
-│   └── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
+│   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
+│   ├── AVIATION_ASSETS_AND_DOCTRINE.md     # 師団直協航空アセット（戦闘・輸送ヘリ）運用仕様書
+│   └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md  # 二脚歩行戦闘車両（高級装甲部隊）仕様書
 ├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
@@ -113,6 +114,15 @@ docs/
   * 各国の体制・文化圏背景、母星と入植惑星での外交関係（具体的な国名は未確定・継続検討事項）
   * アフィニティ（思想・適応路線）や経済/軍事ボーナスの基本方向性
   * ゲーム実装用データ: [`../assets/data/factions.csv`](../assets/data/factions.csv), [`../assets/data/city_names.csv`](../assets/data/city_names.csv)（勢力マスター＆全192都市名リスト）
+* **[specs/AVIATION_ASSETS_AND_DOCTRINE.md](./specs/AVIATION_ASSETS_AND_DOCTRINE.md)**：師団直協航空アセット（戦闘・輸送ヘリ）運用仕様書
+  * 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機）の機体スペック・役割定義。
+  * CAS（近接航空支援）の一撃離脱・滞空時間制限、対空火網との相互作用。
+  * 空中機動・兵站架橋（ヘリボーン、空中物資補給、MEDEVAC）、航空推進剤の消費ダイナミクス。
+* **[specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md](./specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md)**：二脚歩行戦闘車両（高級装甲部隊）仕様書
+  * ガングリフォン風の重厚・実戦的な二脚歩行兵器仕様（完全歩行駆動、ローラーダッシュ完全排除）。
+  * 機体寸法ダイナミクス：大型戦略輸送機カーゴベイ規格限界（全高3.76m/全幅5.48m） vs 通常稼働・戦闘展開時（全高5〜6m/全幅6.5〜7.5m）。
+  * 地上一般インフラの完全拒絶（道路・橋梁・トンネル破壊）と滑走路空輸展開モデル。
+  * 通常重歩行型と短時間立体跳躍型（30〜60秒）の2大バリエーションおよび機甲戦闘団内の混成中隊（16両）配備。
 
 ---
 
@@ -137,21 +147,16 @@ docs/
 
 ---
 
-## 🛡️ 3. 具体的部隊編成（TO&E）・兵器詳細定義（`toe_definitions/`）
+## 🛡️ 3. 具体的部隊編成（TO&E）（`toe_definitions/`）
 
-各戦闘団バリエーションの詳細編成表、実機スペック、および部隊混成仕様。
+各諸兵科連合戦闘団バリエーションの詳細編成表（TO&E: Table of Organization and Equipment）および戦闘序列。
 
-* **[toe_definitions/COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md](./toe_definitions/COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md)**：戦闘団航空統合および部隊規模別TO&Eバリエーション仕様書
-  * 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機編成）の標準統合運用。
-  * 諸兵科連合戦闘団の代表的TO&Eバリエーション（増強機甲、空中機動強襲、二脚混成、山岳猟兵・隘路工兵、無人自律ドローン飽和、要塞突破）。
-* **[toe_definitions/concept_combat_group_heavy_armored.md](./toe_definitions/concept_combat_group_heavy_armored.md)**：増強機甲戦闘団 詳細編成・運用仕様書
+* **[toe_definitions/toe_combat_group_heavy_armored.md](./toe_definitions/toe_combat_group_heavy_armored.md)**：増強機甲戦闘団 詳細編成・運用仕様書
   * 4連隊基幹（戦車128両＋随伴歩兵128両の同数ペア）の代表的TO&Eモデル。
   * 連隊付装軌威力偵察隊、装甲化歩兵連隊による下車戦闘・工兵突破、師団装輪偵察大隊、特科・独立防空連隊。
-* **[toe_definitions/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md](./toe_definitions/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md)**：二脚歩行戦闘車両（高級装甲部隊）仕様書
-  * ガングリフォン風の重厚・実戦的な二脚歩行兵器仕様（完全歩行、ローラーダッシュ排除）。
-  * 機体寸法ダイナミクス：大型戦略輸送機カーゴベイ規格限界（全高3.76m/全幅5.48m） vs 通常稼働・戦闘展開時（全高5〜6m/全幅6.5〜7.5m）。
-  * 地上一般インフラの完全拒絶（道路・橋梁・トンネル破壊）と滑走路空輸展開モデル。
-  * 通常重歩行型と短時間立体跳躍型（30〜60秒）の2大バリエーションおよび機甲戦闘団内の混成中隊（16両）配備。
+* **[toe_definitions/toe_combat_group_variants.md](./toe_definitions/toe_combat_group_variants.md)**：諸兵科連合戦闘団（TO&E）バリエーション編成定義書
+  * 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機編成）および無人群編制。
+  * 諸兵科連合戦闘団の代表的TO&Eバリエーション（増強機甲、空中機動強襲、二脚混成、山岳猟兵・隘路工兵、無人自律ドローン飽和、要塞突破）。
 
 ---
 
