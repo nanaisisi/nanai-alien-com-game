@@ -10,12 +10,13 @@
 docs/
 ├── INDEX.md                                # 本ファイル（ドキュメント目録）
 ├── GAME_DESIGN.md                          # ゲーム企画・コア仕様設計書（マスター）
-├── force_structure/                        # 編成思想・体系・運用原則（5件）
+├── force_structure/                        # 編成思想・体系・運用原則（6件）
 │   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および常設増強師団概念仕様書
 │   ├── concept_headquarters_and_attached_units.md # 本部管理中隊（HHC）および本部付補助諸兵科 仕様定義書
 │   ├── concept_hierarchical_headquarters_integration.md # 各階層本部付き隊の相互連携・指揮統制関係検討書
 │   ├── concept_combat_group_structure_and_rfp_cycle.md # 増強師団TO&E構造・RFP自動更新および現場改修仕様書
-│   └── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 増強師団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
+│   ├── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 増強師団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
+│   └── concept_toe_feedback_and_cross_echelon_methodology.md # 部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
 ├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（2件）
 │   ├── toe_combat_group_heavy_armored.md   # 常設増強機甲師団 詳細編成・運用仕様書
 │   └── toe_combat_group_variants.md        # 常設増強師団（TO&E）バリエーション編成定義書
@@ -153,6 +154,9 @@ docs/
   * インフラ結合度に応じた自動補給、兵站断絶時の稼働率低下と状態遷移（Normal ➔ Strained ➔ Critical ➔ Exhausted）。
   * 現場判断による共食い整備（Cannibalization）のステートマシン（ドナー部位の状態による劣化分岐ロジック）。
   * 直協航空連隊（計32機: 戦闘16機・輸送16機）の航空推進剤・補給係数。
+* **[force_structure/concept_toe_feedback_and_cross_echelon_methodology.md](./force_structure/concept_toe_feedback_and_cross_echelon_methodology.md)**：部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
+  * 重機甲師団で確立された編成基準（2-2バイナリ、大隊付自走重迫16両集約、左右両翼スクリーン、突破と掃討の分離、3階層HHC、プラットフォーム二分化）を、他アーキタイプへ等価適用するための6大共通評価軸（チェックリスト）。
+  * 空中機動・ドローン特務・要塞突破・山岳猟兵・二脚混成・装輪機動師団に対する診断・改定マトリクスと更新プロトコル。
 
 ---
 
