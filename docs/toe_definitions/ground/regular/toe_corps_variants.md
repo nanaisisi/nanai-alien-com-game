@@ -3,11 +3,11 @@
 (Reinforced Corps Order of Battle & TO&E Variants Definition)
 
 本作における大戦略マップ上の1コマは、臨時混成の戦闘団ではなく、自己完結した国家正規軍の**「常設増強軍団（Reinforced Corps）」**である。
-ゲーム的なスロット枠概念を排し、[`../force_structure/concept_corps_and_division_echelons.md`](../force_structure/concept_corps_and_division_echelons.md) で定義された**小隊（4両/機） ➔ 中隊（16両/機） ➔ 大隊（約48〜80両/機） ➔ 連隊 ➔ 師団（4個戦闘連隊基幹） ➔ 2個師団統合軍団**という軍事エシュロン体系に基づき、各種作戦環境・ドクトリンに応じた具体的な戦闘序列（TO&E: Table of Organization and Equipment）を規定する。
+ゲーム的なスロット枠概念を排し、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md) で定義された**小隊（4両/機） ➔ 中隊（16両/機） ➔ 大隊（約48〜80両/機） ➔ 連隊 ➔ 師団（4個戦闘連隊基幹） ➔ 2個師団統合軍団**という軍事エシュロン体系に基づき、各種作戦環境・ドクトリンに応じた具体的な戦闘序列（TO&E: Table of Organization and Equipment）を規定する。
 
-※ 軍団直属航空隊（32機: 戦闘16＋輸送16）および各師団付輸送飛行隊（8機×2）の機体スペック・運用規則は [`../specs/AVIATION_ASSETS_AND_DOCTRINE.md`](../specs/AVIATION_ASSETS_AND_DOCTRINE.md) を参照。  
-※ 二脚歩行戦闘車両の機体寸法・インフラ拒絶・空輸仕様は [`../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md`](../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md) を参照。  
-※ 本部管理中隊（HHC: 通信・救護・整備・補給・工兵・迫撃砲）の基本構造と専門付加部隊は [`../force_structure/concept_headquarters_and_attached_units.md`](../force_structure/concept_headquarters_and_attached_units.md) および [`../force_structure/concept_hierarchical_headquarters_integration.md`](../force_structure/concept_hierarchical_headquarters_integration.md) を参照。
+※ 軍団直属航空隊（32機: 戦闘16＋輸送16）および各師団付輸送飛行隊（8機×2）の機体スペック・運用規則は [`../../../specs/AVIATION_ASSETS_AND_DOCTRINE.md`](../../../specs/AVIATION_ASSETS_AND_DOCTRINE.md) を参照。  
+※ 二脚歩行戦闘車両の機体寸法・インフラ拒絶・空輸仕様は [`../../../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md`](../../../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md) を参照。  
+※ 本部管理中隊（HHC: 通信・救護・整備・補給・工兵・迫撃砲）の基本構造と専門付加部隊は [`../../../force_structure/concept_headquarters_and_attached_units.md`](../../../force_structure/concept_headquarters_and_attached_units.md) および [`../../../force_structure/concept_hierarchical_headquarters_integration.md`](../../../force_structure/concept_hierarchical_headquarters_integration.md) を参照。
 
 ---
 

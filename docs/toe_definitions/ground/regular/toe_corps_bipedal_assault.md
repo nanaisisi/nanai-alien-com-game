@@ -1,6 +1,6 @@
 # 高級装甲・二脚歩行混成軍団 詳細編成・運用仕様書 (High-Tier Bipedal Assault Corps TO&E)
 
-本ドキュメントは、[`../force_structure/concept_military_echelon_and_combat_groups.md`](../force_structure/concept_military_echelon_and_combat_groups.md)、[`../force_structure/concept_corps_and_division_echelons.md`](../force_structure/concept_corps_and_division_echelons.md)、[`../force_structure/concept_toe_feedback_and_cross_echelon_methodology.md`](../force_structure/concept_toe_feedback_and_cross_echelon_methodology.md)、および [`../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md`](../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md) に基づき、装甲車風二脚歩行戦闘車両を主力戦車や重IFVと有機的に結合させた精鋭戦略打撃部隊**「高級装甲・二脚歩行混成軍団（High-Tier Bipedal Assault Corps / 2個師団統合型）」**の詳細な戦闘序列（TO&E）、兵科協同メカニクス、インフラ制約、固定8名下車分隊制、および空輸・兵站二系統ドクトリンを規定する個別仕様書である。
+本ドキュメントは、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md)、[`../../../force_structure/concept_toe_feedback_and_cross_echelon_methodology.md`](../../../force_structure/concept_toe_feedback_and_cross_echelon_methodology.md)、および [`../../../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md`](../../../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md) に基づき、装甲車風二脚歩行戦闘車両を主力戦車や重IFVと有機的に結合させた精鋭戦略打撃部隊**「高級装甲・二脚歩行混成軍団（High-Tier Bipedal Assault Corps / 2個師団統合型）」**の詳細な戦闘序列（TO&E）、兵科協同メカニクス、インフラ制約、固定8名下車分隊制、および空輸・兵站二系統ドクトリンを規定する個別仕様書である。
 
 ---
 

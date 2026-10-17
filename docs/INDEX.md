@@ -20,12 +20,19 @@ docs/
 │   ├── concept_corps_and_division_echelons.md # 1ユニット＝2個師団1軍団制 概念・編制検討書
 │   ├── concept_ground_vehicle_chassis_and_variants.md # 陸上装甲・戦闘車両プラットフォームおよびバリアント総合仕様書
 │   └── concept_personnel_and_manning_standards.md # 軍団・師団 人員規模および定員算出基準仕様書
-├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（5件）
-│   ├── toe_combat_group_heavy_armored.md   # 常設増強機甲軍団（2個師団統合型）詳細編成・運用仕様書
-│   ├── toe_combat_group_variants.md        # 軍団（TO&E）バリエーション編成定義・目録（装甲化軍団・歩兵多層エシュロン）
-│   ├── toe_combat_group_airmobile.md       # 空中機動・空地強襲軍団 詳細編成仕様書
-│   ├── toe_combat_group_bipedal_assault.md # 高級装甲・二脚歩行混成軍団 詳細編成仕様書
-│   └── toe_combat_group_wheeled_division.md # 装輪機動軍団 詳細編成仕様書
+├── toe_definitions/                        # 具体的部隊編成（TO&E）定義
+│   ├── ground/                             # 陸上部隊編成
+│   │   ├── regular/                        # 人類通常軍団（5件）
+│   │   │   ├── toe_corps_heavy_armored.md  # 常設増強機甲軍団（2個師団統合型）詳細編成・運用仕様書
+│   │   │   ├── toe_corps_variants.md       # 軍団（TO&E）バリエーション編成定義（装甲化軍団・歩兵多層エシュロン）
+│   │   │   ├── toe_corps_airmobile.md      # 空中機動・空地強襲軍団 詳細編成仕様書
+│   │   │   ├── toe_corps_bipedal_assault.md # 高級装甲・二脚歩行混成軍団 詳細編成仕様書
+│   │   │   └── toe_corps_wheeled_mobile.md # 装輪機動軍団 詳細編成仕様書
+│   │   ├── alien/                          # 野生・固有エイリアン陸上群（順次配備）
+│   │   ├── multi_species/                  # 多種族混成陸上軍団（順次配備）
+│   │   └── fusion/                         # 融合生物陸上軍団（順次配備）
+│   ├── naval/                              # 海上部隊編成（regular, alien, multi_species, fusion）
+│   └── air/                                # 航空部隊編成（regular, alien, multi_species, fusion）
 ├── specs/                                  # 個別兵器・システム確定・基本仕様書（4件）
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
@@ -179,19 +186,21 @@ docs/
 
 ## 🛡️ 3. 具体的部隊編成（TO&E）（`toe_definitions/`）
 
-各諸兵科連合戦闘団バリエーションの詳細編成表（TO&E: Table of Organization and Equipment）および戦闘序列。
+各諸兵科連合戦闘団バリエーションの詳細編成表（TO&E: Table of Organization and Equipment）および戦闘序列。作戦領域（陸・海・空）× 体系（regular, alien, multi_species, fusion）に分類。
 
-* **[toe_definitions/toe_combat_group_heavy_armored.md](./toe_definitions/toe_combat_group_heavy_armored.md)**：常設増強機甲軍団 詳細編成・運用仕様書
+### 陸上・人類通常軍団（`toe_definitions/ground/regular/`）
+
+* **[toe_definitions/ground/regular/toe_corps_heavy_armored.md](./toe_definitions/ground/regular/toe_corps_heavy_armored.md)**：常設増強機甲軍団 詳細編成・運用仕様書
   * 戦車4連隊基幹の2個師団統合型（戦車256両、重IFV384両、APC128両、120C自走迫224両、左右両翼スクリーン160両、航空機48機）。突破打撃軸（機甲4連隊）と掃討・要塞化軸（歩兵2連隊）が相互躍進を遂行。独立特科（160C/210C）・多層高射連隊。
-* **[toe_definitions/toe_combat_group_variants.md](./toe_definitions/toe_combat_group_variants.md)**：軍団（TO&E）バリエーション編成定義・目録
+* **[toe_definitions/ground/regular/toe_corps_variants.md](./toe_definitions/ground/regular/toe_corps_variants.md)**：軍団（TO&E）バリエーション編成定義・目録
   * 2進数倍々・エシュロン体系（小隊4 ➔ 中隊16 ➔ 大隊64/80 ➔ 連隊 ➔ 師団 ➔ 2個師団統合軍団）に基づくTO&E基本モデル。
   * **装甲化軍団（戦車2連隊＋装輪偵察2連隊＋装甲歩兵2連隊）**および**徒歩・自動車化歩兵多層エシュロン（Tier 1〜Tier 6）**の体系的定義。
   * 軍団直轄航空隊（計32機: 戦闘16＋輸送16）および各師団付輸送飛行隊（8機×2）、多層防空、戦車車体自走重砲体系。
-* **[toe_definitions/toe_combat_group_airmobile.md](./toe_definitions/toe_combat_group_airmobile.md)**：空中機動・空地強襲軍団 詳細編成仕様書
+* **[toe_definitions/ground/regular/toe_corps_airmobile.md](./toe_definitions/ground/regular/toe_corps_airmobile.md)**：空中機動・空地強襲軍団 詳細編成仕様書
   * 地上重戦車を排した空中機動2個師団統合運用。強襲航空旅団・軍団直轄航空打撃群（計176機）、空挺軽IFV、大隊付120C超軽量自走迫、FARP先行展開。
-* **[toe_definitions/toe_combat_group_bipedal_assault.md](./toe_definitions/toe_combat_group_bipedal_assault.md)**：高級装甲・二脚歩行混成軍団 詳細編成仕様書
+* **[toe_definitions/ground/regular/toe_corps_bipedal_assault.md](./toe_definitions/ground/regular/toe_corps_bipedal_assault.md)**：高級装甲・二脚歩行混成軍団 詳細編成仕様書
   * 戦車と通常二脚歩行機の混成、短時間飛翔二脚による要衝跳躍急襲、戦略空輸展開、左右両翼装輪スクリーン。
-* **[toe_definitions/toe_combat_group_wheeled_division.md](./toe_definitions/toe_combat_group_wheeled_division.md)**：装輪機動軍団 詳細編成仕様書
+* **[toe_definitions/ground/regular/toe_corps_wheeled_mobile.md](./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md)**：装輪機動軍団 詳細編成仕様書
   * 8x8装輪単一ファミリー共通化（共通化率95%）、装輪打撃連隊＋装輪装甲歩兵連隊、舗装動脈高速自走展開。
 
 ---
