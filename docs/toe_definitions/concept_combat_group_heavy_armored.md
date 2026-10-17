@@ -1,6 +1,6 @@
 # 増強機甲戦闘団 詳細編成・運用仕様書 (Heavy Armored Combat Group Spec)
 
-本ドキュメントは、[`concept_military_echelon_and_combat_groups.md`](./concept_military_echelon_and_combat_groups.md) で定義された戦闘団タイプのうち、**「増強機甲戦闘団（Heavy Armored Combat Group / 4連隊・戦車232両基幹）」**の詳細な部隊編成（TO&E）、兵科分担、偵察運用、および兵站・共食い整備ダイナミクスを規定する個別仕様書である。
+本ドキュメントは、[`concept_military_echelon_and_combat_groups.md`](../force_structure/concept_military_echelon_and_combat_groups.md) で定義された戦闘団タイプのうち、**「増強機甲戦闘団（Heavy Armored Combat Group / 4連隊・戦車232両基幹）」**の詳細な部隊編成（TO&E）、兵科分担、偵察運用、および兵站・共食い整備ダイナミクスを規定する個別仕様書である。
 
 ---
 

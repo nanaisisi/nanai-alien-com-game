@@ -10,12 +10,17 @@
 docs/
 ├── INDEX.md                                # 本ファイル（ドキュメント目録）
 ├── GAME_DESIGN.md                          # ゲーム企画・コア仕様設計書（マスター）
+├── force_structure/                        # 編成思想・体系・運用原則（3件）
+│   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および戦闘団概念仕様書
+│   ├── concept_combat_group_structure_and_rfp_cycle.md # 戦闘団TO&E構造・RFP自動更新および現場改修仕様書
+│   └── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
+├── toe_definitions/                        # 具体的部隊編成（TO&E）・兵器詳細定義（3件）
+│   ├── COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md # 戦闘団航空統合（ヘリ・UAV）および部隊規模別TO&Eバリエーション仕様書
+│   ├── concept_combat_group_heavy_armored.md # 増強機甲戦闘団 詳細編成・運用仕様書
+│   └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md  # 二脚歩行戦闘車両（高級装甲部隊）仕様書
 ├── specs/                                  # 個別確定・基本仕様書
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
-│   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
-│   ├── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
-│   ├── COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md # 戦闘団航空統合（ヘリ・UAV）および部隊規模別TO&Eバリエーション仕様書
-│   └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md  # 二脚歩行戦闘車両（高級装甲部隊）仕様書
+│   └── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
 ├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
@@ -25,7 +30,7 @@ docs/
 │   ├── PENDING_ISSUES.md                   # 未確定・検討課題まとめ
 │   ├── SECONDARY_MISSING_SPECS.md          # 二次的不足ドキュメント・システム統合仕様書体系
 │   └── SECONDARY_SPECS_EVALUATION.md       # 2次的不足仕様・検討論点と実装アプローチ評価書
-└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計51件）
+└── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計49件）
     ├── automation/                         # 自動化システム（2件）
     │   ├── concept_automation_systems.md
     │   └── concept_autonomous_control_and_atmospheric_consensus.md
@@ -60,9 +65,7 @@ docs/
     │   ├── concept_maritime_governance_and_ocean_engineering.md
     │   ├── concept_subtile_combat_and_tactical_rules.md
     │   └── concept_infrastructure_grid_and_transit_artery.md
-    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（15件）
-    │   ├── concept_military_echelon_and_combat_groups.md
-    │   ├── concept_combat_group_heavy_armored.md
+    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（12件）
     │   ├── concept_weapon_module_commonality.md
     │   ├── example_weapon_modules_cases.md
     │   ├── concept_ammunition_caliber_standards_c.md
@@ -70,7 +73,6 @@ docs/
     │   ├── concept_ethics_autonomous_and_surrender_dynamics.md
     │   ├── concept_salvage_scuttling_and_compatibility.md
     │   ├── concept_dynamic_arsenal_geospatial.md
-    │   ├── concept_combat_group_structure_and_rfp_cycle.md
     │   ├── concept_frontier_industry_and_weapon_generations.md
     │   ├── concept_hidden_stacks_and_reserve_arsenal.md
     │   ├── concept_non_unit_sea_and_vehicle_transport.md
@@ -114,7 +116,46 @@ docs/
 
 ---
 
-## 🛠️ 2. 技術設計・アーキテクチャ（`tech/`）
+## 🎖️ 2. 部隊編成思想・体系（`force_structure/`）
+
+軍事エシュロン階層、2進数倍々補完（2-2構成）、国家RFPサイクル、兵站統合モデルを統括する思想・原則文書群。
+
+* **[force_structure/concept_military_echelon_and_combat_groups.md](./force_structure/concept_military_echelon_and_combat_groups.md)**：軍事編成・部隊単位体系および戦闘団概念仕様書
+  * 小隊（4両/機）・中隊（16両/機）・大隊（64両/機）・連隊・師団（戦闘団）の2進数・倍々構造（$2^N$ バイナリ・バディシステム）。
+  * 地上打撃力と直協航空連隊（計32機: 1飛行隊8機×4）を有機的に内包する空地統合戦闘団の基本構造。
+  * ゲーム的スロット枠概念を排した「部隊単位コレクション（`Vec<SubUnit>`）」設計。
+  * 「地域配備（インフラ警備・害獣対処・低コスト）」から「機動運用（迅速転地・防衛力維持）」への戦略移行と留守警備隊メカニクス。
+* **[force_structure/concept_combat_group_structure_and_rfp_cycle.md](./force_structure/concept_combat_group_structure_and_rfp_cycle.md)**：戦闘団TO&E構造・RFP自動更新および現場改修仕様書
+  * 標準諸兵科連合師団（4連隊基幹：戦車128両＋随伴歩兵128両の完全同数ペア）の代表的戦闘序列（TO&E）。
+  * 国家RFP指示を受けた国内工廠の自動ブロック更新（Block I → II）と金型転換ラグ。
+  * 過酷実戦環境が生むボトムアップ現場改修（Field Mod）と国家制式採用承認イベント。
+  * 新旧混在による過渡期稼働率ペナルティ算出モデルと計画ロット更新の重要性。
+* **[force_structure/COMBAT_GROUP_LOGISTICS_INTEGRATION.md](./force_structure/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)**：戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
+  * インフラ結合度に応じた自動補給、兵站断絶時の稼働率低下と状態遷移（Normal ➔ Strained ➔ Critical ➔ Exhausted）。
+  * 現場判断による共食い整備（Cannibalization）のステートマシン（ドナー部位の状態による劣化分岐ロジック）。
+  * 直協航空連隊（計32機: 戦闘16機・輸送16機）の航空推進剤・補給係数。
+
+---
+
+## 🛡️ 3. 具体的部隊編成（TO&E）・兵器詳細定義（`toe_definitions/`）
+
+各戦闘団バリエーションの詳細編成表、実機スペック、および部隊混成仕様。
+
+* **[toe_definitions/COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md](./toe_definitions/COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md)**：戦闘団航空統合および部隊規模別TO&Eバリエーション仕様書
+  * 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機編成）の標準統合運用。
+  * 諸兵科連合戦闘団の代表的TO&Eバリエーション（増強機甲、空中機動強襲、二脚混成、山岳猟兵・隘路工兵、無人自律ドローン飽和、要塞突破）。
+* **[toe_definitions/concept_combat_group_heavy_armored.md](./toe_definitions/concept_combat_group_heavy_armored.md)**：増強機甲戦闘団 詳細編成・運用仕様書
+  * 4連隊基幹（戦車128両＋随伴歩兵128両の同数ペア）の代表的TO&Eモデル。
+  * 連隊付装軌威力偵察隊、装甲化歩兵連隊による下車戦闘・工兵突破、師団装輪偵察大隊、特科・独立防空連隊。
+* **[toe_definitions/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md](./toe_definitions/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md)**：二脚歩行戦闘車両（高級装甲部隊）仕様書
+  * ガングリフォン風の重厚・実戦的な二脚歩行兵器仕様（完全歩行、ローラーダッシュ排除）。
+  * 機体寸法ダイナミクス：大型戦略輸送機カーゴベイ規格限界（全高3.76m/全幅5.48m） vs 通常稼働・戦闘展開時（全高5〜6m/全幅6.5〜7.5m）。
+  * 地上一般インフラの完全拒絶（道路・橋梁・トンネル破壊）と滑走路空輸展開モデル。
+  * 通常重歩行型と短時間立体跳躍型（30〜60秒）の2大バリエーションおよび機甲戦闘団内の混成中隊（16両）配備。
+
+---
+
+## 🛠️ 4. 技術設計・アーキテクチャ（`tech/`）
 
 * **[tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md](./tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md)**：全体実装依存関係・アーキテクチャ仕様書
   * システム全体の6層アーキテクチャ（エンジン・空間・経済・軍事・動態・UI）、モジュール間依存関係マトリクス、およびボトムアップ実装ロードマップ。
@@ -179,16 +220,6 @@ docs/
 
 ユニットの設計、兵器モジュール化、無人・自律兵器、戦場ルール。
 
-* **[concept_military_echelon_and_combat_groups.md](./discussion/military_tactics/concept_military_echelon_and_combat_groups.md)**
-  * **軍事編成・部隊単位体系および戦闘団概念仕様書**。
-  * 小隊・中隊・大隊（2個戦車中隊＋2個装甲化歩兵中隊＝64両）・連隊・師団（戦闘団）の2進数・倍々構造（$2^N$ バイナリ・バディシステム）。
-  * 単なる陸上部隊にとどまらず直協航空戦力（VTOL・戦闘ヘリ・ドローン群）をオーガニックに内包する「空地統合戦闘団」の定義。
-  * ゲーム的スロット枠を排した「部隊単位コレクション（`Vec<SubUnit>`）」設計。
-  * 「地域配備（恒常インフラ警備・災害害獣対処・低コスト）」から「機動運用（南西・国境危機への迅速集中転地）」への戦略移行と、防衛力の欠如を招かない留守警備隊メカニクス。
-* **[concept_combat_group_heavy_armored.md](./discussion/military_tactics/concept_combat_group_heavy_armored.md)**
-  * **増強機甲戦闘団 詳細編成・運用仕様書**。
-  * 4連隊・戦車232両基幹の代表的TO&Eモデル（2進数ペア補完）。
-  * 連隊付装軌威力偵察隊、装甲化歩兵連隊による下車戦闘・工兵突破、師団装甲装輪偵察2個大隊による広域高速哨戒、特科・高射特科の独立防空傘、装軌/装輪の共食い互換グループ。
 * **[concept_weapon_module_commonality.md](./discussion/military_tactics/concept_weapon_module_commonality.md)**
   * 車体／シャシーと兵装モジュールの共通化設計（モジュラー兵器システム）。生産効率と改修自由度の両立。
 * **[example_weapon_modules_cases.md](./discussion/military_tactics/example_weapon_modules_cases.md)**
@@ -207,12 +238,6 @@ docs/
   * 戦場での残骸回収（サルベージ）、鹵獲阻止のための自爆・自沈（スカットリング）、異文明・敵性技術モジュールの規格互換性とリバースエンジニアリング。
 * **[concept_dynamic_arsenal_geospatial.md](./discussion/military_tactics/concept_dynamic_arsenal_geospatial.md)**
   * 地理・地形特性に応じた戦力展開、補給工廠（アーセナル）の空間的配置と動的兵站ラインの防衛。
-* **[concept_combat_group_structure_and_rfp_cycle.md](./discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)**
-  * **戦闘団TO&E構造・RFP自動更新および現場改修仕様書**。
-  * 標準諸兵科連合師団（4連隊・戦車232両基幹）の代表的戦闘序列（TO&E）。
-  * 国家RFP指示を受けた国内工廠の自動ブロック更新（Block I → II）と金型転換ラグ。
-  * 過酷実戦環境が生むボトムアップ現場改修（Field Mod）と国家の制式採用承認イベント。
-  * 新型・旧型混在による過渡期稼働率ペナルティ算出モデルと計画ロット更新の重要性。
 * **[concept_frontier_industry_and_weapon_generations.md](./discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md)**
   * **入植産業構造と母星人類兵器体系・世代進化仕様書**。
   * 母星の超精密ファブ・国際分業と、入植地の未熟なサプライチェーン・工作機械の落差が生む兵装の退行と再建プロセス。
