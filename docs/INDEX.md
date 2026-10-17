@@ -10,13 +10,14 @@
 docs/
 ├── INDEX.md                                # 本ファイル（ドキュメント目録）
 ├── GAME_DESIGN.md                          # ゲーム企画・コア仕様設計書（マスター）
-├── force_structure/                        # 編成思想・体系・運用原則（6件）
+├── force_structure/                        # 編成思想・体系・運用原則（7件）
 │   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および常設増強師団概念仕様書
 │   ├── concept_headquarters_and_attached_units.md # 本部管理中隊（HHC）および本部付補助諸兵科 仕様定義書
 │   ├── concept_hierarchical_headquarters_integration.md # 各階層本部付き隊の相互連携・指揮統制関係検討書
 │   ├── concept_combat_group_structure_and_rfp_cycle.md # 増強師団TO&E構造・RFP自動更新および現場改修仕様書
 │   ├── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 増強師団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
-│   └── concept_toe_feedback_and_cross_echelon_methodology.md # 部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
+│   ├── concept_toe_feedback_and_cross_echelon_methodology.md # 部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
+│   └── concept_corps_and_division_echelons.md # 軍団・師団・戦闘団 3層エシュロンおよび常設軍団制 仕様書
 ├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（8件）
 │   ├── toe_combat_group_heavy_armored.md   # 常設増強機甲師団 詳細編成・運用仕様書
 │   ├── toe_combat_group_variants.md        # 常設増強師団（TO&E）バリエーション編成定義・目録
@@ -164,6 +165,9 @@ docs/
 * **[force_structure/concept_toe_feedback_and_cross_echelon_methodology.md](./force_structure/concept_toe_feedback_and_cross_echelon_methodology.md)**：部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
   * 重機甲師団で確立された編成基準（2-2バイナリ、大隊付自走重迫16両集約、左右両翼スクリーン、突破と掃討の分離、3階層HHC、プラットフォーム二分化）を、他アーキタイプへ等価適用するための6大共通評価軸（チェックリスト）。
   * 空中機動・ドローン特務・要塞突破・山岳猟兵・二脚混成・装輪機動師団に対する診断・改定マトリクスと更新プロトコル。
+* **[force_structure/concept_corps_and_division_echelons.md](./force_structure/concept_corps_and_division_echelons.md)**：軍団・師団・戦闘団 3層エシュロンおよび常設軍団制 仕様書
+  * 戦闘機動8連隊（約30,000名、戦闘車両1,520両）が「4個戦闘連隊基幹の2個師団を統合した【常設増強軍団（Corps）】」であるという構造的再定義。
+  * 軍団（複数師団の作戦スタック・直轄重砲兵/航空保有） ⇄ 師団（大戦略標準コマ・4個連隊諸兵科連合） ⇄ 戦闘団（サブタイル343マスの実動大隊TF）の3層関係と2-2相互躍進ダイナミクス。
 
 ---
 
@@ -172,9 +176,8 @@ docs/
 各諸兵科連合戦闘団バリエーションの詳細編成表（TO&E: Table of Organization and Equipment）および戦闘序列。
 
 * **[toe_definitions/toe_combat_group_heavy_armored.md](./toe_definitions/toe_combat_group_heavy_armored.md)**：常設増強機甲師団 詳細編成・運用仕様書
-  * 装軌系5個連隊基幹（4個諸兵科連合機甲連隊［戦車256両＋重IFV256両＋大隊付自走重迫128両］ ＋ 第1装甲化歩兵連隊［重IFV64両＋装甲APC64両＋大隊付自走重迫32両］）。
-  * 機甲部隊の90C排除と各大隊直轄120C自走重迫撃砲中隊（16両×10大隊＝計160両）への集約運用、および突破後の市街地・巣穴掃討と要衝確保を完結する第1装甲化歩兵連隊の連携。
-  * 左右両翼の装輪偵察戦闘連隊（計160両: 各連隊が戦闘大隊48両［迫撃16両含む］＋偵察大隊32両）、完全独立した師団野戦特科連隊および師団高射連隊、師団直協航空連隊（32機）。
+  * 戦闘機動8連隊制（4個諸兵科連合機甲連隊［戦車256両＋重IFV256両＋迫撃128両］ ＋ 2個装甲化歩兵連隊［重IFV128両＋装甲APC128両＋迫撃64両］ ＋ 左右両翼偵察戦闘連隊［160両: 迫撃32両含］）。
+  * 突破打撃軸（機甲4連隊）と掃討・要塞化軸（歩兵2連隊）がそれぞれ完全な2-2相互躍進（Leapfrogging）を遂行。各大隊付120C自走重迫撃砲中隊（計224両: 16両×14大隊）、独立特科・高射連隊、米軍式直協航空連隊（32機）。
 * **[toe_definitions/toe_combat_group_variants.md](./toe_definitions/toe_combat_group_variants.md)**：常設増強師団（TO&E）バリエーション編成定義・目録
   * 2進数倍々・エシュロン体系（小隊4 ➔ 中隊16 ➔ 大隊64/80 ➔ 連隊 ➔ 師団）に基づくTO&E基本モデル。
   * 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機編成）および無人群編制。
