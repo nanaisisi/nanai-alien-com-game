@@ -15,9 +15,10 @@ docs/
 │   ├── concept_headquarters_and_attached_units.md # 本部管理中隊（HHC）および本部付補助諸兵科 仕様定義書
 │   ├── concept_combat_group_structure_and_rfp_cycle.md # 増強師団TO&E構造・RFP自動更新および現場改修仕様書
 │   └── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 増強師団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
-├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（2件）
+├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（3件）
 │   ├── toe_combat_group_heavy_armored.md   # 常設増強機甲師団 詳細編成・運用仕様書
-│   └── toe_combat_group_variants.md        # 常設増強師団（TO&E）バリエーション編成定義書
+│   ├── toe_combat_group_variants.md        # 常設増強師団（TO&E）バリエーション編成定義書
+│   └── toe_hierarchical_headquarters_integration.md # 各階層本部付き隊の相互連携・指揮統制関係検討書
 ├── specs/                                  # 個別兵器・システム確定・基本仕様書（4件）
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
@@ -163,6 +164,9 @@ docs/
   * 2進数倍々・エシュロン体系（小隊4 ➔ 中隊16 ➔ 大隊64［戦車2＋IFV2］ ➔ 連隊 ➔ 師団・戦闘団）に基づくTO&E基本モデル。
   * 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機編成）および無人群編制。
   * 諸兵科連合戦闘団の代表的TO&Eバリエーション（増強機甲、空中機動強襲、二脚混成、山岳猟兵・隘路工兵、無人自律ドローン飽和、要塞突破）。
+* **[toe_definitions/toe_hierarchical_headquarters_integration.md](./toe_definitions/toe_hierarchical_headquarters_integration.md)**：各階層本部付き隊の相互連携・指揮統制関係検討書
+  * 「師団司令部付隊 ⇄ 連隊本部管理中隊 ⇄ 大隊本部管理班」の3階層本部付き隊の役割分担と上下パイプライン。
+  * 指揮通信（C4I/キルチェーン）、兵站・回収の3段列構造（即時牽引 ➔ 前方支援点/共食い整備 ➔ 師団工作ドック）、施設工兵連携、および司令部被弾時の縮退・自律指揮権委譲ルールとECSデータ設計案。
 
 ---
 
