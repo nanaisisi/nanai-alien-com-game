@@ -20,19 +20,41 @@ docs/
 │   ├── concept_corps_and_division_echelons.md # 1ユニット＝2個師団1軍団制 概念・編制検討書
 │   ├── concept_ground_vehicle_chassis_and_variants.md # 陸上装甲・戦闘車両プラットフォームおよびバリアント総合仕様書
 │   └── concept_personnel_and_manning_standards.md # 軍団・師団 人員規模および定員算出基準仕様書
-├── toe_definitions/                        # 具体的部隊編成（TO&E）定義
-│   ├── ground/                             # 陸上部隊編成
-│   │   ├── regular/                        # 人類通常軍団（5件）
+├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（全16仕様書）
+│   ├── ground/                             # 陸上部隊編成（全8件）
+│   │   ├── regular/                        # 人類通常軍団（8件）
 │   │   │   ├── toe_corps_heavy_armored.md  # 常設増強機甲軍団（2個師団統合型）詳細編成・運用仕様書
 │   │   │   ├── toe_corps_variants.md       # 軍団（TO&E）バリエーション編成定義（装甲化軍団・歩兵多層エシュロン）
 │   │   │   ├── toe_corps_airmobile.md      # 空中機動・空地強襲軍団 詳細編成仕様書
 │   │   │   ├── toe_corps_bipedal_assault.md # 高級装甲・二脚歩行混成軍団 詳細編成仕様書
-│   │   │   └── toe_corps_wheeled_mobile.md # 装輪機動軍団 詳細編成仕様書
-│   │   ├── alien/                          # 野生・固有エイリアン陸上群（順次配備）
-│   │   ├── multi_species/                  # 多種族混成陸上軍団（順次配備）
-│   │   └── fusion/                         # 融合生物陸上軍団（順次配備）
-│   ├── naval/                              # 海上部隊編成（regular, alien, multi_species, fusion）
-│   └── air/                                # 航空部隊編成（regular, alien, multi_species, fusion）
+│   │   │   ├── toe_corps_wheeled_mobile.md # 装輪機動軍団 詳細編成仕様書
+│   │   │   ├── toe_corps_motorized_infantry.md # 自動車化・軽歩兵軍団（Tier 1〜3）詳細編成仕様書
+│   │   │   ├── toe_corps_long_range_missile.md # 長距離ミサイル打撃軍団 詳細編成仕様書
+│   │   │   └── toe_corps_science_survey.md # 調査・科学探査軍団 詳細編成仕様書
+│   │   ├── alien/                          # 野生・固有エイリアン地上群
+│   │   │   └── toe_ground_alien_swarm.md   # 生態・群生編制仕様書（小型・中型・巨獣・潜行群）
+│   │   ├── multi_species/                  # 多種族混成陸上軍団
+│   │   │   └── toe_corps_multi_species_ground.md # 多種族混成陸上軍団（全11カテゴリー）仕様書
+│   │   └── fusion/                         # 融合生物陸上軍団
+│   │       └── toe_corps_fusion_ground.md  # 融合生物陸上軍団（全11カテゴリー）仕様書
+│   ├── naval/                              # 海上部隊編成（全4件）
+│   │   ├── regular/                        # 通常艦隊
+│   │   │   └── toe_naval_fleet_regular.md  # 人類通常艦隊（全8種）詳細編成仕様書
+│   │   ├── alien/                          # 野生・固有エイリアン海洋群
+│   │   │   └── toe_naval_alien_swarm.md    # 海洋生体群（リヴァイアサン級・甲殻怪獣）仕様書
+│   │   ├── multi_species/                  # 多種族混成海上戦闘団
+│   │   │   └── toe_naval_multi_species.md  # 混成艦隊（水上艦＋同盟海棲個体）仕様書
+│   │   └── fusion/                         # 融合生物海上戦闘団
+│   │       └── toe_naval_fusion.md         # 融合生物艦隊（生体装甲バイオ艦艇）仕様書
+│   └── air/                                # 航空部隊編成（全4件）
+│       ├── regular/                        # 通常航空隊
+│       │   └── toe_air_wing_regular.md     # 人類通常航空団（全14種）詳細編成仕様書
+│       ├── alien/                          # 野生・固有エイリアン航空群
+│       │   └── toe_air_alien_swarm.md      # 飛行生体群（飛翔酸吐き種・超音速巨獣）仕様書
+│       ├── multi_species/                  # 多種族混成航空戦闘団
+│       │   └── toe_air_multi_species.md    # サイバネ混成航空隊（バイオファイター）仕様書
+│       └── fusion/                         # 融合生物航空戦闘団
+│           └── toe_air_fusion.md           # 融合生物航空団（ジェットバイオ機）仕様書
 ├── specs/                                  # 個別兵器・システム確定・基本仕様書（4件）
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
@@ -202,6 +224,43 @@ docs/
   * 戦車と通常二脚歩行機の混成、短時間飛翔二脚による要衝跳躍急襲、戦略空輸展開、左右両翼装輪スクリーン。
 * **[toe_definitions/ground/regular/toe_corps_wheeled_mobile.md](./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md)**：装輪機動軍団 詳細編成仕様書
   * 8x8装輪単一ファミリー共通化（共通化率95%）、装輪打撃連隊＋装輪装甲歩兵連隊、舗装動脈高速自走展開。
+* **[toe_definitions/ground/regular/toe_corps_motorized_infantry.md](./toe_definitions/ground/regular/toe_corps_motorized_infantry.md)**：自動車化・軽歩兵軍団（Tier 1〜Tier 3）詳細編成仕様書
+  * Tier 1（完全徒歩・山岳密林）、Tier 2（4x4 LAV ＋ 牽引砲）、Tier 3（4x4 LAV ＋ トラック自走砲）の3層エシュロン仕様。
+* **[toe_definitions/ground/regular/toe_corps_long_range_missile.md](./toe_definitions/ground/regular/toe_corps_long_range_missile.md)**：長距離ミサイル打撃軍団 詳細編成仕様書
+  * 大戦略マップ上で2タイル先へスタンドオフ精密打撃を行うTEL重装輪発射機（128両）専門部隊。
+* **[toe_definitions/ground/regular/toe_corps_science_survey.md](./toe_definitions/ground/regular/toe_corps_science_survey.md)**：調査・科学探査軍団 詳細編成仕様書
+  * 有毒大気・極限環境を無効化し、異星遺跡・生体巣穴の深層解析と科学研究ボーナス獲得を担う特務探査部隊。
+
+### 陸上・エイリアン・混成・融合軍団
+
+* **[toe_definitions/ground/alien/toe_ground_alien_swarm.md](./toe_definitions/ground/alien/toe_ground_alien_swarm.md)**：野生・固有エイリアン陸上群 生態・群生編制仕様書
+  * 小型強襲群、中型装甲突撃群、超大型破城巨獣群（リヴァイアサン級）、大深度潜行群の4大生体戦術カテゴリー。
+* **[toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md](./toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md)**：多種族混成陸上軍団（全11カテゴリー）詳細仕様書
+  * 人類兵力50%と同盟エイリアン50%の共生協同運用、自己治癒（再生）および二重兵站ドクトリン。
+* **[toe_definitions/ground/fusion/toe_corps_fusion_ground.md](./toe_definitions/ground/fusion/toe_corps_fusion_ground.md)**：融合生物陸上軍団（全11カテゴリー）詳細仕様書
+  * 自己修復性生体甲殻、ハイブリッド心臓、神経リンク直結操作による有機・無機結合ハイブリッド兵装群。
+
+### 海上戦闘団（`toe_definitions/naval/`）
+
+* **[toe_definitions/naval/regular/toe_naval_fleet_regular.md](./toe_definitions/naval/regular/toe_naval_fleet_regular.md)**：通常海上戦闘団（全8種）詳細編成仕様書
+  * 民間船、武装船、哨戒、護衛、通常、戦艦（沿岸砲撃）、航空（洋上基地）、潜水艦隊の編制序列。
+* **[toe_definitions/naval/alien/toe_naval_alien_swarm.md](./toe_definitions/naval/alien/toe_naval_alien_swarm.md)**：野生・固有エイリアン海洋群 生態・編制仕様書
+  * 群泳刺胞獣、超大型甲殻怪獣、超巨大海洋生物（リヴァイアサン級深海共鳴種）の海中戦術。
+* **[toe_definitions/naval/multi_species/toe_naval_multi_species.md](./toe_definitions/naval/multi_species/toe_naval_multi_species.md)**：多種族混成海上戦闘団 詳細編成仕様書
+  * 人類ミサイル軍艦と同盟海棲戦闘怪獣の混成運用（生体ソナー・魚雷迎撃）。
+* **[toe_definitions/naval/fusion/toe_naval_fusion.md](./toe_definitions/naval/fusion/toe_naval_fusion.md)**：融合生物海上戦闘団 詳細編成仕様書
+  * 有機装甲、無音鰭推進、生体魚雷射出管、潜航・浮上シームレス移行型バイオ軍艦。
+
+### 航空戦闘団（`toe_definitions/air/`）
+
+* **[toe_definitions/air/regular/toe_air_wing_regular.md](./toe_definitions/air/regular/toe_air_wing_regular.md)**：通常航空戦闘団（全14種）詳細編成仕様書
+  * 民間、武装、輸送、哨戒、護衛、迎撃、垂直離陸、主力戦闘、光学ステルス、爆撃、空中戦艦、空中空母、超大型輸送航空団。
+* **[toe_definitions/air/alien/toe_air_alien_swarm.md](./toe_definitions/air/alien/toe_air_alien_swarm.md)**：野生・固有エイリアン航空群 生態・編制仕様書
+  * 飛翔酸吐き種、大気浮遊クラゲ（生体ECM）、超音速飛行獣（空中プラズマ怪獣）。
+* **[toe_definitions/air/multi_species/toe_air_multi_species.md](./toe_definitions/air/multi_species/toe_air_multi_species.md)**：多種族混成航空戦闘団 詳細編成仕様書
+  * パイロット搭乗型サイバネ飛行獣、胞子散布バイオファイターによる極限格闘戦。
+* **[toe_definitions/air/fusion/toe_air_fusion.md](./toe_definitions/air/fusion/toe_air_fusion.md)**：融合生物航空戦闘団 詳細編成仕様書
+  * 有機可変翼ジェット機、生体プラズマ爆撃機、無着陸長期滞空バイオアビオニクス機。
 
 ---
 
