@@ -136,7 +136,8 @@
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  ①【常設増強機甲師団 (Heavy Armored Division)】                            │
-│      └─ 主力戦車256両＋重IFV256両基幹。直協航空連隊32機。平原での絶対的突破。│
+│      └─ 4個機甲連隊＋1個装甲歩兵連隊基幹（戦車256・重IFV320・迫撃192）。    │
+│         左右両翼偵察戦闘連隊（160両）、直協航空連隊32機。平原での絶対的突破。│
 │         （詳細仕様: toe_combat_group_heavy_armored.md 参照）                │
 │                                                                             │
 │  ②【機械化歩兵師団 (Mechanized Infantry Division)】                        │
@@ -211,7 +212,7 @@
 
 ## 7. 各種個別仕様書へのリンク
 
-* **常設増強機甲師団 詳細編成仕様書**: [`../toe_definitions/toe_combat_group_heavy_armored.md`](../toe_definitions/toe_combat_group_heavy_armored.md)（戦車256両＋随伴重IFV256両基幹［4個連隊］、左右両翼偵察戦闘連隊128両、特科・高射連隊、米軍式直協航空連隊32機）
+* **常設増強機甲師団 詳細編成仕様書**: [`../toe_definitions/toe_combat_group_heavy_armored.md`](../toe_definitions/toe_combat_group_heavy_armored.md)（装軌系5個連隊［4個機甲連隊＋1個装甲化歩兵連隊: 戦車256両＋重IFV320両＋迫撃192両］基幹、左右両翼偵察戦闘連隊160両、特科・高射連隊、米軍式直協航空連隊32機）
 * **師団階層・RFPサイクル基本仕様**: [`./concept_combat_group_structure_and_rfp_cycle.md`](./concept_combat_group_structure_and_rfp_cycle.md)
 * **兵站・共食い整備統合データ仕様**: [`./COMBAT_GROUP_LOGISTICS_INTEGRATION.md`](./COMBAT_GROUP_LOGISTICS_INTEGRATION.md)
 * **増強師団TO&Eバリエーション定義**: [`../toe_definitions/toe_combat_group_variants.md`](../toe_definitions/toe_combat_group_variants.md)
