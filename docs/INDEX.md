@@ -152,8 +152,8 @@ docs/
 各諸兵科連合戦闘団バリエーションの詳細編成表（TO&E: Table of Organization and Equipment）および戦闘序列。
 
 * **[toe_definitions/toe_combat_group_heavy_armored.md](./toe_definitions/toe_combat_group_heavy_armored.md)**：増強機甲戦闘団 詳細編成・運用仕様書
-  * 4連隊基幹（戦車128両＋随伴歩兵128両の同数ペア）の代表的TO&Eモデル。
-  * 連隊付装軌威力偵察隊、装甲化歩兵連隊による下車戦闘・工兵突破、師団装輪偵察大隊、特科・独立防空連隊。
+  * 4個機甲連隊基幹（各連隊が戦車64両＋随伴重IFV64両を内包、計512両）の代表的TO&Eモデル。
+  * 師団装甲装輪偵察2個大隊（計64両）、完全独立した師団野戦特科連隊および師団高射連隊、師団直協航空連隊（32機）。
 * **[toe_definitions/toe_combat_group_variants.md](./toe_definitions/toe_combat_group_variants.md)**：諸兵科連合戦闘団（TO&E）バリエーション編成定義書
   * 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機編成）および無人群編制。
   * 諸兵科連合戦闘団の代表的TO&Eバリエーション（増強機甲、空中機動強襲、二脚混成、山岳猟兵・隘路工兵、無人自律ドローン飽和、要塞突破）。
