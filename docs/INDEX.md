@@ -183,7 +183,7 @@ docs/
   * **軍事編成・部隊単位体系および戦闘団概念仕様書**。
   * 小隊・中隊・大隊（2個戦車中隊＋2個装甲化歩兵中隊＝64両）・連隊・師団（戦闘団）の2進数・倍々構造（$2^N$ バイナリ・バディシステム）。
   * 単なる陸上部隊にとどまらず直協航空戦力（VTOL・戦闘ヘリ・ドローン群）をオーガニックに内包する「空地統合戦闘団」の定義。
-  * システム上限キャップを排した「可変長スロット（`Vec<CombatSlot>`）」設計。
+  * ゲーム的スロット枠を排した「部隊単位コレクション（`Vec<SubUnit>`）」設計。
   * 「地域配備（恒常インフラ警備・災害害獣対処・低コスト）」から「機動運用（南西・国境危機への迅速集中転地）」への戦略移行と、防衛力の欠如を招かない留守警備隊メカニクス。
 * **[concept_combat_group_heavy_armored.md](./discussion/military_tactics/concept_combat_group_heavy_armored.md)**
   * **増強機甲戦闘団 詳細編成・運用仕様書**。
@@ -208,8 +208,8 @@ docs/
 * **[concept_dynamic_arsenal_geospatial.md](./discussion/military_tactics/concept_dynamic_arsenal_geospatial.md)**
   * 地理・地形特性に応じた戦力展開、補給工廠（アーセナル）の空間的配置と動的兵站ラインの防衛。
 * **[concept_combat_group_structure_and_rfp_cycle.md](./discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)**
-  * **戦闘団スロット構造・RFP自動更新および現場改修仕様書**。
-  * 部隊規模に応じた可変スロット（標準師団規模: 目安16スロット）と増強機甲化戦闘団（戦車232両）の代表作例。
+  * **戦闘団TO&E構造・RFP自動更新および現場改修仕様書**。
+  * 標準諸兵科連合師団（4連隊・戦車232両基幹）の代表的戦闘序列（TO&E）。
   * 国家RFP指示を受けた国内工廠の自動ブロック更新（Block I → II）と金型転換ラグ。
   * 過酷実戦環境が生むボトムアップ現場改修（Field Mod）と国家の制式採用承認イベント。
   * 新型・旧型混在による過渡期稼働率ペナルティ算出モデルと計画ロット更新の重要性。
