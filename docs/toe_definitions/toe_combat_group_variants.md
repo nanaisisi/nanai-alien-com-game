@@ -6,7 +6,8 @@
 ゲーム的なスロット枠概念を排し、[`../force_structure/concept_military_echelon_and_combat_groups.md`](../force_structure/concept_military_echelon_and_combat_groups.md) で定義された**小隊（4両/機） ➔ 中隊（16両/機） ➔ 大隊（約48〜64両/機） ➔ 師団・戦闘団**という軍事エシュロン体系に基づき、各種作戦環境・ドクトリンに応じた具体的な戦闘序列（TO&E: Table of Organization and Equipment）を規定する。
 
 ※ 師団直協航空機（ヘリ・VTOL）の機体スペック・運用規則は [`../specs/AVIATION_ASSETS_AND_DOCTRINE.md`](../specs/AVIATION_ASSETS_AND_DOCTRINE.md) を参照。  
-※ 二脚歩行戦闘車両の機体寸法・インフラ拒絶・空輸仕様は [`../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md`](../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md) を参照。
+※ 二脚歩行戦闘車両の機体寸法・インフラ拒絶・空輸仕様は [`../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md`](../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md) を参照。  
+※ 本部管理中隊（HHC: 通信・救護・整備・補給・工兵・迫撃砲）の基本構造と専門付加部隊は [`../force_structure/concept_headquarters_and_attached_units.md`](../force_structure/concept_headquarters_and_attached_units.md) を参照。
 
 ---
 

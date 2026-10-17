@@ -10,8 +10,9 @@
 docs/
 ├── INDEX.md                                # 本ファイル（ドキュメント目録）
 ├── GAME_DESIGN.md                          # ゲーム企画・コア仕様設計書（マスター）
-├── force_structure/                        # 編成思想・体系・運用原則（3件）
+├── force_structure/                        # 編成思想・体系・運用原則（4件）
 │   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および戦闘団概念仕様書
+│   ├── concept_headquarters_and_attached_units.md # 本部管理中隊（HHC）および本部付補助諸兵科 仕様定義書
 │   ├── concept_combat_group_structure_and_rfp_cycle.md # 戦闘団TO&E構造・RFP自動更新および現場改修仕様書
 │   └── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
 ├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（2件）
@@ -135,6 +136,9 @@ docs/
   * 地上打撃力と直協航空連隊（計32機: 1飛行隊8機×4）を有機的に内包する空地統合戦闘団の基本構造。
   * ゲーム的スロット枠概念を排した「部隊単位コレクション（`Vec<SubUnit>`）」設計。
   * 「地域配備（インフラ警備・害獣対処・低コスト）」から「機動運用（迅速転地・防衛力維持）」への戦略移行と留守警備隊メカニクス。
+* **[force_structure/concept_headquarters_and_attached_units.md](./force_structure/concept_headquarters_and_attached_units.md)**：本部管理中隊（HHC）および本部付補助諸兵科 仕様定義書
+  * 全部隊共通の「基盤的補助諸兵科（C4I指揮、通信、補給、衛生・除染、野戦整備・ARV、司令部警護）」と、部隊特性に応じた「本部付き専門部隊（戦闘工兵・架橋、重迫撃砲、対戦車、EW、JTAC等）」の2層構造。
+  * 大隊・連隊・師団のエシュロン別HHC規模基準と、C4Iキルチェーン、共食い整備回収率、自活補給バッファへのゲームメカニクス連携。
 * **[force_structure/concept_combat_group_structure_and_rfp_cycle.md](./force_structure/concept_combat_group_structure_and_rfp_cycle.md)**：戦闘団TO&E構造・RFP自動更新および現場改修仕様書
   * 標準諸兵科連合師団（4連隊基幹：戦車128両＋随伴歩兵128両の完全同数ペア）の代表的戦闘序列（TO&E）。
   * 国家RFP指示を受けた国内工廠の自動ブロック更新（Block I → II）と金型転換ラグ。
