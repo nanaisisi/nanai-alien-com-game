@@ -177,6 +177,16 @@ docs/
 
 ユニットの設計、兵器モジュール化、無人・自律兵器、戦場ルール。
 
+* **[concept_military_echelon_and_combat_groups.md](./discussion/military_tactics/concept_military_echelon_and_combat_groups.md)**
+  * **軍事編成・部隊単位体系および戦闘団概念仕様書**。
+  * 小隊・中隊・大隊（2個戦車中隊＋2個装甲化歩兵中隊＝64両）・連隊・師団（戦闘団）の2進数・倍々構造（$2^N$ バイナリ・バディシステム）。
+  * 単なる陸上部隊にとどまらず直協航空戦力（VTOL・戦闘ヘリ・ドローン群）をオーガニックに内包する「空地統合戦闘団」の定義。
+  * システム上限キャップを排した「可変長スロット（`Vec<CombatSlot>`）」設計。
+  * 「地域配備（恒常インフラ警備・災害害獣対処・低コスト）」から「機動運用（南西・国境危機への迅速集中転地）」への戦略移行と、防衛力の欠如を招かない留守警備隊メカニクス。
+* **[concept_combat_group_heavy_armored.md](./discussion/military_tactics/concept_combat_group_heavy_armored.md)**
+  * **増強機甲戦闘団 詳細編成・運用仕様書**。
+  * 4連隊・戦車232両基幹の代表的TO&Eモデル（2進数ペア補完）。
+  * 連隊付装軌威力偵察隊、装甲化歩兵連隊による下車戦闘・工兵突破、師団装甲装輪偵察2個大隊による広域高速哨戒、特科・高射特科の独立防空傘、装軌/装輪の共食い互換グループ。
 * **[concept_weapon_module_commonality.md](./discussion/military_tactics/concept_weapon_module_commonality.md)**
   * 車体／シャシーと兵装モジュールの共通化設計（モジュラー兵器システム）。生産効率と改修自由度の両立。
 * **[example_weapon_modules_cases.md](./discussion/military_tactics/example_weapon_modules_cases.md)**
@@ -197,7 +207,7 @@ docs/
   * 地理・地形特性に応じた戦力展開、補給工廠（アーセナル）の空間的配置と動的兵站ラインの防衛。
 * **[concept_combat_group_structure_and_rfp_cycle.md](./discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)**
   * **戦闘団スロット構造・RFP自動更新および現場改修仕様書**。
-  * 戦闘団の固定16スロットTO&E（基幹打撃4、機械化歩兵4、間接火力3、偵察自律3、兵站2）。
+  * 代表的16スロットTO&Eと増強機甲化戦闘団（戦車232両）の具体作例。
   * 国家RFP指示を受けた国内工廠の自動ブロック更新（Block I → II）と金型転換ラグ。
   * 過酷実戦環境が生むボトムアップ現場改修（Field Mod）と国家の制式採用承認イベント。
   * 新型・旧型混在による過渡期稼働率ペナルティ算出モデルと計画ロット更新の重要性。
