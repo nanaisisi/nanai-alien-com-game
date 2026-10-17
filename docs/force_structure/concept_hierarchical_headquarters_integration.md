@@ -2,7 +2,7 @@
 
 (Hierarchical Headquarters & Attached Units Integration Study)
 
-本ドキュメントは、[`concept_headquarters_and_attached_units.md`](../force_structure/concept_headquarters_and_attached_units.md) で定義された本部管理中隊（HHC）の基本構造、および [`toe_combat_group_heavy_armored.md`](./toe_combat_group_heavy_armored.md) における常設増強機甲師団の戦闘序列（Order of Battle）に基づき、**「師団司令部付隊 ⇄ 連隊本部管理中隊 ⇄ 大隊本部管理班」という3階層の本部付き隊が果たす機能分担、上下連携ダイナミクス、および損耗時の縮退運用**を体系的に検討・定義した文書である。
+本ドキュメントは、[`concept_headquarters_and_attached_units.md`](./concept_headquarters_and_attached_units.md) で定義された本部管理中隊（HHC）の基本構造、および [`../toe_definitions/toe_combat_group_heavy_armored.md`](../toe_definitions/toe_combat_group_heavy_armored.md) における常設増強機甲師団の戦闘序列（Order of Battle）に基づき、**「師団司令部付隊 ⇄ 連隊本部管理中隊 ⇄ 大隊本部管理班」という3階層の本部付き隊が果たす機能分担、上下連携ダイナミクス、および損耗時の縮退運用**を体系的に検討・定義した文書である。
 
 ---
 
