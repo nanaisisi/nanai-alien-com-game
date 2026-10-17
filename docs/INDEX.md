@@ -233,8 +233,8 @@ docs/
 
 ### 陸上・エイリアン・混成・融合軍団
 
-* **[toe_definitions/ground/alien/toe_ground_alien_swarm.md](./toe_definitions/ground/alien/toe_ground_alien_swarm.md)**：野生・固有エイリアン陸上群 生態・群生編制仕様書
-  * 小型強襲群、中型装甲突撃群、超大型破城巨獣群（リヴァイアサン級）、大深度潜行群の4大生体戦術カテゴリー。
+* **[toe_definitions/ground/alien/toe_ground_alien_swarm.md](./toe_definitions/ground/alien/toe_ground_alien_swarm.md)**：野生・固有エイリアン陸上軍団 編制・生態仕様書
+  * 人類の陸上兵種と完全に一致する生体軍団体系（軽歩兵、自動車化歩兵、装輪機動、空中機動、装甲化、機甲、歩行戦闘、長距離ミサイル、調査）。
 * **[toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md](./toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md)**：多種族混成陸上軍団（全11カテゴリー）詳細仕様書
   * 人類兵力50%と同盟エイリアン50%の共生協同運用、自己治癒（再生）および二重兵站ドクトリン。
 * **[toe_definitions/ground/fusion/toe_corps_fusion_ground.md](./toe_definitions/ground/fusion/toe_corps_fusion_ground.md)**：融合生物陸上軍団（全11カテゴリー）詳細仕様書
@@ -245,7 +245,7 @@ docs/
 * **[toe_definitions/naval/regular/toe_naval_fleet_regular.md](./toe_definitions/naval/regular/toe_naval_fleet_regular.md)**：通常海上戦闘団（全8種）詳細編成仕様書
   * 民間船、武装船、哨戒、護衛、通常、戦艦（沿岸砲撃）、航空（洋上基地）、潜水艦隊の編制序列。
 * **[toe_definitions/naval/alien/toe_naval_alien_swarm.md](./toe_definitions/naval/alien/toe_naval_alien_swarm.md)**：野生・固有エイリアン海洋群 生態・編制仕様書
-  * 群泳刺胞獣、超大型甲殻怪獣、超巨大海洋生物（リヴァイアサン級深海共鳴種）の海中戦術。
+  * 人類の艦隊兵種と完全に一致する生体海洋群体系（哨戒、護衛、通常、戦艦、航空、潜水）。
 * **[toe_definitions/naval/multi_species/toe_naval_multi_species.md](./toe_definitions/naval/multi_species/toe_naval_multi_species.md)**：多種族混成海上戦闘団 詳細編成仕様書
   * 人類ミサイル軍艦と同盟海棲戦闘怪獣の混成運用（生体ソナー・魚雷迎撃）。
 * **[toe_definitions/naval/fusion/toe_naval_fusion.md](./toe_definitions/naval/fusion/toe_naval_fusion.md)**：融合生物海上戦闘団 詳細編成仕様書
@@ -256,7 +256,7 @@ docs/
 * **[toe_definitions/air/regular/toe_air_wing_regular.md](./toe_definitions/air/regular/toe_air_wing_regular.md)**：通常航空戦闘団（全14種）詳細編成仕様書
   * 民間、武装、輸送、哨戒、護衛、迎撃、垂直離陸、主力戦闘、光学ステルス、爆撃、空中戦艦、空中空母、超大型輸送航空団。
 * **[toe_definitions/air/alien/toe_air_alien_swarm.md](./toe_definitions/air/alien/toe_air_alien_swarm.md)**：野生・固有エイリアン航空群 生態・編制仕様書
-  * 飛翔酸吐き種、大気浮遊クラゲ（生体ECM）、超音速飛行獣（空中プラズマ怪獣）。
+  * 人類の航空隊兵種と完全に一致する生体飛行群体系（輸送、哨戒、迎撃、戦闘、ステルス戦闘、爆撃、空中戦艦、空中空母、ステルス偵察、超大型輸送）。
 * **[toe_definitions/air/multi_species/toe_air_multi_species.md](./toe_definitions/air/multi_species/toe_air_multi_species.md)**：多種族混成航空戦闘団 詳細編成仕様書
   * パイロット搭乗型サイバネ飛行獣、胞子散布バイオファイターによる極限格闘戦。
 * **[toe_definitions/air/fusion/toe_air_fusion.md](./toe_definitions/air/fusion/toe_air_fusion.md)**：融合生物航空戦闘団 詳細編成仕様書
