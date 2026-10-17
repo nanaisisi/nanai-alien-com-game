@@ -1,4 +1,4 @@
-# ドキュメント構成・目録 (Documentation Index)
+﻿# ドキュメント構成・目録 (Documentation Index)
 
 本プロジェクト（Nanai Alien Com Game）における各種仕様書・検討資料の構成および索引です。
 
@@ -10,15 +10,16 @@
 docs/
 ├── INDEX.md                                # 本ファイル（ドキュメント目録）
 ├── GAME_DESIGN.md                          # ゲーム企画・コア仕様設計書（マスター）
-├── force_structure/                        # 編成思想・体系・運用原則（7件）
+├── force_structure/                        # 編成思想・体系・運用原則（9件）
 │   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および常設増強師団概念仕様書
 │   ├── concept_headquarters_and_attached_units.md # 本部管理中隊（HHC）および本部付補助諸兵科 仕様定義書
 │   ├── concept_hierarchical_headquarters_integration.md # 各階層本部付き隊の相互連携・指揮統制関係検討書
-│   ├── concept_combat_group_structure_and_rfp_cycle.md # 増強師団TO&E構造・RFP自動更新および現場改修仕様書
-│   ├── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 増強師団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
+│   ├── concept_combat_group_structure_and_rfp_cycle.md # 戦闘団TO&E構造・RFP自動更新および現場改修仕様書
+│   ├── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
 │   ├── concept_toe_feedback_and_cross_echelon_methodology.md # 部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
-│   └── concept_corps_and_division_echelons.md # 軍団・師団・戦闘団 3層エシュロンおよび常設軍団制 仕様書
-├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（8件）
+│   ├── concept_corps_and_division_echelons.md # 1ユニット＝2個師団1軍団制 概念・編制検討書
+│   ├── concept_ground_vehicle_chassis_and_variants.md # 陸上装甲・戦闘車両プラットフォームおよびバリアント総合仕様書
+│   └── concept_personnel_and_manning_standards.md # 軍団・師団 人員規模および定員算出基準仕様書├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（8件）
 │   ├── toe_combat_group_heavy_armored.md   # 常設増強機甲師団 詳細編成・運用仕様書
 │   ├── toe_combat_group_variants.md        # 常設増強師団（TO&E）バリエーション編成定義・目録
 │   ├── toe_combat_group_airmobile.md       # 空中機動・VTOL空地強襲師団 詳細編成仕様書
@@ -165,9 +166,17 @@ docs/
 * **[force_structure/concept_toe_feedback_and_cross_echelon_methodology.md](./force_structure/concept_toe_feedback_and_cross_echelon_methodology.md)**：部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
   * 重機甲師団で確立された編成基準（2-2バイナリ、大隊付自走重迫16両集約、左右両翼スクリーン、突破と掃討の分離、3階層HHC、プラットフォーム二分化）を、他アーキタイプへ等価適用するための6大共通評価軸（チェックリスト）。
   * 空中機動・ドローン特務・要塞突破・山岳猟兵・二脚混成・装輪機動師団に対する診断・改定マトリクスと更新プロトコル。
-* **[force_structure/concept_corps_and_division_echelons.md](./force_structure/concept_corps_and_division_echelons.md)**：常設機甲軍団の編成規模・最小構成検討書
-  * 戦闘機動8連隊（約30,000名、戦闘車両1,520両）が「4個戦闘連隊基幹の2個師団を統合した【軍団（Corps）としての最小構成（Minimum Viable Corps）】」であるという構造的再定義。
-  * 軍団（2〜4個師団の作戦スタック・直轄大深度砲兵/航空保有） ⇄ 師団（大戦略標準コマ・4個連隊諸兵科連合） ⇄ 戦闘団（サブタイル343マスの実動大隊TF）の3層関係と、最小構成（2個師団）の限界・異種混成軍団への発展検討論点。
+* **[force_structure/concept_corps_and_division_echelons.md](./force_structure/concept_corps_and_division_echelons.md)**：1ユニット＝2個師団1軍団制 概念・編制検討書
+  * 大戦略マップの1コマ（1ユニット）の実体が「各師団正面4連隊＋師団付特科連隊＋師団輸送飛行隊（8機）を持つ2個師団」からなる「1個軍団（Corps / 最小構成）」であるという構造的定義。
+  * 軍団直属の集中航空戦力「軍団航空隊（4個飛行隊・計32機）」と師団自前の輸送飛行隊（8機×2）による2層航空運用。
+* **[force_structure/concept_ground_vehicle_chassis_and_variants.md](./force_structure/concept_ground_vehicle_chassis_and_variants.md)**：陸上装甲・戦闘車両プラットフォームおよびバリアント総合仕様書
+  * 陸上戦闘車両の5大車体系統（重装軌戦車系、装軌装甲車系、8輪装甲装輪車系、重装輪トラック系、4×4高機動系）の明確な階層区分。
+  * 前線戦闘を担う「同一8輪装甲装輪車プラットフォーム」による10大バリアント共通化体系（IFV/APC/RCV/火力MCV/自走迫/指揮/患者輸送/CBRN/ARV/CEV）。
+  * 重砲の2大マウント設計（160C全周旋回砲塔型 ⇄ 210C車体据付型）と、対空車両の3階層防空体系（自走対空戦車 ＋ 重装輪SAM ＋ 4×4近接SAM）。
+* **[force_structure/concept_personnel_and_manning_standards.md](./force_structure/concept_personnel_and_manning_standards.md)**：軍団・師団 人員規模および定員算出基準仕様書
+  * 下車歩兵一律固定8名分隊制（乗員＋8名分隊）と、主要戦闘車両（戦車3名、IFV11名、APC10名、RCV5名、MCV3名、迫撃4名、特科4名）の乗員基準。
+  * 師団別・部隊別の積算根拠（1個師団 約14,000名、軍団直轄 約2,100名、大戦略1コマ総員 約30,100名）。
+  * Tooth-to-Tail比率（直接戦闘員63% 対 後方支援員37%）と共食い整備・衛生後送による部隊抗堪性モデル。
 
 ---
 
