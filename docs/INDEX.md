@@ -12,7 +12,8 @@ docs/
 ├── GAME_DESIGN.md                          # ゲーム企画・コア仕様設計書（マスター）
 ├── specs/                                  # 個別確定・基本仕様書
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
-│   └── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
+│   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
+│   └── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
 ├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
@@ -57,7 +58,9 @@ docs/
     │   ├── concept_maritime_governance_and_ocean_engineering.md
     │   ├── concept_subtile_combat_and_tactical_rules.md
     │   └── concept_infrastructure_grid_and_transit_artery.md
-    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（13件）
+    ├── military_tactics/                   # 軍事・兵器モジュール・戦術運用（15件）
+    │   ├── concept_military_echelon_and_combat_groups.md
+    │   ├── concept_combat_group_heavy_armored.md
     │   ├── concept_weapon_module_commonality.md
     │   ├── example_weapon_modules_cases.md
     │   ├── concept_ammunition_caliber_standards_c.md
