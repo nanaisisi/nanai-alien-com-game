@@ -165,9 +165,9 @@ docs/
 * **[force_structure/concept_toe_feedback_and_cross_echelon_methodology.md](./force_structure/concept_toe_feedback_and_cross_echelon_methodology.md)**：部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
   * 重機甲師団で確立された編成基準（2-2バイナリ、大隊付自走重迫16両集約、左右両翼スクリーン、突破と掃討の分離、3階層HHC、プラットフォーム二分化）を、他アーキタイプへ等価適用するための6大共通評価軸（チェックリスト）。
   * 空中機動・ドローン特務・要塞突破・山岳猟兵・二脚混成・装輪機動師団に対する診断・改定マトリクスと更新プロトコル。
-* **[force_structure/concept_corps_and_division_echelons.md](./force_structure/concept_corps_and_division_echelons.md)**：軍団・師団・戦闘団 3層エシュロンおよび常設軍団制 仕様書
-  * 戦闘機動8連隊（約30,000名、戦闘車両1,520両）が「4個戦闘連隊基幹の2個師団を統合した【常設増強軍団（Corps）】」であるという構造的再定義。
-  * 軍団（複数師団の作戦スタック・直轄重砲兵/航空保有） ⇄ 師団（大戦略標準コマ・4個連隊諸兵科連合） ⇄ 戦闘団（サブタイル343マスの実動大隊TF）の3層関係と2-2相互躍進ダイナミクス。
+* **[force_structure/concept_corps_and_division_echelons.md](./force_structure/concept_corps_and_division_echelons.md)**：常設機甲軍団の編成規模・最小構成検討書
+  * 戦闘機動8連隊（約30,000名、戦闘車両1,520両）が「4個戦闘連隊基幹の2個師団を統合した【軍団（Corps）としての最小構成（Minimum Viable Corps）】」であるという構造的再定義。
+  * 軍団（2〜4個師団の作戦スタック・直轄大深度砲兵/航空保有） ⇄ 師団（大戦略標準コマ・4個連隊諸兵科連合） ⇄ 戦闘団（サブタイル343マスの実動大隊TF）の3層関係と、最小構成（2個師団）の限界・異種混成軍団への発展検討論点。
 
 ---
 
