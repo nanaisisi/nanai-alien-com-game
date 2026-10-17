@@ -13,7 +13,8 @@ docs/
 ├── specs/                                  # 個別確定・基本仕様書
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
-│   └── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
+│   ├── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
+│   └── COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md # 戦闘団航空統合（ヘリ・UAV）および部隊規模別TO&Eバリエーション仕様書
 ├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
@@ -207,7 +208,7 @@ docs/
   * 地理・地形特性に応じた戦力展開、補給工廠（アーセナル）の空間的配置と動的兵站ラインの防衛。
 * **[concept_combat_group_structure_and_rfp_cycle.md](./discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)**
   * **戦闘団スロット構造・RFP自動更新および現場改修仕様書**。
-  * 代表的16スロットTO&Eと増強機甲化戦闘団（戦車232両）の具体作例。
+  * 部隊規模に応じた可変スロット（標準師団規模: 目安16スロット）と増強機甲化戦闘団（戦車232両）の代表作例。
   * 国家RFP指示を受けた国内工廠の自動ブロック更新（Block I → II）と金型転換ラグ。
   * 過酷実戦環境が生むボトムアップ現場改修（Field Mod）と国家の制式採用承認イベント。
   * 新型・旧型混在による過渡期稼働率ペナルティ算出モデルと計画ロット更新の重要性。
