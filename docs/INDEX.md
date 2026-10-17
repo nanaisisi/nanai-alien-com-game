@@ -14,7 +14,8 @@ docs/
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
 │   ├── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
-│   └── COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md # 戦闘団航空統合（ヘリ・UAV）および部隊規模別TO&Eバリエーション仕様書
+│   ├── COMBAT_GROUP_AVIATION_AND_TOE_VARIANTS.md # 戦闘団航空統合（ヘリ・UAV）および部隊規模別TO&Eバリエーション仕様書
+│   └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md  # 二脚歩行戦闘車両（高級装甲部隊）仕様書
 ├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
