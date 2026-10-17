@@ -17,9 +17,16 @@ docs/
 │   ├── concept_combat_group_structure_and_rfp_cycle.md # 増強師団TO&E構造・RFP自動更新および現場改修仕様書
 │   ├── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 増強師団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
 │   └── concept_toe_feedback_and_cross_echelon_methodology.md # 部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
-├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（2件）
+├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（8件）
 │   ├── toe_combat_group_heavy_armored.md   # 常設増強機甲師団 詳細編成・運用仕様書
-│   └── toe_combat_group_variants.md        # 常設増強師団（TO&E）バリエーション編成定義書
+│   ├── toe_combat_group_variants.md        # 常設増強師団（TO&E）バリエーション編成定義・目録
+│   ├── toe_combat_group_airmobile.md       # 空中機動・VTOL空地強襲師団 詳細編成仕様書
+│   ├── toe_combat_group_drone_swarm.md     # 無人自律・ドローン飽和特務師団 詳細編成仕様書
+│   ├── toe_combat_group_siege_division.md  # 重装甲要塞突破師団 詳細編成仕様書
+│   ├── toe_combat_group_mountain_jaeger.md # 山岳猟兵・隘路工兵師団 詳細編成仕様書
+│   ├── toe_combat_group_bipedal_assault.md # 高級装甲・二脚歩行混成師団 詳細編成仕様書
+│   ├── toe_combat_group_wheeled_reaction.md # 装輪高速機動師団 詳細編成仕様書
+│   └── toe_combat_group_regional_defense.md # 地域配備・警備師団 詳細編成仕様書
 ├── specs/                                  # 個別兵器・システム確定・基本仕様書（4件）
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
@@ -168,10 +175,24 @@ docs/
   * 装軌系5個連隊基幹（4個諸兵科連合機甲連隊［戦車256両＋重IFV256両＋大隊付自走重迫128両］ ＋ 第1装甲化歩兵連隊［重IFV64両＋装甲APC64両＋大隊付自走重迫32両］）。
   * 機甲部隊の90C排除と各大隊直轄120C自走重迫撃砲中隊（16両×10大隊＝計160両）への集約運用、および突破後の市街地・巣穴掃討と要衝確保を完結する第1装甲化歩兵連隊の連携。
   * 左右両翼の装輪偵察戦闘連隊（計160両: 各連隊が戦闘大隊48両［迫撃16両含む］＋偵察大隊32両）、完全独立した師団野戦特科連隊および師団高射連隊、師団直協航空連隊（32機）。
-* **[toe_definitions/toe_combat_group_variants.md](./toe_definitions/toe_combat_group_variants.md)**：常設増強師団（TO&E）バリエーション編成定義書
+* **[toe_definitions/toe_combat_group_variants.md](./toe_definitions/toe_combat_group_variants.md)**：常設増強師団（TO&E）バリエーション編成定義・目録
   * 2進数倍々・エシュロン体系（小隊4 ➔ 中隊16 ➔ 大隊64/80 ➔ 連隊 ➔ 師団）に基づくTO&E基本モデル。
   * 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機編成）および無人群編制。
-  * 諸兵科連合師団の代表的TO&Eバリエーション（増強機甲、空中機動強襲、二脚混成、山岳猟兵・隘路工兵、無人自律ドローン飽和、要塞突破、装輪高速機動、地域配備・警備）。
+  * 各種任務・ドクトリン別個別仕様書へのインデックス。
+* **[toe_definitions/toe_combat_group_airmobile.md](./toe_definitions/toe_combat_group_airmobile.md)**：空中機動・VTOL空地強襲師団 詳細編成仕様書
+  * 重武装戦闘VTOL 32機、強襲輸送VTOL 32機、空挺軽IFV 128両、大隊付120C超軽量自走迫 64両、FARP先行展開。
+* **[toe_definitions/toe_combat_group_drone_swarm.md](./toe_definitions/toe_combat_group_drone_swarm.md)**：無人自律・ドローン飽和特務師団 詳細編成仕様書
+  * 無人Std-T4車台共通化（突撃UGV 128両＋無人IFV 128両＋無人迫撃 64両）、有人統制装甲歩兵連隊、FPV母車連隊 64両。
+* **[toe_definitions/toe_combat_group_siege_division.md](./toe_definitions/toe_combat_group_siege_division.md)**：重装甲要塞突破師団 詳細編成仕様書
+  * 超重機甲2連隊（超重戦車128両）＋重装甲工兵・攻城歩兵2連隊の2-2均等構成、210C超重自走砲 32両、左右両翼スクリーン 160両。
+* **[toe_definitions/toe_combat_group_mountain_jaeger.md](./toe_definitions/toe_combat_group_mountain_jaeger.md)**：山岳猟兵・隘路工兵師団 詳細編成仕様書
+  * 下車登攀歩兵、迫撃砲多層分散（小隊60C/中隊90C/大隊120Cアンカー座）、多脚荷役機（Std-L4）64機、4脚斥候犬 64機。
+* **[toe_definitions/toe_combat_group_bipedal_assault.md](./toe_definitions/toe_combat_group_bipedal_assault.md)**：高級装甲・二脚歩行混成師団 詳細編成仕様書
+  * 戦車と通常二脚（64機）の小隊混成、短時間飛翔二脚（64機）による要衝跳躍急襲、戦略空輸展開、左右両翼スクリーン 160両。
+* **[toe_definitions/toe_combat_group_wheeled_reaction.md](./toe_definitions/toe_combat_group_wheeled_reaction.md)**：装輪高速機動師団 詳細編成仕様書
+  * 8x8装輪単一ファミリー共通化（共通化率95%）、装輪打撃2連隊（105C/25C）＋装輪歩兵2連隊（IFV/APC）、舗装動脈高速自走。
+* **[toe_definitions/toe_combat_group_regional_defense.md](./toe_definitions/toe_combat_group_regional_defense.md)**：地域配備・警備師団 詳細編成仕様書
+  * 管区常駐・現地インフラ自活（超低維持費）、留守警備隊基盤、旧式装甲車・牽引式120C重迫（大隊16門）とトーチカ複合防御。
 
 ---
 
