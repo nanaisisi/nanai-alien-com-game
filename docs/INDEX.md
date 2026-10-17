@@ -234,7 +234,7 @@ docs/
 ### 陸上・エイリアン・混成・融合軍団
 
 * **[toe_definitions/ground/alien/toe_ground_alien_swarm.md](./toe_definitions/ground/alien/toe_ground_alien_swarm.md)**：野生・固有エイリアン陸上軍団 編制・生態仕様書
-  * 人類の陸上兵種と完全に一致する生体軍団体系（軽歩兵、自動車化歩兵、装輪機動、空中機動、装甲化、機甲、歩行戦闘、長距離ミサイル、調査）。
+  * 人類の陸上兵種と完全に一致する生体軍団体系（軽歩兵、自動車化歩兵、装輪機動、空中機動、装甲化、機甲、歩行戦闘、長距離ミサイル）。
 * **[toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md](./toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md)**：多種族混成陸上軍団（全11カテゴリー）詳細仕様書
   * 人類兵力50%と同盟エイリアン50%の共生協同運用、自己治癒（再生）および二重兵站ドクトリン。
 * **[toe_definitions/ground/fusion/toe_corps_fusion_ground.md](./toe_definitions/ground/fusion/toe_corps_fusion_ground.md)**：融合生物陸上軍団（全11カテゴリー）詳細仕様書
