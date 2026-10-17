@@ -19,7 +19,9 @@ docs/
 │   └── RESOURCE_IMPLEMENTATION_BRIDGE.md   # 資源系 実装橋渡し案
 ├── planning/                               # 開発計画・ロードマップ・課題管理
 │   ├── MISSING_DOCUMENTS_ROADMAP.md        # 未作成・不足ドキュメント体系と開発ロードマップ
-│   └── PENDING_ISSUES.md                   # 未確定・検討課題まとめ
+│   ├── PENDING_ISSUES.md                   # 未確定・検討課題まとめ
+│   ├── SECONDARY_MISSING_SPECS.md          # 二次的不足ドキュメント・システム統合仕様書体系
+│   └── SECONDARY_SPECS_EVALUATION.md       # 2次的不足仕様・検討論点と実装アプローチ評価書
 └── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計51件）
     ├── automation/                         # 自動化システム（2件）
     │   ├── concept_automation_systems.md
