@@ -11,17 +11,17 @@ docs/
 ├── INDEX.md                                # 本ファイル（ドキュメント目録）
 ├── GAME_DESIGN.md                          # ゲーム企画・コア仕様設計書（マスター）
 ├── force_structure/                        # 編成思想・体系・運用原則（4件）
-│   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および戦闘団概念仕様書
+│   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および常設増強師団概念仕様書
 │   ├── concept_headquarters_and_attached_units.md # 本部管理中隊（HHC）および本部付補助諸兵科 仕様定義書
-│   ├── concept_combat_group_structure_and_rfp_cycle.md # 戦闘団TO&E構造・RFP自動更新および現場改修仕様書
-│   └── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
+│   ├── concept_combat_group_structure_and_rfp_cycle.md # 増強師団TO&E構造・RFP自動更新および現場改修仕様書
+│   └── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 増強師団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
 ├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（2件）
-│   ├── toe_combat_group_heavy_armored.md   # 増強機甲戦闘団 詳細編成・運用仕様書
-│   └── toe_combat_group_variants.md        # 諸兵科連合戦闘団（TO&E）バリエーション編成定義書
+│   ├── toe_combat_group_heavy_armored.md   # 常設増強機甲師団 詳細編成・運用仕様書
+│   └── toe_combat_group_variants.md        # 常設増強師団（TO&E）バリエーション編成定義書
 ├── specs/                                  # 個別兵器・システム確定・基本仕様書（4件）
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
-│   ├── AVIATION_ASSETS_AND_DOCTRINE.md     # 師団直協航空アセット（戦闘・輸送ヘリ）運用仕様書
+│   ├── AVIATION_ASSETS_AND_DOCTRINE.md     # 師団直協航空アセット（米軍式航空連隊）運用仕様書
 │   └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md  # 二脚歩行戦闘車両（高級装甲部隊）仕様書
 ├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
