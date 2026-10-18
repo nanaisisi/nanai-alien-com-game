@@ -9,4 +9,8 @@
 - [生体護衛・群体防衛群](../toe/naval/alien/toe_alien_fleet_escort.md) - エイリアン護衛艦隊 詳細編成・生態仕様書
 - [深海潜航・潜水生体群](../toe/naval/alien/toe_alien_fleet_submarine.md) - エイリアン潜水艦隊 詳細編成・生態仕様書
 
+## 装備・プラットフォーム仕様書
+
+- [海上・エイリアン 生態・生体兵装プラットフォーム仕様書](../equipment/naval/alien/naval_alien_equipment.md)
+
 [← TO&E目録（カテゴリ一覧）へ戻る](../INDEX_TOE.md)
