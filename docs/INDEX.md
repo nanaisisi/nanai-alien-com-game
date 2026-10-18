@@ -118,7 +118,8 @@ docs/
     │   ├── concept_hidden_stacks_and_reserve_arsenal.md
     │   ├── concept_non_unit_sea_and_vehicle_transport.md
     │   ├── concept_homeworld_roadmaps_and_niche_industries.md
-    │   └── concept_starter_modules_and_common_chassis_catalog.md
+    │   ├── concept_starter_modules_and_common_chassis_catalog.md
+    │   └── concept_advanced_tech_dew_unmanned_and_naval_doctrine.md
     ├── ui_wiki/                            # UI・情報閲覧システム（5件）
     │   ├── concept_in_game_wiki.md
     │   ├── concept_viewer_separation_wiki_and_live.md
@@ -379,8 +380,12 @@ docs/
   * **初期モジュール・基本シャシー共通カタログ仕様書 (Turn 0〜Gen 1)**。
   * スタート時の完全な平等性（競技的公平性）を担保する、全国家共通の母星標準規格（ISO-Terran Baseline）モジュール群。
   * 3大基本シャシー（装輪・装軌・多脚）の走破係数・積載スペック、基本武装・パワーパック・装甲モジュール定義。
-  * Turn 0 初期配備戦力（Mk.0遠征戦車、探査バギー、治安警備小隊、受動監視杭）と初期ブートローダー工廠値。
-  * 国家ごとの没入感を高めるフレーバー呼称マッピング（内部共通データと表示文字列の対応）。
+* **[concept_advanced_tech_dew_unmanned_and_naval_doctrine.md](./discussion/military_tactics/concept_advanced_tech_dew_unmanned_and_naval_doctrine.md)**
+  * **先端軍事テクノロジー・水上運用ドクトリン長期総合検討書**。
+  * 空・陸・海・潜の無人自律システム（UxV: UAV/UGV/USV/UUV）の4階層展開と有人指揮ノード（MUM-T）、エッジAI交戦・電子妨害耐性と倫理キルチェーン。
+  * 高出力レーザー（HEL: 光速・弾薬無制限と大気・瘴気減衰）、高出力マイクロ波（HPM: ドローンスウォーム一括無力化・エイリアン神経撹乱）、VRM中間エネルギーバッファと排熱工学。
+  * 水上システム総合運用ドクトリン（臨海造船所建造、陸上戦闘艦の海上自航回航・護衛、海岸揚陸、メガフロート/自走MOB、アイアンボトム・サウンドの海底サルベージ）。
+  * 技術世代（Gen 0〜4）とアフィニティ進化、長期実装ロードマップ。
 
 ### ③ 産業・サプライチェーン・組織運用（`industry_logistics/`）
 
