@@ -16,4 +16,3 @@
 - [陸上・エイリアン生体兵装・種別仕様書](../equipment/ground/alien/ground_alien_equipment.md) - 個体カテゴリー・生体プラットフォーム一覧
 
 [← TO&E目録（カテゴリ一覧）へ戻る](../INDEX_TOE.md)
-
