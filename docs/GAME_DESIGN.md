@@ -194,23 +194,23 @@
 
 #### 3.3.1 通常航空戦闘団（人類通常航空隊）
 
-| 種別                             | 主な役割・特徴                                                                   | 構成機体イメージ                                                           |
-| :------------------------------- | :------------------------------------------------------------------------------- | :------------------------------------------------------------------------- |
-| **民間航空団**                   | 惑星内高速輸送・物資空輸を担当                                                   | 貨物機、旅客機（詳細は [`./toe_definitions/air/regular/toe_air_wing_civilian.md`](./toe_definitions/air/regular/toe_air_wing_civilian.md) 参照） |
-| **武装民間航空団**               | 軽武装を施した民間航空機                                                         | 武装貨物機（詳細は [`./toe_definitions/air/regular/toe_air_wing_armed_civilian.md`](./toe_definitions/air/regular/toe_air_wing_armed_civilian.md) 参照） |
-| **輸送航空団**                   | 陸上部隊を収容でき、不整地着陸能力を持った大型輸送機による航空団                 | 軍用輸送機（詳細は [`./toe_definitions/air/regular/toe_air_wing_tactical_transport.md`](./toe_definitions/air/regular/toe_air_wing_tactical_transport.md) 参照） |
-| **哨戒航空団**                   | 広域索敵・早期警戒を担当                                                         | 早期警戒機（AEW）、対潜哨戒偵察機、大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_patrol_aew.md`](./toe_definitions/air/regular/toe_air_wing_patrol_aew.md) 参照） |
-| **護衛航空団**                   | 民間航空機の護衛を目的とした小規模な部隊                                         | 大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_escort.md`](./toe_definitions/air/regular/toe_air_wing_escort.md) 参照） |
-| **迎撃航空団**                   | 小規模拠点から道路を活用して行動する軽戦闘機隊                                   | 軽戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_interceptor.md`](./toe_definitions/air/regular/toe_air_wing_interceptor.md) 参照） |
-| **垂直離陸航空団**               | SVTOL型戦闘機による戦闘航空団                                                    | SVTOL型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_vstol.md`](./toe_definitions/air/regular/toe_air_wing_vstol.md) 参照） |
-| **戦闘航空団**                   | 制空権確保および対地攻撃を行う主力航空隊                                         | 大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_tactical_fighter.md`](./toe_definitions/air/regular/toe_air_wing_tactical_fighter.md) 参照） |
-| **光学・電波ステルス戦闘航空団** | 光学・電波ステルスを装備した戦闘機部隊、コストのわりに戦闘能力は通常と同程度     | 光学迷彩ステルス戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_fighter.md`](./toe_definitions/air/regular/toe_air_wing_stealth_fighter.md) 参照） |
-| **爆撃航空団**                   | 爆撃機による戦略爆撃を行う航空隊                                                 | 爆撃機、大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_bomber.md`](./toe_definitions/air/regular/toe_air_wing_bomber.md) 参照） |
-| **光学・電波ステルス爆撃航空団** | 光学ステルスを装備した爆撃機と護衛機、爆撃能力は一般爆撃機よりも劣る             | 光学迷彩ステルス爆撃機、光学迷彩ステルス戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_bomber.md`](./toe_definitions/air/regular/toe_air_wing_stealth_bomber.md) 参照） |
-| **空中戦艦航空団**               | 空中戦艦による接近戦闘を得意とする                                               | 空中戦艦、空中防空駆逐艦、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_aerial_battleship.md`](./toe_definitions/air/regular/toe_air_wing_aerial_battleship.md) 参照） |
-| **空中空母航空団**               | 空中空母による航空機の運用を主目的とする。航空拠点としての能力を持つ             | 空中空母、大型戦闘機、空中防空駆逐艦、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_aerial_carrier.md`](./toe_definitions/air/regular/toe_air_wing_aerial_carrier.md) 参照） |
-| **光学・電波ステルス偵察航空団** | 敵領空などへの偵察を行う部隊                                                     | 光学ステルス偵察機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_recon.md`](./toe_definitions/air/regular/toe_air_wing_stealth_recon.md) 参照） |
-| **超大型輸送航空団**             | 複数の超大型輸送機による部隊の長距離空輸を行う航空団。コストは戦艦艦隊を凌駕する | 超大型輸送機、空中護衛フリゲート(詳細は [`./toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md`](./toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md))参照） |
+| 種別 | 主な役割・特徴 | 構成機体イメージ |
+| :--- | :--- | :--- |
+| **民間航空団** | 惑星内高速輸送・物資空輸を担当 | 貨物機、旅客機（詳細は [`./toe_definitions/air/regular/toe_air_wing_civilian.md`](./toe_definitions/air/regular/toe_air_wing_civilian.md) 参照） |
+| **武装民間航空団** | 軽武装を施した民間航空機 | 武装貨物機（詳細は [`./toe_definitions/air/regular/toe_air_wing_armed_civilian.md`](./toe_definitions/air/regular/toe_air_wing_armed_civilian.md) 参照） |
+| **輸送航空団** | 陸上部隊を収容でき、不整地着陸能力を持った大型輸送機による航空団 | 軍用輸送機（詳細は [`./toe_definitions/air/regular/toe_air_wing_tactical_transport.md`](./toe_definitions/air/regular/toe_air_wing_tactical_transport.md) 参照） |
+| **哨戒航空団** | 広域索敵・早期警戒を担当 | 早期警戒機（AEW）、対潜哨戒偵察機、大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_patrol_aew.md`](./toe_definitions/air/regular/toe_air_wing_patrol_aew.md) 参照） |
+| **護衛航空団** | 民間航空機の護衛を目的とした小規模な部隊 | 大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_escort.md`](./toe_definitions/air/regular/toe_air_wing_escort.md) 参照） |
+| **迎撃航空団** | 小規模拠点から道路を活用して行動する軽戦闘機隊 | 軽戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_interceptor.md`](./toe_definitions/air/regular/toe_air_wing_interceptor.md) 参照） |
+| **垂直離陸航空団** | SVTOL型戦闘機による戦闘航空団 | SVTOL型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_vstol.md`](./toe_definitions/air/regular/toe_air_wing_vstol.md) 参照） |
+| **戦闘航空団** | 制空権確保および対地攻撃を行う主力航空隊 | 大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_tactical_fighter.md`](./toe_definitions/air/regular/toe_air_wing_tactical_fighter.md) 参照） |
+| **光学・電波ステルス戦闘航空団** | 光学・電波ステルスを装備した戦闘機部隊、コストのわりに戦闘能力は通常と同程度 | 光学迷彩ステルス戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_fighter.md`](./toe_definitions/air/regular/toe_air_wing_stealth_fighter.md) 参照） |
+| **爆撃航空団** | 爆撃機による戦略爆撃を行う航空隊 | 爆撃機、大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_bomber.md`](./toe_definitions/air/regular/toe_air_wing_bomber.md) 参照） |
+| **光学・電波ステルス爆撃航空団** | 光学ステルスを装備した爆撃機と護衛機、爆撃能力は一般爆撃機よりも劣る | 光学迷彩ステルス爆撃機、光学迷彩ステルス戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_bomber.md`](./toe_definitions/air/regular/toe_air_wing_stealth_bomber.md) 参照） |
+| **空中戦艦航空団** | 空中戦艦による接近戦闘を得意とする | 空中戦艦、空中防空駆逐艦、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_aerial_battleship.md`](./toe_definitions/air/regular/toe_air_wing_aerial_battleship.md) 参照） |
+| **空中空母航空団** | 空中空母による航空機の運用を主目的とする。航空拠点としての能力を持つ | 空中空母、大型戦闘機、空中防空駆逐艦、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_aerial_carrier.md`](./toe_definitions/air/regular/toe_air_wing_aerial_carrier.md) 参照） |
+| **光学・電波ステルス偵察航空団** | 敵領空などへの偵察を行う部隊 | 光学ステルス偵察機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_recon.md`](./toe_definitions/air/regular/toe_air_wing_stealth_recon.md) 参照） |
+| **超大型輸送航空団** | 複数の超大型輸送機による部隊の長距離空輸を行う航空団。コストは戦艦艦隊を凌駕する | 超大型輸送機、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md`](./toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md) 参照） |
 
 #### 3.3.2 野生・固有エイリアン航空群（エイリアン航空団）
 
