@@ -156,12 +156,12 @@
 
 | 種別 | 主な役割・特徴 | 構成艦艇イメージ（内部2進数・共通階層制） |
 | :--- | :--- | :--- |
-| **民間船艦隊** | 国内・海洋拠点への戦略資源・食料・工業製品の大量海上輸送 | 計32隻（大型コンテナ船 8隻、中型貨物船 16隻、沿岸連絡船 8隻） |
-| **武装船艦隊** | 軽火器・コンテナVLSを秘匿仮設した武装商船団・開拓初期護衛 | 計32隻（特設武装貨物船 8隻、武装沿岸艇 16隻、特設護衛船 8隻） |
-| **護衛艦隊** | 外洋シーレーンおよび民間船団・移動拠点（MOB）の専従護衛 | 計28隻（汎用駆逐艦 4隻、汎用フリゲート 8隻、護衛コルベット 16隻） |
-| **通常艦隊** | 外洋主力戦闘艦隊。水上打撃戦・制海権掌握・沿岸ミサイル支援 | 計62隻＋32機（小型空母 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻） |
-| **戦艦艦隊** | 超重装甲と超大口径電磁砲による決戦艦隊。2タイル沿岸艦砲射撃 | 計62隻（超弩級戦艦 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻） |
-| **航空艦隊** | 洋上航空打撃拠点。艦載機による広域制空・爆撃および敵前揚陸 | 計62隻＋128機（大型正規空母 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻） |
+| **民間船艦隊** | 国内・海洋拠点への戦略資源・食料・工業製品の大量海上輸送 | 計32隻（大型コンテナ船 8隻、中型貨物船 16隻、沿岸連絡船 8隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_civilian.md`](./toe_definitions/naval/regular/toe_naval_fleet_civilian.md) 参照） |
+| **武装船艦隊** | 軽火器・コンテナVLSを秘匿仮設した武装商船団・開拓初期護衛 | 計32隻（特設武装貨物船 8隻、武装沿岸艇 16隻、特設護衛船 8隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_armed_merchant.md`](./toe_definitions/naval/regular/toe_naval_fleet_armed_merchant.md) 参照） |
+| **護衛艦隊** | 外洋シーレーンおよび民間船団・移動拠点（MOB）の専従護衛 | 計28隻（汎用駆逐艦 4隻、汎用フリゲート 8隻、護衛コルベット 16隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_escort.md`](./toe_definitions/naval/regular/toe_naval_fleet_escort.md) 参照） |
+| **通常艦隊** | 外洋主力戦闘艦隊。水上打撃戦・制海権掌握・沿岸ミサイル支援 | 計62隻＋32機（小型空母 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_battle.md`](./toe_definitions/naval/regular/toe_naval_fleet_battle.md) 参照） |
+| **戦艦艦隊** | 超重装甲と超大口径電磁砲による決戦艦隊。2タイル沿岸艦砲射撃 | 計62隻（超弩級戦艦 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_battleship.md`](./toe_definitions/naval/regular/toe_naval_fleet_battleship.md) 参照） |
+| **航空艦隊** | 洋上航空打撃拠点。艦載機による広域制空・爆撃および敵前揚陸 | 計62隻＋128機（大型正規空母 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_carrier.md`](./toe_definitions/naval/regular/toe_naval_fleet_carrier.md) 参照） |
 
 #### 3.2.2 野生・固有エイリアン海洋群（エイリアン艦隊）
 
@@ -169,12 +169,12 @@
 
 | 種別 | 主な役割・特徴（人類艦隊と完全一致） | イメージ・構成 |
 | :--- | :--- | :--- |
-| **エイリアン哨戒艦隊** | 哨戒・近海警戒・索敵に特化した俊敏な海洋生体群 | 小型刺胞遊泳個体、高速遊泳魚雷獣、表層監視種 |
-| **エイリアン護衛艦隊** | 防空・対潜水生体への迎撃と遊泳群護衛を担当 | 棘皮防空個体、超音波迎撃種、中型護衛甲殻獣 |
-| **エイリアン通常艦隊** | 外洋での水上打撃・制海権確保を担当する汎用海洋群 | 中型重装甲甲殻獣、強酸投射種、生体魚雷射出種 |
-| **エイリアン戦艦艦隊** | 超重装甲と長距離生体砲撃・沿岸破壊を担当する決戦海洋群 | 超大型甲殻巨獣（リヴァイアサン級）、重キャビテーション衝撃砲種 |
-| **エイリアン航空艦隊** | 飛行型エイリアンを背部で多数輸送・発進させる海洋生体群 | 浮遊母艦生体（バイオキャリア）、艦載小型飛行種、警戒生体 |
-| **エイリアン潜水艦隊** | 深海に潜航し、高い隠密性から奇襲雷撃を行う生体潜水群 | 深海潜航巨獣、超音波共鳴種、誘導生体魚雷放出種 |
+| **エイリアン哨戒艦隊** | 哨戒・近海警戒・索敵に特化した俊敏な海洋生体群 | 小型刺胞遊泳個体、高速遊泳魚雷獣、表層監視種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_patrol.md`](./toe_definitions/naval/alien/toe_alien_fleet_patrol.md) 参照） |
+| **エイリアン護衛艦隊** | 防空・対潜水生体への迎撃と遊泳群護衛を担当 | 棘皮防空個体、超音波迎撃種、中型護衛甲殻獣（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_escort.md`](./toe_definitions/naval/alien/toe_alien_fleet_escort.md) 参照） |
+| **エイリアン通常艦隊** | 外洋での水上打撃・制海権確保を担当する汎用海洋群 | 中型重装甲甲殻獣、強酸投射種、生体魚雷射出種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_regular.md`](./toe_definitions/naval/alien/toe_alien_fleet_regular.md) 参照） |
+| **エイリアン戦艦艦隊** | 超重装甲と長距離生体砲撃・沿岸破壊を担当する決戦海洋群 | 超大型甲殻巨獣（リヴァイアサン級）、重キャビテーション衝撃砲種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_battleship.md`](./toe_definitions/naval/alien/toe_alien_fleet_battleship.md) 参照） |
+| **エイリアン航空艦隊** | 飛行型エイリアンを背部で多数輸送・発進させる海洋生体群 | 浮遊母艦生体（バイオキャリア）、艦載小型飛行種、警戒生体（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_carrier.md`](./toe_definitions/naval/alien/toe_alien_fleet_carrier.md) 参照） |
+| **エイリアン潜水艦隊** | 深海に潜航し、高い隠密性から奇襲雷撃を行う生体潜水群 | 深海潜航巨獣、超音波共鳴種、誘導生体魚雷放出種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_submarine.md`](./toe_definitions/naval/alien/toe_alien_fleet_submarine.md) 参照） |
 
 #### 3.2.3 多種族混成海上戦闘団
 
@@ -196,21 +196,21 @@
 
 | 種別                             | 主な役割・特徴                                                                   | 構成機体イメージ                                                           |
 | :------------------------------- | :------------------------------------------------------------------------------- | :------------------------------------------------------------------------- |
-| **民間航空団**                   | 惑星内高速輸送・物資空輸を担当                                                   | 貨物機、旅客機                                                             |
-| **武装民間航空団**               | 軽武装を施した民間航空機                                                         | 武装貨物機                                                                 |
-| **輸送航空団**                   | 陸上部隊を収容でき、不整地着陸能力を持った大型輸送機による航空団                 | 軍用輸送機                                                                 |
-| **哨戒航空団**                   | 広域索敵・早期警戒を担当                                                         | 早期警戒機（AEW）、対潜哨戒偵察機、大型戦闘機                              |
-| **護衛航空団**                   | 民間航空機の護衛を目的とした小規模な部隊                                         | 大型戦闘機                                                                 |
-| **迎撃航空団**                   | 小規模拠点から道路を活用して行動する軽戦闘機隊                                   | 軽戦闘機                                                                   |
-| **垂直離陸航空団**               | SVTOL型戦闘機による戦闘航空団                                                    | SVTOL型戦闘機                                                              |
-| **戦闘航空団**                   | 制空権確保および対地攻撃を行う主力航空隊                                         | 大型戦闘機                                                                 |
-| **光学・電波ステルス戦闘航空団** | 光学・電波ステルスを装備した戦闘機部隊、コストのわりに戦闘能力は通常と同程度     | 光学迷彩ステルス戦闘機                                                     |
-| **爆撃航空団**                   | 爆撃機による戦略爆撃を行う航空隊                                                 | 爆撃機、大型戦闘機                                                         |
-| **光学・電波ステルス爆撃航空団** | 光学ステルスを装備した爆撃機と護衛機、爆撃能力は一般爆撃機よりも劣る             | 光学迷彩ステルス爆撃機、光学迷彩ステルス戦闘機                             |
-| **空中戦艦航空団**               | 空中戦艦による接近戦闘を得意とする                                               | 空中戦艦、空中空母、大型戦闘機、空中防空駆逐艦、空中護衛フリゲート         |
-| **空中空母航空団**               | 空中空母による航空機の運用を主目的とする。航空拠点としての能力を持つ             | 空中空母、大型戦闘機、空中防空駆逐艦、空中護衛フリゲート                   |
-| **光学・電波ステルス偵察航空団** | 敵領空などへの偵察を行う部隊                                                     | 光学ステルス偵察機                                                         |
-| **超大型輸送航空団**             | 複数の超大型輸送機による部隊の長距離空輸を行う航空団。コストは戦艦艦隊を凌駕する | 超大型大型輸送機、空中空母、大型戦闘機、空中防空駆逐艦、空中護衛フリゲート |
+| **民間航空団**                   | 惑星内高速輸送・物資空輸を担当                                                   | 貨物機、旅客機（詳細は [`./toe_definitions/air/regular/toe_air_wing_civilian.md`](./toe_definitions/air/regular/toe_air_wing_civilian.md) 参照） |
+| **武装民間航空団**               | 軽武装を施した民間航空機                                                         | 武装貨物機（詳細は [`./toe_definitions/air/regular/toe_air_wing_armed_civilian.md`](./toe_definitions/air/regular/toe_air_wing_armed_civilian.md) 参照） |
+| **輸送航空団**                   | 陸上部隊を収容でき、不整地着陸能力を持った大型輸送機による航空団                 | 軍用輸送機（詳細は [`./toe_definitions/air/regular/toe_air_wing_tactical_transport.md`](./toe_definitions/air/regular/toe_air_wing_tactical_transport.md) 参照） |
+| **哨戒航空団**                   | 広域索敵・早期警戒を担当                                                         | 早期警戒機（AEW）、対潜哨戒偵察機、大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_patrol_aew.md`](./toe_definitions/air/regular/toe_air_wing_patrol_aew.md) 参照） |
+| **護衛航空団**                   | 民間航空機の護衛を目的とした小規模な部隊                                         | 大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_escort.md`](./toe_definitions/air/regular/toe_air_wing_escort.md) 参照） |
+| **迎撃航空団**                   | 小規模拠点から道路を活用して行動する軽戦闘機隊                                   | 軽戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_interceptor.md`](./toe_definitions/air/regular/toe_air_wing_interceptor.md) 参照） |
+| **垂直離陸航空団**               | SVTOL型戦闘機による戦闘航空団                                                    | SVTOL型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_vstol.md`](./toe_definitions/air/regular/toe_air_wing_vstol.md) 参照） |
+| **戦闘航空団**                   | 制空権確保および対地攻撃を行う主力航空隊                                         | 大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_tactical_fighter.md`](./toe_definitions/air/regular/toe_air_wing_tactical_fighter.md) 参照） |
+| **光学・電波ステルス戦闘航空団** | 光学・電波ステルスを装備した戦闘機部隊、コストのわりに戦闘能力は通常と同程度     | 光学迷彩ステルス戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_fighter.md`](./toe_definitions/air/regular/toe_air_wing_stealth_fighter.md) 参照） |
+| **爆撃航空団**                   | 爆撃機による戦略爆撃を行う航空隊                                                 | 爆撃機、大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_bomber.md`](./toe_definitions/air/regular/toe_air_wing_bomber.md) 参照） |
+| **光学・電波ステルス爆撃航空団** | 光学ステルスを装備した爆撃機と護衛機、爆撃能力は一般爆撃機よりも劣る             | 光学迷彩ステルス爆撃機、光学迷彩ステルス戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_bomber.md`](./toe_definitions/air/regular/toe_air_wing_stealth_bomber.md) 参照） |
+| **空中戦艦航空団**               | 空中戦艦による接近戦闘を得意とする                                               | 空中戦艦、空中防空駆逐艦、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_aerial_battleship.md`](./toe_definitions/air/regular/toe_air_wing_aerial_battleship.md) 参照） |
+| **空中空母航空団**               | 空中空母による航空機の運用を主目的とする。航空拠点としての能力を持つ             | 空中空母、大型戦闘機、空中防空駆逐艦、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_aerial_carrier.md`](./toe_definitions/air/regular/toe_air_wing_aerial_carrier.md) 参照） |
+| **光学・電波ステルス偵察航空団** | 敵領空などへの偵察を行う部隊                                                     | 光学ステルス偵察機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_recon.md`](./toe_definitions/air/regular/toe_air_wing_stealth_recon.md) 参照） |
+| **超大型輸送航空団**             | 複数の超大型輸送機による部隊の長距離空輸を行う航空団。コストは戦艦艦隊を凌駕する | 超大型輸送機、空中護衛フリゲート(詳細は [`./toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md`](./toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md))参照） |
 
 #### 3.3.2 野生・固有エイリアン航空群（エイリアン航空団）
 
@@ -218,16 +218,16 @@
 
 | 種別 | 主な役割・特徴（人類航空団と完全一致） | イメージ・構成 |
 | :--- | :--- | :--- |
-| **エイリアン輸送航空団** | 陸上生体や物資を空輸・不整地に直接降下させる生体輸送群 | 巨大嚢胞飛行獣、生体空輸コンテナ種、護衛飛行種 |
-| **エイリアン哨戒航空団** | 広域生体レーダー・早期警戒・フェロモン索敵を担当する飛行群 | 大気浮遊巨大クラゲ（生体レーダー個体）、長距離滑空索敵種 |
-| **エイリアン迎撃航空団** | 狭小地や前線巣穴から即時緊急発進する軽量迎撃飛行群 | 小型高速有翼爪獣、生体短距離迎撃針射出種 |
-| **エイリアン戦闘航空団** | 制空権確保および地上への急降下襲撃を担当する主力生体飛行群 | 中型重戦闘ワイバーン、強酸弾投射種、格闘鉤爪個体 |
-| **エイリアンステルス戦闘航空団** | カモフラージュ外皮と生体熱マスキングで敵レーダーを欺瞞する戦闘群 | 光学擬態有翼種、低赤外線放出捕食個体 |
-| **エイリアン爆撃航空団** | 重有機爆弾・強酸カプセルによる地上目標の面制圧・戦略破壊群 | 重爆撃巨大飛行獣、有機クラスター酸爆弾投射種 |
-| **エイリアン空中戦艦航空団** | 圧倒的質量と重生体プラズマ砲で空戦・対地制圧を行う巨大空中生体群 | 超大型空中生体戦艦（リヴァイアサン飛行種）、直協飛行護衛群 |
-| **エイリアン空中空母航空団** | 飛行生体群の生息・発進母体となる超巨大浮遊生体群 | 超巨大気嚢浮遊母艦獣、艦載小型突撃飛行種 |
-| **エイリアンステルス偵察航空団** | 敵防空網を潜り抜けて深部索敵を行う光学・電波欺瞞偵察群 | 高度擬態長距離飛行種、生体電波吸収膜保有個体 |
-| **エイリアン超大型輸送航空団** | 大規模生体軍団を一括して戦域間長距離輸送する超巨大飛行群 | 巨大型嚢胞輸送怪獣、浮遊護衛飛行群 |
+| **エイリアン輸送航空団** | 陸上生体や物資を空輸・不整地に直接降下させる生体輸送群 | 巨大嚢胞飛行獣、生体空輸コンテナ種、護衛飛行種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_transport.md`](./toe_definitions/air/alien/toe_alien_air_wing_transport.md) 参照） |
+| **エイリアン哨戒航空団** | 広域生体レーダー・早期警戒・フェロモン索敵を担当する飛行群 | 大気浮遊巨大クラゲ（生体レーダー個体）、長距離滑空索敵種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_patrol.md`](./toe_definitions/air/alien/toe_alien_air_wing_patrol.md) 参照） |
+| **エイリアン迎撃航空団** | 狭小地や前線巣穴から即時緊急発進する軽量迎撃飛行群 | 小型高速有翼爪獣、生体短距離迎撃針射出種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_interceptor.md`](./toe_definitions/air/alien/toe_alien_air_wing_interceptor.md) 参照） |
+| **エイリアン戦闘航空団** | 制空権確保および地上への急降下襲撃を担当する主力生体飛行群 | 中型重戦闘ワイバーン、強酸弾投射種、格闘鉤爪個体（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_fighter.md`](./toe_definitions/air/alien/toe_alien_air_wing_fighter.md) 参照） |
+| **エイリアンステルス戦闘航空団** | カモフラージュ外皮と生体熱マスキングで敵レーダーを欺瞞する戦闘群 | 光学擬態有翼種、低赤外線放出捕食個体（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_stealth_fighter.md`](./toe_definitions/air/alien/toe_alien_air_wing_stealth_fighter.md) 参照） |
+| **エイリアン爆撃航空団** | 重有機爆弾・強酸カプセルによる地上目標の面制圧・戦略破壊群 | 重爆撃巨大飛行獣、有機クラスター酸爆弾投射種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_bomber.md`](./toe_definitions/air/alien/toe_alien_air_wing_bomber.md) 参照） |
+| **エイリアン空中戦艦航空団** | 圧倒的質量と重生体プラズマ砲で空戦・対地制圧を行う巨大空中生体群 | 超大型空中生体戦艦（リヴァイアサン飛行種）、直協飛行護衛群（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_aerial_battleship.md`](./toe_definitions/air/alien/toe_alien_air_wing_aerial_battleship.md) 参照） |
+| **エイリアン空中空母航空団** | 飛行生体群の生息・発進母体となる超巨大浮遊生体群 | 超巨大気嚢浮遊母艦獣、艦載小型突撃飛行種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_aerial_carrier.md`](./toe_definitions/air/alien/toe_alien_air_wing_aerial_carrier.md) 参照） |
+| **エイリアンステルス偵察航空団** | 敵防空網を潜り抜けて深部索敵を行う光学・電波欺瞞偵察群 | 高度擬態長距離飛行種、生体電波吸収膜保有個体（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_stealth_recon.md`](./toe_definitions/air/alien/toe_alien_air_wing_stealth_recon.md) 参照） |
+| **エイリアン超大型輸送航空団** | 大規模生体軍団を一括して戦域間長距離輸送する超巨大飛行群 | 巨大型嚢胞輸送怪獣、浮遊護衛飛行群（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_super_heavy_transport.md`](./toe_definitions/air/alien/toe_alien_air_wing_super_heavy_transport.md) 参照） |
 
 #### 3.3.3 多種族混成航空戦闘団
 

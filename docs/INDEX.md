@@ -48,20 +48,53 @@ docs/
 │   │   │   └── toe_corps_multi_species_ground.md # 多種族混成陸上軍団（全11カテゴリー）仕様書
 │   │   └── fusion/                         # 融合生物陸上軍団
 │   │       └── toe_corps_fusion_ground.md  # 融合生物陸上軍団（全11カテゴリー）仕様書
-│   ├── naval/                              # 海上部隊編成（全4件）
-│   │   ├── regular/                        # 通常艦隊
-│   │   │   └── toe_naval_fleet_regular.md  # 人類通常艦隊（全8種）詳細編成仕様書
-│   │   ├── alien/                          # 野生・固有エイリアン海洋群
-│   │   │   └── toe_naval_alien_swarm.md    # 海洋生体群（リヴァイアサン級・甲殻怪獣）仕様書
+│   ├── naval/                              # 海上部隊編成（全12件＋他体系）
+│   │   ├── regular/                        # 人類通常艦隊（全5件）
+│   │   │   ├── toe_naval_fleet_battle.md   # 通常艦隊 詳細編成・運用仕様書
+│   │   │   ├── toe_naval_fleet_battleship.md # 戦艦艦隊 詳細編成・運用仕様書
+│   │   │   ├── toe_naval_fleet_carrier.md  # 航空艦隊 詳細編成・運用仕様書
+│   │   │   ├── toe_naval_fleet_escort.md   # 護衛艦隊 詳細編成・運用仕様書
+│   │   │   ├── toe_naval_fleet_civilian.md # 民間船艦隊 詳細編成・運用仕様書
+│   │   │   └── toe_naval_fleet_armed_merchant.md # 武装船艦隊 詳細編成・運用仕様書
+│   │   ├── alien/                          # 野生・固有エイリアン海洋群（全6件）
+│   │   │   ├── toe_alien_fleet_patrol.md   # エイリアン哨戒艦隊 詳細編成・生態仕様書
+│   │   │   ├── toe_alien_fleet_escort.md   # エイリアン護衛艦隊 詳細編成・生態仕様書
+│   │   │   ├── toe_alien_fleet_regular.md  # エイリアン通常艦隊 詳細編成・生態仕様書
+│   │   │   ├── toe_alien_fleet_battleship.md # エイリアン戦艦艦隊 詳細編成・生態仕様書
+│   │   │   ├── toe_alien_fleet_carrier.md  # エイリアン航空艦隊 詳細編成・生態仕様書
+│   │   │   └── toe_alien_fleet_submarine.md # エイリアン潜水艦隊 詳細編成・生態仕様書
 │   │   ├── multi_species/                  # 多種族混成海上戦闘団
 │   │   │   └── toe_naval_multi_species.md  # 混成艦隊（水上艦＋同盟海棲個体）仕様書
 │   │   └── fusion/                         # 融合生物海上戦闘団
 │   │       └── toe_naval_fusion.md         # 融合生物艦隊（生体装甲バイオ艦艇）仕様書
-│   └── air/                                # 航空部隊編成（全4件）
-│       ├── regular/                        # 通常航空隊
-│       │   └── toe_air_wing_regular.md     # 人類通常航空団（全14種）詳細編成仕様書
-│       ├── alien/                          # 野生・固有エイリアン航空群
-│       │   └── toe_air_alien_swarm.md      # 飛行生体群（飛翔酸吐き種・超音速巨獣）仕様書
+│   └── air/                                # 航空部隊編成（全26件＋他体系）
+│       ├── regular/                        # 人類通常航空団（全14件）
+│       │   ├── toe_air_wing_civilian.md    # 民間航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_armed_civilian.md # 武装民間航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_tactical_transport.md # 輸送航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_patrol_aew.md  # 哨戒航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_escort.md      # 護衛航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_interceptor.md # 迎撃航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_vstol.md       # 垂直離陸航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_tactical_fighter.md # 戦闘航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_stealth_fighter.md # 光学・電波ステルス戦闘航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_bomber.md      # 爆撃航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_stealth_bomber.md # 光学・電波ステルス爆撃航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_aerial_battleship.md # 空中戦艦航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_aerial_carrier.md # 空中空母航空団 詳細編成・運用仕様書
+│       │   ├── toe_air_wing_stealth_recon.md # 光学・電波ステルス偵察航空団 詳細編成・運用仕様書
+│       │   └── toe_air_wing_super_heavy_transport.md # 超大型輸送航空団 詳細編成・運用仕様書
+│       ├── alien/                          # 野生・固有エイリアン航空群（全10件）
+│       │   ├── toe_alien_air_wing_transport.md # エイリアン輸送航空団 詳細編成・生態仕様書
+│       │   ├── toe_alien_air_wing_patrol.md # エイリアン哨戒航空団 詳細編成・生態仕様書
+│       │   ├── toe_alien_air_wing_interceptor.md # エイリアン迎撃航空団 詳細編成・生態仕様書
+│       │   ├── toe_alien_air_wing_fighter.md # エイリアン戦闘航空団 詳細編成・生態仕様書
+│       │   ├── toe_alien_air_wing_stealth_fighter.md # エイリアンステルス戦闘航空団 詳細編成・生態仕様書
+│       │   ├── toe_alien_air_wing_bomber.md # エイリアン爆撃航空団 詳細編成・生態仕様書
+│       │   ├── toe_alien_air_wing_aerial_battleship.md # エイリアン空中戦艦航空団 詳細編成・生態仕様書
+│       │   ├── toe_alien_air_wing_aerial_carrier.md # エイリアン空中空母航空団 詳細編成・生態仕様書
+│       │   ├── toe_alien_air_wing_stealth_recon.md # エイリアンステルス偵察航空団 詳細編成・生態仕様書
+│       │   └── toe_alien_air_wing_super_heavy_transport.md # エイリアン超大型輸送航空団 詳細編成・生態仕様書
 │       ├── multi_species/                  # 多種族混成航空戦闘団
 │       │   └── toe_air_multi_species.md    # サイバネ混成航空隊（バイオファイター）仕様書
 │       └── fusion/                         # 融合生物航空戦闘団
@@ -280,10 +313,38 @@ docs/
 
 ### 海上戦闘団（`toe_definitions/naval/`）
 
-* **[toe_definitions/naval/regular/toe_naval_fleet_regular.md](./toe_definitions/naval/regular/toe_naval_fleet_regular.md)**：通常海上戦闘団（全8種）詳細編成仕様書
-  * 民間船、武装船、哨戒、護衛、通常、戦艦（沿岸砲撃）、航空（洋上基地）、潜水艦隊の編制序列。
-* **[toe_definitions/naval/alien/toe_naval_alien_swarm.md](./toe_definitions/naval/alien/toe_naval_alien_swarm.md)**：野生・固有エイリアン海洋群 生態・編制仕様書
-  * 人類の艦隊兵種と完全に一致する生体海洋群体系（哨戒、護衛、通常、戦艦、航空、潜水）。
+#### 通常海上戦闘団（人類通常艦隊）（`toe_definitions/naval/regular/`）
+
+* **[toe_definitions/naval/regular/toe_naval_fleet_battle.md](./toe_definitions/naval/regular/toe_naval_fleet_battle.md)**：通常艦隊 詳細編成・運用仕様書
+  * 計62隻＋32機（小型空母2隻、防空駆逐艦4隻、汎用駆逐艦8隻、汎用フリゲート16隻、護衛コルベット32隻）。外洋水上打撃戦・制海権掌握の中核。
+* **[toe_definitions/naval/regular/toe_naval_fleet_battleship.md](./toe_definitions/naval/regular/toe_naval_fleet_battleship.md)**：戦艦艦隊 詳細編成・運用仕様書
+  * 計62隻（超弩級戦艦2隻、防空駆逐艦4隻、汎用駆逐艦8隻、汎用フリゲート16隻、護衛コルベット32隻）。計16門の`EM-180C`超大型電磁投射砲（レールガン）による大戦略2タイル先への超長距離沿岸砲撃。
+* **[toe_definitions/naval/regular/toe_naval_fleet_carrier.md](./toe_definitions/naval/regular/toe_naval_fleet_carrier.md)**：航空艦隊 詳細編成・運用仕様書
+  * 計62隻＋128機（大型正規空母2隻、防空駆逐艦4隻、汎用駆逐艦8隻、汎用フリゲート16隻、護衛コルベット32隻）。大戦略2タイル先への広域制空・洋上航空阻止・敵前上陸支援。
+* **[toe_definitions/naval/regular/toe_naval_fleet_escort.md](./toe_definitions/naval/regular/toe_naval_fleet_escort.md)**：護衛艦隊 詳細編成・運用仕様書
+  * 計28隻（汎用駆逐艦4隻、汎用フリゲート8隻、護衛コルベット16隻）。シーレーン防衛および民間輸送船団の専従護衛。
+* **[toe_definitions/naval/regular/toe_naval_fleet_civilian.md](./toe_definitions/naval/regular/toe_naval_fleet_civilian.md)**：民間船艦隊 詳細編成・運用仕様書
+  * 計32隻（大型コンテナ船8隻、中型貨物船16隻、沿岸連絡船8隻）。非武装の戦略資源・物資・食料の大量海上空輸・輸送船団。
+* **[toe_definitions/naval/regular/toe_naval_fleet_armed_merchant.md](./toe_definitions/naval/regular/toe_naval_fleet_armed_merchant.md)**：武装船艦隊 詳細編成・運用仕様書
+  * 計32隻（特設武装貨物船8隻、武装沿岸艇16隻、特設護衛船8隻）。民間船にコンテナ兵装・速射砲を仮設した開拓初期の自衛・警備船団。
+
+#### 野生・固有エイリアン海洋群（エイリアン艦隊）（`toe_definitions/naval/alien/`）
+
+* **[toe_definitions/naval/alien/toe_alien_fleet_patrol.md](./toe_definitions/naval/alien/toe_alien_fleet_patrol.md)**：エイリアン哨戒艦隊 詳細編成・生態仕様書
+  * 小型刺胞遊泳個体、高速遊泳魚雷獣、表層監視種による俊敏な沿岸監視・警戒海洋群。
+* **[toe_definitions/naval/alien/toe_alien_fleet_escort.md](./toe_definitions/naval/alien/toe_alien_fleet_escort.md)**：エイリアン護衛艦隊 詳細編成・生態仕様書
+  * 棘皮防空個体、超音波迎撃種、中型護衛甲殻獣による防空・対潜水生体迎撃・遊泳路防衛海洋群。
+* **[toe_definitions/naval/alien/toe_alien_fleet_regular.md](./toe_definitions/naval/alien/toe_alien_fleet_regular.md)**：エイリアン通常艦隊 詳細編成・生態仕様書
+  * 中型重装甲甲殻獣、強酸投射種、生体魚雷射出種による外洋水上打撃・制海権掌握生体群。
+* **[toe_definitions/naval/alien/toe_alien_fleet_battleship.md](./toe_definitions/naval/alien/toe_alien_fleet_battleship.md)**：エイリアン戦艦艦隊 詳細編成・生態仕様書
+  * 全長200m超の超大型甲殻巨獣（リヴァイアサン級）、重キャビテーション衝撃砲種による決戦打撃および沿岸2タイルの生体砲撃破壊。
+* **[toe_definitions/naval/alien/toe_alien_fleet_carrier.md](./toe_definitions/naval/alien/toe_alien_fleet_carrier.md)**：エイリアン航空艦隊 詳細編成・生態仕様書
+  * 浮遊母艦生体（バイオキャリア）、艦載小型飛行種、警戒生体による洋上生体航空拠点群。
+* **[toe_definitions/naval/alien/toe_alien_fleet_submarine.md](./toe_definitions/naval/alien/toe_alien_fleet_submarine.md)**：エイリアン潜水艦隊 詳細編成・生態仕様書
+  * 深海潜航巨獣、超音波共鳴種、誘導生体魚雷放出種による完全隠密・深海奇襲雷撃群。
+
+#### 多種族混成・融合生物海上戦闘団
+
 * **[toe_definitions/naval/multi_species/toe_naval_multi_species.md](./toe_definitions/naval/multi_species/toe_naval_multi_species.md)**：多種族混成海上戦闘団 詳細編成仕様書
   * 人類ミサイル軍艦と同盟海棲戦闘怪獣の混成運用（生体ソナー・魚雷迎撃）。
 * **[toe_definitions/naval/fusion/toe_naval_fusion.md](./toe_definitions/naval/fusion/toe_naval_fusion.md)**：融合生物海上戦闘団 詳細編成仕様書
@@ -291,10 +352,64 @@ docs/
 
 ### 航空戦闘団（`toe_definitions/air/`）
 
-* **[toe_definitions/air/regular/toe_air_wing_regular.md](./toe_definitions/air/regular/toe_air_wing_regular.md)**：通常航空戦闘団（全14種）詳細編成仕様書
-  * 民間、武装、輸送、哨戒、護衛、迎撃、垂直離陸、主力戦闘、光学ステルス、爆撃、空中戦艦、空中空母、超大型輸送航空団。
-* **[toe_definitions/air/alien/toe_air_alien_swarm.md](./toe_definitions/air/alien/toe_air_alien_swarm.md)**：野生・固有エイリアン航空群 生態・編制仕様書
-  * 人類の航空隊兵種と完全に一致する生体飛行群体系（輸送、哨戒、迎撃、戦闘、ステルス戦闘、爆撃、空中戦艦、空中空母、ステルス偵察、超大型輸送）。
+#### 通常航空戦闘団（人類通常航空隊）（`toe_definitions/air/regular/`）
+
+* **[toe_definitions/air/regular/toe_air_wing_civilian.md](./toe_definitions/air/regular/toe_air_wing_civilian.md)**：民間航空団 詳細編成・運用仕様書
+  * 大型旅客機16機、コンテナ貨物機16〜32機による惑星内高速旅客・戦略物資定期空輸部隊。
+* **[toe_definitions/air/regular/toe_air_wing_armed_civilian.md](./toe_definitions/air/regular/toe_air_wing_armed_civilian.md)**：武装民間航空団 詳細編成・運用仕様書
+  * 機銃ポッド・自衛火器を仮設した武装貨物機32機による開拓初期・急造自衛航空部隊。
+* **[toe_definitions/air/regular/toe_air_wing_tactical_transport.md](./toe_definitions/air/regular/toe_air_wing_tactical_transport.md)**：輸送航空団 詳細編成・運用仕様書
+  * C-17級重戦術軍用輸送機32機による陸上部隊・装甲車両の不整地空輸・戦術投下部隊。
+* **[toe_definitions/air/regular/toe_air_wing_patrol_aew.md](./toe_definitions/air/regular/toe_air_wing_patrol_aew.md)**：哨戒航空団 詳細編成・運用仕様書
+  * 早期警戒機（AEW&C 8機）、対潜哨戒機16機、護衛機16機による広域索敵・早期警戒・対潜監視部隊。
+* **[toe_definitions/air/regular/toe_air_wing_escort.md](./toe_definitions/air/regular/toe_air_wing_escort.md)**：護衛航空団 詳細編成・運用仕様書
+  * 長航続距離大型制空戦闘機32機による輸送機・爆撃機・民間船団航路の専従直衛部隊。
+* **[toe_definitions/air/regular/toe_air_wing_interceptor.md](./toe_definitions/air/regular/toe_air_wing_interceptor.md)**：迎撃航空団 詳細編成・運用仕様書
+  * 軽戦闘機32〜48機による前線拠点・高速道路からの緊急スクランブル即応迎撃部隊。
+* **[toe_definitions/air/regular/toe_air_wing_vstol.md](./toe_definitions/air/regular/toe_air_wing_vstol.md)**：垂直離陸航空団 詳細編成・運用仕様書
+  * SVTOL戦闘機32機による無滑走路前線拠点・空母での即応垂直展開部隊。
+* **[toe_definitions/air/regular/toe_air_wing_tactical_fighter.md](./toe_definitions/air/regular/toe_air_wing_tactical_fighter.md)**：戦闘航空団 詳細編成・運用仕様書
+  * 大型制空戦闘機32機＋戦闘爆撃機16機による制空権確保および対地精密打撃の中核主力航空隊。
+* **[toe_definitions/air/regular/toe_air_wing_stealth_fighter.md](./toe_definitions/air/regular/toe_air_wing_stealth_fighter.md)**：光学・電波ステルス戦闘航空団 詳細編成・運用仕様書
+  * 光学迷彩・電波吸収ステルス戦闘機32機による完全不可視奇襲部隊。
+* **[toe_definitions/air/regular/toe_air_wing_bomber.md](./toe_definitions/air/regular/toe_air_wing_bomber.md)**：爆撃航空団 詳細編成・運用仕様書
+  * 大型戦略爆撃機16機＋護衛戦闘機16機による戦略絨毯爆撃・面制圧部隊。
+* **[toe_definitions/air/regular/toe_air_wing_stealth_bomber.md](./toe_definitions/air/regular/toe_air_wing_stealth_bomber.md)**：光学・電波ステルス爆撃航空団 詳細編成・運用仕様書
+  * 光学ステルス爆撃機8機＋護衛機16機による防空火網突破・中枢精密爆撃部隊。
+* **[toe_definitions/air/regular/toe_air_wing_aerial_battleship.md](./toe_definitions/air/regular/toe_air_wing_aerial_battleship.md)**：空中戦艦航空団 詳細編成・運用仕様書
+  * 超大型空中戦艦（1〜2隻）＋空中駆逐艦4隻＋空中フリゲート8隻＋直衛戦闘機32機による空中接近制圧・艦隊決戦部隊。
+* **[toe_definitions/air/regular/toe_air_wing_aerial_carrier.md](./toe_definitions/air/regular/toe_air_wing_aerial_carrier.md)**：空中空母航空団 詳細編成・運用仕様書
+  * 超大型空中空母（1隻）＋艦載戦闘機48機＋空中護衛艦艇による移動式空中航空基地部隊。
+* **[toe_definitions/air/regular/toe_air_wing_stealth_recon.md](./toe_definitions/air/regular/toe_air_wing_stealth_recon.md)**：光学・電波ステルス偵察航空団 詳細編成・運用仕様書
+  * 超音速光学ステルス偵察機16機による超高高度深部領空侵入・全域精密マッピング部隊。
+* **[toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md](./toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md)**：超大型輸送航空団 詳細編成・運用仕様書
+  * 超巨大戦略輸送機/飛行船4隻＋空中護衛艦艇による軍団・艦隊単位の超長距離空輸部隊（戦艦艦隊を凌駕するコスト）。
+
+#### 野生・固有エイリアン航空群（エイリアン航空団）（`toe_definitions/air/alien/`）
+
+* **[toe_definitions/air/alien/toe_alien_air_wing_transport.md](./toe_definitions/air/alien/toe_alien_air_wing_transport.md)**：エイリアン輸送航空団 詳細編成・生態仕様書
+  * 巨大嚢胞飛行獣、生体空輸コンテナ種、護衛飛行種による地上生体・物資空輸降下群。
+* **[toe_definitions/air/alien/toe_alien_air_wing_patrol.md](./toe_definitions/air/alien/toe_alien_air_wing_patrol.md)**：エイリアン哨戒航空団 詳細編成・生態仕様書
+  * 大気浮遊巨大クラゲ（生体レーダー個体）、長距離滑空索敵種による高高度早期警戒・索敵群。
+* **[toe_definitions/air/alien/toe_alien_air_wing_interceptor.md](./toe_definitions/air/alien/toe_alien_air_wing_interceptor.md)**：エイリアン迎撃航空団 詳細編成・生態仕様書
+  * 小型高速有翼爪獣、生体短距離迎撃針射出種による即時緊急スクランブル迎撃群。
+* **[toe_definitions/air/alien/toe_alien_air_wing_fighter.md](./toe_definitions/air/alien/toe_alien_air_wing_fighter.md)**：エイリアン戦闘航空団 詳細編成・生態仕様書
+  * 中型重戦闘ワイバーン、強酸弾投射種、格闘鉤爪個体による制空権掌握・急降下襲撃主力群。
+* **[toe_definitions/air/alien/toe_alien_air_wing_stealth_fighter.md](./toe_definitions/air/alien/toe_alien_air_wing_stealth_fighter.md)**：エイリアンステルス戦闘航空団 詳細編成・生態仕様書
+  * 光学擬態有翼種、低赤外線放出捕食個体による不可視奇襲戦闘群。
+* **[toe_definitions/air/alien/toe_alien_air_wing_bomber.md](./toe_definitions/air/alien/toe_alien_air_wing_bomber.md)**：エイリアン爆撃航空団 詳細編成・生態仕様書
+  * 重爆撃巨大飛行獣、有機クラスター酸爆弾投射種による地上目標面制圧・戦略破壊群。
+* **[toe_definitions/air/alien/toe_alien_air_wing_aerial_battleship.md](./toe_definitions/air/alien/toe_alien_air_wing_aerial_battleship.md)**：エイリアン空中戦艦航空団 詳細編成・生態仕様書
+  * 超大型空中生体戦艦（リヴァイアサン飛行種）、直協飛行護衛群による空中決戦・重プラズマ砲制圧要塞生物。
+* **[toe_definitions/air/alien/toe_alien_air_wing_aerial_carrier.md](./toe_definitions/air/alien/toe_alien_air_wing_aerial_carrier.md)**：エイリアン空中空母航空団 詳細編成・生態仕様書
+  * 超巨大気嚢浮遊母艦獣、艦載小型突撃飛行種による移動空中巣穴・飛行生体産生母体。
+* **[toe_definitions/air/alien/toe_alien_air_wing_stealth_recon.md](./toe_definitions/air/alien/toe_alien_air_wing_stealth_recon.md)**：エイリアンステルス偵察航空団 詳細編成・生態仕様書
+  * 高度擬態長距離飛行種、生体電波吸収膜保有個体による深部不可視侵入・索敵群。
+* **[toe_definitions/air/alien/toe_alien_air_wing_super_heavy_transport.md](./toe_definitions/air/alien/toe_alien_air_wing_super_heavy_transport.md)**：エイリアン超大型輸送航空団 詳細編成・生態仕様書
+  * 巨大型嚢胞輸送怪獣、浮遊護衛飛行群によるタイタン級決戦生体の一括戦域間空輸群。
+
+#### 多種族混成・融合生物航空戦闘団
+
 * **[toe_definitions/air/multi_species/toe_air_multi_species.md](./toe_definitions/air/multi_species/toe_air_multi_species.md)**：多種族混成航空戦闘団 詳細編成仕様書
   * パイロット搭乗型サイバネ飛行獣、胞子散布バイオファイターによる極限格闘戦。
 * **[toe_definitions/air/fusion/toe_air_fusion.md](./toe_definitions/air/fusion/toe_air_fusion.md)**：融合生物航空戦闘団 詳細編成仕様書
