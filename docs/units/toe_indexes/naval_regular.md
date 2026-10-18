@@ -9,4 +9,8 @@
 - [民間輸送・商船船団](../toe/naval/regular/toe_naval_fleet_civilian.md) - 民間船艦隊 詳細編成・運用仕様書
 - [武装商船・急造戦闘船団](../toe/naval/regular/toe_naval_fleet_armed_merchant.md) - 武装船艦隊 詳細編成・運用仕様書
 
+## 装備・プラットフォーム仕様書
+
+- [海上・正規軍 艦艇・装備プラットフォーム仕様書](../equipment/naval/regular/naval_regular_equipment.md)
+
 [← TO&E目録（カテゴリ一覧）へ戻る](../INDEX_TOE.md)

@@ -16,4 +16,8 @@
 - [学術調査・観測軍団](../toe/ground/regular/toe_corps_science_survey.md) - 調査・科学探査軍団 詳細編成仕様書
 - [避難民・民間輸送縦隊](../toe/ground/regular/toe_corps_civilian_refugees.md) - 民間人・避難民群（Tier 0-A）詳細編成・運用仕様書
 
+## 装備・車両仕様書
+
+- [陸上・正規軍 兵器・車両仕様書](../equipment/ground/regular/ground_regular_equipment.md)
+
 [← TO&E目録（カテゴリ一覧）へ戻る](../INDEX_TOE.md)
