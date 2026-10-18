@@ -3,7 +3,7 @@
 本プロジェクトにおける全ユニットの内部編成（TO&E: Table of Organization and Equipment）仕様書のマスターカテゴリ目録です。  
 作戦領域（陸・空・海）× 勢力・属性（正規軍・エイリアン・技術融合・多種族協調）の全12カテゴリで構成されています。
 
-目次・インデックス文書は [toe_indexes/](./toe_indexes/) ディレクトリに集約されており、編成定義本体（[toe_definitions/](./toe_definitions/)）と分離されています。
+目次・インデックス文書は [toe_indexes/](./toe_indexes/) ディレクトリに集約されており、編成定義本体（[units/toe/](./units/toe/)）と分離されています。
 
 ---
 
