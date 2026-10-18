@@ -82,19 +82,19 @@
 
 | 種別 | 主な役割・特徴 | イメージ・構成（2個師団統合軍団） |
 | :--- | :--- | :--- |
-| **民間人・避難民群** | 民間人集団 | 民間人、武装はないか、あっても鉄パイプ、刃物、少数ではチェーンソー、射出工具、猟銃程度（詳細は [`./toe_definitions/ground/regular/toe_corps_militia_and_civilians.md`](./toe_definitions/ground/regular/toe_corps_militia_and_civilians.md) 参照） |
-| **民兵軍団** | 民間人を軽武装化した民兵部隊 | 自衛民兵大隊、小銃・火炎瓶・軽火器主体、治安維持・拠点自活（詳細は [`./toe_definitions/ground/regular/toe_corps_militia_and_civilians.md`](./toe_definitions/ground/regular/toe_corps_militia_and_civilians.md) 参照） |
-| **軽歩兵軍団** | 徒歩主体の軽歩兵軍団（山岳・隘路・森林への高い適性） | 徒歩行軍ライフル大隊、携帯対戦車（ATM）班、60C/81C軽迫撃砲、車両なし |
-| **自動車化軽歩兵軍団** | 4x4軽装甲車（LAV）とトラックによる自動車化部隊。牽引砲のため展開と砲撃回避が苦手 | 4x4軽装甲車歩兵連隊、トラック輸送班、牽引式120C重迫撃砲、牽引式155C榴弾砲、自動車化整備班 |
-| **自動車化歩兵軍団** | 同一の4x4軽装甲車（LAV）基幹にトラック架装自走砲を組み合わせた部隊。非装甲・軽装甲部隊の中では最上位 | 4x4軽装甲車歩兵連隊、8x8トラック架装120C自走迫、155C装輪自走榴弾砲、自動車化整備大隊 |
-| **装輪機動軍団（装輪装甲軍団）** | 8x8装輪装甲車（Std-W8）統一。路面での高速急行展開力と前線装甲・火力を両立 | 105C火力戦闘車（MCV）、装輪IFV/APC、装輪自走迫撃砲、装輪自走榴弾砲、装輪ARV、直協航空隊 |
-| **空中機動・空地強襲軍団** | ヘリコプターやVTOL機による地形無視の垂直急襲・後方遮断部隊 | 空挺軽IFV連隊、空挺超軽量自走迫、強襲航空旅団（VTOL/ヘリ）、吊り下げ榴弾砲、FARP支援群 |
-| **装甲化軍団（諸兵科連合装甲軍団）** | 戦車2連隊・装輪偵察2連隊・装甲歩兵連隊によるバランス型装甲軍団。機動・索敵・突破を高度に両立 | 戦車2個連隊（戦車128両＋重IFV128両）、装輪偵察2個連隊（左右両翼スクリーン160両）、装甲歩兵連隊、自走特科・高射連隊、直協航空隊 |
+| **民間人・避難民群** | 民間人集団 | 民間人、武装はないか、あっても鉄パイプ、刃物、少数ではチェーンソー、射出工具、猟銃程度（詳細は [`./toe_definitions/ground/regular/toe_corps_civilian_refugees.md`](./toe_definitions/ground/regular/toe_corps_civilian_refugees.md) 参照） |
+| **民兵軍団** | 民間人を軽武装化した民兵部隊 | 自衛民兵大隊、小銃・火炎瓶・軽火器主体、治安維持・拠点自活（詳細は [`./toe_definitions/ground/regular/toe_corps_militia.md`](./toe_definitions/ground/regular/toe_corps_militia.md) 参照） |
+| **軽歩兵軍団** | 徒歩主体の軽歩兵軍団（山岳・隘路・森林への高い適性） | 徒歩行軍ライフル大隊、携帯対戦車（ATM）班、60C/81C軽迫撃砲、車両なし（詳細は [`./toe_definitions/ground/regular/toe_corps_light_infantry.md`](./toe_definitions/ground/regular/toe_corps_light_infantry.md) 参照） |
+| **自動車化軽歩兵軍団** | 4x4軽装甲車（LAV）とトラックによる自動車化部隊。牽引砲のため展開と砲撃回避が苦手 | 4x4軽装甲車歩兵連隊、トラック輸送班、牽引式120C重迫撃砲、牽引式155C榴弾砲、自動車化整備班（詳細は [`./toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md`](./toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md) 参照） |
+| **自動車化歩兵軍団** | 同一の4x4軽装甲車（LAV）基幹にトラック架装自走砲を組み合わせた部隊。非装甲・軽装甲部隊の中では最上位 | 4x4軽装甲車歩兵連隊、8x8トラック架装120C自走迫、155C装輪自走榴弾砲、自動車化整備大隊（詳細は [`./toe_definitions/ground/regular/toe_corps_motorized_infantry.md`](./toe_definitions/ground/regular/toe_corps_motorized_infantry.md) 参照） |
+| **装輪機動軍団（装輪装甲軍団）** | 8x8装輪装甲車（Std-W8）統一。路面での高速急行展開力と前線装甲・火力を両立 | 105C火力戦闘車（MCV）、装輪IFV/APC、装輪自走迫撃砲、装輪自走榴弾砲、装輪ARV、直協航空隊（詳細は [`./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md`](./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md) 参照） |
+| **空中機動・空地強襲軍団** | ヘリコプターやVTOL機による地形無視の垂直急襲・後方遮断部隊 | 空挺軽IFV連隊、空挺超軽量自走迫、強襲航空旅団（VTOL/ヘリ）、吊り下げ榴弾砲、FARP支援群（詳細は [`./toe_definitions/ground/regular/toe_corps_airmobile.md`](./toe_definitions/ground/regular/toe_corps_airmobile.md) 参照） |
+| **装甲化軍団（諸兵科連合装甲軍団）** | 戦車2連隊・装輪偵察2連隊・装甲歩兵連隊によるバランス型装甲軍団。機動・索敵・突破を高度に両立 | 戦車2個連隊（戦車128両＋重IFV128両）、装輪偵察2個連隊（左右両翼スクリーン160両）、装甲歩兵連隊、自走特科・高射連隊、直協航空隊（詳細は [`./toe_definitions/ground/regular/toe_corps_armored.md`](./toe_definitions/ground/regular/toe_corps_armored.md) 参照） |
 | **常設増強機甲軍団（重機甲軍団）** | 戦車4連隊基幹。圧倒的不整地突破力・戦略打撃の中核。左右両翼スクリーンと航空打撃群を完全内包 | 4個諸兵科連合機甲連隊（戦車256両＋重IFV256両＋自走重迫128両）、装甲歩兵2個連隊、左右両翼偵察連隊（装輪160両）、戦車車体160C/210C特科、多層高射連隊、直協航空隊（計48機）（詳細は [toe_corps_heavy_armored.md](./toe_definitions/ground/regular/toe_corps_heavy_armored.md) 参照） |
 | **歩行戦闘車両軍団（二脚歩行混成軍団）** | 装甲車風の二脚歩行戦闘機と戦車・重IFVを小隊混成した歩行兵器打撃軍団。基本的な組織・運用思想は機甲軍団に準じるが、廃墟・瓦礫・段差での死角掃討や短時間跳躍奇襲といった歩行兵器特有の立体機動に優れる | 混成機甲連隊（戦車128両＋通常二脚128機）、跳躍強襲連隊（飛翔二脚128機＋重IFV128両）、左右両翼偵察連隊（装輪160両）、自走特科・高射、軍団航空隊（詳細は [toe_corps_bipedal_assault.md](./toe_definitions/ground/regular/toe_corps_bipedal_assault.md) 参照） |
-| **長距離ミサイル打撃軍団** | 大戦略マップ上で2タイル先などの遠隔タイル・敵拠点・巣穴へスタンドオフ精密打撃を行うミサイル専門部隊。直接交戦を避け、後方から誘導弾による戦域阻止・重要施設破壊を担当 | 重装輪TEL（ミサイル発射機車）、射撃指揮・索敵通信車、弾薬運搬・装填車、近接防衛護衛隊 |
+| **長距離ミサイル打撃軍団** | 大戦略マップ上で2タイル先などの遠隔タイル・敵拠点・巣穴へスタンドオフ精密打撃を行うミサイル専門部隊。直接交戦を避け、後方から誘導弾による戦域阻止・重要施設破壊を担当 | 重装輪TEL（ミサイル発射機車）、射撃指揮・索敵通信車、弾薬運搬・装填車、近接防衛護衛隊（詳細は [`./toe_definitions/ground/regular/toe_corps_long_range_missile.md`](./toe_definitions/ground/regular/toe_corps_long_range_missile.md) 参照） |
 | **陸上戦艦打撃軍団** | 造船所で建造した陸上戦闘艦群を海路回航・揚陸させ、地上随伴部隊と合流編成した超弩級地上決戦兵器。長距離レールガン砲撃・局所制空防空・機甲打撃を一身に備える | 陸上戦艦2隻、陸上小型空母2隻、陸上防空艦4隻、陸上近接戦闘艦8隻、機甲大隊（戦車64両）、装甲化大隊（IFV/APC64両）、偵察戦闘連隊（装輪80両）（詳細は [toe_corps_land_battleship.md](./toe_definitions/ground/regular/toe_corps_land_battleship.md) 参照） |
-| **調査・科学探査軍団** | 科学探査・遺跡解析・未知バイオーム分析に特化したあらゆる環境で活動可能な調査部隊 | 科学調査探査大隊、環境防護工兵、特殊分析コンテナ、護衛装甲部隊 |
+| **調査・科学探査軍団** | 科学探査・遺跡解析・未知バイオーム分析に特化したあらゆる環境で活動可能な調査部隊 | 科学調査探査大隊、環境防護工兵、特殊分析コンテナ、護衛装甲部隊（詳細は [`./toe_definitions/ground/regular/toe_corps_science_survey.md`](./toe_definitions/ground/regular/toe_corps_science_survey.md) 参照） |
 
 > [!NOTE]
 > **歩行戦闘車両（二脚兵器）の運用位置づけ**:
@@ -106,12 +106,12 @@
 
 | 種別 | 主な役割・特徴 | イメージ・構成 |
 | :--- | :--- | :--- |
-| **小型エイリアン軍団** | 数千〜数万の小型格闘種による軽量スウォーム軍団。山岳・密林での浸透突撃に優れる | 小型格闘種主体、対空種、治療種 |
-| **中型エイリアン軍団** | 中型格闘種（軽装甲車を短時間、装甲車は時間を掛けて解体）を主力とし、小型種を従えたバランス型突撃軍団 | 中型格闘種（装甲車大）基幹、小型格闘種、対空種、治療種 |
-| **大型エイリアン軍団** | 戦車型（大型格闘種）が敵戦車隊と泥沼の格闘戦を展開しつつ包囲殲滅を図る主力軍団 | 戦車型（大型格闘種）基幹、中型格闘種、小型格闘種、対空種、治療種 |
-| **超大型エイリアン軍団** | 全高20m級の接近戦巨獣を核とする決戦軍団。圧倒的な巨体質量と巨大鎌腕で敵陣地・戦車を踏み潰す | 超大型接近戦型、護衛格闘種、対空種、大型治療種 |
-| **長距離砲撃軍団** | 超大型ニードル砲撃種を核とする部隊。遠距離からミサイル程度のニードル弾を放物線投射し牽制 | 超大型ニードル砲撃型（ミサイル威力程度）、護衛格闘種、対空種、治療種 |
-| **陸棲航空格闘軍団** | 有翼格闘種が低空急降下して地上部隊や車両上面を奇襲・切り裂く地上急襲航空群（制空権確保は空棲種の担当） | 陸棲航空型（飛行格闘種） |
+| **小型エイリアン軍団** | 数千〜数万の小型格闘種による軽量スウォーム軍団。山岳・密林での浸透突撃に優れる | 小型格闘種主体、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_small_swarm.md`](./toe_definitions/ground/alien/toe_alien_corps_small_swarm.md) 参照） |
+| **中型エイリアン軍団** | 中型格闘種（軽装甲車を短時間、装甲車は時間を掛けて解体）を主力とし、小型種を従えたバランス型突撃軍団 | 中型格闘種（装甲車大）基幹、小型格闘種、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_medium_swarm.md`](./toe_definitions/ground/alien/toe_alien_corps_medium_swarm.md) 参照） |
+| **大型エイリアン軍団** | 戦車型（大型格闘種）が敵戦車隊と泥沼の格闘戦を展開しつつ包囲殲滅を図る主力軍団 | 戦車型（大型格闘種）基幹、中型格闘種、小型格闘種、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_heavy_tank.md`](./toe_definitions/ground/alien/toe_alien_corps_heavy_tank.md) 参照） |
+| **超大型エイリアン軍団** | 全高20m級の接近戦巨獣を核とする決戦軍団。圧倒的な巨体質量と巨大鎌腕で敵陣地・戦車を踏み潰す | 超大型接近戦型、護衛格闘種、対空種、大型治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_colossus.md`](./toe_definitions/ground/alien/toe_alien_corps_colossus.md) 参照） |
+| **長距離砲撃軍団** | 超大型ニードル砲撃種を核とする部隊。遠距離からミサイル程度のニードル弾を放物線投射し牽制 | 超大型ニードル砲撃型（ミサイル威力程度）、護衛格闘種、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_needle_artillery.md`](./toe_definitions/ground/alien/toe_alien_corps_needle_artillery.md) 参照） |
+| **陸棲航空格闘軍団** | 有翼格闘種が低空急降下して地上部隊や車両上面を奇襲・切り裂く地上急襲航空群（制空権確保は空棲種の担当） | 陸棲航空型（飛行格闘種）（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_aviation_melee.md`](./toe_definitions/ground/alien/toe_alien_corps_aviation_melee.md) 参照） |
 
 ### 3.1.3 多種族混成軍団のカテゴリー
 

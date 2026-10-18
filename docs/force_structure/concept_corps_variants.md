@@ -3,11 +3,11 @@
 (Reinforced Corps Order of Battle & TO&E Variants Definition)
 
 本作における大戦略マップ上の1コマは、臨時混成の戦闘団ではなく、自己完結した国家正規軍の**「常設増強軍団（Reinforced Corps）」**である。
-ゲーム的なスロット枠概念を排し、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md) で定義された**小隊（4両/機） ➔ 中隊（16両/機） ➔ 大隊（約48〜80両/機） ➔ 連隊 ➔ 師団（4個戦闘連隊基幹） ➔ 2個師団統合軍団**という軍事エシュロン体系に基づき、各種作戦環境・ドクトリンに応じた具体的な戦闘序列（TO&E: Table of Organization and Equipment）を規定する。
+ゲーム的なスロット枠概念を排し、[`./concept_corps_and_division_echelons.md`](./concept_corps_and_division_echelons.md) で定義された**小隊（4両/機） ➔ 中隊（16両/機） ➔ 大隊（約48〜80両/機） ➔ 連隊 ➔ 師団（4個戦闘連隊基幹） ➔ 2個師団統合軍団**という軍事エシュロン体系に基づき、各種作戦環境・ドクトリンに応じた具体的な戦闘序列（TO&E: Table of Organization and Equipment）を規定する。
 
-※ 軍団直属航空隊（32機: 戦闘16＋輸送16）および各師団付輸送飛行隊（8機×2）の機体スペック・運用規則は [`../../../specs/AVIATION_ASSETS_AND_DOCTRINE.md`](../../../specs/AVIATION_ASSETS_AND_DOCTRINE.md) を参照。  
-※ 二脚歩行戦闘車両の機体寸法・インフラ拒絶・空輸仕様は [`../../../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md`](../../../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md) を参照。  
-※ 本部管理中隊（HHC: 通信・救護・整備・補給・工兵・迫撃砲）の基本構造と専門付加部隊は [`../../../force_structure/concept_headquarters_and_attached_units.md`](../../../force_structure/concept_headquarters_and_attached_units.md) および [`../../../force_structure/concept_hierarchical_headquarters_integration.md`](../../../force_structure/concept_hierarchical_headquarters_integration.md) を参照。
+※ 軍団直属航空隊（32機: 戦闘16＋輸送16）および各師団付輸送飛行隊（8機×2）の機体スペック・運用規則は [`../specs/AVIATION_ASSETS_AND_DOCTRINE.md`](../specs/AVIATION_ASSETS_AND_DOCTRINE.md) を参照。  
+※ 二脚歩行戦闘車両の機体寸法・インフラ拒絶・空輸仕様は [`../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md`](../specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md) を参照。  
+※ 本部管理中隊（HHC: 通信・救護・整備・補給・工兵・迫撃砲）の基本構造と専門付加部隊は [`./concept_headquarters_and_attached_units.md`](./concept_headquarters_and_attached_units.md) および [`./concept_hierarchical_headquarters_integration.md`](./concept_hierarchical_headquarters_integration.md) を参照。
 
 ---
 
@@ -68,7 +68,7 @@
 ## 3. 基本編成モデル（常設増強機甲軍団 TO&E）
 
 部隊単位として最もバランスの取れた「常設増強機甲軍団（2個師団統合・正面8個機動連隊基幹）」の戦闘序列（Order of Battle）。
-詳細は個別仕様書 [`./toe_combat_group_heavy_armored.md`](./toe_combat_group_heavy_armored.md) を参照。
+詳細は個別仕様書 [`../toe_definitions/ground/regular/toe_corps_heavy_armored.md`](../toe_definitions/ground/regular/toe_corps_heavy_armored.md) を参照。
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────────────┐
@@ -116,24 +116,25 @@
 
 ### 4.1 空中機動・空地強襲軍団 (Airmobile Strike Corps)
 
-- **個別仕様書**: [`./toe_combat_group_airmobile.md`](./toe_combat_group_airmobile.md)
+- **個別仕様書**: [`../toe_definitions/ground/regular/toe_corps_airmobile.md`](../toe_definitions/ground/regular/toe_corps_airmobile.md)
 - **規模・特徴**: 総員 約28,000名、航空機 計176機（軍団直轄64機＋第1・第2師団航空旅団各48機＋師団輸送各8機）、空挺軽装甲車両 約384両。地上重戦車を排し、航空機動部隊と軽装甲部隊で山岳・大河・断崖を完全無視して突入。
 - **ドクトリン**: 航空側翼警戒飛行隊（戦闘ヘリ＋UAV）、大隊付120C超軽量自走迫（16両）、FARP先行空輸展開。
 
 ### 4.2 高級装甲・二脚歩行混成軍団 (High-Tier Bipedal Assault Corps)
 
-- **個別仕様書**: [`./toe_combat_group_bipedal_assault.md`](./toe_combat_group_bipedal_assault.md)
+- **個別仕様書**: [`../toe_definitions/ground/regular/toe_corps_bipedal_assault.md`](../toe_definitions/ground/regular/toe_corps_bipedal_assault.md)
 - **規模・特徴**: 総員 約42,000名、二脚戦闘機 256機、装軌車両 約1,600両、直協機 48機。ガングリフォン風完全歩行駆動二脚戦闘機を配備。
 - **ドクトリン**: 戦車正面突撃と二脚（通常歩行＋短時間飛翔）の小隊混成、インフラ完全拒絶・大型輸送機空輸展開、左右両翼装輪スクリーン（160両×2）。
 
 ### 4.3 装輪機動軍団 (Wheeled Mobile Corps)
 
-- **個別仕様書**: [`./toe_combat_group_wheeled_division.md`](./toe_combat_group_wheeled_division.md)
+- **個別仕様書**: [`../toe_definitions/ground/regular/toe_corps_wheeled_mobile.md`](../toe_definitions/ground/regular/toe_corps_wheeled_mobile.md)
 - **規模・特徴**: 総員 約32,000名、8x8装輪装甲車台（Std-W8）約1,500両、直協機 48機。幹線道路網を利用した高速自走展開（時速80〜100km）。
 - **ドクトリン**: 全車同一車台ファミリー（共通化率95%、共食い成功率90%）、装輪機動打撃連隊（105C/25C）＋装輪装甲歩兵連隊（IFV/APC）の各師団4連隊構成。
 
 ### 4.4 装甲化軍団 (Armored Corps / 諸兵科連合装甲軍団)
 
+- **個別仕様書**: [`../toe_definitions/ground/regular/toe_corps_armored.md`](../toe_definitions/ground/regular/toe_corps_armored.md)
 - **規模・特徴**: 総員 約26,000名、主力戦車 128両、装軌IFV 128両、装甲APC 128両、8x8装輪偵察・戦闘車 160両、航空機 計48機。
 - **編制思想**:
   - 重機甲軍団（戦車4連隊・戦車256両）の重厚な突破力に対し、**「戦車2個連隊（第1・第2連隊） ＋ 装輪偵察2個連隊（左右両翼スクリーン160両） ＋ 装甲歩兵2個連隊」**で構成される機動バランス型装甲軍団。
@@ -148,14 +149,14 @@
 
 | エシュロン区分 | 主兵器・車台規格 | 主要編制・機動力 | 運用環境・戦略的位置づけ |
 | :--- | :--- | :--- | :--- |
-| **Tier 0-A: 民間人・避難民群** | 武装なし（徒歩・民間車混成） | 避難民・開拓民集団（約40,000名）。非武装、私財・食料輸送。 | 攻撃力皆無。戦災避難・新植民地入植。敵エイリアン接触で壊滅。都市進入で人口資源化。（詳細は [`./toe_corps_militia_and_civilians.md`](./toe_corps_militia_and_civilians.md) 参照） |
-| **Tier 0-B: 民兵軍団** | 民間徴用車 ＋ テクニカル | 徴用トラック、ピックアップ機銃車、小銃・火炎瓶、即席ロケット。 | 開拓拠点自活・治安維持。超低維持費。小型エイリアンは撃退可能だが大型・重装甲には無力。（詳細は [`./toe_corps_militia_and_civilians.md`](./toe_corps_militia_and_civilians.md) 参照） |
-| **Tier 1: 軽歩兵軍団***(徒歩軍団)* | 車両なし（徒歩行軍） | 徒歩ライフル分隊、携帯対戦車（ATM）班、60C/81C軽迫撃砲。 | 森林、急峻山岳、隘路。燃料消費ゼロで悪路を踏破するが、平地機動・防御力は最低。（詳細は [`./toe_corps_motorized_infantry.md`](./toe_corps_motorized_infantry.md) 参照） |
-| **Tier 2: 自動車化軽歩兵軍団** | 4x4軽装甲車（LAV） ＋ トラック | 4x4軽装甲車歩兵連隊、トラック輸送、牽引式120C重迫撃砲、牽引式155C榴弾砲。 | 舗装道路での移動力に優れるが、牽引砲のため展開・射撃準備に時間を要する。 |
-| **Tier 3: 自動車化歩兵軍団** | 4x4軽装甲車（LAV） ＋ トラック自走砲 | 4x4軽装甲車歩兵連隊、トラック荷台架装120C自走迫、155C装輪自走榴弾砲。 | 同一の4x4軽装甲車系を基幹としつつ、火砲をトラック架装自走化して即応射撃・陣地変換力を向上。 |
-| **Tier 4: 装輪機動軍団** | 8x8装輪装甲（Std-W8）統一 | 105C火力MCV、装輪IFV/APC、装輪自走迫、装輪自走砲、装輪ARV（共通化率95%）。 | 舗装動脈での超高速自走進撃（80〜100km/h）と前線防弾装甲戦闘力を両立。 |
-| **Tier 5: 装甲化軍団** | 戦車車台 ＋ 装軌 ＋ 8x8装輪 | **戦車2個連隊（128両） ＋ 装輪偵察2個連隊（160両） ＋ 装甲歩兵2個連隊**。 | 機動索敵（装輪）・正面打撃（戦車）・面制圧（歩兵）を最高次元で両立するバランス型。 |
-| **Tier 6: 常設増強機甲軍団** | 重装軌戦車車台 ＋ 重IFV | **戦車4個連隊（256両） ＋ 装甲歩兵2個連隊 ＋ 装輪偵察2個連隊**、160C/210C重砲。 | 敵防衛線・重装甲部隊・超大型エイリアン個体を正面粉砕する戦略決戦打撃の中核。 |
+| **Tier 0-A: 民間人・避難民群** | 武装なし（徒歩・民間車混成） | 避難民・開拓民集団（約40,000名）。非武装、私財・食料輸送。 | 攻撃力皆無。戦災避難・新植民地入植。敵エイリアン接触で壊滅。都市進入で人口資源化。（詳細は [`../toe_definitions/ground/regular/toe_corps_civilian_refugees.md`](../toe_definitions/ground/regular/toe_corps_civilian_refugees.md) 参照） |
+| **Tier 0-B: 民兵軍団** | 民間徴用車 ＋ テクニカル | 徴用トラック、ピックアップ機銃車、小銃・火炎瓶、即席ロケット。 | 開拓拠点自活・治安維持。超低維持費。小型エイリアンは撃退可能だが大型・重装甲には無力。（詳細は [`../toe_definitions/ground/regular/toe_corps_militia.md`](../toe_definitions/ground/regular/toe_corps_militia.md) 参照） |
+| **Tier 1: 軽歩兵軍団***(徒歩軍団)* | 車両なし（徒歩行軍） | 徒歩ライフル分隊、携帯対戦車（ATM）班、60C/81C軽迫撃砲。 | 森林、急峻山岳、隘路。燃料消費ゼロで悪路を踏破するが、平地機動・防御力は最低。（詳細は [`../toe_definitions/ground/regular/toe_corps_light_infantry.md`](../toe_definitions/ground/regular/toe_corps_light_infantry.md) 参照） |
+| **Tier 2: 自動車化軽歩兵軍団** | 4x4軽装甲車（LAV） ＋ トラック | 4x4軽装甲車歩兵連隊、トラック輸送、牽引式120C重迫撃砲、牽引式155C榴弾砲。 | 舗装道路での移動力に優れるが、牽引砲のため展開・射撃準備に時間を要する。（詳細は [`../toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md`](../toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md) 参照） |
+| **Tier 3: 自動車化歩兵軍団** | 4x4軽装甲車（LAV） ＋ トラック自走砲 | 4x4軽装甲車歩兵連隊、トラック荷台架装120C自走迫、155C装輪自走榴弾砲。 | 同一の4x4軽装甲車系を基幹としつつ、火砲をトラック架装自走化して即応射撃・陣地変換力を向上。（詳細は [`../toe_definitions/ground/regular/toe_corps_motorized_infantry.md`](../toe_definitions/ground/regular/toe_corps_motorized_infantry.md) 参照） |
+| **Tier 4: 装輪機動軍団** | 8x8装輪装甲（Std-W8）統一 | 105C火力MCV、装輪IFV/APC、装輪自走迫、装輪自走砲、装輪ARV（共通化率95%）。 | 舗装動脈での超高速自走進撃（80〜100km/h）と前線防弾装甲戦闘力を両立。（詳細は [`../toe_definitions/ground/regular/toe_corps_wheeled_mobile.md`](../toe_definitions/ground/regular/toe_corps_wheeled_mobile.md) 参照） |
+| **Tier 5: 装甲化軍団** | 戦車車台 ＋ 装軌 ＋ 8x8装輪 | **戦車2個連隊（128両） ＋ 装輪偵察2個連隊（160両） ＋ 装甲歩兵2個連隊**。 | 機動索敵（装輪）・正面打撃（戦車）・面制圧（歩兵）を最高次元で両立するバランス型。（詳細は [`../toe_definitions/ground/regular/toe_corps_armored.md`](../toe_definitions/ground/regular/toe_corps_armored.md) 参照） |
+| **Tier 6: 常設増強機甲軍団** | 重装軌戦車車台 ＋ 重IFV | **戦車4個連隊（256両） ＋ 装甲歩兵2個連隊 ＋ 装輪偵察2個連隊**、160C/210C重砲。 | 敵防衛線・重装甲部隊・超大型エイリアン個体を正面粉砕する戦略決戦打撃の中核。（詳細は [`../toe_definitions/ground/regular/toe_corps_heavy_armored.md`](../toe_definitions/ground/regular/toe_corps_heavy_armored.md) 参照） |
 
 ---
 

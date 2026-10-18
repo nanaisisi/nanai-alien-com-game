@@ -22,19 +22,28 @@ docs/
 │   ├── concept_ground_vehicle_chassis_and_variants.md # 陸上装甲・戦闘車両プラットフォームおよびバリアント総合仕様書
 │   └── concept_personnel_and_manning_standards.md # 軍団・師団 人員規模および定員算出基準仕様書
 ├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（全17仕様書）
-│   ├── ground/                             # 陸上部隊編成（全9件）
-│   │   ├── regular/                        # 人類通常軍団（9件）
-│   │   │   ├── toe_corps_heavy_armored.md  # 常設増強機甲軍団（2個師団統合型）詳細編成・運用仕様書
-│   │   │   ├── toe_corps_militia_and_civilians.md # 民間人・民兵軍団 詳細編成・運用仕様書
+│   ├── ground/                             # 陸上部隊編成（全13件＋他体系）
+│   │   ├── regular/                        # 人類通常軍団（13件）
+│   │   │   ├── toe_corps_civilian_refugees.md # 民間人・避難民群（Tier 0-A）詳細編成・運用仕様書
+│   │   │   ├── toe_corps_militia.md        # 民兵軍団（Tier 0-B）詳細編成・運用仕様書
+│   │   │   ├── toe_corps_light_infantry.md # 軽歩兵軍団（Tier 1）詳細編成仕様書
+│   │   │   ├── toe_corps_motorized_light_infantry.md # 自動車化軽歩兵軍団（Tier 2）詳細編成仕様書
+│   │   │   ├── toe_corps_motorized_infantry.md # 自動車化歩兵軍団（Tier 3）詳細編成仕様書
+│   │   │   ├── toe_corps_wheeled_mobile.md # 装輪機動軍団（Tier 4）詳細編成仕様書
+│   │   │   ├── toe_corps_armored.md        # 装甲化軍団（Tier 5）詳細編成仕様書
+│   │   │   ├── toe_corps_heavy_armored.md  # 常設増強機甲軍団（Tier 6）詳細編成・運用仕様書
 │   │   │   ├── toe_corps_airmobile.md      # 空中機動・空地強襲軍団 詳細編成仕様書
 │   │   │   ├── toe_corps_bipedal_assault.md # 高級装甲・二脚歩行混成軍団 詳細編成仕様書
-│   │   │   ├── toe_corps_wheeled_mobile.md # 装輪機動軍団 詳細編成仕様書
-│   │   │   ├── toe_corps_motorized_infantry.md # 自動車化・軽歩兵軍団（Tier 1〜3）詳細編成仕様書
 │   │   │   ├── toe_corps_long_range_missile.md # 長距離ミサイル打撃軍団 詳細編成仕様書
 │   │   │   ├── toe_corps_land_battleship.md # 陸上戦艦打撃軍団 詳細編成・運用仕様書
 │   │   │   └── toe_corps_science_survey.md # 調査・科学探査軍団 詳細編成仕様書
-│   │   ├── alien/                          # 野生・固有エイリアン地上群
-│   │   │   └── toe_ground_alien_swarm.md   # 生態・群生編制仕様書（小型・中型・巨獣・潜行群）
+│   │   ├── alien/                          # 野生・固有エイリアン地上群（全6件）
+│   │   │   ├── toe_alien_corps_small_swarm.md # 小型エイリアン軍団 詳細編成・生態仕様書
+│   │   │   ├── toe_alien_corps_medium_swarm.md # 中型エイリアン軍団 詳細編成・生態仕様書
+│   │   │   ├── toe_alien_corps_heavy_tank.md # 大型エイリアン軍団 詳細編成・生態仕様書
+│   │   │   ├── toe_alien_corps_colossus.md # 超大型エイリアン軍団 詳細編成・生態仕様書
+│   │   │   ├── toe_alien_corps_needle_artillery.md # 長距離砲撃軍団 詳細編成・生態仕様書
+│   │   │   └── toe_alien_corps_aviation_melee.md # 陸棲航空格闘軍団 詳細編成・生態仕様書
 │   │   ├── multi_species/                  # 多種族混成陸上軍団
 │   │   │   └── toe_corps_multi_species_ground.md # 多種族混成陸上軍団（全11カテゴリー）仕様書
 │   │   └── fusion/                         # 融合生物陸上軍団
@@ -220,27 +229,50 @@ docs/
 
 ### 陸上・人類通常軍団（`toe_definitions/ground/regular/`）
 
-* **[toe_definitions/ground/regular/toe_corps_heavy_armored.md](./toe_definitions/ground/regular/toe_corps_heavy_armored.md)**：常設増強機甲軍団 詳細編成・運用仕様書
+* **[toe_definitions/ground/regular/toe_corps_civilian_refugees.md](./toe_definitions/ground/regular/toe_corps_civilian_refugees.md)**：民間人・避難民群（Tier 0-A）詳細編成・運用仕様書
+  * 非武装開拓民・避難民 約40,000名、民間バス・トラック・徒歩による非戦闘避難ユニット。護衛必須。
+* **[toe_definitions/ground/regular/toe_corps_militia.md](./toe_definitions/ground/regular/toe_corps_militia.md)**：民兵軍団（Tier 0-B）詳細編成・運用仕様書
+  * 民間自衛・治安維持部隊（総員 約32,000名、民間徴用トラック・テクニカル機銃車・旧式牽引榴弾砲）。
+* **[toe_definitions/ground/regular/toe_corps_light_infantry.md](./toe_definitions/ground/regular/toe_corps_light_infantry.md)**：軽歩兵軍団（Tier 1）詳細編成仕様書
+  * 車両進入不能な山岳・密林・洞窟を踏破する完全徒歩行軍軍団（総員 約24,000名、地上車両0両、軍団直轄・師団ヘリ計48機、分散迫撃砲ドクトリン）。
+* **[toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md](./toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md)**：自動車化軽歩兵軍団（Tier 2）詳細編成仕様書
+  * 4x4 LAV基幹の軽装甲化歩兵部隊（総員 約26,000名、牽引式155mm榴弾砲・陣地展開運用）。
+* **[toe_definitions/ground/regular/toe_corps_motorized_infantry.md](./toe_definitions/ground/regular/toe_corps_motorized_infantry.md)**：自動車化歩兵軍団（Tier 3）詳細編成仕様書
+  * 4x4 LAV ＋ トラック車載自走榴弾砲（T-SPH）による高度機動打撃部隊（総員 約28,000名、陣地進入即射・陣地変換）。
+* **[toe_definitions/ground/regular/toe_corps_wheeled_mobile.md](./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md)**：装輪機動軍団（Tier 4）詳細編成仕様書
+  * 8x8装輪単一ファミリー共通化（共通化率95%）、装輪打撃連隊＋装輪装甲歩兵連隊、舗装動脈高速自走展開。
+* **[toe_definitions/ground/regular/toe_corps_armored.md](./toe_definitions/ground/regular/toe_corps_armored.md)**：装甲化軍団（Tier 5）詳細編成仕様書
+  * 主力戦車2個連隊（履帯）＋ 装輪装甲2個連隊（8x8）のハイブリッド諸兵科連合軍団。履帯戦車の突破力と装輪車の長駆展開力を両立。
+* **[toe_definitions/ground/regular/toe_corps_heavy_armored.md](./toe_definitions/ground/regular/toe_corps_heavy_armored.md)**：常設増強機甲軍団（Tier 6）詳細編成・運用仕様書
   * 戦車4連隊基幹の2個師団統合型（戦車256両、重IFV384両、APC128両、120C自走迫224両、左右両翼スクリーン160両、航空機48機）。突破打撃軸（機甲4連隊）と掃討・要塞化軸（歩兵2連隊）が相互躍進を遂行。独立特科（160C/210C）・多層高射連隊。
-* **[toe_definitions/ground/regular/toe_corps_militia_and_civilians.md](./toe_definitions/ground/regular/toe_corps_militia_and_civilians.md)**：民間人・民兵軍団 詳細編成・運用仕様書
-  * Tier 0-A（民間人・避難民・開拓民群 約40,000名、非武装・救出護衛対象）および Tier 0-B（民兵軍団：民間徴用トラック、テクニカル機銃車、治安維持・拠点自活）の戦闘序列・運用仕様。
 * **[toe_definitions/ground/regular/toe_corps_airmobile.md](./toe_definitions/ground/regular/toe_corps_airmobile.md)**：空中機動・空地強襲軍団 詳細編成仕様書
   * 地上重戦車を排した空中機動2個師団統合運用。強襲航空旅団・軍団直轄航空打撃群（計176機）、空挺軽IFV、大隊付120C超軽量自走迫、FARP先行展開。
 * **[toe_definitions/ground/regular/toe_corps_bipedal_assault.md](./toe_definitions/ground/regular/toe_corps_bipedal_assault.md)**：高級装甲・二脚歩行混成軍団 詳細編成仕様書
   * 戦車と通常二脚歩行機の混成、短時間飛翔二脚による要衝跳躍急襲、戦略空輸展開、左右両翼装輪スクリーン。
-* **[toe_definitions/ground/regular/toe_corps_wheeled_mobile.md](./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md)**：装輪機動軍団 詳細編成仕様書
-  * 8x8装輪単一ファミリー共通化（共通化率95%）、装輪打撃連隊＋装輪装甲歩兵連隊、舗装動脈高速自走展開。
-* **[toe_definitions/ground/regular/toe_corps_motorized_infantry.md](./toe_definitions/ground/regular/toe_corps_motorized_infantry.md)**：自動車化・軽歩兵軍団（Tier 1〜Tier 3）詳細編成仕様書
-  * Tier 1（完全徒歩・山岳密林）、Tier 2（4x4 LAV ＋ 牽引砲）、Tier 3（4x4 LAV ＋ トラック自走砲）の3層エシュロン仕様。
 * **[toe_definitions/ground/regular/toe_corps_long_range_missile.md](./toe_definitions/ground/regular/toe_corps_long_range_missile.md)**：長距離ミサイル打撃軍団 詳細編成仕様書
   * 大戦略マップ上で2タイル先へスタンドオフ精密打撃を行うTEL重装輪発射機（128両）専門部隊。
+* **[toe_definitions/ground/regular/toe_corps_land_battleship.md](./toe_definitions/ground/regular/toe_corps_land_battleship.md)**：陸上戦艦打撃軍団 詳細編成・運用仕様書
+  * 超大型陸上戦艦（レールガン主砲）2隻を核とし、陸上空母・防空艦・近接護衛艦を配備した地上決戦機動要塞群。
 * **[toe_definitions/ground/regular/toe_corps_science_survey.md](./toe_definitions/ground/regular/toe_corps_science_survey.md)**：調査・科学探査軍団 詳細編成仕様書
   * 有毒大気・極限環境を無効化し、異星遺跡・生体巣穴の深層解析と科学研究ボーナス獲得を担う特務探査部隊。
 
-### 陸上・エイリアン・混成・融合軍団
+### 陸上・エイリアン軍団（野生・固有エイリアン）（`toe_definitions/ground/alien/`）
 
-* **[toe_definitions/ground/alien/toe_ground_alien_swarm.md](./toe_definitions/ground/alien/toe_ground_alien_swarm.md)**：野生・固有エイリアン陸上軍団 編制・生態仕様書
-  * 生物サイズ階層ベースの格闘軍団体系（小型、中型、大型、超大型エイリアン軍団、長距離砲撃軍団、陸棲航空格闘）。戦車型は時間を掛けて戦車を破壊、純格闘主体、超大型ニードル砲撃型、対空種（近接信管砲弾・生体ミサイル）。
+* **[toe_definitions/ground/alien/toe_alien_corps_small_swarm.md](./toe_definitions/ground/alien/toe_alien_corps_small_swarm.md)**：小型エイリアン軍団 詳細編成・生態仕様書
+  * 数千〜数万頭の小型格闘種による軽量スウォーム軍団。山岳・密林・洞窟の不整地浸透、下車歩兵・非装甲部隊の殺傷に特化。
+* **[toe_definitions/ground/alien/toe_alien_corps_medium_swarm.md](./toe_definitions/ground/alien/toe_alien_corps_medium_swarm.md)**：中型エイリアン軍団 詳細編成・生態仕様書
+  * カマキリ状中型格闘種基幹。4x4軽装甲車（LAV）を短時間で解体・破壊し、装甲車（IFV/APC）には時間を掛けて装甲板をこじ開ける。戦車は破壊不能。
+* **[toe_definitions/ground/alien/toe_alien_corps_heavy_tank.md](./toe_definitions/ground/alien/toe_alien_corps_heavy_tank.md)**：大型エイリアン軍団 詳細編成・生態仕様書
+  * 戦車型（大型格闘種）基幹。主力戦車に組み付き、長い時間を掛けて装甲を切り裂き破壊する泥沼の決戦格闘軍団。
+* **[toe_definitions/ground/alien/toe_alien_corps_colossus.md](./toe_definitions/ground/alien/toe_alien_corps_colossus.md)**：超大型エイリアン軍団 詳細編成・生態仕様書
+  * 全高20m級の超大型接近戦型巨獣（タイタン級）を核とする要塞粉砕軍団。圧倒的な質量と超巨大鎌腕で敵戦車・防衛線・バンカーを踏み潰す。
+* **[toe_definitions/ground/alien/toe_alien_corps_needle_artillery.md](./toe_definitions/ground/alien/toe_alien_corps_needle_artillery.md)**：長距離砲撃軍団 詳細編成・生態仕様書
+  * 全高20m級の超大型ニードル砲撃種を核とする遠距離支援部隊。巨体の割にはミサイル程度の威力しかない巨大生体棘弾（ニードル）を放物線投射。
+* **[toe_definitions/ground/alien/toe_alien_corps_aviation_melee.md](./toe_definitions/ground/alien/toe_alien_corps_aviation_melee.md)**：陸棲航空格闘軍団 詳細編成・生態仕様書
+  * 有翼格闘種（ワイバーン型）が低空急降下し、地上部隊の頭上や車両上面（ルーフ）を爪と鎌腕で切り裂く地上急襲航空群（制空権確保は空棲種の担当）。
+
+### 陸上・混成・融合軍団
+
 * **[toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md](./toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md)**：多種族混成陸上軍団（全11カテゴリー）詳細仕様書
   * 人類兵力50%と同盟エイリアン50%の共生協同運用、自己治癒（再生）および二重兵站ドクトリン。
 * **[toe_definitions/ground/fusion/toe_corps_fusion_ground.md](./toe_definitions/ground/fusion/toe_corps_fusion_ground.md)**：融合生物陸上軍団（全11カテゴリー）詳細仕様書
