@@ -20,9 +20,9 @@ docs/
 │   ├── concept_corps_and_division_echelons.md # 1ユニット＝2個師団1軍団制 概念・編制検討書
 │   ├── concept_ground_vehicle_chassis_and_variants.md # 陸上装甲・戦闘車両プラットフォームおよびバリアント総合仕様書
 │   └── concept_personnel_and_manning_standards.md # 軍団・師団 人員規模および定員算出基準仕様書
-├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（全16仕様書）
-│   ├── ground/                             # 陸上部隊編成（全8件）
-│   │   ├── regular/                        # 人類通常軍団（8件）
+├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（全17仕様書）
+│   ├── ground/                             # 陸上部隊編成（全9件）
+│   │   ├── regular/                        # 人類通常軍団（9件）
 │   │   │   ├── toe_corps_heavy_armored.md  # 常設増強機甲軍団（2個師団統合型）詳細編成・運用仕様書
 │   │   │   ├── toe_corps_variants.md       # 軍団（TO&E）バリエーション編成定義（装甲化軍団・歩兵多層エシュロン）
 │   │   │   ├── toe_corps_airmobile.md      # 空中機動・空地強襲軍団 詳細編成仕様書
@@ -30,6 +30,7 @@ docs/
 │   │   │   ├── toe_corps_wheeled_mobile.md # 装輪機動軍団 詳細編成仕様書
 │   │   │   ├── toe_corps_motorized_infantry.md # 自動車化・軽歩兵軍団（Tier 1〜3）詳細編成仕様書
 │   │   │   ├── toe_corps_long_range_missile.md # 長距離ミサイル打撃軍団 詳細編成仕様書
+│   │   │   ├── toe_corps_land_battleship.md # 陸上戦艦打撃軍団 詳細編成・運用仕様書
 │   │   │   └── toe_corps_science_survey.md # 調査・科学探査軍団 詳細編成仕様書
 │   │   ├── alien/                          # 野生・固有エイリアン地上群
 │   │   │   └── toe_ground_alien_swarm.md   # 生態・群生編制仕様書（小型・中型・巨獣・潜行群）
