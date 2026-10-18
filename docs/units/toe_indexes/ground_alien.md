@@ -9,4 +9,11 @@
 - [飛翔近接・強襲混成軍団](../toe/ground/alien/toe_alien_corps_aviation_melee.md) - 陸棲航空格闘軍団 詳細編成・生態仕様書
 - [超巨大生体移動要塞軍団](../toe/ground/alien/toe_alien_corps_colossus.md) - 超大型エイリアン軍団 詳細編成・生態仕様書
 
+---
+
+## 関連仕様書・装備体系
+
+- [陸上・エイリアン生体兵装・種別仕様書](../equipment/ground/alien/ground_alien_equipment.md) - 個体カテゴリー・生体プラットフォーム一覧
+
 [← TO&E目録（カテゴリ一覧）へ戻る](../INDEX_TOE.md)
+
