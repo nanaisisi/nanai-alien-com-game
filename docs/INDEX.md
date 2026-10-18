@@ -10,8 +10,9 @@
 docs/
 ├── INDEX.md                                # 本ファイル（ドキュメント目録）
 ├── GAME_DESIGN.md                          # ゲーム企画・コア仕様設計書（マスター）
-├── force_structure/                        # 編成思想・体系・運用原則（9件）
+├── force_structure/                        # 編成思想・体系・運用原則（10件）
 │   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および常設増強師団概念仕様書
+│   ├── concept_corps_variants.md               # 常設増強軍団バリエーション編成定義（装甲化軍団・歩兵多層エシュロン）
 │   ├── concept_headquarters_and_attached_units.md # 本部管理中隊（HHC）および本部付補助諸兵科 仕様定義書
 │   ├── concept_hierarchical_headquarters_integration.md # 各階層本部付き隊の相互連携・指揮統制関係検討書
 │   ├── concept_combat_group_structure_and_rfp_cycle.md # 戦闘団TO&E構造・RFP自動更新および現場改修仕様書
@@ -24,7 +25,7 @@ docs/
 │   ├── ground/                             # 陸上部隊編成（全9件）
 │   │   ├── regular/                        # 人類通常軍団（9件）
 │   │   │   ├── toe_corps_heavy_armored.md  # 常設増強機甲軍団（2個師団統合型）詳細編成・運用仕様書
-│   │   │   ├── toe_corps_variants.md       # 軍団（TO&E）バリエーション編成定義（装甲化軍団・歩兵多層エシュロン）
+│   │   │   ├── toe_corps_militia_and_civilians.md # 民間人・民兵軍団 詳細編成・運用仕様書
 │   │   │   ├── toe_corps_airmobile.md      # 空中機動・空地強襲軍団 詳細編成仕様書
 │   │   │   ├── toe_corps_bipedal_assault.md # 高級装甲・二脚歩行混成軍団 詳細編成仕様書
 │   │   │   ├── toe_corps_wheeled_mobile.md # 装輪機動軍団 詳細編成仕様書
@@ -202,6 +203,10 @@ docs/
   * 陸上戦闘車両の5大車体系統（重装軌戦車系、装軌装甲車系、8輪装甲装輪車系、重装輪トラック系、4×4高機動系）の明確な階層区分。
   * 前線戦闘を担う「同一8輪装甲装輪車プラットフォーム」による10大バリアント共通化体系（IFV/APC/RCV/火力MCV/自走迫/指揮/患者輸送/CBRN/ARV/CEV）。
   * 重砲の2大マウント設計（160C全周旋回砲塔型 ⇄ 210C車体据付型）と、対空車両の3階層防空体系（自走対空戦車 ＋ 重装輪SAM ＋ 4×4近接SAM）。
+* **[force_structure/concept_corps_variants.md](./force_structure/concept_corps_variants.md)**：常設増強軍団（TO&E）バリエーション編成定義書
+  * 2進数倍々・エシュロン体系（小隊4 ➔ 中隊16 ➔ 大隊64/80 ➔ 連隊 ➔ 師団 ➔ 2個師団統合軍団）に基づくTO&E基本モデル。
+  * **装甲化軍団（戦車2連隊＋装輪偵察2連隊＋装甲歩兵2連隊）**および**徒歩・自動車化歩兵多層エシュロン（Tier 1〜Tier 6）**の体系的定義。
+  * 軍団直轄航空隊（計32機: 戦闘16＋輸送16）および各師団付輸送飛行隊（8機×2）、多層防空、戦車車体自走重砲体系。
 * **[force_structure/concept_personnel_and_manning_standards.md](./force_structure/concept_personnel_and_manning_standards.md)**：軍団・師団 人員規模および定員算出基準仕様書
   * 下車歩兵一律固定8名分隊制（乗員＋8名分隊）と、主要戦闘車両（戦車3名、IFV11名、APC10名、RCV5名、MCV3名、迫撃4名、特科4名）の乗員基準。
   * 師団別・部隊別の積算根拠（1個師団 約14,000名、軍団直轄 約2,100名、大戦略1コマ総員 約30,100名）。
@@ -217,10 +222,8 @@ docs/
 
 * **[toe_definitions/ground/regular/toe_corps_heavy_armored.md](./toe_definitions/ground/regular/toe_corps_heavy_armored.md)**：常設増強機甲軍団 詳細編成・運用仕様書
   * 戦車4連隊基幹の2個師団統合型（戦車256両、重IFV384両、APC128両、120C自走迫224両、左右両翼スクリーン160両、航空機48機）。突破打撃軸（機甲4連隊）と掃討・要塞化軸（歩兵2連隊）が相互躍進を遂行。独立特科（160C/210C）・多層高射連隊。
-* **[toe_definitions/ground/regular/toe_corps_variants.md](./toe_definitions/ground/regular/toe_corps_variants.md)**：軍団（TO&E）バリエーション編成定義・目録
-  * 2進数倍々・エシュロン体系（小隊4 ➔ 中隊16 ➔ 大隊64/80 ➔ 連隊 ➔ 師団 ➔ 2個師団統合軍団）に基づくTO&E基本モデル。
-  * **装甲化軍団（戦車2連隊＋装輪偵察2連隊＋装甲歩兵2連隊）**および**徒歩・自動車化歩兵多層エシュロン（Tier 1〜Tier 6）**の体系的定義。
-  * 軍団直轄航空隊（計32機: 戦闘16＋輸送16）および各師団付輸送飛行隊（8機×2）、多層防空、戦車車体自走重砲体系。
+* **[toe_definitions/ground/regular/toe_corps_militia_and_civilians.md](./toe_definitions/ground/regular/toe_corps_militia_and_civilians.md)**：民間人・民兵軍団 詳細編成・運用仕様書
+  * Tier 0-A（民間人・避難民・開拓民群 約40,000名、非武装・救出護衛対象）および Tier 0-B（民兵軍団：民間徴用トラック、テクニカル機銃車、治安維持・拠点自活）の戦闘序列・運用仕様。
 * **[toe_definitions/ground/regular/toe_corps_airmobile.md](./toe_definitions/ground/regular/toe_corps_airmobile.md)**：空中機動・空地強襲軍団 詳細編成仕様書
   * 地上重戦車を排した空中機動2個師団統合運用。強襲航空旅団・軍団直轄航空打撃群（計176機）、空挺軽IFV、大隊付120C超軽量自走迫、FARP先行展開。
 * **[toe_definitions/ground/regular/toe_corps_bipedal_assault.md](./toe_definitions/ground/regular/toe_corps_bipedal_assault.md)**：高級装甲・二脚歩行混成軍団 詳細編成仕様書
