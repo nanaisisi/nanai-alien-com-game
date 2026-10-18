@@ -13,4 +13,8 @@
 - [空中生体戦艦群](../toe/air/alien/toe_alien_air_wing_aerial_battleship.md) - エイリアン空中戦艦航空団 詳細編成・生態仕様書
 - [空中生体母艦群](../toe/air/alien/toe_alien_air_wing_aerial_carrier.md) - エイリアン空中空母航空団 詳細編成・生態仕様書
 
+## 装備・プラットフォーム仕様書
+
+- [航空・エイリアン 生態・生体兵装プラットフォーム仕様書](../equipment/air/alien/air_alien_equipment.md)
+
 [← TO&E目録（カテゴリ一覧）へ戻る](../INDEX_TOE.md)
