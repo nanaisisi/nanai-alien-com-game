@@ -14,6 +14,8 @@ pub enum TerrainType {
     Mountains,
     /// 海洋/水域: 陸上部隊進入不可（艦船・航空機のみ）
     Ocean,
+    /// 湖沼/内陸淡水: 閉鎖水域。食料資源豊富、都市の水源
+    Lake,
     /// 毒性湿地/瘴気帯: エイリアン活動度高、人類部隊に継続ダメージやデバフ
     ToxicSwamp,
     /// 密林/熱帯雨林: 鬱蒼とした巨大樹海。視界遮蔽が極めて高く機甲部隊の移動が著しく困難。バイオマスと未知の生態系研究に適する
@@ -28,6 +30,7 @@ impl TerrainType {
             Self::Forest => "温帯林 (Forest)",
             Self::Mountains => "険峻な山岳 (Mountains)",
             Self::Ocean => "海洋 (Ocean)",
+            Self::Lake => "湖沼 (Lake)",
             Self::ToxicSwamp => "瘴気湿地 (Toxic Swamp)",
             Self::Jungle => "熱帯樹海 (Jungle)",
         }
@@ -40,7 +43,8 @@ impl TerrainType {
             Self::Hills => Color::srgb(0.48, 0.45, 0.35),  // 黄土・岩色
             Self::Forest => Color::srgb(0.12, 0.30, 0.22), // 濃緑
             Self::Mountains => Color::srgb(0.38, 0.40, 0.46), // 暗めの岩石色
-            Self::Ocean => Color::srgb(0.10, 0.25, 0.48),  // ディープブルー
+            Self::Ocean => Color::srgb(0.10, 0.25, 0.48),  // ディープブルー（外洋）
+            Self::Lake => Color::srgb(0.14, 0.38, 0.48),   // 透き通る淡水・アクアブルー（湖沼）
             Self::ToxicSwamp => Color::srgb(0.35, 0.18, 0.45), // 瘴気パープル
             Self::Jungle => Color::srgb(0.06, 0.24, 0.14), // 深緑・密林グリーン
         }
@@ -54,6 +58,7 @@ impl TerrainType {
             Self::Forest => Color::srgb(0.24, 0.48, 0.35),
             Self::Mountains => Color::srgb(0.55, 0.58, 0.65),
             Self::Ocean => Color::srgb(0.22, 0.42, 0.70),
+            Self::Lake => Color::srgb(0.25, 0.55, 0.68),
             Self::ToxicSwamp => Color::srgb(0.52, 0.30, 0.65),
             Self::Jungle => Color::srgb(0.15, 0.42, 0.25),
         }
@@ -62,7 +67,7 @@ impl TerrainType {
     /// 3D描画時の高さオフセット（起伏表現）
     pub fn height(&self) -> f32 {
         match self {
-            Self::Ocean => 0.1,
+            Self::Ocean | Self::Lake => 0.1,
             Self::ToxicSwamp => 0.15,
             Self::Plains => 0.25,
             Self::Forest => 0.35,
@@ -80,13 +85,13 @@ impl TerrainType {
             Self::Forest => 1.8,
             Self::ToxicSwamp => 2.0,
             Self::Jungle => 2.5, // 密林・巨木・つる植物により通行困難
-            Self::Mountains | Self::Ocean => 999.0, // 通行不可
+            Self::Mountains | Self::Ocean | Self::Lake => 999.0, // 通行不可（水域・険山）
         }
     }
 
     /// 進入可能かどうか（一般地上部隊）
     pub fn is_passable_ground(&self) -> bool {
-        !matches!(self, Self::Mountains | Self::Ocean)
+        !matches!(self, Self::Mountains | Self::Ocean | Self::Lake)
     }
 
     /// 地形の基礎産出力。内部値は浮動小数点 (食料=Biomass, 生産=構造鉱物, エネルギー, 科学)
@@ -98,7 +103,8 @@ impl TerrainType {
             Self::Hills => R::new(0.0, 2.0, 1.0, 0.0),     // 生産力高
             Self::Forest => R::new(1.0, 2.0, 0.0, 0.0),    // 食料+生産
             Self::Mountains => R::new(0.0, 0.0, 0.0, 1.0), // 科学観測
-            Self::Ocean => R::new(1.0, 0.0, 1.0, 0.0),     // 食料+エネルギー
+            Self::Ocean => R::new(1.0, 0.0, 1.0, 0.0),     // 食料+エネルギー（海流/潮汐）
+            Self::Lake => R::new(2.0, 0.0, 0.0, 0.0),      // 淡水資源・豊かな生態系（食料+1）
             Self::ToxicSwamp => R::new(0.0, 0.0, 2.0, 1.0), // 瘴気エネルギー+研究
             Self::Jungle => R::new(2.0, 1.0, 0.0, 2.0),     // 圧倒的バイオマス(食料2) + 未知ゲノム・生態系(科学2)
         }

@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet, VecDeque};
 
 use super::hex::{self, HexCoord};
 use super::settings::{LandmassType, MapConfig, PlanetEnvironment};
@@ -125,6 +125,7 @@ pub fn generate_hex_map(
         TerrainType::Forest,
         TerrainType::Mountains,
         TerrainType::Ocean,
+        TerrainType::Lake,
         TerrainType::ToxicSwamp,
         TerrainType::Jungle,
     ];
@@ -132,11 +133,11 @@ pub fn generate_hex_map(
     for t in terrain_types {
         let mut mat = StandardMaterial::from_color(t.base_color());
         mat.perceptual_roughness = match t {
-            TerrainType::Ocean => 0.1,
+            TerrainType::Ocean | TerrainType::Lake => 0.1,
             _ => 0.85,
         };
         mat.reflectance = match t {
-            TerrainType::Ocean => 0.8,
+            TerrainType::Ocean | TerrainType::Lake => 0.8,
             _ => 0.2,
         };
         mat_cache.insert(t, materials.add(mat));
@@ -200,7 +201,65 @@ pub fn generate_hex_map(
         }
     }
 
-    // Step 2: 地形タイプの決定
+    // Step 2: 水域の連結成分判定（外洋 Ocean と閉鎖水域 Lake の分類）
+    // - 南北両極の縁に接している、または水域全体の35%以上を占める連結成分を外洋(Ocean)とする
+    // - それ以外の陸地に完全に囲まれた独立水域を湖沼(Lake)とする
+    let mut water_visited: HashSet<HexCoord> = HashSet::new();
+    let mut is_ocean_tile: HashMap<HexCoord, bool> = HashMap::new();
+    let mut total_water_tiles = 0;
+
+    for row in -half_h..=half_h {
+        for col in 0..map_w {
+            if !is_land[&(col, row)] {
+                total_water_tiles += 1;
+            }
+        }
+    }
+
+    let ocean_size_threshold = (total_water_tiles as f32 * 0.35).max(12.0) as usize;
+
+    for row in -half_h..=half_h {
+        for col in 0..map_w {
+            let coord = HexCoord::from_col_row_with_width(col, row, map_w);
+            if is_land[&(col, row)] || water_visited.contains(&coord) {
+                continue;
+            }
+
+            // BFSで水域連結成分を探索
+            let mut component = Vec::new();
+            let mut queue = VecDeque::new();
+            let mut touches_pole = false;
+
+            water_visited.insert(coord);
+            queue.push_back(coord);
+
+            while let Some(current) = queue.pop_front() {
+                component.push(current);
+                let (_cc, cr) = current.to_col_row_with_width(map_w);
+                if cr == -half_h || cr == half_h {
+                    touches_pole = true;
+                }
+
+                for n_coord in current.neighbors_with_width(map_w) {
+                    let (nc, nr) = n_coord.to_col_row_with_width(map_w);
+                    if nr < -half_h || nr > half_h {
+                        touches_pole = true;
+                        continue;
+                    }
+                    if !is_land[&(nc, nr)] && water_visited.insert(n_coord) {
+                        queue.push_back(n_coord);
+                    }
+                }
+            }
+
+            let is_ocean = touches_pole || component.len() >= ocean_size_threshold;
+            for c in component {
+                is_ocean_tile.insert(c, is_ocean);
+            }
+        }
+    }
+
+    // Step 3: 地形タイプの決定
     let mut terrain_map: HashMap<HexCoord, TerrainType> = HashMap::new();
     let mountain_threshold = env.mountain_threshold();
     let hill_threshold = env.hill_threshold();
@@ -211,7 +270,13 @@ pub fn generate_hex_map(
             let land = is_land[&(col, row)];
 
             if !land {
-                terrain_map.insert(coord, TerrainType::Ocean);
+                let is_ocean = is_ocean_tile.get(&coord).copied().unwrap_or(true);
+                let water_type = if is_ocean {
+                    TerrainType::Ocean
+                } else {
+                    TerrainType::Lake
+                };
+                terrain_map.insert(coord, water_type);
                 continue;
             }
 
@@ -221,7 +286,7 @@ pub fn generate_hex_map(
             let detail =
                 cylinder_noise_with_size(col, row, base_seed.wrapping_add(54321), map_w, map_h);
 
-            // 隣接セルに海洋があるかチェック (海岸線判定)
+            // 隣接セルに水域（外洋または湖）があるかチェック (海岸線判定)
             let mut neighbors_have_ocean = false;
             for n_coord in coord.neighbors_with_width(map_w) {
                 let (nc, nr) = n_coord.to_col_row_with_width(map_w);
@@ -483,5 +548,76 @@ mod tests {
                 }
             }
         }
+    }
+
+    #[test]
+    fn test_lake_and_ocean_classification() {
+        let (w, h) = (20, 10);
+        let half_h = h / 2;
+
+        // すべて陸地、ただし中央に 1 タイルだけ水域（完全な孤立湖）
+        // および最北端 row = -half_h に水域（外洋）
+        let mut is_land = HashMap::new();
+        for row in -half_h..=half_h {
+            for col in 0..w {
+                is_land.insert((col, row), true);
+            }
+        }
+
+        // 孤立湖
+        is_land.insert((5, 0), false);
+        // 極地海洋
+        is_land.insert((0, -half_h), false);
+
+        let mut water_visited: HashSet<HexCoord> = HashSet::new();
+        let mut is_ocean_tile: HashMap<HexCoord, bool> = HashMap::new();
+        let total_water = 2;
+        let ocean_size_threshold = (total_water as f32 * 0.35).max(12.0) as usize;
+
+        for row in -half_h..=half_h {
+            for col in 0..w {
+                let coord = HexCoord::from_col_row_with_width(col, row, w);
+                if is_land[&(col, row)] || water_visited.contains(&coord) {
+                    continue;
+                }
+
+                let mut component = Vec::new();
+                let mut queue = VecDeque::new();
+                let mut touches_pole = false;
+
+                water_visited.insert(coord);
+                queue.push_back(coord);
+
+                while let Some(current) = queue.pop_front() {
+                    component.push(current);
+                    let (_cc, cr) = current.to_col_row_with_width(w);
+                    if cr == -half_h || cr == half_h {
+                        touches_pole = true;
+                    }
+
+                    for n_coord in current.neighbors_with_width(w) {
+                        let (nc, nr) = n_coord.to_col_row_with_width(w);
+                        if nr < -half_h || nr > half_h {
+                            touches_pole = true;
+                            continue;
+                        }
+                        if !is_land[&(nc, nr)] && water_visited.insert(n_coord) {
+                            queue.push_back(n_coord);
+                        }
+                    }
+                }
+
+                let is_ocean = touches_pole || component.len() >= ocean_size_threshold;
+                for c in component {
+                    is_ocean_tile.insert(c, is_ocean);
+                }
+            }
+        }
+
+        let lake_coord = HexCoord::from_col_row_with_width(5, 0, w);
+        let ocean_coord = HexCoord::from_col_row_with_width(0, -half_h, w);
+
+        assert_eq!(is_ocean_tile.get(&lake_coord), Some(&false), "Inland isolated water should be classified as Lake (freshwater)");
+        assert_eq!(is_ocean_tile.get(&ocean_coord), Some(&true), "Polar/large water body should be classified as Ocean (saltwater)");
     }
 }
