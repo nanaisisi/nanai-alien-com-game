@@ -6,7 +6,7 @@ use super::{HEX_RADIUS, MapGrid};
 use crate::camera::MapCamera;
 use crate::state::AppState;
 
-use super::types::{GridOverlayLine, HexTile, MapDisplaySettings, YieldOverlayTag};
+use super::types::{GridOverlayLine, HexTile, MapDisplaySettings, RiverOverlayLine, YieldOverlayTag};
 
 pub struct MapInteractionPlugin;
 
@@ -438,8 +438,10 @@ pub fn setup_map_overlays(
             ));
 
             // タイル産出（Yield）3D Text表示 (食料, 生産力, エネルギー, 科学力)
-            // 内部値はf32、表示は四捨五入した整数
-            let (food, prod, energy, science) = terrain.base_output().rounded();
+            // 河川沿岸タイルは淡水アクセスボーナス (+1.0 バイオマス) が付与される
+            let has_river = map_grid.has_river(&coord);
+            let salinity = map_grid.water_salinity.get(&coord).copied();
+            let (food, prod, energy, science) = terrain.output_with_water_access(salinity, has_river).rounded();
             let mut yield_parts = Vec::new();
             if food > 0 {
                 yield_parts.push(format!("{}食", food));
@@ -471,6 +473,72 @@ pub fn setup_map_overlays(
                     initial_yield_vis,
                 ));
             }
+        }
+
+        // 河川エッジメッシュの生成（澄んだアクアブルーの水流ライン）
+        let river_mat = materials.add(StandardMaterial {
+            base_color: Color::srgba(0.20, 0.65, 0.88, 0.90),
+            perceptual_roughness: 0.1,
+            reflectance: 0.8,
+            unlit: true,
+            cull_mode: None,
+            ..default()
+        });
+
+        for edge in &map_grid.rivers {
+            let (col_a, _row_a) = edge.tile_a.to_col_row_with_width(map_w);
+            let (col_b, row_b) = edge.tile_b.to_col_row_with_width(map_w);
+
+            // 横ループ境界を跨ぐエッジは中央ワールド座標を適切に計算
+            let mut dc = col_b - col_a;
+            if dc > map_w / 2 {
+                dc -= map_w;
+            } else if dc < -map_w / 2 {
+                dc += map_w;
+            }
+
+            let pos_a = edge.tile_a.to_world_pos(hex_r);
+            let unwrapped_b = HexCoord::from_col_row_unwrapped(col_a + dc, row_b);
+            let pos_b = unwrapped_b.to_world_pos(hex_r);
+
+            let edge_center = (pos_a + pos_b) / 2.0;
+            let dir = (pos_b - pos_a).normalize();
+            let perp = Vec3::new(-dir.z, 0.0, dir.x);
+
+            let river_width = 0.18;
+            let river_half_len = hex_r * 0.48;
+
+            let p0 = edge_center + perp * river_half_len - dir * river_width;
+            let p1 = edge_center + perp * river_half_len + dir * river_width;
+            let p2 = edge_center - perp * river_half_len + dir * river_width;
+            let p3 = edge_center - perp * river_half_len - dir * river_width;
+
+            let h_a = map_grid.terrain_data.get(&edge.tile_a).map(|t| t.height()).unwrap_or(0.1);
+            let h_b = map_grid.terrain_data.get(&edge.tile_b).map(|t| t.height()).unwrap_or(0.1);
+            let river_y = h_a.min(h_b) + 0.035;
+
+            use bevy::asset::RenderAssetUsages;
+            use bevy::render::mesh::{Indices, PrimitiveTopology};
+            let mut river_mesh = Mesh::new(PrimitiveTopology::TriangleList, RenderAssetUsages::default());
+            river_mesh.insert_attribute(Mesh::ATTRIBUTE_POSITION, vec![
+                [p0.x, 0.0, p0.z],
+                [p1.x, 0.0, p1.z],
+                [p2.x, 0.0, p2.z],
+                [p3.x, 0.0, p3.z],
+            ]);
+            river_mesh.insert_attribute(Mesh::ATTRIBUTE_NORMAL, vec![[0.0, 1.0, 0.0]; 4]);
+            river_mesh.insert_attribute(Mesh::ATTRIBUTE_UV_0, vec![[0.0, 0.0]; 4]);
+            river_mesh.insert_indices(Indices::U32(vec![0, 1, 2, 0, 2, 3]));
+
+            let river_mesh_handle = meshes.add(river_mesh);
+
+            commands.spawn((
+                RiverOverlayLine,
+                Mesh3d(river_mesh_handle),
+                MeshMaterial3d(river_mat.clone()),
+                Transform::from_xyz(section_offset_x, river_y, 0.0),
+                Visibility::Inherited,
+            ));
         }
     }
 }

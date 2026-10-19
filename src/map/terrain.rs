@@ -173,14 +173,33 @@ impl TerrainType {
         }
     }
 
-    /// 塩分濃度を考慮した産出力（水域タイルの場合、塩分特性が反映される）
-    pub fn output_with_salinity(&self, salinity: Option<WaterSalinity>) -> super::resource::ResourceAmounts {
+    /// 塩分濃度および河川アクセスを考慮した産出力
+    /// - 水域タイルの場合: 塩分濃度特性が反映
+    /// - 陸地タイルの場合: 河川沿い (has_river = true) であれば淡水灌漑・水産によりバイオマス(食料) +1.0
+    pub fn output_with_water_access(
+        &self,
+        salinity: Option<WaterSalinity>,
+        has_river: bool,
+    ) -> super::resource::ResourceAmounts {
         if matches!(self, Self::Ocean | Self::Lake) {
             if let Some(sal) = salinity {
                 return sal.base_output();
             }
+            return self.base_output();
         }
-        self.base_output()
+
+        let mut out = self.base_output();
+        if has_river && self.is_passable_ground() {
+            // 河川沿岸の淡水灌漑・農業・生活用水ボーナス (+1.0 バイオマス)
+            out.biomass += 1.0;
+        }
+        out
+    }
+
+    /// 塩分濃度を考慮した産出力（水域タイルの場合、塩分特性が反映される）
+    #[allow(dead_code)]
+    pub fn output_with_salinity(&self, salinity: Option<WaterSalinity>) -> super::resource::ResourceAmounts {
+        self.output_with_water_access(salinity, false)
     }
 
     /// 塩分濃度を考慮した基礎色

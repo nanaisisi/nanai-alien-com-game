@@ -292,7 +292,17 @@ pub fn update_info_panel_system(
                 String::new()
             };
 
-            let yield_out = terrain.output_with_salinity(map_grid.water_salinity.get(&coord).copied());
+            let has_river = map_grid.has_river(&coord);
+            let river_info = if has_river && terrain.is_passable_ground() {
+                "\n\n【水系・河川】\n  河川沿岸 (River Front)\n  淡水アクセスあり（バイオマス+1.0 / 渡河防御有利）"
+            } else {
+                ""
+            };
+
+            let yield_out = terrain.output_with_water_access(
+                map_grid.water_salinity.get(&coord).copied(),
+                has_river,
+            );
             let yield_str = format!(
                 "バイオマス(食料): {:.1} / 構造鉱物(生産): {:.1} / エネルギー: {:.1} / 科学: {:.1}",
                 yield_out.biomass, yield_out.ore, yield_out.energy, yield_out.science
@@ -304,7 +314,7 @@ pub fn update_info_panel_system(
                  【地形種別】\n  {}\n\
                  【基礎産出】: {}\n\
                  【移動コスト】: {}\n\
-                 【地上移動】: {}{}\n\n\
+                 【地上移動】: {}{}{}\n\n\
                  【環境特性】\n  エイリアン活動兆候あり\n  資源探査可能",
                 col,
                 row,
@@ -318,7 +328,8 @@ pub fn update_info_panel_system(
                 yield_str,
                 move_cost_str,
                 passable_str,
-                salinity_info
+                salinity_info,
+                river_info
             );
             **text = info;
         }

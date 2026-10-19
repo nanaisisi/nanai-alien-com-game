@@ -4,7 +4,7 @@ use std::collections::{HashMap, HashSet, VecDeque};
 use super::hex::{self, HexCoord};
 use super::settings::{LandmassType, MapConfig, PlanetEnvironment};
 use super::terrain::{TerrainType, WaterSalinity};
-use super::types::{HEX_RADIUS, HexTile, MapGrid, MapRoot};
+use super::types::{HEX_RADIUS, HexEdge, HexTile, MapGrid, MapRoot};
 
 /// 3D格子点ハッシュ関数（シードと3次元格子座標から擬似乱数を生成）
 #[inline]
@@ -114,6 +114,8 @@ pub fn generate_hex_map(
 
     map_grid.tiles.clear();
     map_grid.terrain_data.clear();
+    map_grid.water_salinity.clear();
+    map_grid.rivers.clear();
     map_grid.width = map_w;
     map_grid.height = map_h;
 
@@ -472,6 +474,135 @@ pub fn generate_hex_map(
         }
     }
 
+    // Step 4: 河川ネットワークの生成 (River Network Generation)
+    // 降水量・湿度が高く標高の高い山岳・丘陵を水源（Headwaters）とし、
+    // 標高が低く傾斜の急な隣接エッジを下って湖沼（Lake）または外洋（Ocean）へ流下する
+    let mut rivers: HashSet<HexEdge> = HashSet::new();
+
+    // 水源候補（標高高 + 湿潤な陸地タイル）
+    let mut river_sources = Vec::new();
+    for row in -half_h..=half_h {
+        for col in 0..map_w {
+            if !is_land[&(col, row)] {
+                continue;
+            }
+            let elev = elevations[&(col, row)];
+            let moisture = cylinder_noise_with_size(col, row, base_seed.wrapping_add(8888), map_w, map_h);
+            let coord = HexCoord::from_col_row_with_width(col, row, map_w);
+            let terrain = terrain_map[&coord];
+
+            if matches!(terrain, TerrainType::Mountains | TerrainType::Hills) && (moisture > 0.45 || elev > 0.65) {
+                river_sources.push((coord, elev, moisture));
+            }
+        }
+    }
+
+    // 水源数を用途・マップサイズに合わせて選定（種子ハッシュ順）
+    river_sources.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Equal));
+    let target_river_count = match env {
+        PlanetEnvironment::Arid => (map_w / 7).max(1) as usize,
+        PlanetEnvironment::Archipelago => (map_w / 6).max(2) as usize,
+        PlanetEnvironment::Terra | PlanetEnvironment::Jungle | PlanetEnvironment::ToxicMarsh => (map_w / 4).max(3) as usize,
+    };
+
+    let mut river_id = 0;
+    for (source_coord, _, _) in river_sources {
+        if river_id >= target_river_count {
+            break;
+        }
+
+        let (sc, sr) = source_coord.to_col_row_with_width(map_w);
+        // 隣接する陸地タイルの中で最も標高の高い相棒エッジを起点にする
+        let mut best_neighbor = None;
+        let mut min_e = elevations[&(sc, sr)];
+
+        for n_coord in source_coord.neighbors_with_width(map_w) {
+            let (nc, nr) = n_coord.to_col_row_with_width(map_w);
+            if nr >= -half_h && nr <= half_h {
+                let e = elevations[&(nc, nr)];
+                if e < min_e {
+                    min_e = e;
+                    best_neighbor = Some(n_coord);
+                }
+            }
+        }
+
+        let Some(mut current_b) = best_neighbor else {
+            continue;
+        };
+        let mut current_a = source_coord;
+        let mut visited_edges: HashSet<HexEdge> = HashSet::new();
+        let mut river_formed = false;
+
+        // 最大 30 ステップ流下
+        for _ in 0..30 {
+            let edge = HexEdge::new(current_a, current_b);
+            if rivers.contains(&edge) || visited_edges.contains(&edge) {
+                // 既存の川に合流またはループ
+                rivers.insert(edge);
+                river_formed = true;
+                break;
+            }
+
+            visited_edges.insert(edge);
+            rivers.insert(edge);
+            river_formed = true;
+
+            // current_a または current_b のどちらかが水域（外洋 Ocean または 湖沼 Lake）に到達したら注水完了
+            let t_a = terrain_map.get(&current_a).copied().unwrap_or(TerrainType::Ocean);
+            let t_b = terrain_map.get(&current_b).copied().unwrap_or(TerrainType::Ocean);
+            if matches!(t_a, TerrainType::Ocean | TerrainType::Lake) && matches!(t_b, TerrainType::Ocean | TerrainType::Lake) {
+                // 水域内部に入ったため流下完了
+                break;
+            }
+
+            // 次のエッジを探す：エッジ (A, B) から分岐する共有隣接点 C を探す（A, B 両方に隣接するヘックス）
+            let mut next_step = None;
+            let mut lowest_elev = f32::MAX;
+
+            for candidate in current_a.neighbors_with_width(map_w) {
+                if candidate == current_b {
+                    continue;
+                }
+                // candidate が current_b の隣接でもあるかチェック
+                let is_shared = current_b.neighbors_with_width(map_w).contains(&candidate);
+                if is_shared {
+                    let (cc, cr) = candidate.to_col_row_with_width(map_w);
+                    if cr >= -half_h && cr <= half_h {
+                        let e = elevations[&(cc, cr)];
+                        if e < lowest_elev {
+                            lowest_elev = e;
+                            next_step = Some(candidate);
+                        }
+                    }
+                }
+            }
+
+            if let Some(c) = next_step {
+                let (ac, ar) = current_a.to_col_row_with_width(map_w);
+                let (bc, br) = current_b.to_col_row_with_width(map_w);
+                let elev_a = elevations[&(ac, ar)];
+                let elev_b = elevations[&(bc, br)];
+
+                // より標高の高い側を切り替えてエッジを前進
+                if elev_a > elev_b {
+                    current_a = c;
+                } else {
+                    current_b = c;
+                }
+            } else {
+                break;
+            }
+        }
+
+        if river_formed {
+            river_id += 1;
+        }
+    }
+
+    info!("Generated {} river segments across the planet.", rivers.len());
+    map_grid.rivers = rivers;
+
     let world_width = hex::map_world_width_with_width(HEX_RADIUS, map_w);
 
     commands
@@ -544,6 +675,7 @@ pub fn cleanup_hex_map(
     map_grid.tiles.clear();
     map_grid.terrain_data.clear();
     map_grid.water_salinity.clear();
+    map_grid.rivers.clear();
 }
 
 #[cfg(test)]
@@ -738,5 +870,27 @@ mod tests {
         let hyper_out = WaterSalinity::Hypersaline.base_output();
         assert_eq!(hyper_out.biomass, 0.0);
         assert_eq!(hyper_out.ore, 2.0);
+    }
+
+    #[test]
+    fn test_river_freshwater_access_bonus() {
+        use super::super::types::HexEdge;
+
+        let coord = HexCoord::new(3, 4);
+        let neighbor = HexCoord::new(4, 4);
+        let edge = HexEdge::new(coord, neighbor);
+
+        let mut grid = MapGrid::default();
+        grid.rivers.insert(edge);
+
+        assert!(grid.has_river(&coord));
+        assert!(grid.has_river(&neighbor));
+        assert!(grid.has_river_between(&coord, &neighbor));
+
+        // 河川沿岸タイルは淡水アクセスにより食料（バイオマス）+1.0
+        let plains = TerrainType::Plains;
+        let normal_out = plains.output_with_water_access(None, false);
+        let river_out = plains.output_with_water_access(None, true);
+        assert_eq!(river_out.biomass, normal_out.biomass + 1.0);
     }
 }
