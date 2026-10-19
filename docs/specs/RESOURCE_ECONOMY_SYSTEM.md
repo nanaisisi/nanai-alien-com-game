@@ -1,4 +1,4 @@
-# 資源・経済・サプライチェーン体系目録 (Resource, Economy & Supply Chain Index)
+﻿# 資源・経済・サプライチェーン体系目録 (Resource, Economy & Supply Chain Index)
 
 本ドキュメントは、本作（4X大戦略＋脱・都市中心タイル進展＋諸兵科連合戦闘団制）における**「資源品目・加工連鎖・弾薬規格・兵站インフラ・食料」**の経済・産業モデルを俯瞰・体系的に確認するための統合目録（インデックス兼リファレンス）です。
 
@@ -16,7 +16,7 @@ flowchart TD
         R_Eng["エネルギー (Energy)<br/>発電所/地熱/核融合"]
         R_Ore["構造鉱物 (Structural Ore)<br/>鉱山/山岳 (鉄・チタン)"]
         R_Min["機能性鉱物 (Rare Minerals)<br/>深部採掘 (レアアース・半導体)"]
-        R_Bio["バイオ原質 (Biomass)<br/>農水産/原生採取/ミズマ菌類"]
+        R_Bio["バイオ原質 (Biomass)<br/>農水産/原生採取/瘴気菌類"]
     end
 
     subgraph S2["② 二次中間財（工業コンビナート・ブートローダー工廠）"]

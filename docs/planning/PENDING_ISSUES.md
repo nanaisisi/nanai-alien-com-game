@@ -1,4 +1,4 @@
-# 未確定・検討課題まとめ (Pending Issues & Roadmap)
+﻿# 未確定・検討課題まとめ (Pending Issues & Roadmap)
 
 本ドキュメントは、本作（4X大戦略＋サブタイル戦術・戦闘団制）における**未確定の検討事項、議論が深まっていない論点、および今後の掘り下げロードマップ**を体系的にまとめた検討課題管理書です。
 
@@ -141,5 +141,5 @@
 | **高** | **資源・部品・弾薬マスター定義書（Data Dictionary） (SEC-03)** | 4種一次資源、中間部品、弾薬規格・燃料・交換部品の具体的な入出力レート・保管容量モデル（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
 | **高** | **初期モジュール・基本シャシー実数値カタログ仕様書 (SEC-04)** | 競技的平等を保証する共通規格、装輪・履帯・多脚スペック差、初期兵装・装甲、Turn 0スターター戦力（[`concept_starter_modules_and_common_chassis_catalog.md`](../discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md) の実数値化） | **構想完了 / 詳細化待機** |
 | **中** | **架空6大国初期保有アセット・スタートアップ仕様書 (SEC-05)** | Turn 0の非資源消費ユニット、虎の子Gen 0戦力の初期配備数、初期ブートローダー工廠値（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
-| **中** | **動的情勢推移・危機（Crisis）・Civ型勝利条件詳細仕様書 (SEC-06)** | ミズマ大侵入、宇宙港再建、軍事制覇、ガイア同化等の判定フラグと、クリア後エンドレス継続プレイ挙動（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
+| **中** | **動的情勢推移・危機（Crisis）・Civ型勝利条件詳細仕様書 (SEC-06)** | 瘴気大侵入、宇宙港再建、軍事制覇、ガイア同化等の判定フラグと、クリア後エンドレス継続プレイ挙動（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
 | **低** | **自発的失踪者・軍閥（第三極）接触・調達・領土要求イベント群 (SEC-07)** | 国境地帯の失踪者コミュニティ遭遇、闇市調達、自然国境に基づく4段階領土主張（Claims）の計算式（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
