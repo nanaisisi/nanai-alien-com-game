@@ -16,8 +16,8 @@ pub enum TerrainType {
     Ocean,
     /// 毒性湿地/瘴気帯: エイリアン活動度高、人類部隊に継続ダメージやデバフ
     ToxicSwamp,
-    /// 結晶・鉱物地帯: 資源採掘適地、特異な生態系
-    CrystalFields,
+    /// 密林/熱帯雨林: 鬱蒼とした巨大樹海。視界遮蔽が極めて高く機甲部隊の移動が著しく困難。バイオマスと未知の生態系研究に適する
+    Jungle,
 }
 
 impl TerrainType {
@@ -25,11 +25,11 @@ impl TerrainType {
         match self {
             Self::Plains => "平原 (Plains)",
             Self::Hills => "丘陵 (Hills)",
-            Self::Forest => "異星原生林 (Alien Forest)",
+            Self::Forest => "温帯林 (Forest)",
             Self::Mountains => "険峻な山岳 (Mountains)",
             Self::Ocean => "海洋 (Ocean)",
             Self::ToxicSwamp => "瘴気湿地 (Toxic Swamp)",
-            Self::CrystalFields => "共鳴結晶地帯 (Crystal Fields)",
+            Self::Jungle => "熱帯樹海 (Jungle)",
         }
     }
 
@@ -42,7 +42,7 @@ impl TerrainType {
             Self::Mountains => Color::srgb(0.38, 0.40, 0.46), // 暗めの岩石色
             Self::Ocean => Color::srgb(0.10, 0.25, 0.48),  // ディープブルー
             Self::ToxicSwamp => Color::srgb(0.35, 0.18, 0.45), // 瘴気パープル
-            Self::CrystalFields => Color::srgb(0.20, 0.60, 0.65), // エメラルドシアン
+            Self::Jungle => Color::srgb(0.06, 0.24, 0.14), // 深緑・密林グリーン
         }
     }
 
@@ -55,7 +55,7 @@ impl TerrainType {
             Self::Mountains => Color::srgb(0.55, 0.58, 0.65),
             Self::Ocean => Color::srgb(0.22, 0.42, 0.70),
             Self::ToxicSwamp => Color::srgb(0.52, 0.30, 0.65),
-            Self::CrystalFields => Color::srgb(0.35, 0.80, 0.85),
+            Self::Jungle => Color::srgb(0.15, 0.42, 0.25),
         }
     }
 
@@ -66,7 +66,7 @@ impl TerrainType {
             Self::ToxicSwamp => 0.15,
             Self::Plains => 0.25,
             Self::Forest => 0.35,
-            Self::CrystalFields => 0.38,
+            Self::Jungle => 0.42, // 巨木の林冠によりForestより一段高い
             Self::Hills => 0.55,
             Self::Mountains => 0.95,
         }
@@ -79,7 +79,7 @@ impl TerrainType {
             Self::Hills => 1.5,
             Self::Forest => 1.8,
             Self::ToxicSwamp => 2.0,
-            Self::CrystalFields => 1.4,
+            Self::Jungle => 2.5, // 密林・巨木・つる植物により通行困難
             Self::Mountains | Self::Ocean => 999.0, // 通行不可
         }
     }
@@ -100,7 +100,7 @@ impl TerrainType {
             Self::Mountains => R::new(0.0, 0.0, 0.0, 1.0), // 科学観測
             Self::Ocean => R::new(1.0, 0.0, 1.0, 0.0),     // 食料+エネルギー
             Self::ToxicSwamp => R::new(0.0, 0.0, 2.0, 1.0), // 瘴気エネルギー+研究
-            Self::CrystalFields => R::new(0.0, 1.0, 3.0, 2.0), // 高エネルギー結晶+先端科学
+            Self::Jungle => R::new(2.0, 1.0, 0.0, 2.0),     // 圧倒的バイオマス(食料2) + 未知ゲノム・生態系(科学2)
         }
     }
 }

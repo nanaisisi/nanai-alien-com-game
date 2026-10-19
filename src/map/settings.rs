@@ -12,8 +12,8 @@ pub enum PlanetEnvironment {
     Archipelago,
     /// 瘴気・原始沼沢地: 毒性湿地と濃密な原生林が広がる高危険度環境
     ToxicMarsh,
-    /// 晶氷・結晶極地: 結晶鉱床が豊富に露出し、険しい山岳が連なる
-    Crystalline,
+    /// 熱帯樹海・原生密林: 惑星全体を覆う超巨大な森林とジャングル
+    Jungle,
 }
 
 impl PlanetEnvironment {
@@ -22,7 +22,7 @@ impl PlanetEnvironment {
         PlanetEnvironment::Arid,
         PlanetEnvironment::Archipelago,
         PlanetEnvironment::ToxicMarsh,
-        PlanetEnvironment::Crystalline,
+        PlanetEnvironment::Jungle,
     ];
 
     pub fn name_ja(&self) -> &'static str {
@@ -31,7 +31,7 @@ impl PlanetEnvironment {
             Self::Arid => "乾燥砂漠 (Arid Dunes)",
             Self::Archipelago => "海洋諸島 (Archipelago)",
             Self::ToxicMarsh => "瘴気沼沢 (Toxic Marsh)",
-            Self::Crystalline => "結晶山脈 (Crystalline)",
+            Self::Jungle => "原生樹海 (Jungle World)",
         }
     }
 
@@ -47,8 +47,8 @@ impl PlanetEnvironment {
             Self::ToxicMarsh => {
                 "原生異星植物と毒性湿地帯が密集。未知の生態系が活発で過酷な進軍を強いられる。"
             }
-            Self::Crystalline => {
-                "共鳴結晶鉱床が露出した高標高帯。特殊資源に恵まれるが険峻な山脈が遮る。"
+            Self::Jungle => {
+                "鬱蒼とした巨木群と密林が惑星全土を覆う。バイオマスと未知の生態系に富むが視界・行軍は極めて困難。"
             }
         }
     }
@@ -60,7 +60,7 @@ impl PlanetEnvironment {
             Self::Arid => 0.22,        // 海が非常に少ない
             Self::Archipelago => 0.58, // 海が非常に多い
             Self::ToxicMarsh => 0.38,  // 湿地が増えるため海自体は標準やや低め
-            Self::Crystalline => 0.35, // 陸地多め
+            Self::Jungle => 0.40,      // 適度な海洋と多雨湿潤気候
         }
     }
 
@@ -71,7 +71,7 @@ impl PlanetEnvironment {
             Self::Arid => 0.75,
             Self::Archipelago => 0.78,
             Self::ToxicMarsh => 0.80,  // 山岳は少なく湿地が多い
-            Self::Crystalline => 0.65, // 山岳が頻出
+            Self::Jungle => 0.75,      // 山岳は控えめ、密林が大地を支配
         }
     }
 
@@ -82,7 +82,7 @@ impl PlanetEnvironment {
             Self::Arid => 0.52,
             Self::Archipelago => 0.68,
             Self::ToxicMarsh => 0.65,
-            Self::Crystalline => 0.50,
+            Self::Jungle => 0.62,
         }
     }
 
@@ -93,7 +93,7 @@ impl PlanetEnvironment {
             Self::Arid => Color::srgb(0.85, 0.65, 0.30),
             Self::Archipelago => Color::srgb(0.20, 0.60, 0.90),
             Self::ToxicMarsh => Color::srgb(0.70, 0.35, 0.80),
-            Self::Crystalline => Color::srgb(0.30, 0.85, 0.85),
+            Self::Jungle => Color::srgb(0.12, 0.65, 0.30), // 鮮やかな原生林グリーン
         }
     }
 }

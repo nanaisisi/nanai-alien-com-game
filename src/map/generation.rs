@@ -70,19 +70,17 @@ pub fn generate_hex_map(
         TerrainType::Mountains,
         TerrainType::Ocean,
         TerrainType::ToxicSwamp,
-        TerrainType::CrystalFields,
+        TerrainType::Jungle,
     ];
 
     for t in terrain_types {
         let mut mat = StandardMaterial::from_color(t.base_color());
         mat.perceptual_roughness = match t {
             TerrainType::Ocean => 0.1,
-            TerrainType::CrystalFields => 0.2,
             _ => 0.85,
         };
         mat.reflectance = match t {
             TerrainType::Ocean => 0.8,
-            TerrainType::CrystalFields => 0.9,
             _ => 0.2,
         };
         mat_cache.insert(t, materials.add(mat));
@@ -151,11 +149,11 @@ pub fn generate_hex_map(
                     } else if moisture > 0.65 {
                         if detail > 0.70 {
                             TerrainType::ToxicSwamp
+                        } else if detail > 0.35 {
+                            TerrainType::Jungle
                         } else {
                             TerrainType::Forest
                         }
-                    } else if detail > 0.82 {
-                        TerrainType::CrystalFields
                     } else if moisture < 0.35 {
                         TerrainType::Plains
                     } else {
@@ -163,59 +161,59 @@ pub fn generate_hex_map(
                     }
                 }
                 PlanetEnvironment::Arid => {
-                    // 乾燥砂漠: 海洋が少なく、平原・丘陵・結晶が多い。森林や湿地は極めて稀
+                    // 乾燥砂漠: 海洋が少なく、平原・丘陵が多い。湿潤地帯のみオアシス・森林
                     if !neighbors_have_ocean && elev > mountain_threshold {
                         TerrainType::Mountains
                     } else if elev > hill_threshold {
                         TerrainType::Hills
-                    } else if detail > 0.72 {
-                        TerrainType::CrystalFields
-                    } else if moisture > 0.82 {
+                    } else if moisture > 0.85 {
+                        TerrainType::Jungle
+                    } else if moisture > 0.65 {
                         TerrainType::Forest
                     } else {
                         TerrainType::Plains
                     }
                 }
                 PlanetEnvironment::Archipelago => {
-                    // 海洋群島: 陸地が狭く、険しい孤島や砂浜・森林
+                    // 海洋群島: 陸地が狭く、島嶼部は熱帯雨林や森林が豊か
                     if !neighbors_have_ocean && elev > mountain_threshold {
                         TerrainType::Mountains
                     } else if elev > hill_threshold {
                         TerrainType::Hills
-                    } else if moisture > 0.45 {
+                    } else if moisture > 0.60 {
+                        TerrainType::Jungle
+                    } else if moisture > 0.35 {
                         TerrainType::Forest
-                    } else if detail > 0.78 {
-                        TerrainType::CrystalFields
                     } else {
                         TerrainType::Plains
                     }
                 }
                 PlanetEnvironment::ToxicMarsh => {
-                    // 瘴気沼沢: 湿地と原生林が大部分を占める
+                    // 瘴気沼沢: 湿地と原生林・ジャングルが大部分を占める
                     if !neighbors_have_ocean && elev > mountain_threshold {
                         TerrainType::Mountains
                     } else if elev > hill_threshold {
                         TerrainType::Hills
-                    } else if detail > 0.85 {
-                        TerrainType::CrystalFields
                     } else if moisture > 0.40 || detail > 0.45 {
                         TerrainType::ToxicSwamp
+                    } else if detail > 0.25 {
+                        TerrainType::Jungle
                     } else {
                         TerrainType::Forest
                     }
                 }
-                PlanetEnvironment::Crystalline => {
-                    // 結晶極地: 山脈と結晶鉱床が広がり、高低差が激しい
+                PlanetEnvironment::Jungle => {
+                    // 原生樹海: 惑星全土が広大な熱帯雨林・温帯林に覆われ、平原は極小
                     if !neighbors_have_ocean && elev > mountain_threshold {
                         TerrainType::Mountains
                     } else if elev > hill_threshold {
                         TerrainType::Hills
-                    } else if detail > 0.50 {
-                        TerrainType::CrystalFields
-                    } else if moisture < 0.40 {
-                        TerrainType::Plains
-                    } else {
+                    } else if moisture > 0.45 || detail > 0.35 {
+                        TerrainType::Jungle
+                    } else if moisture > 0.25 {
                         TerrainType::Forest
+                    } else {
+                        TerrainType::Plains
                     }
                 }
             };
