@@ -221,8 +221,8 @@ fn update_tile_highlight_system(
                 mat.base_color = tile.terrain.hovered_color();
                 mat.emissive = LinearRgba::rgb(0.1, 0.1, 0.1);
             } else {
-                // 通常状態
-                mat.base_color = tile.terrain.base_color();
+                // 通常状態（塩分濃度に応じた水域カラーが適用される）
+                mat.base_color = tile.terrain.base_color_with_salinity(tile.salinity);
                 mat.emissive = LinearRgba::BLACK;
             }
         }

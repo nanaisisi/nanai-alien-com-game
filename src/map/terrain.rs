@@ -1,5 +1,68 @@
 use bevy::prelude::*;
 
+/// 水域タイルの塩分濃度区分 (実用塩分単位 PSU / ‰)
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Component, Reflect, Default)]
+#[reflect(Component)]
+pub enum WaterSalinity {
+    /// 淡水 (Freshwater): < 0.5‰
+    /// 一般の内陸湖沼・河川。農業・生活用水の水源、豊富な淡水魚資源
+    #[default]
+    Fresh,
+
+    /// 汽水 (Brackish): 0.5‰ 〜 30‰
+    /// カスピ海（約12‰）やバルト海のような巨大内陸海・河口域。豊かな魚介類と緩やかな水力
+    Brackish,
+
+    /// 海水 (Saline / Marine): 30‰ 〜 50‰
+    /// 外洋（海洋平均 約35‰）。潮汐・海流エネルギー、海洋航行
+    Saline,
+
+    /// 高塩分 / 塩湖 (Hypersaline): > 50‰
+    /// 死海（約300‰）や乾燥地帯の内陸塩湖。魚類生息は困難だが、蒸発岩・リチウム・塩類鉱物（生産力）に富む
+    Hypersaline,
+}
+
+impl WaterSalinity {
+    pub fn name_ja(&self) -> &'static str {
+        match self {
+            Self::Fresh => "淡水 (Freshwater / <0.5‰)",
+            Self::Brackish => "汽水 (Brackish / 0.5-30‰)",
+            Self::Saline => "海水 (Saline / ~35‰)",
+            Self::Hypersaline => "高塩分・塩湖 (Hypersaline / >50‰)",
+        }
+    }
+
+    pub fn description(&self) -> &'static str {
+        match self {
+            Self::Fresh => "純度の高い淡水域。生活用水・灌漑に適し、水産バイオマスが極めて豊富。",
+            Self::Brackish => "カスピ海型内陸水域。淡水と塩分が混じり合い特有の魚介生態系と水力エネルギーを保持。",
+            Self::Saline => "典型的な海洋水。豊富な海流エネルギーと広域航路を提供する標準的塩分濃度。",
+            Self::Hypersaline => "死海・グレートソルト湖型。強い塩分により生物生息は限定的だが、晶出鉱物・蒸発塩（生産力）が豊富。",
+        }
+    }
+
+    /// 塩分濃度に応じた基礎水域産出力
+    pub fn base_output(&self) -> super::resource::ResourceAmounts {
+        use super::resource::ResourceAmounts as R;
+        match self {
+            Self::Fresh => R::new(2.0, 0.0, 0.0, 0.0),      // 淡水魚・水源（食料2）
+            Self::Brackish => R::new(1.5, 0.0, 0.5, 0.0),   // 汽水水産（食料1.5）+ 潮汐水流（エネルギー0.5）
+            Self::Saline => R::new(1.0, 0.0, 1.0, 0.0),     // 海洋漁獲（食料1）+ 海流エネルギー（エネルギー1）
+            Self::Hypersaline => R::new(0.0, 2.0, 0.0, 0.0),// 塩・鉱物・リチウム晶出（生産2）
+        }
+    }
+
+    /// ホバー・ベースカラーの微細な色調調整
+    pub fn color_tint(&self) -> Color {
+        match self {
+            Self::Fresh => Color::srgb(0.14, 0.40, 0.50),      // 澄んだ青緑・アクア
+            Self::Brackish => Color::srgb(0.12, 0.32, 0.48),   // カスピ海調の深緑蒼色
+            Self::Saline => Color::srgb(0.10, 0.25, 0.48),     // 外洋ディープブルー
+            Self::Hypersaline => Color::srgb(0.20, 0.45, 0.46),// 塩湖・ターコイズ＆塩結晶ホワイト寄り
+        }
+    }
+}
+
 /// タイルの地形種別
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Component, Reflect)]
 #[reflect(Component)]
@@ -108,5 +171,25 @@ impl TerrainType {
             Self::ToxicSwamp => R::new(0.0, 0.0, 2.0, 1.0), // 瘴気エネルギー+研究
             Self::Jungle => R::new(2.0, 1.0, 0.0, 2.0),     // 圧倒的バイオマス(食料2) + 未知ゲノム・生態系(科学2)
         }
+    }
+
+    /// 塩分濃度を考慮した産出力（水域タイルの場合、塩分特性が反映される）
+    pub fn output_with_salinity(&self, salinity: Option<WaterSalinity>) -> super::resource::ResourceAmounts {
+        if matches!(self, Self::Ocean | Self::Lake) {
+            if let Some(sal) = salinity {
+                return sal.base_output();
+            }
+        }
+        self.base_output()
+    }
+
+    /// 塩分濃度を考慮した基礎色
+    pub fn base_color_with_salinity(&self, salinity: Option<WaterSalinity>) -> Color {
+        if matches!(self, Self::Ocean | Self::Lake) {
+            if let Some(sal) = salinity {
+                return sal.color_tint();
+            }
+        }
+        self.base_color()
     }
 }

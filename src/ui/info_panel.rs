@@ -286,12 +286,25 @@ pub fn update_info_panel_system(
                 String::new()
             };
 
+            let salinity_info = if let Some(sal) = map_grid.water_salinity.get(&coord) {
+                format!("\n\n【水質・塩分特性】\n  {}\n  {}", sal.name_ja(), sal.description())
+            } else {
+                String::new()
+            };
+
+            let yield_out = terrain.output_with_salinity(map_grid.water_salinity.get(&coord).copied());
+            let yield_str = format!(
+                "バイオマス(食料): {:.1} / 構造鉱物(生産): {:.1} / エネルギー: {:.1} / 科学: {:.1}",
+                yield_out.biomass, yield_out.ore, yield_out.energy, yield_out.science
+            );
+
             let info = format!(
                 "【ヘックス座標】\n  col: {}, row: {} (q: {}, r: {})\n  中心からの距離: {}\n\n\
                  【領有勢力】\n  {}{}{}\n\n\
-                 【地形種別】\n  {}\n\n\
+                 【地形種別】\n  {}\n\
+                 【基礎産出】: {}\n\
                  【移動コスト】: {}\n\
-                 【地上移動】: {}\n\n\
+                 【地上移動】: {}{}\n\n\
                  【環境特性】\n  エイリアン活動兆候あり\n  資源探査可能",
                 col,
                 row,
@@ -302,8 +315,10 @@ pub fn update_info_panel_system(
                 outpost_str,
                 unit_str,
                 terrain.name(),
+                yield_str,
                 move_cost_str,
-                passable_str
+                passable_str,
+                salinity_info
             );
             **text = info;
         }

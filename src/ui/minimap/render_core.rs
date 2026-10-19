@@ -63,9 +63,10 @@ pub fn update_minimap_texture_system(
                 .get(&coord)
                 .copied()
                 .unwrap_or(TerrainType::Ocean);
+            let salinity = map_grid.water_salinity.get(&coord).copied();
 
-            // 地形の基本色 (RGBA)
-            let base_c = terrain.base_color().to_srgba();
+            // 地形の基本色 (RGBA、水域塩分濃度が反映される)
+            let base_c = terrain.base_color_with_salinity(salinity).to_srgba();
             let mut r = (base_c.red * 255.0) as u8;
             let mut g = (base_c.green * 255.0) as u8;
             let mut b = (base_c.blue * 255.0) as u8;

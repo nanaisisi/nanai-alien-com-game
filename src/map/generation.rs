@@ -3,7 +3,7 @@ use std::collections::{HashMap, HashSet, VecDeque};
 
 use super::hex::{self, HexCoord};
 use super::settings::{LandmassType, MapConfig, PlanetEnvironment};
-use super::terrain::TerrainType;
+use super::terrain::{TerrainType, WaterSalinity};
 use super::types::{HEX_RADIUS, HexTile, MapGrid, MapRoot};
 
 /// 3D格子点ハッシュ関数（シードと3次元格子座標から擬似乱数を生成）
@@ -143,6 +143,26 @@ pub fn generate_hex_map(
         mat_cache.insert(t, materials.add(mat));
     }
 
+    // 水域塩分濃度ごとの専用マテリアルキャッシュ
+    let mut salinity_mat_cache: HashMap<WaterSalinity, Handle<StandardMaterial>> = HashMap::new();
+    for &sal in &[
+        WaterSalinity::Fresh,
+        WaterSalinity::Brackish,
+        WaterSalinity::Saline,
+        WaterSalinity::Hypersaline,
+    ] {
+        let mut mat = StandardMaterial::from_color(sal.color_tint());
+        mat.perceptual_roughness = match sal {
+            WaterSalinity::Hypersaline => 0.35, // 塩の結晶感・かすかな白光沢
+            _ => 0.1,
+        };
+        mat.reflectance = match sal {
+            WaterSalinity::Hypersaline => 0.6,
+            _ => 0.8,
+        };
+        salinity_mat_cache.insert(sal, materials.add(mat));
+    }
+
     // Step 1: 各タイルの標高(elevation)と陸地/海洋マスクを事前計算
     let half_h = map_h / 2;
     let mut elevations: HashMap<(i32, i32), f32> = HashMap::new();
@@ -253,8 +273,76 @@ pub fn generate_hex_map(
             }
 
             let is_ocean = touches_pole || component.len() >= ocean_size_threshold;
-            for c in component {
+            for &c in &component {
                 is_ocean_tile.insert(c, is_ocean);
+            }
+        }
+    }
+
+    // Step 2.5: 各水域タイルの塩分濃度 (Salinity) 判定
+    // - 外洋(Ocean): 海水 Saline (~35‰)
+    // - 閉鎖水域(Lake):
+    //   - 乾燥砂漠環境(Arid)または乾燥度の高い内陸窪地: 蒸発濃縮により高塩分・塩湖 Hypersaline (>50‰, 死海/グレートソルト湖型)
+    //   - 比較的大規模な内陸湖 (8タイル以上): 堆積・流入により汽水 Brackish (0.5-30‰, カスピ海型)
+    //   - 通常規模の内陸湖 (7タイル以下): 流入・循環する純淡水 Fresh (<0.5‰)
+    let mut salinity_map: HashMap<HexCoord, WaterSalinity> = HashMap::new();
+    let mut lake_component_visited: HashSet<HexCoord> = HashSet::new();
+
+    for row in -half_h..=half_h {
+        for col in 0..map_w {
+            let coord = HexCoord::from_col_row_with_width(col, row, map_w);
+            if is_land[&(col, row)] {
+                continue;
+            }
+
+            if is_ocean_tile.get(&coord).copied().unwrap_or(true) {
+                salinity_map.insert(coord, WaterSalinity::Saline);
+                continue;
+            }
+
+            if lake_component_visited.contains(&coord) {
+                continue;
+            }
+
+            // 内陸湖コンポーネントを探索
+            let mut lake_comp = Vec::new();
+            let mut queue = VecDeque::new();
+            lake_component_visited.insert(coord);
+            queue.push_back(coord);
+
+            let mut avg_moisture = 0.0;
+
+            while let Some(current) = queue.pop_front() {
+                lake_comp.push(current);
+                let (cc, cr) = current.to_col_row_with_width(map_w);
+                let moist = cylinder_noise_with_size(cc, cr, base_seed.wrapping_add(8888), map_w, map_h);
+                avg_moisture += moist;
+
+                for n_coord in current.neighbors_with_width(map_w) {
+                    let (nc, nr) = n_coord.to_col_row_with_width(map_w);
+                    if nr >= -half_h && nr <= half_h && !is_land[&(nc, nr)] && !is_ocean_tile.get(&n_coord).copied().unwrap_or(true) && lake_component_visited.insert(n_coord) {
+                        queue.push_back(n_coord);
+                    }
+                }
+            }
+
+            if !lake_comp.is_empty() {
+                avg_moisture /= lake_comp.len() as f32;
+            }
+
+            let salinity = if env == PlanetEnvironment::Arid || avg_moisture < 0.28 {
+                // 極度の乾燥または砂漠気候の内陸湖 -> 塩湖 (死海・アラル海・塩原)
+                WaterSalinity::Hypersaline
+            } else if lake_comp.len() >= 8 {
+                // 巨大な内陸閉鎖水域 -> 汽水 (カスピ海型)
+                WaterSalinity::Brackish
+            } else {
+                // 通常の内陸湖沼 -> 淡水 (バイカル湖・五大湖型)
+                WaterSalinity::Fresh
+            };
+
+            for c in lake_comp {
+                salinity_map.insert(c, salinity);
             }
         }
     }
@@ -406,11 +494,16 @@ pub fn generate_hex_map(
                             let world_pos = coord.to_world_pos(HEX_RADIUS);
 
                             let mesh_handle = meshes.add(create_hex_mesh(HEX_RADIUS, height));
-                            let material_handle = mat_cache.get(&terrain).unwrap().clone();
+                            let salinity = salinity_map.get(&coord).copied();
+                            let material_handle = if let Some(sal) = salinity {
+                                salinity_mat_cache.get(&sal).unwrap().clone()
+                            } else {
+                                mat_cache.get(&terrain).unwrap().clone()
+                            };
 
                             let tile_entity = section
                                 .spawn((
-                                    HexTile { coord, terrain },
+                                    HexTile { coord, terrain, salinity },
                                     Mesh3d(mesh_handle),
                                     MeshMaterial3d(material_handle),
                                     Transform::from_xyz(world_pos.x, height / 2.0, world_pos.z)
@@ -424,6 +517,9 @@ pub fn generate_hex_map(
                             if wrap_offset == 0 {
                                 map_grid.tiles.insert(coord, tile_entity);
                                 map_grid.terrain_data.insert(coord, terrain);
+                                if let Some(sal) = salinity {
+                                    map_grid.water_salinity.insert(coord, sal);
+                                }
                             }
                         }
                     }
@@ -447,6 +543,7 @@ pub fn cleanup_hex_map(
     }
     map_grid.tiles.clear();
     map_grid.terrain_data.clear();
+    map_grid.water_salinity.clear();
 }
 
 #[cfg(test)]
@@ -619,5 +716,27 @@ mod tests {
 
         assert_eq!(is_ocean_tile.get(&lake_coord), Some(&false), "Inland isolated water should be classified as Lake (freshwater)");
         assert_eq!(is_ocean_tile.get(&ocean_coord), Some(&true), "Polar/large water body should be classified as Ocean (saltwater)");
+    }
+
+    #[test]
+    fn test_water_salinity_distinction() {
+        use super::super::terrain::WaterSalinity;
+
+        // 産出力の検証
+        let fresh_out = WaterSalinity::Fresh.base_output();
+        assert_eq!(fresh_out.biomass, 2.0);
+        assert_eq!(fresh_out.energy, 0.0);
+
+        let brackish_out = WaterSalinity::Brackish.base_output();
+        assert_eq!(brackish_out.biomass, 1.5);
+        assert_eq!(brackish_out.energy, 0.5);
+
+        let saline_out = WaterSalinity::Saline.base_output();
+        assert_eq!(saline_out.biomass, 1.0);
+        assert_eq!(saline_out.energy, 1.0);
+
+        let hyper_out = WaterSalinity::Hypersaline.base_output();
+        assert_eq!(hyper_out.biomass, 0.0);
+        assert_eq!(hyper_out.ore, 2.0);
     }
 }

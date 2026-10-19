@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use std::collections::HashMap;
 
 use super::hex::HexCoord;
-use super::terrain::TerrainType;
+use super::terrain::{TerrainType, WaterSalinity};
 
 pub const HEX_RADIUS: f32 = 1.0;
 
@@ -11,6 +11,7 @@ pub const HEX_RADIUS: f32 = 1.0;
 pub struct MapGrid {
     pub tiles: HashMap<HexCoord, Entity>,
     pub terrain_data: HashMap<HexCoord, TerrainType>,
+    pub water_salinity: HashMap<HexCoord, WaterSalinity>,
     pub width: i32,
     pub height: i32,
 }
@@ -35,6 +36,7 @@ impl Default for MapDisplaySettings {
 pub struct HexTile {
     pub coord: HexCoord,
     pub terrain: TerrainType,
+    pub salinity: Option<WaterSalinity>,
 }
 
 #[derive(Component)]
