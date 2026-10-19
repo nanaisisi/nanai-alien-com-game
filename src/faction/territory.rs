@@ -91,7 +91,7 @@ pub fn setup_initial_faction_territories(
 
         // 陸地でかつ進入可能なタイルを検索
         let mut chosen_coord = None;
-        for row_offset in [0, 1, -1, 2, -2, 3, -3, 4, -4] {
+        for row_offset in [0, 1, -1, 2, -2, 3, -3, 4, -4, 5, -5, 6, -6] {
             let row = row_offset.clamp(-half_h, half_h);
             let coord = HexCoord::from_col_row_with_width(base_col, row, map_w);
             if let Some(&terrain) = map_grid.terrain_data.get(&coord)
@@ -103,19 +103,31 @@ pub fn setup_initial_faction_territories(
             }
         }
 
-        // 見つからなければ平原などの通行可能タイルを広く探索
+        // 近傍で見つからなければ、マップ全体の通行可能陸地タイルを探索
         let center_coord = chosen_coord.unwrap_or_else(|| {
-            for row in -half_h..=half_h {
-                for dc in -3..=3 {
-                    let c = (base_col + dc).rem_euclid(map_w);
-                    let coord = HexCoord::from_col_row_with_width(c, row, map_w);
-                    if let Some(&t) = map_grid.terrain_data.get(&coord)
-                        && t.is_passable_ground()
-                    {
-                        return coord;
+            // まず列近傍（左右に広げていく）
+            for dc in 1..map_w {
+                for sign in [1, -1] {
+                    let c = (base_col + sign * dc).rem_euclid(map_w);
+                    for row in -half_h..=half_h {
+                        let coord = HexCoord::from_col_row_with_width(c, row, map_w);
+                        if let Some(&t) = map_grid.terrain_data.get(&coord)
+                            && t.is_passable_ground()
+                            && t != TerrainType::ToxicSwamp
+                        {
+                            return coord;
+                        }
                     }
                 }
             }
+            // 毒性湿地も含めた通行可能陸地
+            for (coord, t) in &map_grid.terrain_data {
+                if t.is_passable_ground() {
+                    return *coord;
+                }
+            }
+            // 万一陸地が一切ない極限ケースのフォールバック
+            warn!("No passable ground tile found for faction {:?} outpost!", faction);
             HexCoord::from_col_row_with_width(base_col, 0, map_w)
         });
 

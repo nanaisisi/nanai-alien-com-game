@@ -44,35 +44,75 @@ pub fn spawn_initial_units(
         let mut spawned_coords = Vec::new();
 
         for (idx, &group_type) in initial_groups.iter().enumerate() {
-            // 通行可能な隣接タイルを探す（なければ前哨基地と同じタイルまたは次候補）
-            let mut target_coord = base_coord;
+            // 通行可能な隣接タイルを探す（陸地かつ未重複）
+            let mut target_coord = None;
             for n_idx in idx..(idx + 6) {
                 let candidate = neighbors[n_idx % 6];
                 if let Some(&terrain) = map_grid.terrain_data.get(&candidate)
                     && terrain.is_passable_ground()
                     && !spawned_coords.contains(&candidate)
                 {
-                    target_coord = candidate;
+                    target_coord = Some(candidate);
                     break;
                 }
             }
-            spawned_coords.push(target_coord);
+
+            // 隣接タイルに空き通行可能陸地がない場合、基地タイル自体が陸地かつまだ配置されていなければ検討
+            if target_coord.is_none()
+                && let Some(&base_terrain) = map_grid.terrain_data.get(&base_coord)
+                && base_terrain.is_passable_ground()
+                && !spawned_coords.contains(&base_coord)
+            {
+                target_coord = Some(base_coord);
+            }
+
+            // 通行可能タイルが見つかった場合は地表配備、なければ基地内の地下要塞待機（BunkerReserve）とする
+            let (deploy_coord, deployment_status) = if let Some(coord) = target_coord {
+                spawned_coords.push(coord);
+                (coord, super::types::DeploymentStatus::ActiveGarrison)
+            } else {
+                info!(
+                    "No passable ground tile for {:?} ({:?}). Spawning into BunkerReserve at outpost.",
+                    group_type, faction
+                );
+                (
+                    base_coord,
+                    super::types::DeploymentStatus::BunkerReserve {
+                        priority_order: idx as u8,
+                    },
+                )
+            };
+
+            let is_reserve = deployment_status.is_hidden_stack();
 
             // ユニットエンティティのスポーン
             let terrain_height = map_grid
                 .terrain_data
-                .get(&target_coord)
+                .get(&deploy_coord)
                 .map(|t| t.height())
                 .unwrap_or(0.0);
 
-            let world_pos = target_coord.to_world_pos(crate::map::HEX_RADIUS);
+            let world_pos = deploy_coord.to_world_pos(crate::map::HEX_RADIUS);
+
+            let mut unit = Unit::new(faction, group_type, deploy_coord);
+            unit.deployment_status = deployment_status;
+            if is_reserve {
+                unit.is_exhausted = true;
+                unit.current_movement = 0;
+            }
+
+            let unit_visibility = if is_reserve {
+                Visibility::Hidden
+            } else {
+                Visibility::default()
+            };
 
             let unit_entity = commands
                 .spawn((
-                    Unit::new(faction, group_type, target_coord),
+                    unit,
                     crate::unit::CombatGroupLogistics::default(),
                     Transform::from_xyz(world_pos.x, terrain_height, world_pos.z),
-                    Visibility::default(),
+                    unit_visibility,
                 ))
                 .id();
 
