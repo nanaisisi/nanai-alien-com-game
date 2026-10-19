@@ -182,10 +182,10 @@ docs/
 
 軍事エシュロン階層、2進数倍々補完（2-2構成）、国家RFPサイクル、兵站統合モデルを統括する思想・原則文書群。
 
-* **[units/force/ALIEN_IMPLEMENTATION_AND_RECONQUEST_PLAN.md](./units/force/ALIEN_IMPLEMENTATION_AND_RECONQUEST_PLAN.md)**：エイリアン実装・包括的設計および奪還計画書
-  * 野生・固有エイリアン（原住惑星原生生物／生体兵装群）の包括的仕様体系（陸・海・空TO&E、生体兵装の非対称戦闘規則）。
-  * 敵対他国・野生エイリアン巣窟に占領された領土に対する穏当かつ段階的な「奪還計画（Reconquest Operations）」の4段階作戦立案・実施メカニクス。
-  * Rust/Bevy ECSコンポーネント構造、奪還進行システム、および段階的実装ロードマップ。
+* **[units/force/ALIEN_IMPLEMENTATION_AND_RECONQUEST_PLAN.md](./units/force/ALIEN_IMPLEMENTATION_AND_RECONQUEST_PLAN.md)**：エイリアン実装・惑星生態総体自律奪還および人類庇護戦闘計画書
+  * 生態総体（非知性・超個体）による外来入植地自律全土奪還アルゴリズム（刺激検知 ➔ 兵站絞首 ➔ 質量津波 ➔ 原生還元）。
+  * 人類の庇護意識に基づく排除派国家への2大軍事介入（保護介入：駆除・テラフォーミング攻撃判定 ／ 攻勢協調：技術的知覚 vs 状況的便乗・尻馬）。
+  * Xeno-Tech Web情報取得・使役ツリー、ECS自律奪還タスク構造、および実装ロードマップ。
 * **[units/force/concept_military_echelon_and_combat_groups.md](./units/force/concept_military_echelon_and_combat_groups.md)**：軍事編成・部隊単位体系および戦闘団概念仕様書
   * 小隊（4両/機）・中隊（16両/機）・大隊（64両/機）・連隊・師団（戦闘団）の2進数・倍々構造（$2^N$ バイナリ・バディシステム）。
   * 地上打撃力と直協航空連隊（計32機: 1飛行隊8機×4）を有機的に内包する空地統合戦闘団の基本構造。
