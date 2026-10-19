@@ -642,6 +642,11 @@ docs/
   * 3大アフィニティ（Purity:純血母星化 / Harmony:調和共生 / Supremacy:超越自律）とハイブリッド混成進化（生体サイバネ・強化生態・自動重火工）。
   * 現場起因の自律研究ベクトル（Research Momentum）と国家指導者によるステアリング（重点特許・奨励金・移行ラグ）。
   * 戦場残骸の法医学的精査（Forensics）による技術ブースト（リバースエンジニアリング）とサプライチェーン制約。
+* **[concept_three_pillar_tech_progression.md](./discussion/world_progression/concept_three_pillar_tech_progression.md)**
+  * **惑星適応・テラフォーミング・エイリアン生態系 技術体系設計仕様書**。
+  * 降着基盤（Tier 0）から分岐する「3大並列技術ツリー」（①産業の惑星適応、②母星テラフォーミング、③エイリアン生態系・生体共生）の幹・葉カタログ。
+  * 異分野並列推進が生み出す複合シナジー（キチン重工複合装甲、生体触媒極限精錬、耐震テラフォーミング堤防、超耐性ハイブリッド作物）。
+  * 土地利用（瘴気消滅 vs 生体資源枯渇）や国家アフィニティ（Purity vs Harmony）の構造的トレードオフ・戦略的ジレンマ。
 * **[concept_game_progression_and_victory.md](./discussion/world_progression/concept_game_progression_and_victory.md)**
   * ゲーム進行の3大フェーズ推移（第1期:降着生存 → 第2期:領土画定・冷戦 → 第3期:総力戦・クライシス）、および5大勝利条件の設計、クリア後継続プレイ保証。
 * **[concept_alien_lifecycle_and_nest_mechanics.md](./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md)**
