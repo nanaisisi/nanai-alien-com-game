@@ -97,8 +97,10 @@ flowchart TD
   - [ground_regular_equipment.md](../units/equipment/ground/regular/ground_regular_equipment.md) および [concept_ground_vehicle_chassis_and_variants.md](../units/force/concept_ground_vehicle_chassis_and_variants.md) において、自動車化歩兵の基幹である「4×4 LAV（乗員2名＋下車歩兵8名固定）」の定義を明記・同期。
   - [concept_personnel_and_manning_standards.md](../units/force/concept_personnel_and_manning_standards.md) の主要戦闘車両定員リストに「4×4 LAV（計10名: 乗員2＋下車8）」を追加し、歩兵多層エシュロン全体の定員積算基準を統一。
   - 8×8装輪ファミリーの「基本10大バリアント（＋対空2種）」の表記揺れを整流化。
-- [ ] **3.2 共通弾薬口径規格（C表記）の照合**
-  - `155C`, `120C`, `35C`, `30C`, `12.7C` 等の口径・モジュール規格が各兵器仕様書で揃っているか。
+- [x] **3.2 共通弾薬口径規格（C表記）の照合**
+  - 重榴弾砲規格を全文書で **`160C`**（全周旋回砲塔自走榴弾砲、装輪トラック自走榴弾砲、牽引式榴弾砲）に完全統一し、残存していた旧表記（155C）を排除。
+  - 陸上戦艦打撃軍団の陸上近接戦闘艦主砲において、残存していた旧来ミリ表記（127mm）を共通C規格である **`130C-N速射砲`**（130×800C艦載両用砲規格）に統一。
+  - 陸・海・空・兵站の全域にわたるC規格体系（`EM-180C`, `210C`, `160C`, `120C`, `105C`, `130C-N`, `60C-N`, `35C`, `30C`, `25C`, `12.7C`）の完全整合を確認。
 - [ ] **3.3 エイリアン群（野生・固有種）の階級・生態パラメータの整合性**
   - 陸・海・空のエイリアン編成仕様書におけるサイズ階層（小型群、中型群、大型群、コロッサス級）の定義と戦闘能力値のバランス確認。
 

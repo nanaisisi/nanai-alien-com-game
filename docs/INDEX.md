@@ -368,7 +368,7 @@ docs/
 ### 陸上装備カタログ（`units/equipment/ground/`）
 
 * **[units/equipment/ground/regular/ground_regular_equipment.md](./units/equipment/ground/regular/ground_regular_equipment.md)**：陸上・正規軍 兵器・車両プラットフォーム仕様書
-  * 重装軌戦車系列、装軌装甲車系列（分隊固定8名）、8輪装甲装輪車系列（10大バリアント共通化率95%）、重装輪トラック系列（155C装輪自走榴弾砲）、4×4軽装甲車系列、二脚歩行戦闘車両。
+  * 重装軌戦車系列、装軌装甲車系列（分隊固定8名）、8輪装甲装輪車系列（10大バリアント共通化率95%）、重装輪トラック系列（160C装輪自走榴弾砲）、4×4軽装甲車系列、二脚歩行戦闘車両。
 * **[units/equipment/ground/alien/ground_alien_equipment.md](./units/equipment/ground/alien/ground_alien_equipment.md)**：陸上・エイリアン 生体兵器・個体仕様書
   * 小型スウォーム種、中型格闘種、大型戦車型、超大型タイタン級（コロッサス）、長距離ニードル砲撃種、陸棲航空ワイバーン種。
 
