@@ -44,10 +44,12 @@ docs/
 │   └── specs/                              # 師団直協・高級装甲兵器仕様書（2件）
 │       ├── AVIATION_ASSETS_AND_DOCTRINE.md # 師団直協航空アセット運用仕様書
 │       └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md # 二脚歩行戦闘車両仕様書
-├── specs/                                  # 共通システム確定・基本仕様書（5件）
+├── specs/                                  # 共通システム確定・基本仕様書（7件）
+│   ├── CHASSIS_AND_MODULE_CATALOG.md       # 初期モジュール・基本車台実数値カタログ仕様書
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
 │   ├── LAND_USE_SYSTEM.md                  # 土地利用・開発システム仕様書
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
+│   ├── RESOURCE_ITEM_DICTIONARY.md         # 資源・部品・弾薬マスター定義書（物理データ辞書）
 │   ├── STEERING_UI_FLOW.md                 # 多層ステアリングUI画面遷移・操作フロー仕様書
 │   └── WATER_AND_SALINITY_SYSTEM.md        # 水域・塩分濃度システム仕様書
 ├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計（4件）
