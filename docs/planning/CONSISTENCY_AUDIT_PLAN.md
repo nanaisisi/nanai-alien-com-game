@@ -68,8 +68,8 @@ flowchart TD
   - `docs/units/toe_indexes/` 配下の全12インデックス文書内（全86リンク）の疎通確認完了（リンク切れ0件）。
   - `docs/units/toe/` 配下の全62個のTO&E実体ファイルが漏れなく各インデックスから参照されていることを確認完了（網羅率100%）。
   - [INDEX_TOE.md](../units/INDEX_TOE.md) の記載を最新状況（航空正規軍15文書、旧融合インデックスの世代発展集約）へ同期完了。
-- [ ] **1.3 相対パスおよびリンク記法の確認**
-  - プロジェクトルール（`path_privacy.md`）に従い、絶対パスやローカルURLが含まれていないことの検証。
+- [x] **1.3 相対パスおよびリンク記法の確認**
+  - `docs/` 配下の全160個のMarkdownファイルを自動検証。`file:///` やユーザー名を含む絶対パスの混入は **0件（完全準拠）** であることを確認完了。
 
 ---
 
@@ -116,7 +116,7 @@ flowchart TD
 
 | フェーズ | 対象領域 | 主要担当ファイル | ステータス | 備考 |
 | :--- | :--- | :--- | :---: | :--- |
-| **Phase 1** | 構造・リンク整合 | `docs/INDEX.md`, `docs/units/INDEX_TOE.md` | 進行中 | 1.1, 1.2完了。1.3未着手 |
+| **Phase 1** | 構造・リンク整合 | `docs/INDEX.md`, `docs/units/INDEX_TOE.md` | 完了 | 1.1, 1.2, 1.3 すべて完了（構造基盤整備完了） |
 | **Phase 2** | 思想・概念整合 | `docs/GAME_DESIGN.md`, `docs/units/toe/` | 未着手 | 融合ツリー統合・耐用年数 |
 | **Phase 3** | データ・数値整合 | `docs/units/equipment/`, `docs/units/toe/` | 未着手 | 定員8名・小隊4両・口径 |
 | **Phase 4** | 実装・技術整合 | `docs/tech/`, `docs/specs/`, `src/` | 未着手 | Bevy ECS・資源橋渡し |
