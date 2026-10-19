@@ -44,12 +44,12 @@
 - **確定編成（大戦略1コマ）**:
   - **陸上戦闘艦艇 計16隻**: 陸上戦艦 2隻、陸上小型空母 2隻、陸上防空艦 4隻、陸上近接戦闘艦 8隻。
   - **地上随伴部隊**: 機甲大隊 1個（主力戦車 64両）、装甲化大隊 1個（重IFV 32両＋装甲APC 32両＋大隊付自走迫 16両）、偵察戦闘連隊 1個（装輪80両）。
-  - **仕様書**: [`docs/toe_definitions/ground/regular/toe_corps_land_battleship.md`](../toe_definitions/ground/regular/toe_corps_land_battleship.md) 作成完了。
+  - **仕様書**: [`docs/units/toe/ground/regular/toe_corps_land_battleship.md`](../toe_definitions/ground/regular/toe_corps_land_battleship.md) 作成完了。
 
 ### ② 艦隊・航空隊の整理（人類軍団体系の整合）
 
 - **背景と課題**:
-  - [`GAME_DESIGN.md`](../GAME_DESIGN.md) および [`docs/toe_definitions/`](../toe_definitions/) において、海上戦闘団（全6種）と航空戦闘団（全14種）が定義されているが、陸上軍団（2個師団統合型軍団）との規模感・階層関係（エシュロン）の整合をより精緻にする必要がある。
+  - [`GAME_DESIGN.md`](../GAME_DESIGN.md) および [`docs/units/toe/`](../toe_definitions/) において、海上戦闘団（全6種）と航空戦闘団（全14種）が定義されているが、陸上軍団（2個師団統合型軍団）との規模感・階層関係（エシュロン）の整合をより精緻にする必要がある。
   - 特に「空中戦艦航空団」「超大型輸送航空団」「航空艦隊（空母・強襲揚陸艦）」などの戦略アセットと、通常哨戒・護衛アセットの運用コスト・編成スロットを明確に整理する。
 - **直近確定事項**:
   - 通常海上戦闘団（全6種）のピラミッド型固定エシュロン（計62隻＝中核空母/戦艦2＋防空駆逐4＋汎用駆逐8＋フリゲート16＋護衛コルベット32）を策定完了。
@@ -88,8 +88,8 @@
 ## 3. 次回作業での作成・更新対象ドキュメント案
 
 1. **新規作成**:
-   - `docs/toe_definitions/ground/regular/toe_corps_land_battleship.md`（陸上戦艦・水陸両用決戦軍団TO&E仕様書）
+   - `docs/units/toe/ground/regular/toe_corps_land_battleship.md`（陸上戦艦・水陸両用決戦軍団TO&E仕様書）
 2. **改定・追記**:
    - [`docs/GAME_DESIGN.md`](../GAME_DESIGN.md): 第3章（部隊・ユニット体系）の艦隊・航空隊・エイリアン対応表の更新および陸上戦艦の追加。
    - [`docs/INDEX.md`](../INDEX.md): 新規追加ドキュメントのインデックス反映。
-   - 必要に応じて `docs/toe_definitions/air/` および `docs/toe_definitions/naval/` の各仕様書の整合性点検・アップデート。
+   - 必要に応じて `docs/units/toe/air/` および `docs/units/toe/naval/` の各仕様書の整合性点検・アップデート。

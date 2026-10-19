@@ -8,112 +8,56 @@
 
 ```text
 docs/
-├── INDEX.md                                # 本ファイル（ドキュメント目録）
+├── INDEX.md                                # 本ファイル（全体ドキュメント目録）
 ├── GAME_DESIGN.md                          # ゲーム企画・コア仕様設計書（マスター）
-├── force_structure/                        # 編成思想・体系・運用原則（10件）
-│   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および常設増強師団概念仕様書
-│   ├── concept_corps_variants.md               # 常設増強軍団バリエーション編成定義（装甲化軍団・歩兵多層エシュロン）
-│   ├── concept_headquarters_and_attached_units.md # 本部管理中隊（HHC）および本部付補助諸兵科 仕様定義書
-│   ├── concept_hierarchical_headquarters_integration.md # 各階層本部付き隊の相互連携・指揮統制関係検討書
-│   ├── concept_combat_group_structure_and_rfp_cycle.md # 戦闘団TO&E構造・RFP自動更新および現場改修仕様書
-│   ├── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
-│   ├── concept_toe_feedback_and_cross_echelon_methodology.md # 部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
-│   ├── concept_corps_and_division_echelons.md # 1ユニット＝2個師団1軍団制 概念・編制検討書
-│   ├── concept_ground_vehicle_chassis_and_variants.md # 陸上装甲・戦闘車両プラットフォームおよびバリアント総合仕様書
-│   └── concept_personnel_and_manning_standards.md # 軍団・師団 人員規模および定員算出基準仕様書
-├── toe_definitions/                        # 具体的部隊編成（TO&E）定義（全17仕様書）
-│   ├── ground/                             # 陸上部隊編成（全13件＋他体系）
-│   │   ├── regular/                        # 人類通常軍団（13件）
-│   │   │   ├── toe_corps_civilian_refugees.md # 民間人・避難民群（Tier 0-A）詳細編成・運用仕様書
-│   │   │   ├── toe_corps_militia.md        # 民兵軍団（Tier 0-B）詳細編成・運用仕様書
-│   │   │   ├── toe_corps_light_infantry.md # 軽歩兵軍団（Tier 1）詳細編成仕様書
-│   │   │   ├── toe_corps_motorized_light_infantry.md # 自動車化軽歩兵軍団（Tier 2）詳細編成仕様書
-│   │   │   ├── toe_corps_motorized_infantry.md # 自動車化歩兵軍団（Tier 3）詳細編成仕様書
-│   │   │   ├── toe_corps_wheeled_mobile.md # 装輪機動軍団（Tier 4）詳細編成仕様書
-│   │   │   ├── toe_corps_armored.md        # 装甲化軍団（Tier 5）詳細編成仕様書
-│   │   │   ├── toe_corps_heavy_armored.md  # 常設増強機甲軍団（Tier 6）詳細編成・運用仕様書
-│   │   │   ├── toe_corps_airmobile.md      # 空中機動・空地強襲軍団 詳細編成仕様書
-│   │   │   ├── toe_corps_bipedal_assault.md # 高級装甲・二脚歩行混成軍団 詳細編成仕様書
-│   │   │   ├── toe_corps_long_range_missile.md # 長距離ミサイル打撃軍団 詳細編成仕様書
-│   │   │   ├── toe_corps_land_battleship.md # 陸上戦艦打撃軍団 詳細編成・運用仕様書
-│   │   │   └── toe_corps_science_survey.md # 調査・科学探査軍団 詳細編成仕様書
-│   │   ├── alien/                          # 野生・固有エイリアン地上群（全6件）
-│   │   │   ├── toe_alien_corps_small_swarm.md # 小型エイリアン軍団 詳細編成・生態仕様書
-│   │   │   ├── toe_alien_corps_medium_swarm.md # 中型エイリアン軍団 詳細編成・生態仕様書
-│   │   │   ├── toe_alien_corps_heavy_tank.md # 大型エイリアン軍団 詳細編成・生態仕様書
-│   │   │   ├── toe_alien_corps_colossus.md # 超大型エイリアン軍団 詳細編成・生態仕様書
-│   │   │   ├── toe_alien_corps_needle_artillery.md # 長距離砲撃軍団 詳細編成・生態仕様書
-│   │   │   └── toe_alien_corps_aviation_melee.md # 陸棲航空格闘軍団 詳細編成・生態仕様書
-│   │   ├── multi_species/                  # 多種族混成陸上軍団
-│   │   │   └── toe_corps_multi_species_ground.md # 多種族混成陸上軍団（全11カテゴリー）仕様書
-│   │   └── fusion/                         # 通常軍団・上位世代発展仕様（Gen 4）
-│   │       └── toe_corps_fusion_ground.md  # 通常陸上軍団・上位世代発展仕様書（生体技術・異星超克改修 / Gen 4）
-│   ├── naval/                              # 海上部隊編成（全12件＋他体系）
-│   │   ├── regular/                        # 人類通常艦隊（全5件）
-│   │   │   ├── toe_naval_fleet_battle.md   # 通常艦隊 詳細編成・運用仕様書
-│   │   │   ├── toe_naval_fleet_battleship.md # 戦艦艦隊 詳細編成・運用仕様書
-│   │   │   ├── toe_naval_fleet_carrier.md  # 航空艦隊 詳細編成・運用仕様書
-│   │   │   ├── toe_naval_fleet_escort.md   # 護衛艦隊 詳細編成・運用仕様書
-│   │   │   ├── toe_naval_fleet_civilian.md # 民間船艦隊 詳細編成・運用仕様書
-│   │   │   └── toe_naval_fleet_armed_merchant.md # 武装船艦隊 詳細編成・運用仕様書
-│   │   ├── alien/                          # 野生・固有エイリアン海洋群（全6件）
-│   │   │   ├── toe_alien_fleet_patrol.md   # エイリアン哨戒艦隊 詳細編成・生態仕様書
-│   │   │   ├── toe_alien_fleet_escort.md   # エイリアン護衛艦隊 詳細編成・生態仕様書
-│   │   │   ├── toe_alien_fleet_regular.md  # エイリアン通常艦隊 詳細編成・生態仕様書
-│   │   │   ├── toe_alien_fleet_battleship.md # エイリアン戦艦艦隊 詳細編成・生態仕様書
-│   │   │   ├── toe_alien_fleet_carrier.md  # エイリアン航空艦隊 詳細編成・生態仕様書
-│   │   │   └── toe_alien_fleet_submarine.md # エイリアン潜水艦隊 詳細編成・生態仕様書
-│   │   ├── multi_species/                  # 多種族混成海上戦闘団
-│   │   │   └── toe_naval_multi_species.md  # 混成艦隊（水上艦＋同盟海棲個体）仕様書
-│   │   └── fusion/                         # 通常艦隊・上位世代発展仕様（Gen 4）
-│   │       └── toe_naval_fusion.md         # 通常海上戦闘団・上位世代発展仕様書（生体技術・耐圧甲殻改修 / Gen 4）
-│   └── air/                                # 航空部隊編成（全26件＋他体系）
-│       ├── regular/                        # 人類通常航空団（全14件）
-│       │   ├── toe_air_wing_civilian.md    # 民間航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_armed_civilian.md # 武装民間航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_tactical_transport.md # 輸送航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_patrol_aew.md  # 哨戒航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_escort.md      # 護衛航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_interceptor.md # 迎撃航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_vstol.md       # 垂直離陸航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_tactical_fighter.md # 戦闘航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_stealth_fighter.md # 光学・電波ステルス戦闘航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_bomber.md      # 爆撃航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_stealth_bomber.md # 光学・電波ステルス爆撃航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_aerial_battleship.md # 空中戦艦航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_aerial_carrier.md # 空中空母航空団 詳細編成・運用仕様書
-│       │   ├── toe_air_wing_stealth_recon.md # 光学・電波ステルス偵察航空団 詳細編成・運用仕様書
-│       │   └── toe_air_wing_super_heavy_transport.md # 超大型輸送航空団 詳細編成・運用仕様書
-│       ├── alien/                          # 野生・固有エイリアン航空群（全10件）
-│       │   ├── toe_alien_air_wing_transport.md # エイリアン輸送航空団 詳細編成・生態仕様書
-│       │   ├── toe_alien_air_wing_patrol.md # エイリアン哨戒航空団 詳細編成・生態仕様書
-│       │   ├── toe_alien_air_wing_interceptor.md # エイリアン迎撃航空団 詳細編成・生態仕様書
-│       │   ├── toe_alien_air_wing_fighter.md # エイリアン戦闘航空団 詳細編成・生態仕様書
-│       │   ├── toe_alien_air_wing_stealth_fighter.md # エイリアンステルス戦闘航空団 詳細編成・生態仕様書
-│       │   ├── toe_alien_air_wing_bomber.md # エイリアン爆撃航空団 詳細編成・生態仕様書
-│       │   ├── toe_alien_air_wing_aerial_battleship.md # エイリアン空中戦艦航空団 詳細編成・生態仕様書
-│       │   ├── toe_alien_air_wing_aerial_carrier.md # エイリアン空中空母航空団 詳細編成・生態仕様書
-│       │   ├── toe_alien_air_wing_stealth_recon.md # エイリアンステルス偵察航空団 詳細編成・生態仕様書
-│       │   └── toe_alien_air_wing_super_heavy_transport.md # エイリアン超大型輸送航空団 詳細編成・生態仕様書
-│       ├── multi_species/                  # 多種族混成航空戦闘団
-│       │   └── toe_air_multi_species.md    # サイバネ混成航空隊（バイオファイター）仕様書
-│       └── fusion/                         # 通常航空隊・上位世代発展仕様（Gen 4）
-│           └── toe_air_fusion.md           # 通常航空戦闘団・上位世代発展仕様書（生体技術・可変有機翼改修 / Gen 4）
-├── specs/                                  # 個別兵器・システム確定・基本仕様書（4件）
+├── units/                                  # 軍事ユニット・TO&E・装備・部隊体系総合（全62仕様書）
+│   ├── INDEX_TOE.md                        # TO&Eマスターカテゴリ目録
+│   ├── toe_indexes/                        # TO&Eカテゴリ別インデックス（全9件）
+│   │   ├── ground_regular.md               # 陸上・正規軍編成インデックス
+│   │   ├── ground_alien.md                 # 陸上・エイリアン軍団インデックス
+│   │   ├── ground_multi_species.md         # 陸上・多種族協調編成インデックス
+│   │   ├── air_regular.md                  # 航空・正規軍編成インデックス
+│   │   ├── air_alien.md                    # 航空・エイリアン編隊インデックス
+│   │   ├── air_multi_species.md            # 航空・多種族協調編成インデックス
+│   │   ├── naval_regular.md                # 海上・正規軍編成インデックス
+│   │   ├── naval_alien.md                  # 海上・エイリアン艦隊インデックス
+│   │   └── naval_multi_species.md          # 海上・多種族協調編成インデックス
+│   ├── toe/                                # 具体的部隊編成（TO&E）定義実体（全51仕様書）
+│   │   ├── ground/                         # 陸上部隊編成（regular:13, alien:6, multi_species:1, fusion:1）
+│   │   ├── naval/                          # 海上部隊編成（regular:6, alien:6, multi_species:1, fusion:1）
+│   │   └── air/                            # 航空部隊編成（regular:14, alien:10, multi_species:1, fusion:1）
+│   ├── equipment/                          # 兵器・装備カタログ仕様書（全6仕様書）
+│   │   ├── ground/                         # 陸上装備（ground_regular_equipment, ground_alien_equipment）
+│   │   ├── naval/                          # 海上装備（naval_regular_equipment, naval_alien_equipment）
+│   │   └── air/                            # 航空装備（air_regular_equipment, air_alien_equipment）
+│   ├── force/                              # 編成思想・エシュロン・運用原則（全10仕様書）
+│   │   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および戦闘団概念仕様書
+│   │   ├── concept_corps_variants.md       # 常設増強軍団バリエーション編成定義書
+│   │   ├── concept_headquarters_and_attached_units.md # 本部管理中隊（HHC）および本部付補助諸兵科仕様
+│   │   ├── concept_hierarchical_headquarters_integration.md # 各階層本部付き隊の相互連携・指揮統制
+│   │   ├── concept_combat_group_structure_and_rfp_cycle.md # 戦闘団TO&E構造・RFP自動更新および現場改修
+│   │   ├── COMBAT_GROUP_LOGISTICS_INTEGRATION.md # 戦闘団×兵站・装備更新統合データ仕様書 (SEC-01)
+│   │   ├── concept_toe_feedback_and_cross_echelon_methodology.md # TO&E水平展開・評価基準書
+│   │   ├── concept_corps_and_division_echelons.md # 1ユニット＝2個師団1軍団制 概念・編制検討書
+│   │   ├── concept_ground_vehicle_chassis_and_variants.md # 陸上装甲・戦闘車両総合仕様書
+│   │   └── concept_personnel_and_manning_standards.md # 軍団・師団 人員規模および定員算出基準
+│   └── specs/                              # 師団直協・高級装甲兵器仕様書（2件）
+│       ├── AVIATION_ASSETS_AND_DOCTRINE.md # 師団直協航空アセット運用仕様書
+│       └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md # 二脚歩行戦闘車両仕様書
+├── specs/                                  # 共通システム確定・基本仕様書（2件）
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
-│   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
-│   ├── AVIATION_ASSETS_AND_DOCTRINE.md     # 師団直協航空アセット（米軍式航空連隊）運用仕様書
-│   └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md  # 二脚歩行戦闘車両（高級装甲部隊）仕様書
-├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計
+│   └── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
+├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計（3件）
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
 │   └── RESOURCE_IMPLEMENTATION_BRIDGE.md   # 資源系 実装橋渡し案
-├── planning/                               # 開発計画・ロードマップ・課題管理
+├── planning/                               # 開発計画・ロードマップ・課題管理（6件）
+│   ├── CONSISTENCY_AUDIT_PLAN.md           # 仕様・ドキュメント整合性チェック計画書（本計画）
 │   ├── MISSING_DOCUMENTS_ROADMAP.md        # 未作成・不足ドキュメント体系と開発ロードマップ
 │   ├── PENDING_ISSUES.md                   # 未確定・検討課題まとめ
 │   ├── SECONDARY_MISSING_SPECS.md          # 二次的不足ドキュメント・システム統合仕様書体系
 │   ├── SECONDARY_SPECS_EVALUATION.md       # 2次的不足仕様・検討論点と実装アプローチ評価書
-│   └── NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md # 次期設計計画：陸上戦艦・艦隊航空隊・空棲水棲エイリアン整理
+│   └── NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md # 次期設計計画：陸上戦艦・艦隊航空隊整理
 └── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計49件）
     ├── automation/                         # 自動化システム（2件）
     │   ├── concept_automation_systems.md
@@ -198,11 +142,11 @@ docs/
   * 各国の体制・文化圏背景、母星と入植惑星での外交関係（具体的な国名は未確定・継続検討事項）
   * アフィニティ（思想・適応路線）や経済/軍事ボーナスの基本方向性
   * ゲーム実装用データ: [`../assets/data/factions.csv`](../assets/data/factions.csv), [`../assets/data/city_names.csv`](../assets/data/city_names.csv)（勢力マスター＆全192都市名リスト）
-* **[specs/AVIATION_ASSETS_AND_DOCTRINE.md](./specs/AVIATION_ASSETS_AND_DOCTRINE.md)**：師団直協航空アセット（戦闘・輸送ヘリ）運用仕様書
+* **[units/specs/AVIATION_ASSETS_AND_DOCTRINE.md](./units/specs/AVIATION_ASSETS_AND_DOCTRINE.md)**：師団直協航空アセット（戦闘・輸送ヘリ）運用仕様書
   * 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機）の機体スペック・役割定義。
   * CAS（近接航空支援）の一撃離脱・滞空時間制限、対空火網との相互作用。
   * 空中機動・兵站架橋（ヘリボーン、空中物資補給、MEDEVAC）、航空推進剤の消費ダイナミクス。
-* **[specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md](./specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md)**：二脚歩行戦闘車両（高級装甲部隊）仕様書
+* **[units/specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md](./units/specs/HIGH_TIER_BIPEDAL_COMBAT_WALKER.md)**：二脚歩行戦闘車両（高級装甲部隊）仕様書
   * ガングリフォン風の重厚・実戦的な二脚歩行兵器仕様（完全歩行駆動、ローラーダッシュ完全排除）。
   * 機体寸法ダイナミクス：大型戦略輸送機カーゴベイ規格限界（全高3.76m/全幅5.48m） vs 通常稼働・戦闘展開時（全高5〜6m/全幅6.5〜7.5m）。
   * 地上一般インフラの完全拒絶（道路・橋梁・トンネル破壊）と滑走路空輸展開モデル。
@@ -210,214 +154,241 @@ docs/
 
 ---
 
-## 🎖️ 2. 部隊編成思想・体系（`force_structure/`）
+## 🎖️ 2. 部隊編成思想・体系（`units/force/`）
 
 軍事エシュロン階層、2進数倍々補完（2-2構成）、国家RFPサイクル、兵站統合モデルを統括する思想・原則文書群。
 
-* **[force_structure/concept_military_echelon_and_combat_groups.md](./force_structure/concept_military_echelon_and_combat_groups.md)**：軍事編成・部隊単位体系および戦闘団概念仕様書
+* **[units/force/concept_military_echelon_and_combat_groups.md](./units/force/concept_military_echelon_and_combat_groups.md)**：軍事編成・部隊単位体系および戦闘団概念仕様書
   * 小隊（4両/機）・中隊（16両/機）・大隊（64両/機）・連隊・師団（戦闘団）の2進数・倍々構造（$2^N$ バイナリ・バディシステム）。
   * 地上打撃力と直協航空連隊（計32機: 1飛行隊8機×4）を有機的に内包する空地統合戦闘団の基本構造。
   * ゲーム的スロット枠概念を排した「部隊単位コレクション（`Vec<SubUnit>`）」設計。
   * 「地域配備（インフラ警備・害獣対処・低コスト）」から「機動運用（迅速転地・防衛力維持）」への戦略移行と留守警備隊メカニクス。
-* **[force_structure/concept_headquarters_and_attached_units.md](./force_structure/concept_headquarters_and_attached_units.md)**：本部管理中隊（HHC）および本部付補助諸兵科 仕様定義書
+* **[units/force/concept_headquarters_and_attached_units.md](./units/force/concept_headquarters_and_attached_units.md)**：本部管理中隊（HHC）および本部付補助諸兵科 仕様定義書
   * 全部隊共通の「基盤的補助諸兵科（C4I指揮、通信、補給、衛生・除染、野戦整備・ARV、司令部警護）」と、部隊特性に応じた「本部付き専門部隊（戦闘工兵・架橋、重迫撃砲、対戦車、EW、JTAC等）」の2層構造。
   * 大隊・連隊・師団のエシュロン別HHC規模基準と、C4Iキルチェーン、共食い整備回収率、自活補給バッファへのゲームメカニクス連携。
-* **[force_structure/concept_hierarchical_headquarters_integration.md](./force_structure/concept_hierarchical_headquarters_integration.md)**：各階層本部付き隊の相互連携・指揮統制関係検討書
+* **[units/force/concept_hierarchical_headquarters_integration.md](./units/force/concept_hierarchical_headquarters_integration.md)**：各階層本部付き隊の相互連携・指揮統制関係検討書
   * 「師団司令部付隊 ⇄ 連隊本部管理中隊 ⇄ 大隊本部管理班」の3階層本部付き隊の役割分担と上下パイプライン。
   * 「火力は前線にいくらあっても良いが、非火力支援（工兵・重整備・大規模補給）は大隊から連隊・師団へ集約する」思想と、全階層で絶対に削減できない「C4I（キルチェーン）」および「衛生（対酸・生体毒のプラチナ・テン）」の不可欠性。
   * 兵站・回収の3段列構造（即時牽引 ➔ 前方支援点/共食い整備 ➔ 師団工作ドック）、施設工兵連携、および司令部被弾時の縮退・自律指揮権委譲ルールとECSデータ設計案。
-* **[force_structure/concept_combat_group_structure_and_rfp_cycle.md](./force_structure/concept_combat_group_structure_and_rfp_cycle.md)**：戦闘団TO&E構造・RFP自動更新および現場改修仕様書
+* **[units/force/concept_combat_group_structure_and_rfp_cycle.md](./units/force/concept_combat_group_structure_and_rfp_cycle.md)**：戦闘団TO&E構造・RFP自動更新および現場改修仕様書
   * 標準諸兵科連合師団（4連隊基幹：戦車256両＋随伴重IFV256両の完全同数ペア）の代表的戦闘序列（TO&E）。
   * 国家RFP指示を受けた国内工廠の自動ブロック更新（Block I → II）と金型転換ラグ。
   * 過酷実戦環境が生むボトムアップ現場改修（Field Mod）と国家制式採用承認イベント。
   * 新旧混在による過渡期稼働率ペナルティ算出モデルと計画ロット更新の重要性。
-* **[force_structure/COMBAT_GROUP_LOGISTICS_INTEGRATION.md](./force_structure/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)**：戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
+* **[units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md](./units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)**：戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
   * インフラ結合度に応じた自動補給、兵站断絶時の稼働率低下と状態遷移（Normal ➔ Strained ➔ Critical ➔ Exhausted）。
   * 現場判断による共食い整備（Cannibalization）のステートマシン（ドナー部位の状態による劣化分岐ロジック）。
   * 直協航空連隊（計32機: 戦闘16機・輸送16機）の航空推進剤・補給係数。
-* **[force_structure/concept_toe_feedback_and_cross_echelon_methodology.md](./force_structure/concept_toe_feedback_and_cross_echelon_methodology.md)**：部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
+* **[units/force/concept_toe_feedback_and_cross_echelon_methodology.md](./units/force/concept_toe_feedback_and_cross_echelon_methodology.md)**：部隊編成（TO&E）水平展開・フィードバック手法および共通編制評価基準書
   * 重機甲師団で確立された編成基準（2-2バイナリ、大隊付自走重迫16両集約、左右両翼スクリーン、突破と掃討の分離、3階層HHC、プラットフォーム二分化）を、他アーキタイプへ等価適用するための6大共通評価軸（チェックリスト）。
   * 空中機動・ドローン特務・要塞突破・山岳猟兵・二脚混成・装輪機動師団に対する診断・改定マトリクスと更新プロトコル。
-* **[force_structure/concept_corps_and_division_echelons.md](./force_structure/concept_corps_and_division_echelons.md)**：1ユニット＝2個師団1軍団制 概念・編制検討書
+* **[units/force/concept_corps_and_division_echelons.md](./units/force/concept_corps_and_division_echelons.md)**：1ユニット＝2個師団1軍団制 概念・編制検討書
   * 大戦略マップの1コマ（1ユニット）の実体が「各師団正面4連隊＋師団付特科連隊＋師団輸送飛行隊（8機）を持つ2個師団」からなる「1個軍団（Corps / 最小構成）」であるという構造的定義。
   * 軍団直属の集中航空戦力「軍団航空隊（4個飛行隊・計32機）」と師団自前の輸送飛行隊（8機×2）による2層航空運用。
-* **[force_structure/concept_ground_vehicle_chassis_and_variants.md](./force_structure/concept_ground_vehicle_chassis_and_variants.md)**：陸上装甲・戦闘車両プラットフォームおよびバリアント総合仕様書
+* **[units/force/concept_ground_vehicle_chassis_and_variants.md](./units/force/concept_ground_vehicle_chassis_and_variants.md)**：陸上装甲・戦闘車両プラットフォームおよびバリアント総合仕様書
   * 陸上戦闘車両の5大車体系統（重装軌戦車系、装軌装甲車系、8輪装甲装輪車系、重装輪トラック系、4×4高機動系）の明確な階層区分。
   * 前線戦闘を担う「同一8輪装甲装輪車プラットフォーム」による10大バリアント共通化体系（IFV/APC/RCV/火力MCV/自走迫/指揮/患者輸送/CBRN/ARV/CEV）。
   * 重砲の2大マウント設計（160C全周旋回砲塔型 ⇄ 210C車体据付型）と、対空車両の3階層防空体系（自走対空戦車 ＋ 重装輪SAM ＋ 4×4近接SAM）。
-* **[force_structure/concept_corps_variants.md](./force_structure/concept_corps_variants.md)**：常設増強軍団（TO&E）バリエーション編成定義書
+* **[units/force/concept_corps_variants.md](./units/force/concept_corps_variants.md)**：常設増強軍団（TO&E）バリエーション編成定義書
   * 2進数倍々・エシュロン体系（小隊4 ➔ 中隊16 ➔ 大隊64/80 ➔ 連隊 ➔ 師団 ➔ 2個師団統合軍団）に基づくTO&E基本モデル。
   * **装甲化軍団（戦車2連隊＋装輪偵察2連隊＋装甲歩兵2連隊）**および**徒歩・自動車化歩兵多層エシュロン（Tier 1〜Tier 6）**の体系的定義。
   * 軍団直轄航空隊（計32機: 戦闘16＋輸送16）および各師団付輸送飛行隊（8機×2）、多層防空、戦車車体自走重砲体系。
-* **[force_structure/concept_personnel_and_manning_standards.md](./force_structure/concept_personnel_and_manning_standards.md)**：軍団・師団 人員規模および定員算出基準仕様書
+* **[units/force/concept_personnel_and_manning_standards.md](./units/force/concept_personnel_and_manning_standards.md)**：軍団・師団 人員規模および定員算出基準仕様書
   * 下車歩兵一律固定8名分隊制（乗員＋8名分隊）と、主要戦闘車両（戦車3名、IFV11名、APC10名、RCV5名、MCV3名、迫撃4名、特科4名）の乗員基準。
   * 師団別・部隊別の積算根拠（1個師団 約14,000名、軍団直轄 約2,100名、大戦略1コマ総員 約30,100名）。
   * Tooth-to-Tail比率（直接戦闘員63% 対 後方支援員37%）と共食い整備・衛生後送による部隊抗堪性モデル。
 
 ---
 
-## 🛡️ 3. 具体的部隊編成（TO&E）（`toe_definitions/`）
+## 🛡️ 3. 具体的部隊編成（TO&E）（`units/toe/`）
 
 各諸兵科連合戦闘団バリエーションの詳細編成表（TO&E: Table of Organization and Equipment）および戦闘序列。作戦領域（陸・海・空）× 体系（regular, alien, multi_species, fusion）に分類。
 
-### 陸上・人類通常軍団（`toe_definitions/ground/regular/`）
+### 陸上・人類通常軍団（`units/toe/ground/regular/`）
 
-* **[toe_definitions/ground/regular/toe_corps_civilian_refugees.md](./toe_definitions/ground/regular/toe_corps_civilian_refugees.md)**：民間人・避難民群（Tier 0-A）詳細編成・運用仕様書
+* **[units/toe/ground/regular/toe_corps_civilian_refugees.md](./units/toe/ground/regular/toe_corps_civilian_refugees.md)**：民間人・避難民群（Tier 0-A）詳細編成・運用仕様書
   * 非武装開拓民・避難民 約40,000名、民間バス・トラック・徒歩による非戦闘避難ユニット。護衛必須。
-* **[toe_definitions/ground/regular/toe_corps_militia.md](./toe_definitions/ground/regular/toe_corps_militia.md)**：民兵軍団（Tier 0-B）詳細編成・運用仕様書
+* **[units/toe/ground/regular/toe_corps_militia.md](./units/toe/ground/regular/toe_corps_militia.md)**：民兵軍団（Tier 0-B）詳細編成・運用仕様書
   * 民間自衛・治安維持部隊（総員 約32,000名、民間徴用トラック・テクニカル機銃車・旧式牽引榴弾砲）。
-* **[toe_definitions/ground/regular/toe_corps_light_infantry.md](./toe_definitions/ground/regular/toe_corps_light_infantry.md)**：軽歩兵軍団（Tier 1）詳細編成仕様書
+* **[units/toe/ground/regular/toe_corps_light_infantry.md](./units/toe/ground/regular/toe_corps_light_infantry.md)**：軽歩兵軍団（Tier 1）詳細編成仕様書
   * 車両進入不能な山岳・密林・洞窟を踏破する完全徒歩行軍軍団（総員 約24,000名、地上車両0両、軍団直轄・師団ヘリ計48機、分散迫撃砲ドクトリン）。
-* **[toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md](./toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md)**：自動車化軽歩兵軍団（Tier 2）詳細編成仕様書
+* **[units/toe/ground/regular/toe_corps_motorized_light_infantry.md](./units/toe/ground/regular/toe_corps_motorized_light_infantry.md)**：自動車化軽歩兵軍団（Tier 2）詳細編成仕様書
   * 4x4 LAV基幹の軽装甲化歩兵部隊（総員 約26,000名、牽引式155mm榴弾砲・陣地展開運用）。
-* **[toe_definitions/ground/regular/toe_corps_motorized_infantry.md](./toe_definitions/ground/regular/toe_corps_motorized_infantry.md)**：自動車化歩兵軍団（Tier 3）詳細編成仕様書
+* **[units/toe/ground/regular/toe_corps_motorized_infantry.md](./units/toe/ground/regular/toe_corps_motorized_infantry.md)**：自動車化歩兵軍団（Tier 3）詳細編成仕様書
   * 4x4 LAV ＋ トラック車載自走榴弾砲（T-SPH）による高度機動打撃部隊（総員 約28,000名、陣地進入即射・陣地変換）。
-* **[toe_definitions/ground/regular/toe_corps_wheeled_mobile.md](./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md)**：装輪機動軍団（Tier 4）詳細編成仕様書
+* **[units/toe/ground/regular/toe_corps_wheeled_mobile.md](./units/toe/ground/regular/toe_corps_wheeled_mobile.md)**：装輪機動軍団（Tier 4）詳細編成仕様書
   * 8x8装輪単一ファミリー共通化（共通化率95%）、装輪打撃連隊＋装輪装甲歩兵連隊、舗装動脈高速自走展開。
-* **[toe_definitions/ground/regular/toe_corps_armored.md](./toe_definitions/ground/regular/toe_corps_armored.md)**：装甲化軍団（Tier 5）詳細編成仕様書
+* **[units/toe/ground/regular/toe_corps_armored.md](./units/toe/ground/regular/toe_corps_armored.md)**：装甲化軍団（Tier 5）詳細編成仕様書
   * 主力戦車2個連隊（履帯）＋ 装輪装甲2個連隊（8x8）のハイブリッド諸兵科連合軍団。履帯戦車の突破力と装輪車の長駆展開力を両立。
-* **[toe_definitions/ground/regular/toe_corps_heavy_armored.md](./toe_definitions/ground/regular/toe_corps_heavy_armored.md)**：常設増強機甲軍団（Tier 6）詳細編成・運用仕様書
+* **[units/toe/ground/regular/toe_corps_heavy_armored.md](./units/toe/ground/regular/toe_corps_heavy_armored.md)**：常設増強機甲軍団（Tier 6）詳細編成・運用仕様書
   * 戦車4連隊基幹の2個師団統合型（戦車256両、重IFV384両、APC128両、120C自走迫224両、左右両翼スクリーン160両、航空機48機）。突破打撃軸（機甲4連隊）と掃討・要塞化軸（歩兵2連隊）が相互躍進を遂行。独立特科（160C/210C）・多層高射連隊。
-* **[toe_definitions/ground/regular/toe_corps_airmobile.md](./toe_definitions/ground/regular/toe_corps_airmobile.md)**：空中機動・空地強襲軍団 詳細編成仕様書
+* **[units/toe/ground/regular/toe_corps_airmobile.md](./units/toe/ground/regular/toe_corps_airmobile.md)**：空中機動・空地強襲軍団 詳細編成仕様書
   * 地上重戦車を排した空中機動2個師団統合運用。強襲航空旅団・軍団直轄航空打撃群（計176機）、空挺軽IFV、大隊付120C超軽量自走迫、FARP先行展開。
-* **[toe_definitions/ground/regular/toe_corps_bipedal_assault.md](./toe_definitions/ground/regular/toe_corps_bipedal_assault.md)**：高級装甲・二脚歩行混成軍団 詳細編成仕様書
+* **[units/toe/ground/regular/toe_corps_bipedal_assault.md](./units/toe/ground/regular/toe_corps_bipedal_assault.md)**：高級装甲・二脚歩行混成軍団 詳細編成仕様書
   * 戦車と通常二脚歩行機の混成、短時間飛翔二脚による要衝跳躍急襲、戦略空輸展開、左右両翼装輪スクリーン。
-* **[toe_definitions/ground/regular/toe_corps_long_range_missile.md](./toe_definitions/ground/regular/toe_corps_long_range_missile.md)**：長距離ミサイル打撃軍団 詳細編成仕様書
+* **[units/toe/ground/regular/toe_corps_long_range_missile.md](./units/toe/ground/regular/toe_corps_long_range_missile.md)**：長距離ミサイル打撃軍団 詳細編成仕様書
   * 大戦略マップ上で2タイル先へスタンドオフ精密打撃を行うTEL重装輪発射機（128両）専門部隊。
-* **[toe_definitions/ground/regular/toe_corps_land_battleship.md](./toe_definitions/ground/regular/toe_corps_land_battleship.md)**：陸上戦艦打撃軍団 詳細編成・運用仕様書
+* **[units/toe/ground/regular/toe_corps_land_battleship.md](./units/toe/ground/regular/toe_corps_land_battleship.md)**：陸上戦艦打撃軍団 詳細編成・運用仕様書
   * 超大型陸上戦艦（レールガン主砲）2隻を核とし、陸上空母・防空艦・近接護衛艦を配備した地上決戦機動要塞群。
-* **[toe_definitions/ground/regular/toe_corps_science_survey.md](./toe_definitions/ground/regular/toe_corps_science_survey.md)**：調査・科学探査軍団 詳細編成仕様書
+* **[units/toe/ground/regular/toe_corps_science_survey.md](./units/toe/ground/regular/toe_corps_science_survey.md)**：調査・科学探査軍団 詳細編成仕様書
   * 有毒大気・極限環境を無効化し、異星遺跡・生体巣穴の深層解析と科学研究ボーナス獲得を担う特務探査部隊。
 
-### 陸上・エイリアン軍団（野生・固有エイリアン）（`toe_definitions/ground/alien/`）
+### 陸上・エイリアン軍団（野生・固有エイリアン）（`units/toe/ground/alien/`）
 
-* **[toe_definitions/ground/alien/toe_alien_corps_small_swarm.md](./toe_definitions/ground/alien/toe_alien_corps_small_swarm.md)**：小型エイリアン軍団 詳細編成・生態仕様書
+* **[units/toe/ground/alien/toe_alien_corps_small_swarm.md](./units/toe/ground/alien/toe_alien_corps_small_swarm.md)**：小型エイリアン軍団 詳細編成・生態仕様書
   * 数千〜数万頭の小型格闘種による軽量スウォーム軍団。山岳・密林・洞窟の不整地浸透、下車歩兵・非装甲部隊の殺傷に特化。
-* **[toe_definitions/ground/alien/toe_alien_corps_medium_swarm.md](./toe_definitions/ground/alien/toe_alien_corps_medium_swarm.md)**：中型エイリアン軍団 詳細編成・生態仕様書
+* **[units/toe/ground/alien/toe_alien_corps_medium_swarm.md](./units/toe/ground/alien/toe_alien_corps_medium_swarm.md)**：中型エイリアン軍団 詳細編成・生態仕様書
   * カマキリ状中型格闘種基幹。4x4軽装甲車（LAV）を短時間で解体・破壊し、装甲車（IFV/APC）には時間を掛けて装甲板をこじ開ける。戦車は破壊不能。
-* **[toe_definitions/ground/alien/toe_alien_corps_heavy_tank.md](./toe_definitions/ground/alien/toe_alien_corps_heavy_tank.md)**：大型エイリアン軍団 詳細編成・生態仕様書
+* **[units/toe/ground/alien/toe_alien_corps_heavy_tank.md](./units/toe/ground/alien/toe_alien_corps_heavy_tank.md)**：大型エイリアン軍団 詳細編成・生態仕様書
   * 戦車型（大型格闘種）基幹。主力戦車に組み付き、長い時間を掛けて装甲を切り裂き破壊する泥沼の決戦格闘軍団。
-* **[toe_definitions/ground/alien/toe_alien_corps_colossus.md](./toe_definitions/ground/alien/toe_alien_corps_colossus.md)**：超大型エイリアン軍団 詳細編成・生態仕様書
+* **[units/toe/ground/alien/toe_alien_corps_colossus.md](./units/toe/ground/alien/toe_alien_corps_colossus.md)**：超大型エイリアン軍団 詳細編成・生態仕様書
   * 全高20m級の超大型接近戦型巨獣（タイタン級）を核とする要塞粉砕軍団。圧倒的な質量と超巨大鎌腕で敵戦車・防衛線・バンカーを踏み潰す。
-* **[toe_definitions/ground/alien/toe_alien_corps_needle_artillery.md](./toe_definitions/ground/alien/toe_alien_corps_needle_artillery.md)**：長距離砲撃軍団 詳細編成・生態仕様書
+* **[units/toe/ground/alien/toe_alien_corps_needle_artillery.md](./units/toe/ground/alien/toe_alien_corps_needle_artillery.md)**：長距離砲撃軍団 詳細編成・生態仕様書
   * 全高20m級の超大型ニードル砲撃種を核とする遠距離支援部隊。巨体の割にはミサイル程度の威力しかない巨大生体棘弾（ニードル）を放物線投射。
-* **[toe_definitions/ground/alien/toe_alien_corps_aviation_melee.md](./toe_definitions/ground/alien/toe_alien_corps_aviation_melee.md)**：陸棲航空格闘軍団 詳細編成・生態仕様書
+* **[units/toe/ground/alien/toe_alien_corps_aviation_melee.md](./units/toe/ground/alien/toe_alien_corps_aviation_melee.md)**：陸棲航空格闘軍団 詳細編成・生態仕様書
   * 有翼格闘種（ワイバーン型）が低空急降下し、地上部隊の頭上や車両上面（ルーフ）を爪と鎌腕で切り裂く地上急襲航空群（制空権確保は空棲種の担当）。
 
 ### 陸上・混成軍団および通常上位世代（Gen 4）
 
-* **[toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md](./toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md)**：多種族混成陸上軍団（全11カテゴリー）詳細仕様書
+* **[units/toe/ground/multi_species/toe_corps_multi_species_ground.md](./units/toe/ground/multi_species/toe_corps_multi_species_ground.md)**：多種族混成陸上軍団（全11カテゴリー）詳細仕様書
   * 人類兵力50%と同盟エイリアン50%の共生協同運用、自己治癒（再生）および二重兵站ドクトリン。
-* **[toe_definitions/ground/fusion/toe_corps_fusion_ground.md](./toe_definitions/ground/fusion/toe_corps_fusion_ground.md)**：通常陸上軍団・上位世代発展仕様書（生体技術・異星超克改修 / Gen 4）
+* **[units/toe/ground/fusion/toe_corps_fusion_ground.md](./units/toe/ground/fusion/toe_corps_fusion_ground.md)**：通常陸上軍団・上位世代発展仕様書（生体技術・異星超克改修 / Gen 4）
   * 通常11カテゴリーの近代化改修。自己修復性生体甲殻、ハイブリッド駆動、神経リンクによる上位世代発展仕様。
 
-### 海上戦闘団（`toe_definitions/naval/`）
+### 海上戦闘団（`units/toe/naval/`）
 
-#### 通常海上戦闘団（人類通常艦隊）（`toe_definitions/naval/regular/`）
+#### 通常海上戦闘団（人類通常艦隊）（`units/toe/naval/regular/`）
 
-* **[toe_definitions/naval/regular/toe_naval_fleet_battle.md](./toe_definitions/naval/regular/toe_naval_fleet_battle.md)**：通常艦隊 詳細編成・運用仕様書
+* **[units/toe/naval/regular/toe_naval_fleet_battle.md](./units/toe/naval/regular/toe_naval_fleet_battle.md)**：通常艦隊 詳細編成・運用仕様書
   * 計62隻＋32機（小型空母2隻、防空駆逐艦4隻、汎用駆逐艦8隻、汎用フリゲート16隻、護衛コルベット32隻）。外洋水上打撃戦・制海権掌握の中核。
-* **[toe_definitions/naval/regular/toe_naval_fleet_battleship.md](./toe_definitions/naval/regular/toe_naval_fleet_battleship.md)**：戦艦艦隊 詳細編成・運用仕様書
+* **[units/toe/naval/regular/toe_naval_fleet_battleship.md](./units/toe/naval/regular/toe_naval_fleet_battleship.md)**：戦艦艦隊 詳細編成・運用仕様書
   * 計62隻（超弩級戦艦2隻、防空駆逐艦4隻、汎用駆逐艦8隻、汎用フリゲート16隻、護衛コルベット32隻）。計16門の`EM-180C`超大型電磁投射砲（レールガン）による大戦略2タイル先への超長距離沿岸砲撃。
-* **[toe_definitions/naval/regular/toe_naval_fleet_carrier.md](./toe_definitions/naval/regular/toe_naval_fleet_carrier.md)**：航空艦隊 詳細編成・運用仕様書
+* **[units/toe/naval/regular/toe_naval_fleet_carrier.md](./units/toe/naval/regular/toe_naval_fleet_carrier.md)**：航空艦隊 詳細編成・運用仕様書
   * 計62隻＋128機（大型正規空母2隻、防空駆逐艦4隻、汎用駆逐艦8隻、汎用フリゲート16隻、護衛コルベット32隻）。大戦略2タイル先への広域制空・洋上航空阻止・敵前上陸支援。
-* **[toe_definitions/naval/regular/toe_naval_fleet_escort.md](./toe_definitions/naval/regular/toe_naval_fleet_escort.md)**：護衛艦隊 詳細編成・運用仕様書
+* **[units/toe/naval/regular/toe_naval_fleet_escort.md](./units/toe/naval/regular/toe_naval_fleet_escort.md)**：護衛艦隊 詳細編成・運用仕様書
   * 計28隻（汎用駆逐艦4隻、汎用フリゲート8隻、護衛コルベット16隻）。シーレーン防衛および民間輸送船団の専従護衛。
-* **[toe_definitions/naval/regular/toe_naval_fleet_civilian.md](./toe_definitions/naval/regular/toe_naval_fleet_civilian.md)**：民間船艦隊 詳細編成・運用仕様書
+* **[units/toe/naval/regular/toe_naval_fleet_civilian.md](./units/toe/naval/regular/toe_naval_fleet_civilian.md)**：民間船艦隊 詳細編成・運用仕様書
   * 計32隻（大型コンテナ船8隻、中型貨物船16隻、沿岸連絡船8隻）。非武装の戦略資源・物資・食料の大量海上空輸・輸送船団。
-* **[toe_definitions/naval/regular/toe_naval_fleet_armed_merchant.md](./toe_definitions/naval/regular/toe_naval_fleet_armed_merchant.md)**：武装船艦隊 詳細編成・運用仕様書
+* **[units/toe/naval/regular/toe_naval_fleet_armed_merchant.md](./units/toe/naval/regular/toe_naval_fleet_armed_merchant.md)**：武装船艦隊 詳細編成・運用仕様書
   * 計32隻（特設武装貨物船8隻、武装沿岸艇16隻、特設護衛船8隻）。民間船にコンテナ兵装・速射砲を仮設した開拓初期の自衛・警備船団。
 
-#### 野生・固有エイリアン海洋群（エイリアン艦隊）（`toe_definitions/naval/alien/`）
+#### 野生・固有エイリアン海洋群（エイリアン艦隊）（`units/toe/naval/alien/`）
 
-* **[toe_definitions/naval/alien/toe_alien_fleet_patrol.md](./toe_definitions/naval/alien/toe_alien_fleet_patrol.md)**：エイリアン哨戒艦隊 詳細編成・生態仕様書
+* **[units/toe/naval/alien/toe_alien_fleet_patrol.md](./units/toe/naval/alien/toe_alien_fleet_patrol.md)**：エイリアン哨戒艦隊 詳細編成・生態仕様書
   * 小型刺胞遊泳個体、高速遊泳魚雷獣、表層監視種による俊敏な沿岸監視・警戒海洋群。
-* **[toe_definitions/naval/alien/toe_alien_fleet_escort.md](./toe_definitions/naval/alien/toe_alien_fleet_escort.md)**：エイリアン護衛艦隊 詳細編成・生態仕様書
+* **[units/toe/naval/alien/toe_alien_fleet_escort.md](./units/toe/naval/alien/toe_alien_fleet_escort.md)**：エイリアン護衛艦隊 詳細編成・生態仕様書
   * 棘皮防空個体、超音波迎撃種、中型護衛甲殻獣による防空・対潜水生体迎撃・遊泳路防衛海洋群。
-* **[toe_definitions/naval/alien/toe_alien_fleet_regular.md](./toe_definitions/naval/alien/toe_alien_fleet_regular.md)**：エイリアン通常艦隊 詳細編成・生態仕様書
+* **[units/toe/naval/alien/toe_alien_fleet_regular.md](./units/toe/naval/alien/toe_alien_fleet_regular.md)**：エイリアン通常艦隊 詳細編成・生態仕様書
   * 中型重装甲甲殻獣、強酸投射種、生体魚雷射出種による外洋水上打撃・制海権掌握生体群。
-* **[toe_definitions/naval/alien/toe_alien_fleet_battleship.md](./toe_definitions/naval/alien/toe_alien_fleet_battleship.md)**：エイリアン戦艦艦隊 詳細編成・生態仕様書
+* **[units/toe/naval/alien/toe_alien_fleet_battleship.md](./units/toe/naval/alien/toe_alien_fleet_battleship.md)**：エイリアン戦艦艦隊 詳細編成・生態仕様書
   * 全長200m超の超大型甲殻巨獣（リヴァイアサン級）、重キャビテーション衝撃砲種による決戦打撃および沿岸2タイルの生体砲撃破壊。
-* **[toe_definitions/naval/alien/toe_alien_fleet_carrier.md](./toe_definitions/naval/alien/toe_alien_fleet_carrier.md)**：エイリアン航空艦隊 詳細編成・生態仕様書
+* **[units/toe/naval/alien/toe_alien_fleet_carrier.md](./units/toe/naval/alien/toe_alien_fleet_carrier.md)**：エイリアン航空艦隊 詳細編成・生態仕様書
   * 浮遊母艦生体（バイオキャリア）、艦載小型飛行種、警戒生体による洋上生体航空拠点群。
-* **[toe_definitions/naval/alien/toe_alien_fleet_submarine.md](./toe_definitions/naval/alien/toe_alien_fleet_submarine.md)**：エイリアン潜水艦隊 詳細編成・生態仕様書
+* **[units/toe/naval/alien/toe_alien_fleet_submarine.md](./units/toe/naval/alien/toe_alien_fleet_submarine.md)**：エイリアン潜水艦隊 詳細編成・生態仕様書
   * 深海潜航巨獣、超音波共鳴種、誘導生体魚雷放出種による完全隠密・深海奇襲雷撃群。
 
 #### 多種族混成海上戦闘団および通常艦隊上位世代（Gen 4）
 
-* **[toe_definitions/naval/multi_species/toe_naval_multi_species.md](./toe_definitions/naval/multi_species/toe_naval_multi_species.md)**：多種族混成海上戦闘団 詳細編成仕様書
+* **[units/toe/naval/multi_species/toe_naval_multi_species.md](./units/toe/naval/multi_species/toe_naval_multi_species.md)**：多種族混成海上戦闘団 詳細編成仕様書
   * 人類ミサイル軍艦と同盟海棲戦闘怪獣の混成運用（生体ソナー・魚雷迎撃）。
-* **[toe_definitions/naval/fusion/toe_naval_fusion.md](./toe_definitions/naval/fusion/toe_naval_fusion.md)**：通常海上戦闘団・上位世代発展仕様書（生体技術・耐圧甲殻改修 / Gen 4）
+* **[units/toe/naval/fusion/toe_naval_fusion.md](./units/toe/naval/fusion/toe_naval_fusion.md)**：通常海上戦闘団・上位世代発展仕様書（生体技術・耐圧甲殻改修 / Gen 4）
   * 通常艦艇の近代化改修。有機装甲、無音鰭推進、生体魚雷射出管、潜航・浮上両用化仕様。
 
-### 航空戦闘団（`toe_definitions/air/`）
+### 航空戦闘団（`units/toe/air/`）
 
-#### 通常航空戦闘団（人類通常航空隊）（`toe_definitions/air/regular/`）
+#### 通常航空戦闘団（人類通常航空隊）（`units/toe/air/regular/`）
 
-* **[toe_definitions/air/regular/toe_air_wing_civilian.md](./toe_definitions/air/regular/toe_air_wing_civilian.md)**：民間航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_civilian.md](./units/toe/air/regular/toe_air_wing_civilian.md)**：民間航空団 詳細編成・運用仕様書
   * 大型旅客機16機、コンテナ貨物機16〜32機による惑星内高速旅客・戦略物資定期空輸部隊。
-* **[toe_definitions/air/regular/toe_air_wing_armed_civilian.md](./toe_definitions/air/regular/toe_air_wing_armed_civilian.md)**：武装民間航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_armed_civilian.md](./units/toe/air/regular/toe_air_wing_armed_civilian.md)**：武装民間航空団 詳細編成・運用仕様書
   * 機銃ポッド・自衛火器を仮設した武装貨物機32機による開拓初期・急造自衛航空部隊。
-* **[toe_definitions/air/regular/toe_air_wing_tactical_transport.md](./toe_definitions/air/regular/toe_air_wing_tactical_transport.md)**：輸送航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_tactical_transport.md](./units/toe/air/regular/toe_air_wing_tactical_transport.md)**：輸送航空団 詳細編成・運用仕様書
   * C-17級重戦術軍用輸送機32機による陸上部隊・装甲車両の不整地空輸・戦術投下部隊。
-* **[toe_definitions/air/regular/toe_air_wing_patrol_aew.md](./toe_definitions/air/regular/toe_air_wing_patrol_aew.md)**：哨戒航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_patrol_aew.md](./units/toe/air/regular/toe_air_wing_patrol_aew.md)**：哨戒航空団 詳細編成・運用仕様書
   * 早期警戒機（AEW&C 8機）、対潜哨戒機16機、護衛機16機による広域索敵・早期警戒・対潜監視部隊。
-* **[toe_definitions/air/regular/toe_air_wing_escort.md](./toe_definitions/air/regular/toe_air_wing_escort.md)**：護衛航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_escort.md](./units/toe/air/regular/toe_air_wing_escort.md)**：護衛航空団 詳細編成・運用仕様書
   * 長航続距離大型制空戦闘機32機による輸送機・爆撃機・民間船団航路の専従直衛部隊。
-* **[toe_definitions/air/regular/toe_air_wing_interceptor.md](./toe_definitions/air/regular/toe_air_wing_interceptor.md)**：迎撃航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_interceptor.md](./units/toe/air/regular/toe_air_wing_interceptor.md)**：迎撃航空団 詳細編成・運用仕様書
   * 軽戦闘機32〜48機による前線拠点・高速道路からの緊急スクランブル即応迎撃部隊。
-* **[toe_definitions/air/regular/toe_air_wing_vstol.md](./toe_definitions/air/regular/toe_air_wing_vstol.md)**：垂直離陸航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_vstol.md](./units/toe/air/regular/toe_air_wing_vstol.md)**：垂直離陸航空団 詳細編成・運用仕様書
   * SVTOL戦闘機32機による無滑走路前線拠点・空母での即応垂直展開部隊。
-* **[toe_definitions/air/regular/toe_air_wing_tactical_fighter.md](./toe_definitions/air/regular/toe_air_wing_tactical_fighter.md)**：戦闘航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_tactical_fighter.md](./units/toe/air/regular/toe_air_wing_tactical_fighter.md)**：戦闘航空団 詳細編成・運用仕様書
   * 大型制空戦闘機32機＋戦闘爆撃機16機による制空権確保および対地精密打撃の中核主力航空隊。
-* **[toe_definitions/air/regular/toe_air_wing_stealth_fighter.md](./toe_definitions/air/regular/toe_air_wing_stealth_fighter.md)**：光学・電波ステルス戦闘航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_stealth_fighter.md](./units/toe/air/regular/toe_air_wing_stealth_fighter.md)**：光学・電波ステルス戦闘航空団 詳細編成・運用仕様書
   * 光学迷彩・電波吸収ステルス戦闘機32機による完全不可視奇襲部隊。
-* **[toe_definitions/air/regular/toe_air_wing_bomber.md](./toe_definitions/air/regular/toe_air_wing_bomber.md)**：爆撃航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_bomber.md](./units/toe/air/regular/toe_air_wing_bomber.md)**：爆撃航空団 詳細編成・運用仕様書
   * 大型戦略爆撃機16機＋護衛戦闘機16機による戦略絨毯爆撃・面制圧部隊。
-* **[toe_definitions/air/regular/toe_air_wing_stealth_bomber.md](./toe_definitions/air/regular/toe_air_wing_stealth_bomber.md)**：光学・電波ステルス爆撃航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_stealth_bomber.md](./units/toe/air/regular/toe_air_wing_stealth_bomber.md)**：光学・電波ステルス爆撃航空団 詳細編成・運用仕様書
   * 光学ステルス爆撃機8機＋護衛機16機による防空火網突破・中枢精密爆撃部隊。
-* **[toe_definitions/air/regular/toe_air_wing_aerial_battleship.md](./toe_definitions/air/regular/toe_air_wing_aerial_battleship.md)**：空中戦艦航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_aerial_battleship.md](./units/toe/air/regular/toe_air_wing_aerial_battleship.md)**：空中戦艦航空団 詳細編成・運用仕様書
   * 超大型空中戦艦（1〜2隻）＋空中駆逐艦4隻＋空中フリゲート8隻＋直衛戦闘機32機による空中接近制圧・艦隊決戦部隊。
-* **[toe_definitions/air/regular/toe_air_wing_aerial_carrier.md](./toe_definitions/air/regular/toe_air_wing_aerial_carrier.md)**：空中空母航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_aerial_carrier.md](./units/toe/air/regular/toe_air_wing_aerial_carrier.md)**：空中空母航空団 詳細編成・運用仕様書
   * 超大型空中空母（1隻）＋艦載戦闘機48機＋空中護衛艦艇による移動式空中航空基地部隊。
-* **[toe_definitions/air/regular/toe_air_wing_stealth_recon.md](./toe_definitions/air/regular/toe_air_wing_stealth_recon.md)**：光学・電波ステルス偵察航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_stealth_recon.md](./units/toe/air/regular/toe_air_wing_stealth_recon.md)**：光学・電波ステルス偵察航空団 詳細編成・運用仕様書
   * 超音速光学ステルス偵察機16機による超高高度深部領空侵入・全域精密マッピング部隊。
-* **[toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md](./toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md)**：超大型輸送航空団 詳細編成・運用仕様書
+* **[units/toe/air/regular/toe_air_wing_super_heavy_transport.md](./units/toe/air/regular/toe_air_wing_super_heavy_transport.md)**：超大型輸送航空団 詳細編成・運用仕様書
   * 超巨大戦略輸送機/飛行船4隻＋空中護衛艦艇による軍団・艦隊単位の超長距離空輸部隊（戦艦艦隊を凌駕するコスト）。
 
-#### 野生・固有エイリアン航空群（エイリアン航空団）（`toe_definitions/air/alien/`）
+#### 野生・固有エイリアン航空群（エイリアン航空団）（`units/toe/air/alien/`）
 
-* **[toe_definitions/air/alien/toe_alien_air_wing_transport.md](./toe_definitions/air/alien/toe_alien_air_wing_transport.md)**：エイリアン輸送航空団 詳細編成・生態仕様書
+* **[units/toe/air/alien/toe_alien_air_wing_transport.md](./units/toe/air/alien/toe_alien_air_wing_transport.md)**：エイリアン輸送航空団 詳細編成・生態仕様書
   * 巨大嚢胞飛行獣、生体空輸コンテナ種、護衛飛行種による地上生体・物資空輸降下群。
-* **[toe_definitions/air/alien/toe_alien_air_wing_patrol.md](./toe_definitions/air/alien/toe_alien_air_wing_patrol.md)**：エイリアン哨戒航空団 詳細編成・生態仕様書
+* **[units/toe/air/alien/toe_alien_air_wing_patrol.md](./units/toe/air/alien/toe_alien_air_wing_patrol.md)**：エイリアン哨戒航空団 詳細編成・生態仕様書
   * 大気浮遊巨大クラゲ（生体レーダー個体）、長距離滑空索敵種による高高度早期警戒・索敵群。
-* **[toe_definitions/air/alien/toe_alien_air_wing_interceptor.md](./toe_definitions/air/alien/toe_alien_air_wing_interceptor.md)**：エイリアン迎撃航空団 詳細編成・生態仕様書
+* **[units/toe/air/alien/toe_alien_air_wing_interceptor.md](./units/toe/air/alien/toe_alien_air_wing_interceptor.md)**：エイリアン迎撃航空団 詳細編成・生態仕様書
   * 小型高速有翼爪獣、生体短距離迎撃針射出種による即時緊急スクランブル迎撃群。
-* **[toe_definitions/air/alien/toe_alien_air_wing_fighter.md](./toe_definitions/air/alien/toe_alien_air_wing_fighter.md)**：エイリアン戦闘航空団 詳細編成・生態仕様書
+* **[units/toe/air/alien/toe_alien_air_wing_fighter.md](./units/toe/air/alien/toe_alien_air_wing_fighter.md)**：エイリアン戦闘航空団 詳細編成・生態仕様書
   * 中型重戦闘ワイバーン、強酸弾投射種、格闘鉤爪個体による制空権掌握・急降下襲撃主力群。
-* **[toe_definitions/air/alien/toe_alien_air_wing_stealth_fighter.md](./toe_definitions/air/alien/toe_alien_air_wing_stealth_fighter.md)**：エイリアンステルス戦闘航空団 詳細編成・生態仕様書
+* **[units/toe/air/alien/toe_alien_air_wing_stealth_fighter.md](./units/toe/air/alien/toe_alien_air_wing_stealth_fighter.md)**：エイリアンステルス戦闘航空団 詳細編成・生態仕様書
   * 光学擬態有翼種、低赤外線放出捕食個体による不可視奇襲戦闘群。
-* **[toe_definitions/air/alien/toe_alien_air_wing_bomber.md](./toe_definitions/air/alien/toe_alien_air_wing_bomber.md)**：エイリアン爆撃航空団 詳細編成・生態仕様書
+* **[units/toe/air/alien/toe_alien_air_wing_bomber.md](./units/toe/air/alien/toe_alien_air_wing_bomber.md)**：エイリアン爆撃航空団 詳細編成・生態仕様書
   * 重爆撃巨大飛行獣、有機クラスター酸爆弾投射種による地上目標面制圧・戦略破壊群。
-* **[toe_definitions/air/alien/toe_alien_air_wing_aerial_battleship.md](./toe_definitions/air/alien/toe_alien_air_wing_aerial_battleship.md)**：エイリアン空中戦艦航空団 詳細編成・生態仕様書
+* **[units/toe/air/alien/toe_alien_air_wing_aerial_battleship.md](./units/toe/air/alien/toe_alien_air_wing_aerial_battleship.md)**：エイリアン空中戦艦航空団 詳細編成・生態仕様書
   * 超大型空中生体戦艦（リヴァイアサン飛行種）、直協飛行護衛群による空中決戦・重プラズマ砲制圧要塞生物。
-* **[toe_definitions/air/alien/toe_alien_air_wing_aerial_carrier.md](./toe_definitions/air/alien/toe_alien_air_wing_aerial_carrier.md)**：エイリアン空中空母航空団 詳細編成・生態仕様書
+* **[units/toe/air/alien/toe_alien_air_wing_aerial_carrier.md](./units/toe/air/alien/toe_alien_air_wing_aerial_carrier.md)**：エイリアン空中空母航空団 詳細編成・生態仕様書
   * 超巨大気嚢浮遊母艦獣、艦載小型突撃飛行種による移動空中巣穴・飛行生体産生母体。
-* **[toe_definitions/air/alien/toe_alien_air_wing_stealth_recon.md](./toe_definitions/air/alien/toe_alien_air_wing_stealth_recon.md)**：エイリアンステルス偵察航空団 詳細編成・生態仕様書
+* **[units/toe/air/alien/toe_alien_air_wing_stealth_recon.md](./units/toe/air/alien/toe_alien_air_wing_stealth_recon.md)**：エイリアンステルス偵察航空団 詳細編成・生態仕様書
   * 高度擬態長距離飛行種、生体電波吸収膜保有個体による深部不可視侵入・索敵群。
-* **[toe_definitions/air/alien/toe_alien_air_wing_super_heavy_transport.md](./toe_definitions/air/alien/toe_alien_air_wing_super_heavy_transport.md)**：エイリアン超大型輸送航空団 詳細編成・生態仕様書
+* **[units/toe/air/alien/toe_alien_air_wing_super_heavy_transport.md](./units/toe/air/alien/toe_alien_air_wing_super_heavy_transport.md)**：エイリアン超大型輸送航空団 詳細編成・生態仕様書
   * 巨大型嚢胞輸送怪獣、浮遊護衛飛行群によるタイタン級決戦生体の一括戦域間空輸群。
 
 #### 多種族混成航空戦闘団および通常航空隊上位世代（Gen 4）
 
-* **[toe_definitions/air/multi_species/toe_air_multi_species.md](./toe_definitions/air/multi_species/toe_air_multi_species.md)**：多種族混成航空戦闘団 詳細編成仕様書
+* **[units/toe/air/multi_species/toe_air_multi_species.md](./units/toe/air/multi_species/toe_air_multi_species.md)**：多種族混成航空戦闘団 詳細編成仕様書
   * パイロット搭乗型サイバネ飛行獣、胞子散布バイオファイターによる極限格闘戦。
-* **[toe_definitions/air/fusion/toe_air_fusion.md](./toe_definitions/air/fusion/toe_air_fusion.md)**：通常航空戦闘団・上位世代発展仕様書（生体技術・可変有機翼改修 / Gen 4）
+* **[units/toe/air/fusion/toe_air_fusion.md](./units/toe/air/fusion/toe_air_fusion.md)**：通常航空戦闘団・上位世代発展仕様書（生体技術・可変有機翼改修 / Gen 4）
   * 通常航空隊の近代化改修。有機可変翼ジェット機、生体プラズマ爆撃機、無着陸長期滞空バイオアビオニクス機。
 
 ---
 
-## 🛠️ 4. 技術設計・アーキテクチャ（`tech/`）
+## 🔧 4. 兵器・装備カタログ仕様書（`units/equipment/`）
+
+陸・海・空の各作戦領域における主要兵器プラットフォーム、共通車体・船体・機体ファミリー、および搭載火器・耐用年数（消耗度）カタログ。
+
+### 陸上装備カタログ（`units/equipment/ground/`）
+
+* **[units/equipment/ground/regular/ground_regular_equipment.md](./units/equipment/ground/regular/ground_regular_equipment.md)**：陸上・正規軍 兵器・車両プラットフォーム仕様書
+  * 重装軌戦車系列、装軌装甲車系列（分隊固定8名）、8輪装甲装輪車系列（10大バリアント共通化率95%）、重装輪トラック系列（155C装輪自走榴弾砲）、4×4軽装甲車系列、二脚歩行戦闘車両。
+* **[units/equipment/ground/alien/ground_alien_equipment.md](./units/equipment/ground/alien/ground_alien_equipment.md)**：陸上・エイリアン 生体兵器・個体仕様書
+  * 小型スウォーム種、中型格闘種、大型戦車型、超大型タイタン級（コロッサス）、長距離ニードル砲撃種、陸棲航空ワイバーン種。
+
+### 海上装備カタログ（`units/equipment/naval/`）
+
+* **[units/equipment/naval/regular/naval_regular_equipment.md](./units/equipment/naval/regular/naval_regular_equipment.md)**：海上・正規軍 艦艇・装備プラットフォーム仕様書
+  * 超弩級水上決戦艦（レールガン主砲）、航空母艦、外洋主力駆逐艦、外洋哨戒・対潜フリゲート、高速近接護衛コルベット、特設・民間輸送船艇。
+* **[units/equipment/naval/alien/naval_alien_equipment.md](./units/equipment/naval/alien/naval_alien_equipment.md)**：海上・エイリアン 生体艦艇・海洋種仕様書
+  * 小型刺胞遊泳個体、高速魚雷獣、棘皮防空個体、中型重装甲甲殻獣、超大型リヴァイアサン級決戦巨獣、バイオキャリア、深海潜航巨獣。
+
+### 航空装備カタログ（`units/equipment/air/`）
+
+* **[units/equipment/air/regular/air_regular_equipment.md](./units/equipment/air/regular/air_regular_equipment.md)**：航空・正規軍 航空機・装備プラットフォーム仕様書
+  * 戦術戦闘機、迎撃戦闘機、ステルス戦闘機・爆撃機、戦略重爆撃機、垂直離着陸（SVTOL）機、戦術・戦略輸送機、超大型空中戦艦・空中空母。
+* **[units/equipment/air/alien/air_alien_equipment.md](./units/equipment/air/alien/air_alien_equipment.md)**：航空・エイリアン 飛行生体・航空個体仕様書
+  * 小型高速有翼爪獣、中型重戦闘ワイバーン、光学擬態ステルス飛行種、重爆撃巨大生体、超大型空中生体戦艦、気嚢浮遊母艦獣。
+
+---
+
+## 🛠️ 5. 技術設計・アーキテクチャ（`tech/`）
 
 * **[tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md](./tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md)**：全体実装依存関係・アーキテクチャ仕様書
   * システム全体の6層アーキテクチャ（エンジン・空間・経済・軍事・動態・UI）、モジュール間依存関係マトリクス、およびボトムアップ実装ロードマップ。
@@ -428,16 +399,24 @@ docs/
 
 ---
 
-## 📋 3. 開発計画・ロードマップ・課題（`planning/`）
+## 📋 6. 開発計画・ロードマップ・課題（`planning/`）
 
-* **[planning/PENDING_ISSUES.md](./planning/PENDING_ISSUES.md)**：未確定・検討課題まとめ（論点整理）
-  * 歩行兵器の定義と不便さの具現化、国家概念の肉付け、戦闘団×モジュール共通化の接続など、掘り下げ不足な論点と今後の検討課題一覧。
+* **[planning/CONSISTENCY_AUDIT_PLAN.md](./planning/CONSISTENCY_AUDIT_PLAN.md)**：仕様・ドキュメント整合性チェック計画書
+  * ユーザー策定コア文書をマスターとし、周辺・全体文書へ段階的に逆還元（バックフィード）する実行計画と進捗管理。
 * **[planning/MISSING_DOCUMENTS_ROADMAP.md](./planning/MISSING_DOCUMENTS_ROADMAP.md)**：未作成・不足ドキュメント体系と開発ロードマップ
   * 全体ドキュメントの最新成熟度マトリクス、明確に不足している5大領域（資源品目定義、技術ツリー、外交危機、エイリアン生態巣窟、ステアリングUI）、および開発ロードマップ。
+* **[planning/PENDING_ISSUES.md](./planning/PENDING_ISSUES.md)**：未確定・検討課題まとめ（論点整理）
+  * 歩行兵器の定義と不便さの具現化、国家概念の肉付け、戦闘団×モジュール共通化の接続など、掘り下げ不足な論点と今後の検討課題一覧。
+* **[planning/SECONDARY_MISSING_SPECS.md](./planning/SECONDARY_MISSING_SPECS.md)**：二次的不足ドキュメント・システム統合仕様書体系
+  * 概念・世界観から実装・結合ロジックへの橋渡しに必要な二次的仕様書（兵站状態遷移、UIフロー、データ結合）の整理。
+* **[planning/SECONDARY_SPECS_EVALUATION.md](./planning/SECONDARY_SPECS_EVALUATION.md)**：2次的不足仕様・検討論点と実装アプローチ評価書
+  * 二次的仕様書の各論点（兵站・UI・データ構造）に関する実装アプローチの比較・評価。
+* **[planning/NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md](./planning/NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md)**：次期設計計画：陸上戦艦・艦隊航空隊整理
+  * 航海可能な陸上戦艦、通常艦隊・航空隊の規模エシュロン再編、空棲・水棲エイリアン整理の覚書。
 
 ---
 
-## 💡 4. 詳細検討・発展仕様（`discussion/`）
+## 💡 7. 詳細検討・発展仕様（`discussion/`）
 
 各システム・メカニクスごとに最新のサブディレクトリ分類（7分野）で体系的に管理されています。
 

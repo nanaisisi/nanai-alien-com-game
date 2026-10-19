@@ -60,9 +60,10 @@ flowchart TD
 
 まずは、ファイルパスや目次の不整合・リンク切れを解消し、仕様探索の基盤を最新化する。
 
-- [ ] **1.1 全体目録（[docs/INDEX.md](../INDEX.md)）の構造照合・更新**
-  - 旧 `docs/toe_definitions/` や `docs/force_structure/` 表記を、新ディレクトリ `docs/units/` 構成に更新。
-  - 新設された装備カタログ（`docs/units/equipment/`）や各種仕様書の配置を正しく反映。
+- [x] **1.1 全体目録（[docs/INDEX.md](../INDEX.md)）の構造照合・更新**
+  - 旧 `docs/toe_definitions/` や `docs/force_structure/` 表記を、新ディレクトリ `docs/units/` 構成に更新完了。
+  - 新設された装備カタログ（`docs/units/equipment/`）セクションの追加と各仕様書の配置を反映完了。
+  - セクション番号の正規化（1〜7）および全内部リンクの疎通確認完了（リンク切れ0件）。
 - [ ] **1.2 TO&Eマスター目録（[docs/units/INDEX_TOE.md](../units/INDEX_TOE.md)）と各インデックス照合**
   - `docs/units/toe_indexes/` 配下の各Markdown（全9カテゴリ）のリンク先存在確認。
   - 実体ファイル（`docs/units/toe/`）とのファイル名・パス一致確認。
@@ -114,7 +115,7 @@ flowchart TD
 
 | フェーズ | 対象領域 | 主要担当ファイル | ステータス | 備考 |
 | :--- | :--- | :--- | :---: | :--- |
-| **Phase 1** | 構造・リンク整合 | `docs/INDEX.md`, `docs/units/INDEX_TOE.md` | 未着手 | 最優先で着手推奨 |
+| **Phase 1** | 構造・リンク整合 | `docs/INDEX.md`, `docs/units/INDEX_TOE.md` | 進行中 | 1.1完了。1.2, 1.3未着手 |
 | **Phase 2** | 思想・概念整合 | `docs/GAME_DESIGN.md`, `docs/units/toe/` | 未着手 | 融合ツリー統合・耐用年数 |
 | **Phase 3** | データ・数値整合 | `docs/units/equipment/`, `docs/units/toe/` | 未着手 | 定員8名・小隊4両・口径 |
 | **Phase 4** | 実装・技術整合 | `docs/tech/`, `docs/specs/`, `src/` | 未着手 | Bevy ECS・資源橋渡し |
