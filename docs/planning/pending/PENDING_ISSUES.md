@@ -144,4 +144,3 @@
 | **中** | **動的情勢推移・危機（Crisis）・Civ型勝利条件詳細仕様書 (SEC-06)** | 瘴気大侵入、宇宙港再建、軍事制覇、ガイア同化等の判定フラグと、クリア後エンドレス継続プレイ挙動（詳細は [`../completed/SECONDARY_MISSING_SPECS.md`](../completed/SECONDARY_MISSING_SPECS.md)） | **完了 (策定済)** |
 | **低** | **自発的失踪者・軍閥（第三極）接触・調達・領土要求イベント群 (SEC-07)** | 国境地帯の失踪者コミュニティ遭遇、闇市調達、自然国境に基づく4段階領土主張（Claims）の計算式（詳細は [`../completed/SECONDARY_MISSING_SPECS.md`](../completed/SECONDARY_MISSING_SPECS.md)） | **完了 (策定済)** |
 | **最優先** | **エイリアン包括設計および敵対勢力奪還計画書** | エイリアン陸海空TO&E・生体兵装非対称規則、敵対国家・野生巣窟に対する穏当かつ段階的な4段階奪還作戦立案・実施（[`../../units/force/ALIEN_IMPLEMENTATION_AND_RECONQUEST_PLAN.md`](../../units/force/ALIEN_IMPLEMENTATION_AND_RECONQUEST_PLAN.md)） | **完了 (策定済)** |
-
