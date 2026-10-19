@@ -171,6 +171,56 @@ pub struct NationalArsenalPool {
     pub legacy_gen0_sealed_units: Vec<String>,
 }
 
+/// 兵站充足度と整備状態（ステートマシン）
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Reflect, Default)]
+pub enum LogisticsState {
+    /// 充足度 70%以上: ペナルティなし・軽微損傷全快
+    #[default]
+    Normal,
+    /// 充足度 30〜70%: 移動-20%、支援砲撃-30%
+    Strained,
+    /// 充足度 30%未満: 移動-50%、共食い整備（Cannibalization）自律実行
+    Critical,
+    /// 連続0%: 移動不能、白兵戦のみ
+    Exhausted,
+}
+
+/// 国家整備ドクトリン（プレイヤーのマクロステアリング設定値）
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Reflect, Default)]
+pub enum MaintenanceDoctrine {
+    /// 前線維持最優先: Strainedから部品流用、Gen0解体許可
+    SurvivalFirst,
+    /// プラットフォーム温存（標準）: Critical時のみ同型間共食い、Gen0解体禁止
+    #[default]
+    PlatformPreservation,
+    /// 共通化厳格準拠: 規格外の現場溶接を厳禁、後方工廠牽引を徹底
+    StrictModularDiscipline,
+}
+
+/// 戦闘団の兵站・補給ステータスコンポーネント
+#[derive(Component, Debug, Clone, Reflect)]
+pub struct CombatGroupLogistics {
+    /// 兵站充足度 (0.00..=1.00)
+    pub supply_satisfaction: f32,
+    /// 連続兵站圧迫ターン数
+    pub strained_turns: u8,
+    /// 現在の兵站ステート
+    pub state: LogisticsState,
+    /// 適用中の整備ドクトリン
+    pub doctrine: MaintenanceDoctrine,
+}
+
+impl Default for CombatGroupLogistics {
+    fn default() -> Self {
+        Self {
+            supply_satisfaction: 1.0,
+            strained_turns: 0,
+            state: LogisticsState::Normal,
+            doctrine: MaintenanceDoctrine::PlatformPreservation,
+        }
+    }
+}
+
 /// 全体マップ上で活動する戦闘団ユニット
 #[derive(Component, Debug, Clone, Reflect)]
 pub struct Unit {

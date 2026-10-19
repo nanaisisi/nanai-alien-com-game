@@ -70,6 +70,7 @@ pub fn spawn_initial_units(
             let unit_entity = commands
                 .spawn((
                     Unit::new(faction, group_type, target_coord),
+                    crate::unit::CombatGroupLogistics::default(),
                     Transform::from_xyz(world_pos.x, terrain_height, world_pos.z),
                     Visibility::default(),
                 ))

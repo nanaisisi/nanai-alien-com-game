@@ -113,8 +113,9 @@ flowchart TD
 
 確定した仕様書群と、技術アーキテクチャ（`docs/tech/`）およびRust実装コード間の整合性を担保する。
 
-- [ ] **4.1 ECSコンポーネント定義の同期**
-  - [COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) や各仕様書に記載されているサンプルRustコード（`CombatGroupLogistics`, `LogisticsState` 等）と、[SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md](../tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md) のアーキテクチャ整合。
+- [x] **4.1 ECSコンポーネント定義の同期**
+  - [COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) で定義された兵站・整備ステートマシン（`CombatGroupLogistics`, `LogisticsState`, `MaintenanceDoctrine`）を [SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md](../tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md) に完全同期。
+  - 実装コード [`src/unit/types.rs`](../../src/unit/types.rs)、[`src/unit/mod.rs`](../../src/unit/mod.rs)、[`src/unit/spawn.rs`](../../src/unit/spawn.rs) に上記ECSコンポーネントを定義・リフレクト登録・初期スポーン付与し、`cargo check`（警告・エラー0件、終了コード0）での完全整合を確認。
 - [ ] **4.2 資源・サプライチェーン・兵站ステートマシンの接続**
   - [RESOURCE_ECONOMY_SYSTEM.md](../specs/RESOURCE_ECONOMY_SYSTEM.md) / [RESOURCE_IMPLEMENTATION_BRIDGE.md](../tech/RESOURCE_IMPLEMENTATION_BRIDGE.md) と、兵站充足度（`supply_satisfaction`）算出ロジックの連携整合。
 - [ ] **4.3 実装タスク・ロードマップへの反映**
@@ -125,11 +126,11 @@ flowchart TD
 ## 3. 進捗管理表
 
 | フェーズ | 対象領域 | 主要担当ファイル | ステータス | 備考 |
-| :--- | :--- | :--- | :---: | :--- |
+| :--- | :--- | :--- | :--- | :--- |
 | **Phase 1** | 構造・リンク整合 | `docs/INDEX.md`, `docs/units/INDEX_TOE.md` | 完了 | 1.1, 1.2, 1.3 すべて完了（構造基盤整備完了） |
 | **Phase 2** | 思想・概念整合 | `docs/GAME_DESIGN.md`, `docs/units/toe/` | 完了 | 2.1, 2.2 すべて完了（概念レイヤー整合完了） |
-| **Phase 3** | データ・数値整合 | `docs/units/equipment/`, `docs/units/toe/` | 進行中 | 3.1完了、3.2・3.3未着手 |
-| **Phase 4** | 実装・技術整合 | `docs/tech/`, `docs/specs/`, `src/` | 未着手 | Bevy ECS・資源橋渡し |
+| **Phase 3** | データ・数値整合 | `docs/units/equipment/`, `docs/units/toe/` | 完了 | 3.1, 3.2, 3.3 すべて完了（数値・口径・生態パラメータ整合完了） |
+| **Phase 4** | 実装・技術整合 | `docs/tech/`, `docs/specs/`, `src/` | 進行中 | 4.1完了、4.2・4.3未着手 |
 
 ---
 

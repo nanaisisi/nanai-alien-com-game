@@ -10,8 +10,8 @@ pub mod types;
 pub use interaction::UnitInteractionPlugin;
 pub use spawn::{cleanup_units, spawn_initial_units};
 pub use types::{
-    CombatGroupType, DeploymentStatus, HangarBay, MoveModeState, NationalArsenalPool, SelectedUnit,
-    Unit, UnitActionState,
+    CombatGroupLogistics, CombatGroupType, DeploymentStatus, HangarBay, LogisticsState,
+    MaintenanceDoctrine, MoveModeState, NationalArsenalPool, SelectedUnit, Unit, UnitActionState,
 };
 
 pub struct UnitPlugin;
@@ -24,6 +24,9 @@ impl Plugin for UnitPlugin {
             .register_type::<UnitActionState>()
             .register_type::<DeploymentStatus>()
             .register_type::<HangarBay>()
+            .register_type::<CombatGroupLogistics>()
+            .register_type::<LogisticsState>()
+            .register_type::<MaintenanceDoctrine>()
             .add_plugins(UnitInteractionPlugin)
             .add_systems(
                 OnEnter(AppState::InGame),

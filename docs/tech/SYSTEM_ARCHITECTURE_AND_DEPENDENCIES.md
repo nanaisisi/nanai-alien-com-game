@@ -113,11 +113,11 @@ graph TD
 | **空間・地理基盤** ([`src/map/`](../src/map)) | Bevy ECS | インフラ、移動判定、都市、戦闘 | 親タイル（大戦略）とサブタイル（12〜15小タイル）の二重解像度マッピング。 |
 | **動脈インフラ・施設** ([concept_infrastructure_grid_and_transit_artery.md](./discussion/map_tile/concept_infrastructure_grid_and_transit_artery.md)) | 地形グリッド、勢力 | 資源輸送、部隊移動力、後方補給線 | 線路・道路・パイプラインのネットワーク連結度（ボトルネック検知）。 |
 | **資源・サプライチェーン** ([concept_resource_economy_and_logistics.md](./discussion/industry_logistics/concept_resource_economy_and_logistics.md)) | 施設（工廠）、動脈インフラ | 兵器生産、維持コスト、技術開発 | 3層品目（一次/二次/消費材）。弾薬規格（C規格・口径）の分化と事実上の標準化。 |
-| **兵器・戦闘団** ([concept_combat_group_structure_and_rfp_cycle.md](./discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)) | 資源、工廠、技術モジュール | 戦闘解決、非ユニット輸送、領土確保 | 1タイル1戦闘団（増強師団制）。非表示スタック管理とモジュール換装。 |
-| **非ユニット輸送** ([concept_non_unit_sea_and_vehicle_transport.md](./discussion/military_tactics/concept_non_unit_sea_and_vehicle_transport.md)) | 港湾施設、海上回廊、非戦闘車両 | 部隊行軍、通商破壊、展開遅延 | コマを出さない海上輸送船腹プール（SLC）消費と徒歩部隊の車両牽引（展開ラグ付与）。 |
-| **サブタイル戦術戦闘** ([concept_subtile_combat_and_tactical_rules.md](./discussion/map_tile/concept_subtile_combat_and_tactical_rules.md)) | サブタイル構造、戦闘団兵装、盤外インフラ | 施設破壊、残骸生成、領土占領進行 | 大戦略1ターン内で小規模ターン交戦。盤外砲撃・増援遅延・施設破壊の即時大戦略反映。 |
-| **外交危機・合意** ([concept_diplomatic_incidents_and_crises.md](./discussion/events/concept_diplomatic_incidents_and_crises.md)) | 勢力、国境未定地、海上シーレーン | イベント発生、開戦事由、領土移管 | 偶発事象からのエスカレーション・ラダー（警告→制裁→代理紛争→全面戦争）。 |
-| **ドクトリン・ステアリングUI** ([concept_doctrine_steering_ui.md](./discussion/ui_wiki/concept_doctrine_steering_ui.md)) | 産業・軍事・研究パラメータ | プレイヤー入力・方針誘導 | 直接操作を排した「誘導スライダー＋移行ラグ」。工廠ライン転換と前線整備ペナルティ。 |
+| **兵器・戦闘団** ([concept_combat_group_structure_and_rfp_cycle.md](../units/force/concept_combat_group_structure_and_rfp_cycle.md) / [COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)) | 資源、工廠、技術モジュール、動脈インフラ | 戦闘解決、非ユニット輸送、領土確保、兵站ステート | 1タイル1戦闘団（増強師団制）。非表示スタック管理、兵站ステータス（`CombatGroupLogistics` / `LogisticsState`）、共食い整備（Cannibalization）、国家整備ドクトリン（`MaintenanceDoctrine`）。 |
+| **非ユニット輸送** ([concept_non_unit_sea_and_vehicle_transport.md](../discussion/military_tactics/concept_non_unit_sea_and_vehicle_transport.md)) | 港湾施設、海上回廊、非戦闘車両 | 部隊行軍、通商破壊、展開遅延 | コマを出さない海上輸送船腹プール（SLC）消費と徒歩部隊の車両牽引（展開ラグ付与）。 |
+| **サブタイル戦術戦闘** ([concept_subtile_combat_and_tactical_rules.md](../discussion/map_tile/concept_subtile_combat_and_tactical_rules.md)) | サブタイル構造、戦闘団兵装、盤外インフラ | 施設破壊、残骸生成、領土占領進行 | 大戦略1ターン内で小規模ターン交戦。盤外砲撃・増援遅延・施設破壊の即時大戦略反映。 |
+| **外交危機・合意** ([concept_diplomatic_incidents_and_crises.md](../discussion/events/concept_diplomatic_incidents_and_crises.md)) | 勢力、国境未定地、海上シーレーン | イベント発生、開戦事由、領土移管 | 偶発事象からのエスカレーション・ラダー（警告→制裁→代理紛争→全面戦争）。 |
+| **ドクトリン・ステアリングUI** ([concept_doctrine_steering_ui.md](../discussion/ui_wiki/concept_doctrine_steering_ui.md)) | 産業・軍事・研究パラメータ | プレイヤー入力・方針誘導 | 直接操作を排した「誘導スライダー＋移行ラグ」。国家整備ドクトリン（前線維持/温存/厳格準拠）、工廠ライン転換と前線整備ペナルティ。 |
 
 ---
 
