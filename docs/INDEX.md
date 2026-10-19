@@ -30,7 +30,8 @@ docs/
 │   │   ├── ground/                         # 陸上装備（ground_regular_equipment, ground_alien_equipment）
 │   │   ├── naval/                          # 海上装備（naval_regular_equipment, naval_alien_equipment）
 │   │   └── air/                            # 航空装備（air_regular_equipment, air_alien_equipment）
-│   ├── force/                              # 編成思想・エシュロン・運用原則（全10仕様書）
+│   ├── force/                              # 編成思想・エシュロン・運用原則（全11仕様書）
+│   │   ├── ALIEN_IMPLEMENTATION_AND_RECONQUEST_PLAN.md # エイリアン実装・包括的設計および奪還計画書
 │   │   ├── concept_military_echelon_and_combat_groups.md # 軍事編成・部隊単位体系および戦闘団概念仕様書
 │   │   ├── concept_corps_variants.md       # 常設増強軍団バリエーション編成定義書
 │   │   ├── concept_headquarters_and_attached_units.md # 本部管理中隊（HHC）および本部付補助諸兵科仕様
@@ -181,6 +182,10 @@ docs/
 
 軍事エシュロン階層、2進数倍々補完（2-2構成）、国家RFPサイクル、兵站統合モデルを統括する思想・原則文書群。
 
+* **[units/force/ALIEN_IMPLEMENTATION_AND_RECONQUEST_PLAN.md](./units/force/ALIEN_IMPLEMENTATION_AND_RECONQUEST_PLAN.md)**：エイリアン実装・包括的設計および奪還計画書
+  * 野生・固有エイリアン（原住惑星原生生物／生体兵装群）の包括的仕様体系（陸・海・空TO&E、生体兵装の非対称戦闘規則）。
+  * 敵対他国・野生エイリアン巣窟に占領された領土に対する穏当かつ段階的な「奪還計画（Reconquest Operations）」の4段階作戦立案・実施メカニクス。
+  * Rust/Bevy ECSコンポーネント構造、奪還進行システム、および段階的実装ロードマップ。
 * **[units/force/concept_military_echelon_and_combat_groups.md](./units/force/concept_military_echelon_and_combat_groups.md)**：軍事編成・部隊単位体系および戦闘団概念仕様書
   * 小隊（4両/機）・中隊（16両/機）・大隊（64両/機）・連隊・師団（戦闘団）の2進数・倍々構造（$2^N$ バイナリ・バディシステム）。
   * 地上打撃力と直協航空連隊（計32機: 1飛行隊8機×4）を有機的に内包する空地統合戦闘団の基本構造。
