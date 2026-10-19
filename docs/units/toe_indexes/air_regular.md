@@ -18,6 +18,10 @@
 - [民間輸送・旅客機航空団](../toe/air/regular/toe_air_wing_civilian.md) - 民間航空団 詳細編成・運用仕様書
 - [民間武装改修機航空団](../toe/air/regular/toe_air_wing_armed_civilian.md) - 武装民間航空団 詳細編成・運用仕様書
 
+## 世代発展・上位近代化仕様書 (Gen 4)
+
+- [通常航空戦闘団・上位世代発展仕様書（生体技術・可変有機翼改修 / Gen 4）](../toe/air/fusion/toe_air_fusion.md) - 通常航空隊の可変有機翼・自己修復外皮近代化改修
+
 ## 装備・プラットフォーム仕様書
 
 - [航空・正規軍 航空機・装備プラットフォーム仕様書](../equipment/air/regular/air_regular_equipment.md)

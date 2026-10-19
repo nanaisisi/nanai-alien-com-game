@@ -46,8 +46,8 @@ docs/
 │   │   │   └── toe_alien_corps_aviation_melee.md # 陸棲航空格闘軍団 詳細編成・生態仕様書
 │   │   ├── multi_species/                  # 多種族混成陸上軍団
 │   │   │   └── toe_corps_multi_species_ground.md # 多種族混成陸上軍団（全11カテゴリー）仕様書
-│   │   └── fusion/                         # 融合生物陸上軍団
-│   │       └── toe_corps_fusion_ground.md  # 融合生物陸上軍団（全11カテゴリー）仕様書
+│   │   └── fusion/                         # 通常軍団・上位世代発展仕様（Gen 4）
+│   │       └── toe_corps_fusion_ground.md  # 通常陸上軍団・上位世代発展仕様書（生体技術・異星超克改修 / Gen 4）
 │   ├── naval/                              # 海上部隊編成（全12件＋他体系）
 │   │   ├── regular/                        # 人類通常艦隊（全5件）
 │   │   │   ├── toe_naval_fleet_battle.md   # 通常艦隊 詳細編成・運用仕様書
@@ -65,8 +65,8 @@ docs/
 │   │   │   └── toe_alien_fleet_submarine.md # エイリアン潜水艦隊 詳細編成・生態仕様書
 │   │   ├── multi_species/                  # 多種族混成海上戦闘団
 │   │   │   └── toe_naval_multi_species.md  # 混成艦隊（水上艦＋同盟海棲個体）仕様書
-│   │   └── fusion/                         # 融合生物海上戦闘団
-│   │       └── toe_naval_fusion.md         # 融合生物艦隊（生体装甲バイオ艦艇）仕様書
+│   │   └── fusion/                         # 通常艦隊・上位世代発展仕様（Gen 4）
+│   │       └── toe_naval_fusion.md         # 通常海上戦闘団・上位世代発展仕様書（生体技術・耐圧甲殻改修 / Gen 4）
 │   └── air/                                # 航空部隊編成（全26件＋他体系）
 │       ├── regular/                        # 人類通常航空団（全14件）
 │       │   ├── toe_air_wing_civilian.md    # 民間航空団 詳細編成・運用仕様書
@@ -97,8 +97,8 @@ docs/
 │       │   └── toe_alien_air_wing_super_heavy_transport.md # エイリアン超大型輸送航空団 詳細編成・生態仕様書
 │       ├── multi_species/                  # 多種族混成航空戦闘団
 │       │   └── toe_air_multi_species.md    # サイバネ混成航空隊（バイオファイター）仕様書
-│       └── fusion/                         # 融合生物航空戦闘団
-│           └── toe_air_fusion.md           # 融合生物航空団（ジェットバイオ機）仕様書
+│       └── fusion/                         # 通常航空隊・上位世代発展仕様（Gen 4）
+│           └── toe_air_fusion.md           # 通常航空戦闘団・上位世代発展仕様書（生体技術・可変有機翼改修 / Gen 4）
 ├── specs/                                  # 個別兵器・システム確定・基本仕様書（4件）
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
@@ -304,12 +304,12 @@ docs/
 * **[toe_definitions/ground/alien/toe_alien_corps_aviation_melee.md](./toe_definitions/ground/alien/toe_alien_corps_aviation_melee.md)**：陸棲航空格闘軍団 詳細編成・生態仕様書
   * 有翼格闘種（ワイバーン型）が低空急降下し、地上部隊の頭上や車両上面（ルーフ）を爪と鎌腕で切り裂く地上急襲航空群（制空権確保は空棲種の担当）。
 
-### 陸上・混成・融合軍団
+### 陸上・混成軍団および通常上位世代（Gen 4）
 
 * **[toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md](./toe_definitions/ground/multi_species/toe_corps_multi_species_ground.md)**：多種族混成陸上軍団（全11カテゴリー）詳細仕様書
   * 人類兵力50%と同盟エイリアン50%の共生協同運用、自己治癒（再生）および二重兵站ドクトリン。
-* **[toe_definitions/ground/fusion/toe_corps_fusion_ground.md](./toe_definitions/ground/fusion/toe_corps_fusion_ground.md)**：融合生物陸上軍団（全11カテゴリー）詳細仕様書
-  * 自己修復性生体甲殻、ハイブリッド心臓、神経リンク直結操作による有機・無機結合ハイブリッド兵装群。
+* **[toe_definitions/ground/fusion/toe_corps_fusion_ground.md](./toe_definitions/ground/fusion/toe_corps_fusion_ground.md)**：通常陸上軍団・上位世代発展仕様書（生体技術・異星超克改修 / Gen 4）
+  * 通常11カテゴリーの近代化改修。自己修復性生体甲殻、ハイブリッド駆動、神経リンクによる上位世代発展仕様。
 
 ### 海上戦闘団（`toe_definitions/naval/`）
 
@@ -343,12 +343,12 @@ docs/
 * **[toe_definitions/naval/alien/toe_alien_fleet_submarine.md](./toe_definitions/naval/alien/toe_alien_fleet_submarine.md)**：エイリアン潜水艦隊 詳細編成・生態仕様書
   * 深海潜航巨獣、超音波共鳴種、誘導生体魚雷放出種による完全隠密・深海奇襲雷撃群。
 
-#### 多種族混成・融合生物海上戦闘団
+#### 多種族混成海上戦闘団および通常艦隊上位世代（Gen 4）
 
 * **[toe_definitions/naval/multi_species/toe_naval_multi_species.md](./toe_definitions/naval/multi_species/toe_naval_multi_species.md)**：多種族混成海上戦闘団 詳細編成仕様書
   * 人類ミサイル軍艦と同盟海棲戦闘怪獣の混成運用（生体ソナー・魚雷迎撃）。
-* **[toe_definitions/naval/fusion/toe_naval_fusion.md](./toe_definitions/naval/fusion/toe_naval_fusion.md)**：融合生物海上戦闘団 詳細編成仕様書
-  * 有機装甲、無音鰭推進、生体魚雷射出管、潜航・浮上シームレス移行型バイオ軍艦。
+* **[toe_definitions/naval/fusion/toe_naval_fusion.md](./toe_definitions/naval/fusion/toe_naval_fusion.md)**：通常海上戦闘団・上位世代発展仕様書（生体技術・耐圧甲殻改修 / Gen 4）
+  * 通常艦艇の近代化改修。有機装甲、無音鰭推進、生体魚雷射出管、潜航・浮上両用化仕様。
 
 ### 航空戦闘団（`toe_definitions/air/`）
 
@@ -408,12 +408,12 @@ docs/
 * **[toe_definitions/air/alien/toe_alien_air_wing_super_heavy_transport.md](./toe_definitions/air/alien/toe_alien_air_wing_super_heavy_transport.md)**：エイリアン超大型輸送航空団 詳細編成・生態仕様書
   * 巨大型嚢胞輸送怪獣、浮遊護衛飛行群によるタイタン級決戦生体の一括戦域間空輸群。
 
-#### 多種族混成・融合生物航空戦闘団
+#### 多種族混成航空戦闘団および通常航空隊上位世代（Gen 4）
 
 * **[toe_definitions/air/multi_species/toe_air_multi_species.md](./toe_definitions/air/multi_species/toe_air_multi_species.md)**：多種族混成航空戦闘団 詳細編成仕様書
   * パイロット搭乗型サイバネ飛行獣、胞子散布バイオファイターによる極限格闘戦。
-* **[toe_definitions/air/fusion/toe_air_fusion.md](./toe_definitions/air/fusion/toe_air_fusion.md)**：融合生物航空戦闘団 詳細編成仕様書
-  * 有機可変翼ジェット機、生体プラズマ爆撃機、無着陸長期滞空バイオアビオニクス機。
+* **[toe_definitions/air/fusion/toe_air_fusion.md](./toe_definitions/air/fusion/toe_air_fusion.md)**：通常航空戦闘団・上位世代発展仕様書（生体技術・可変有機翼改修 / Gen 4）
+  * 通常航空隊の近代化改修。有機可変翼ジェット機、生体プラズマ爆撃機、無着陸長期滞空バイオアビオニクス機。
 
 ---
 

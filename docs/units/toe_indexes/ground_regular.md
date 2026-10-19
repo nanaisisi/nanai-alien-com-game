@@ -16,6 +16,10 @@
 - [学術調査・観測軍団](../toe/ground/regular/toe_corps_science_survey.md) - 調査・科学探査軍団 詳細編成仕様書
 - [避難民・民間輸送縦隊](../toe/ground/regular/toe_corps_civilian_refugees.md) - 民間人・避難民群（Tier 0-A）詳細編成・運用仕様書
 
+## 世代発展・上位近代化仕様書 (Gen 4)
+
+- [通常陸上軍団・上位世代発展仕様書（生体技術・異星超克改修 / Gen 4）](../toe/ground/fusion/toe_corps_fusion_ground.md) - 通常11カテゴリーの生体技術・自己修復装甲近代化改修
+
 ## 装備・車両仕様書
 
 - [陸上・正規軍 兵器・車両仕様書](../equipment/ground/regular/ground_regular_equipment.md)
