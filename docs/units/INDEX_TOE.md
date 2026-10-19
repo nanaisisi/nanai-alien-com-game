@@ -15,7 +15,7 @@
 ### 1. 陸上部隊 (Ground Forces)
 
 1. **[陸上・正規軍編成 (ground/regular)](./toe_indexes/ground_regular.md)**
-   - 人類勢力の主力機甲・歩兵・特科・陸上戦艦・民間部隊（計13文書。上位世代発展含む）
+   - 人類勢力の主力機甲・歩兵・特科・陸上戦艦・民間部隊（計14文書。通常13文書＋上位世代発展1文書）
 2. **[陸上・エイリアン軍団 (ground/alien)](./toe_indexes/ground_alien.md)**
    - 野生・固有エイリアンの小型群から超大型コロッサス・砲撃種（計6文書）
 3. **[陸上・多種族協調編成 (ground/multi_species)](./toe_indexes/ground_multi_species.md)**
@@ -24,7 +24,7 @@
 ### 2. 航空部隊 (Air Wings)
 
 1. **[航空・正規軍編成 (air/regular)](./toe_indexes/air_regular.md)**
-   - 戦闘機・爆撃機・偵察・輸送・空中戦艦・空中空母・民間機（計15文書。上位世代発展含む）
+   - 戦闘機・爆撃機・偵察・輸送・空中戦艦・空中空母・民間機（計15文書。通常14文書＋上位世代発展1文書）
 2. **[航空・エイリアン編隊 (air/alien)](./toe_indexes/air_alien.md)**
    - 生体飛行翼・迎撃種・爆撃種・空中生体戦艦/母艦群（計10文書）
 3. **[航空・多種族協調編成 (air/multi_species)](./toe_indexes/air_multi_species.md)**
@@ -33,7 +33,7 @@
 ### 3. 海上部隊 (Naval Fleets)
 
 1. **[海上・正規軍編成 (naval/regular)](./toe_indexes/naval_regular.md)**
-   - 戦艦・空母・巡洋駆逐艦・フリゲート・民間船団（計6文書。上位世代発展含む）
+   - 戦艦・空母・巡洋駆逐艦・フリゲート・民間船団（計7文書。通常6文書＋上位世代発展1文書）
 2. **[海上・エイリアン艦隊 (naval/alien)](./toe_indexes/naval_alien.md)**
    - 超弩級生体戦艦・生体空母・通常群・潜水生体群（計6文書）
 3. **[海上・多種族協調編成 (naval/multi_species)](./toe_indexes/naval_multi_species.md)**

@@ -18,7 +18,7 @@
 
 ## 世代発展・上位近代化仕様書 (Gen 4)
 
-- [通常陸上軍団・上位世代発展仕様書（生体技術・異星超克改修 / Gen 4）](../toe/ground/fusion/toe_corps_fusion_ground.md) - 通常11カテゴリーの生体技術・自己修復装甲近代化改修
+- [通常陸上軍団・上位世代発展仕様書（生体技術・異星超克改修 / Gen 4）](../toe/ground/fusion/toe_corps_fusion_ground.md) - 通常12カテゴリーの生体技術・自己修復装甲近代化改修
 
 ## 装備・車両仕様書
 

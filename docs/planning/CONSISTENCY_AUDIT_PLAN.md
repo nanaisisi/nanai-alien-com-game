@@ -77,9 +77,11 @@ flowchart TD
 
 直近の主要な意思決定が、全体設計および個別仕様書に矛盾なく浸透しているかを検証・修正する。
 
-- [ ] **2.1 融合ユニット（Fusion Units）の通常ツリー上位統合の反映**
-  - [docs/GAME_DESIGN.md](../GAME_DESIGN.md) 内のスキルツリー・研究系統図において、「独立融合ツリー」記述を撤廃し、「正規軍ツリー上位のGen 3/4近代化改修」として再定義。
-  - `docs/units/toe/` 内の各仕様書における世代表記（Gen 1〜Gen 4）の整合性確認。
+- [x] **2.1 融合ユニット（Fusion Units）の通常ツリー上位統合の反映**
+  - [GAME_DESIGN.md](../GAME_DESIGN.md) のセクション 3.1.4, 3.2.3, 3.3.3 において、「独立融合ツリー」を撤廃し「正規軍ツリー上位のGen 3/4近代化改修」として統合されていることを確認。
+  - `docs/units/toe/` 内の各仕様書（`toe_corps_fusion_ground.md`, `toe_naval_fusion.md`, `toe_air_fusion.md`）における世代表記（Gen 1〜Gen 4）および「通常ツリー上位近代化（Gen 4）」の位置づけを点検・整備。
+  - 陸上Gen 4対応表に「陸上戦艦打撃軍団」の生体甲殻改修を追加し、通常12カテゴリー（正規軍全編成）との整合を完了。
+  - [INDEX_TOE.md](../units/INDEX_TOE.md) および各インデックスの正規軍仕様書数表記（陸上14、航空15、海上7）を「通常＋上位世代発展1」として完全同期。
 - [ ] **2.2 兵器耐用年数（Weapon Lifespan / Degradation）の定義整合性**
   - [COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) に追加された耐用年数（消耗度）および共食い整備ルールが、各兵科・装備仕様と調和しているか確認。
   - 航空・海上・陸上装備における耐用年数パラメータの適用基準確認。
@@ -117,7 +119,7 @@ flowchart TD
 | フェーズ | 対象領域 | 主要担当ファイル | ステータス | 備考 |
 | :--- | :--- | :--- | :---: | :--- |
 | **Phase 1** | 構造・リンク整合 | `docs/INDEX.md`, `docs/units/INDEX_TOE.md` | 完了 | 1.1, 1.2, 1.3 すべて完了（構造基盤整備完了） |
-| **Phase 2** | 思想・概念整合 | `docs/GAME_DESIGN.md`, `docs/units/toe/` | 未着手 | 融合ツリー統合・耐用年数 |
+| **Phase 2** | 思想・概念整合 | `docs/GAME_DESIGN.md`, `docs/units/toe/` | 進行中 | 2.1完了、2.2未着手 |
 | **Phase 3** | データ・数値整合 | `docs/units/equipment/`, `docs/units/toe/` | 未着手 | 定員8名・小隊4両・口径 |
 | **Phase 4** | 実装・技術整合 | `docs/tech/`, `docs/specs/`, `src/` | 未着手 | Bevy ECS・資源橋渡し |
 
