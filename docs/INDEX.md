@@ -60,10 +60,11 @@ docs/
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
 │   ├── RESOURCE_IMPLEMENTATION_BRIDGE.md   # 資源系 実装橋渡し案
 │   └── STARTUP_OPTIONS.md                  # 起動オプション・コマンドライン引数仕様書
-├── planning/                               # 開発計画・ロードマップ・課題管理（7件）
+├── planning/                               # 開発計画・ロードマップ・課題管理（8件）
 │   ├── CONSISTENCY_AUDIT_PLAN.md           # 仕様・ドキュメント整合性チェック計画書（本計画）
 │   ├── MISSING_DOCUMENTS_ROADMAP.md        # 未作成・不足ドキュメント体系と開発ロードマップ
 │   ├── MISSING_SPECS_EXECUTION_PLAN.md     # 不足ドキュメント整備・具体化実行計画書
+│   ├── PHASE2_MISSING_SPECS_EXECUTION_PLAN.md # 第2期 不足ドキュメント整備・具象仕様化実行計画書
 │   ├── PENDING_ISSUES.md                   # 未確定・検討課題まとめ
 │   ├── SECONDARY_MISSING_SPECS.md          # 二次的不足ドキュメント・システム統合仕様書体系
 │   ├── SECONDARY_SPECS_EVALUATION.md       # 2次的不足仕様・検討論点と実装アプローチ評価書
