@@ -1,4 +1,4 @@
-﻿# ドキュメント構成・目録 (Documentation Index)
+# ドキュメント構成・目録 (Documentation Index)
 
 本プロジェクト（Nanai Alien Com Game）における各種仕様書・検討資料の構成および索引です。
 
@@ -44,9 +44,10 @@ docs/
 │   └── specs/                              # 師団直協・高級装甲兵器仕様書（2件）
 │       ├── AVIATION_ASSETS_AND_DOCTRINE.md # 師団直協航空アセット運用仕様書
 │       └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md # 二脚歩行戦闘車両仕様書
-├── specs/                                  # 共通システム確定・基本仕様書（2件）
+├── specs/                                  # 共通システム確定・基本仕様書（3件）
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
-│   └── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
+│   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
+│   └── WATER_AND_SALINITY_SYSTEM.md        # 水域・塩分濃度システム仕様書
 ├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計（3件）
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
@@ -142,6 +143,11 @@ docs/
   * 各国の体制・文化圏背景、母星と入植惑星での外交関係（具体的な国名は未確定・継続検討事項）
   * アフィニティ（思想・適応路線）や経済/軍事ボーナスの基本方向性
   * ゲーム実装用データ: [`../assets/data/factions.csv`](../assets/data/factions.csv), [`../assets/data/city_names.csv`](../assets/data/city_names.csv)（勢力マスター＆全192都市名リスト）
+* **[specs/WATER_AND_SALINITY_SYSTEM.md](./specs/WATER_AND_SALINITY_SYSTEM.md)**：水域・塩分濃度システム仕様書
+  * 外洋（Ocean）と閉鎖水域（Lake）の水域グラフ連結成分（BFS）自動判定ロジック。
+  * 実用塩分単位（PSU / ‰）に基づく4段階水質区分（淡水、汽水、海水、高塩分・塩湖）。
+  * カスピ海型巨大内陸湖（汽水）や死海型乾燥塩湖（鉱物資源特化）の環境適応・基礎産出力・戦略的差別化。
+  * 3Dマテリアル、ミニマップピクセル描画、およびHUD（PLANET SURVEYOR）への情報統合。
 * **[units/specs/AVIATION_ASSETS_AND_DOCTRINE.md](./units/specs/AVIATION_ASSETS_AND_DOCTRINE.md)**：師団直協航空アセット（戦闘・輸送ヘリ）運用仕様書
   * 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機）の機体スペック・役割定義。
   * CAS（近接航空支援）の一撃離脱・滞空時間制限、対空火網との相互作用。
