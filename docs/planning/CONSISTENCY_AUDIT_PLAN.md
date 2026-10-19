@@ -116,10 +116,12 @@ flowchart TD
 - [x] **4.1 ECSコンポーネント定義の同期**
   - [COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) で定義された兵站・整備ステートマシン（`CombatGroupLogistics`, `LogisticsState`, `MaintenanceDoctrine`）を [SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md](../tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md) に完全同期。
   - 実装コード [`src/unit/types.rs`](../../src/unit/types.rs)、[`src/unit/mod.rs`](../../src/unit/mod.rs)、[`src/unit/spawn.rs`](../../src/unit/spawn.rs) に上記ECSコンポーネントを定義・リフレクト登録・初期スポーン付与し、`cargo check`（警告・エラー0件、終了コード0）での完全整合を確認。
-- [ ] **4.2 資源・サプライチェーン・兵站ステートマシンの接続**
-  - [RESOURCE_ECONOMY_SYSTEM.md](../specs/RESOURCE_ECONOMY_SYSTEM.md) / [RESOURCE_IMPLEMENTATION_BRIDGE.md](../tech/RESOURCE_IMPLEMENTATION_BRIDGE.md) と、兵站充足度（`supply_satisfaction`）算出ロジックの連携整合。
-- [ ] **4.3 実装タスク・ロードマップへの反映**
-  - [MISSING_DOCUMENTS_ROADMAP.md](./MISSING_DOCUMENTS_ROADMAP.md) および [PENDING_ISSUES.md](./PENDING_ISSUES.md) の未完了タスク・課題との同期。
+- [x] **4.2 資源・サプライチェーン・兵站ステートマシンの接続**
+  - [RESOURCE_ECONOMY_SYSTEM.md](../specs/RESOURCE_ECONOMY_SYSTEM.md)（資源・サプライチェーン体系）および [RESOURCE_IMPLEMENTATION_BRIDGE.md](../tech/RESOURCE_IMPLEMENTATION_BRIDGE.md)（資源実装橋渡し案 Phase 6）と、[COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) の兵站充足度 $S$（`CombatGroupLogistics.supply_satisfaction`）算出ロジックを接続整合。
+  - タイルインフラ結合度・後方補給デポ距離と弾薬・燃料・野戦交換部品の供給ループが、部隊ステートマシン（Normal ➔ Strained ➔ Critical ➔ Exhausted）および自律共食い整備（Cannibalization）に直結する循環モデルの整合性を確認。
+- [x] **4.3 実装タスク・ロードマップへの反映**
+  - [MISSING_DOCUMENTS_ROADMAP.md](./MISSING_DOCUMENTS_ROADMAP.md) および [PENDING_ISSUES.md](./PENDING_ISSUES.md) において、策定済となった最優先仕様書「SEC-01: 戦闘団（TO&E）× 装備更新・兵站ステアリング統合データ仕様書（[COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)）」を「完了・策定済」としてステータスを同期。
+  - 次期開発ターゲットである「SEC-02: 多層ステアリングUI仕様」および「SEC-03: 資源・部品・弾薬マスター定義書」への接続を整流化。
 
 ---
 
@@ -127,10 +129,10 @@ flowchart TD
 
 | フェーズ | 対象領域 | 主要担当ファイル | ステータス | 備考 |
 | :--- | :--- | :--- | :--- | :--- |
-| **Phase 1** | 構造・リンク整合 | `docs/INDEX.md`, `docs/units/INDEX_TOE.md` | 完了 | 1.1, 1.2, 1.3 すべて完了（構造基盤整備完了） |
-| **Phase 2** | 思想・概念整合 | `docs/GAME_DESIGN.md`, `docs/units/toe/` | 完了 | 2.1, 2.2 すべて完了（概念レイヤー整合完了） |
-| **Phase 3** | データ・数値整合 | `docs/units/equipment/`, `docs/units/toe/` | 完了 | 3.1, 3.2, 3.3 すべて完了（数値・口径・生態パラメータ整合完了） |
-| **Phase 4** | 実装・技術整合 | `docs/tech/`, `docs/specs/`, `src/` | 進行中 | 4.1完了、4.2・4.3未着手 |
+| **Phase 1** | 構造・リンク整合 | `docs/INDEX.md`, `docs/units/INDEX_TOE.md` | **完了** | 1.1, 1.2, 1.3 すべて完了（構造基盤整備完了） |
+| **Phase 2** | 思想・概念整合 | `docs/GAME_DESIGN.md`, `docs/units/toe/` | **完了** | 2.1, 2.2 すべて完了（概念レイヤー整合完了） |
+| **Phase 3** | データ・数値整合 | `docs/units/equipment/`, `docs/units/toe/` | **完了** | 3.1, 3.2, 3.3 すべて完了（数値・口径・生態パラメータ整合完了） |
+| **Phase 4** | 実装・技術整合 | `docs/tech/`, `docs/specs/`, `src/` | **完了** | 4.1, 4.2, 4.3 すべて完了（Bevy ECS・兵站ステート同期完了） |
 
 ---
 

@@ -136,7 +136,7 @@
 
 | 優先度 | ドキュメント / 検討テーマ | 主な定義内容・アクション | ステータス |
 | :----: | :--- | :--- | :---: |
-| **最優先** | **戦闘団 × 兵站ステアリング統合データ仕様書 (SEC-01)** | 16スロット戦闘団のインフラ結合度による自動補給、兵站断絶時の稼働率低下と共食い整備（Cannibalization）のState遷移ロジック（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
+| **最優先** | **戦闘団 × 兵站ステアリング統合データ仕様書 (SEC-01)** | 16スロット戦闘団のインフラ結合度による自動補給、兵站断絶時の稼働率低下と共食い整備（Cannibalization）のState遷移ロジック（[`COMBAT_GROUP_LOGISTICS_INTEGRATION.md`](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)） | **完了 (策定済)** |
 | **最優先** | **多層ステアリングUI画面遷移・操作フロー仕様書 (SEC-02)** | 大戦略スライダー、RFP提示、金型転換移行ラグ（Re-tooling）、現場改修（Field Mod）承認ポップアップの画面レイアウトと操作動線（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
 | **高** | **資源・部品・弾薬マスター定義書（Data Dictionary） (SEC-03)** | 4種一次資源、中間部品、弾薬規格・燃料・交換部品の具体的な入出力レート・保管容量モデル（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
 | **高** | **初期モジュール・基本シャシー実数値カタログ仕様書 (SEC-04)** | 競技的平等を保証する共通規格、装輪・履帯・多脚スペック差、初期兵装・装甲、Turn 0スターター戦力（[`concept_starter_modules_and_common_chassis_catalog.md`](../discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md) の実数値化） | **構想完了 / 詳細化待機** |

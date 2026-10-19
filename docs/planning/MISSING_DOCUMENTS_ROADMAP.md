@@ -126,7 +126,7 @@
 
 【第4シリーズ: システム統合・データ構造・UI操作フロー（次の開発フェーズ・最優先）】
   ※ 詳細は [SECONDARY_MISSING_SPECS.md](./SECONDARY_MISSING_SPECS.md) を参照
-  ├─ ⑩ 戦闘団（TO&E）× 装備更新・兵站ステアリング統合データ仕様書 (SEC-01)
+  ├─ ⑩ 戦闘団（TO&E）× 装備更新・兵站ステアリング統合データ仕様書 (SEC-01) ── [策定完了: COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)]
   │     └─ 16スロット戦闘団のインフラ結合度による自動補給、兵站途絶時の稼働率低下と共食い整備（Cannibalization）のState遷移ロジック
   └─ ⑪ 多層ステアリングUI画面遷移・操作フロー仕様書 (SEC-02)
         └─ 大戦略スライダー、RFP提示、金型転換移行ラグ（Re-tooling）、現場改修（Field Mod）承認ポップアップの画面レイアウトと操作動線

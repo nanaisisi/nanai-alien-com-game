@@ -87,7 +87,7 @@ pub struct FactionStockpile(pub HashMap<FactionId, ResourceAmounts>);
 | 3 | 維持費消費（タイル進展・部隊の稼働率）と赤字時のペナルティ | 資源不足で稼働率低下 |
 | 4 | 輸送（タイル間の在庫移動、インフラ結合度による容量制約） | 在庫が移動する |
 | 5 | 二次中間財の加工（工場タイルの加工能力値） | 変換レシピが動作 |
-| 6 | 兵站消費財（弾薬・燃料）と補給途絶 | 前哨の補給途絶が発生 |
+| 6 | 兵站消費財（弾薬・燃料）と補給途絶（`CombatGroupLogistics.supply_satisfaction` との接続） | [COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) に基づき、インフラ結合度・距離から算出された兵站充足度 $S$ に応じて部隊が Normal/Strained/Critical/Exhausted へ遷移し、自律共食い整備（Cannibalization）が動作 |
 
 ## 7. 未決事項
 
