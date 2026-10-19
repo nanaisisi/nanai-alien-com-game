@@ -87,7 +87,7 @@
 | **軽歩兵軍団** | 徒歩主体の軽歩兵軍団（山岳・隘路・森林への高い適性） | 徒歩行軍ライフル大隊、携帯対戦車（ATM）班、60C/81C軽迫撃砲、車両なし（詳細は [`./toe_definitions/ground/regular/toe_corps_light_infantry.md`](./toe_definitions/ground/regular/toe_corps_light_infantry.md) 参照） |
 | **自動車化軽歩兵軍団** | 4x4軽装甲車（LAV）とトラックによる自動車化部隊。牽引砲のため展開と砲撃回避が苦手 | 4x4軽装甲車歩兵連隊、トラック輸送班、牽引式120C重迫撃砲、牽引式160C榴弾砲、自動車化整備班（詳細は [`./toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md`](./toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md) 参照） |
 | **自動車化歩兵軍団** | 同一の4x4軽装甲車（LAV）基幹にトラック架装自走砲を組み合わせた部隊。非装甲・軽装甲部隊の中では最上位 | 4x4軽装甲車歩兵連隊、8x8トラック架装120C自走迫、160C装輪自走榴弾砲、自動車化整備大隊（詳細は [`./toe_definitions/ground/regular/toe_corps_motorized_infantry.md`](./toe_definitions/ground/regular/toe_corps_motorized_infantry.md) 参照） |
-| **装輪機動軍団（装輪装甲軍団）** | 8x8装輪装甲車（Std-W8）統一。路面での高速急行展開力と前線装甲・火力を両立 | 105C火力戦闘車（MCV）、装輪IFV/APC、装輪自走迫撃砲、装輪自走榴弾砲、装輪ARV、直協航空隊（詳細は [`./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md`](./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md) 参照） |
+| **装輪機動軍団（装輪装甲軍団）** | 8x8装輪装甲車（Std-W8）統一。路面での高速急行展開力と前線装甲・火力を両立 | 110C火力戦闘車（MCV）、装輪IFV/APC、装輪自走迫撃砲、装輪自走榴弾砲、装輪ARV、直協航空隊（詳細は [`./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md`](./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md) 参照） |
 | **空中機動・空地強襲軍団** | ヘリコプターやVTOL機による地形無視の垂直急襲・後方遮断部隊 | 空挺軽IFV連隊、空挺超軽量自走迫、強襲航空旅団（VTOL/ヘリ）、吊り下げ榴弾砲、FARP支援群（詳細は [`./toe_definitions/ground/regular/toe_corps_airmobile.md`](./toe_definitions/ground/regular/toe_corps_airmobile.md) 参照） |
 | **装甲化軍団（諸兵科連合装甲軍団）** | 戦車2連隊・装輪偵察2連隊・装甲歩兵連隊によるバランス型装甲軍団。機動・索敵・突破を高度に両立 | 戦車2個連隊（戦車128両＋重IFV128両）、装輪偵察2個連隊（左右両翼スクリーン160両）、装甲歩兵連隊、自走特科・高射連隊、直協航空隊（詳細は [`./toe_definitions/ground/regular/toe_corps_armored.md`](./toe_definitions/ground/regular/toe_corps_armored.md) 参照） |
 | **常設増強機甲軍団（重機甲軍団）** | 戦車4連隊基幹。圧倒的不整地突破力・戦略打撃の中核。左右両翼スクリーンと航空打撃群を完全内包 | 4個諸兵科連合機甲連隊（戦車256両＋重IFV256両＋自走重迫128両）、装甲歩兵2個連隊、左右両翼偵察連隊（装輪160両）、戦車車体160C/210C特科、多層高射連隊、直協航空隊（計48機）（詳細は [toe_corps_heavy_armored.md](./toe_definitions/ground/regular/toe_corps_heavy_armored.md) 参照） |
@@ -123,7 +123,7 @@
 | **多種族混成軽歩兵軍団** | 徒歩主体の軽歩兵部隊 | 歩兵連隊、エイリアン軽突撃個体、迫撃砲 |
 | **多種族混成自動車化軽歩兵軍団** | 路面での機動力を持つ。牽引砲のため展開と砲撃回避が苦手 | 軽装甲車歩兵連隊、エイリアン重殻随伴班、牽引重迫撃砲、牽引榴弾砲、自動車化整備班 |
 | **多種族混成自動車化歩兵軍団** | 路面での機動力と展開力に優れ、非装甲化部隊の中では最上位 | 軽装甲車歩兵連隊、自走重迫撃砲、自走榴弾砲、自動車化整備班 |
-| **多種族混成装輪機動軍団** | 装輪装甲車による部隊。路面での機動力と展開力に優れ、装甲と火力を併せ持つ | 装輪装甲MCV、装輪IFV/APC、装輪自走榴弾砲、共生エイリアン護衛 |
+| **多種族混成装輪機動軍団** | 装輪装甲車による部隊。路面での機動力と展開力に優れ、装甲と火力を併せ持つ | 装輪装甲MCV（110C）、装輪IFV/APC、装輪自走榴弾砲、共生エイリアン護衛 |
 | **多種族混成航空化機動軍団** | ヘリコプターやVTOL機による航空機動部隊 | 空挺歩兵連隊、飛翔エイリアン混成隊、吊り下げ榴弾砲、航空整備班 |
 | **多種族混成装甲化軍団** | 戦車2連隊・装輪偵察2連隊・装甲歩兵にエイリアン強襲体を複合 | 戦車連隊、装輪偵察連隊、装甲歩兵連隊、エイリアン重撃爪個体、自走特科 |
 | **多種族混成機甲軍団** | 戦車部隊と随伴装甲車化歩兵部隊、超大型エイリアン個体で不整地突破 | 戦車連隊、装軌IFV、巨大生体装甲怪獣、装甲工兵、移動整備班 |
