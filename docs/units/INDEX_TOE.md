@@ -38,3 +38,8 @@
    - 超弩級生体戦艦・生体空母・通常群・潜水生体群（計6文書）
 3. **[海上・多種族協調編成 (naval/multi_species)](./toe_indexes/naval_multi_species.md)**
    - 人類艦艇と海棲巨大生物による混成連合艦隊（1文書）
+
+---
+
+> [!NOTE]
+> 旧「融合型インデックス」（`ground_fusion.md`, `air_fusion.md`, `naval_fusion.md`）は互換性のため残されていますが、内容はすべて各領域の正規軍インデックス内の「世代発展・上位近代化仕様書 (Gen 4)」に統合されています。
