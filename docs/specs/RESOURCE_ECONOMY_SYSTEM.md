@@ -1,4 +1,4 @@
-﻿# 資源・経済・サプライチェーン体系目録 (Resource, Economy & Supply Chain Index)
+# 資源・経済・サプライチェーン体系目録 (Resource, Economy & Supply Chain Index)
 
 本ドキュメントは、本作（4X大戦略＋脱・都市中心タイル進展＋諸兵科連合戦闘団制）における**「資源品目・加工連鎖・弾薬規格・兵站インフラ・食料」**の経済・産業モデルを俯瞰・体系的に確認するための統合目録（インデックス兼リファレンス）です。
 
@@ -80,6 +80,7 @@ flowchart TD
 | ドキュメント | 概要・主要論点 |
 | :--- | :--- |
 | **[concept_resource_economy_and_logistics.md](../discussion/industry_logistics/concept_resource_economy_and_logistics.md)** | **資源モデルの基本設計書**。一次（4種）・二次（4種）・消費財（3種）の3層品目体系。陸・海・工業の食料3大生産方式と異星度（0〜100%）。弾薬規格の分化・再統合。 |
+| **[concept_mineral_resources_and_alien_concentration.md](../discussion/industry_logistics/concept_mineral_resources_and_alien_concentration.md)** | **鉱物資源・エイリアン濃縮鉱床と産業利用仕様書**。埋蔵量なし恒久産出、師団規模に見合う産出量レンジ、エイリアン生体鉱化による濃縮集約、ハニーハーベスト vs 巣窟殲滅鉱脈化、3大産業利用ライン。 |
 | **[concept_ammunition_caliber_standards_c.md](../discussion/military_tactics/concept_ammunition_caliber_standards_c.md)** | **弾薬・火砲規格体系（C規格 / 単位：C）仕様書**。1C ≒ 1mm相当の普遍ボア径単位。小火器（6C/8C）から重火砲（210C）までの階層体系と薬莢長非依存クラス設計。 |
 
 ### ② 産業構造・ブートローダー工廠・生産技術

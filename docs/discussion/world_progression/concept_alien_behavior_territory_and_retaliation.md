@@ -1,0 +1,292 @@
+# エイリアン自律挙動・独立勢力圏および逆襲システム仕様書
+
+## (Alien Autonomous Behavior, Ecological Territory & Retaliation System Specification)
+
+本ドキュメントは、本作（4X大戦略＋サブタイル戦術・諸兵科連合戦闘団制）における**「原住エイリアンの平時友好挙動」「人類国家の政治的領土とは独立した生態勢力圏（バイオーム・テリトリー）」「共存の力学」「境界侵犯・過剰刺激に対する組織的逆襲（Retaliation）メカニクス」**を規定する詳細仕様検討書である。
+
+---
+
+## 1. 基本設計思想：「害虫」から「異星の固有生態系文明」へ
+
+本作におけるエイリアン（原生生物）は、旧来の戦略シミュレーションに見られる「見敵必殺でプレイヤー基地に突撃してくる野生害虫（Barbarian / Neutral Creep）」ではない。
+高度な知性や独自の生命循環、コミュニケーション手段を持つ**「惑星の先住者にして巨大な生態系ネットワーク」**である。
+
+```text
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      エイリアン挙動の3大設計方針                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+  ①【割と友好的（温厚・共生・好奇心）】
+    ・初期状態において人類に理不尽な敵意を持たず、基本的には温厚・無関心。
+    ・非武装の調査隊や通常の軍団行軍に対して、遠巻きに眺めたり並走する程度の平穏な接触。
+
+  ②【人類とは独立した「生態勢力圏（Territory / Sanctuary）」】
+    ・人類勢力の政治的国境線（領土宣言）とは直交する「生息圏・回遊路・給餌コア」。
+    ・国家の領土内にエイリアン勢力圏が重なって存在し、相互侵犯しなければ平穏に同居する。
+
+  ③【侵犯に対する冷徹な防衛と「組織的逆襲（Retaliation / Uprising）」】
+    ・巣窟の攻撃、濃縮鉱床の強奪、過剰な重工業汚染といった「一線」を越えた際に逆鱗に触れる。
+    ・単なる散発的反撃ではなく、広域ネットワークが連動し、人類の補給線・FOBを狙う知能的反攻。
+    ・原因が解消・鎮静化されれば、再び温厚な共存状態へと沈静化（和解）が可能。
+```
+
+---
+
+## 2. 独立した生態勢力圏（Ecological Territory Domain）の重層構造
+
+人類の政治的領土（国境）とエイリアンの生態圏は、競合・排他するのではなく**「直交する二重レイヤー構造」**として同一マップ上に展開される。
+
+```text
++-----------------------------------------------------------------------------+
+|              レイヤー 1: 人類政治領土 (Political Border Layer)              |
+|  - 都市・タイル開発・地目指定（居住・産業・軍事・採取）                     |
+|  - 国家間の主権・条約・開拓権の範囲                                         |
++--------------------------------------+--------------------------------------+
+                                       |
+                               [ 相互浸透・共存 ]
+                                       |
++--------------------------------------v--------------------------------------+
+|              レイヤー 2: エイリアン生態圏 (Ecological Territory Layer)      |
+|  - 巣窟核（Brood Sanctuary）、生体濃縮鉱床、大気・地中フェロモン回廊        |
+|  - 人類領土を横断する季節回遊路、海洋遊泳路、高高度飛翔ルート               |
++-----------------------------------------------------------------------------+
+```
+
+### 2.1 エイリアン勢力圏の構成要素
+
+1. **聖域核（Brood Sanctuary / Core Nest）**:
+   * 女王核や繁殖嚢胞が存在する最重要タイル（半径1〜2タイル）。
+   * エイリアンにとっての「聖域」であり、侵犯に対して極めて敏感。
+2. **回遊・給餌回廊（Migration & Foraging Corridor）**:
+   * 森林、河川、沿岸部、山岳の谷間などに伸びる広域ネットワーク。
+   * エイリアンの群れ（Combat Group相当）が季節やターン経過で温厚に回遊・採餌する。
+   * 人類の道路やインフラと交差していても、直接破壊されることはなく共存可能。
+3. **生体濃縮鉱床・給餌場（Bio-Mineral Lodes）**:
+   * [`concept_mineral_resources_and_alien_concentration.md`](./../industry_logistics/concept_mineral_resources_and_alien_concentration.md) で規定される、エイリアンが集約・脱皮殻を蓄積する場。
+
+### 2.2 領土と生息圏の同居ルール
+
+* 人類の国境がエイリアンの生息圏を内包しても、それだけで戦争状態（交戦）にはならない。
+* 人類はエイリアンが闊歩するタイルを領土に組み込み、その下で低刺激な「採取」や「農業」を行うことができる。
+* 人類側が「自然共生特区（Sanctuary Zone）」として保護すれば、エイリアンは防衛哨戒として機能し、他国軍の領内侵入を阻止する天然の障壁となる。
+
+---
+
+## 3. 平時の自律挙動（温厚・友好的インタラクション）
+
+平時（友好度・刺激値が正常な状態）におけるエイリアンの自律挙動ルーチン。
+
+```text
+ ［平時行動モード］
+   ├─ 日向ぼっこ・徘徊 (Basking / Wandering):
+   │   群れを崩さず、自然地形の周囲を穏やかに移動。周囲の植物や鉱化嚢胞を食む。
+   │
+   ├─ 好奇心・遠巻き観察 (Curious Observation):
+   │   人類の調査部隊（科学探査軍団）が接近すると、敵対せず周囲を観察。
+   │   調査成功率・現地バイオ研究速度に+20%のボーナスを提供。
+   │
+   ├─ 緩やかな随伴行軍 (Gentle Escort):
+   │   友好的な人類部隊が近くを行軍する際、一定距離を保ちながら並走。
+   │   他国部隊や敵性勢力に対する抑止力として作用。
+   │
+   └─ 資源のおすそ分け (Honey Harvesting):
+       生体濃縮鉱床の外縁部に剥ぎ落とされた脱皮殻や余剰鉱物を、人類作業班が無害に回収。
+```
+
+---
+
+## 4. 刺激フリクションと逆襲トリガー（何が怒らせるのか）
+
+エイリアンは温厚であるが、人類が一定の越境・環境負荷（刺激値：`Irritation Level`）を与えると、段階的に態度を硬化させる。
+
+### 4.1 刺激値（0〜100）の上昇要因
+
+| 行為・刺激源 | 刺激値上昇幅 | 生態系への影響・理由 |
+| :--- | :---: | :--- |
+| **通常部隊の通行** | `+0 / T` | 害意のない行軍には無反応。 |
+| **低刺激採取・農業 (Tier 1〜2)** | `+1〜2 / T` | 自然な土地利用。自然減衰（-2/T）の範囲内で共存可能。 |
+| **森林の伐採・沼地埋め立て** | `+5〜10 / 回` | 給餌地の物理的破壊。 |
+| **重工業コンビナート (Tier 3〜4)** | `+8〜15 / T` | 排熱、重金属排水、機械振動、電磁ノイズによる生態攪乱。 |
+| **生体濃縮核（鉱化嚢胞）の採掘** | `+20〜30 / 回` | エイリアンの財産・遺骸の強奪と見なされる。 |
+| **巣窟核への直接攻撃・焼却** | `+50〜100` | 即座に臨界突破。全面逆襲のトリガーとなる。 |
+
+### 4.2 警戒・威嚇フェーズ（Irritation 40〜79）
+
+* **低周波威嚇音（Infrasonic Roar）**:
+  * 周辺タイルの人類作業員の士気低下、採掘・建設速度が30%低下。
+* **偵察ドローンの包囲哨戒**:
+  * 刺激を与えている工場や前哨基地（FOB）の周囲を取り囲み、警告のフェロモンを散布。
+  * この段階で人類が公害低減装置の稼働や部隊撤収を行えば、刺激値は自然冷却され平時に復帰。
+
+---
+
+## 5. 組織的逆襲システム（The Retaliation Mechanism）
+
+刺激値が100に達する、または巣窟核が武力攻撃を受けた瞬間、同一バイオームの生態ネットワーク全体で**「組織的逆襲（Retaliation Mode）」**が発動する。
+
+```text
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    組織的逆襲作戦のシーケンス展開                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+  ①【警報フェロモンの広域共鳴 (Bio-Resonance Alert)】
+    ・攻撃を受けた巣窟だけでなく、半径3〜5タイルの休眠・平時個体群が一斉覚醒。
+    ・海洋音波、大気胞子、地中菌糸を通じて全ドメインが「戦時協調態勢」へ移行。
+
+  ②【軍事行動：知能的な兵站切断 (Strategic Supply Raid)】
+    ・重戦車部隊の正面装甲へ無謀に突撃するのではなく、背後の「道路・送電線・FOB」を優先攻撃。
+    ・高速スウォーム種がインフラを寸断し、人類主力軍団を弾薬・燃料欠乏に追い込む。
+
+  ③【タイタン級・巨大型の進軍 (Colossus Vanguard)】
+    ・山岳・森林の深部からコロッサス（超巨大生体）が出撃。
+    ・公害や攻撃の発生源となっている「重工業タイル」や「攻撃元基地」へ向けて直進。
+
+  ④【サブタイル戦術戦における過密強襲】
+    ・343マスの局所戦術マップにおいて、全周エッジから生体部隊が連続増援として突入。
+    ・強酸弾による履帯・砲身の選択破壊、電磁妨害胞子による無人機リンク遮断を展開。
+```
+
+### 5.1 逆襲時の特殊生態戦術
+
+1. **インフラ優先破壊ルーチン**:
+   * AI思考ロジックにおいて、戦闘車両よりも「送電線」「パイプライン」「未防衛の補給トラック」を優先ターゲットとする。
+   * 補給線を切断された人類軍団は `CombatGroupSupplyPool` の弾薬・燃料が枯渇し、戦闘力が激減する。
+2. **生体電磁ジャミング（Bio-EMP Clould）**:
+   * 航空エイリアン（クラゲ型・生体レーダー種）が特殊胞子を大気中に放出。
+   * 人類のレーダー索敵範囲が半減し、精密誘導ミサイルや直協航空支援が機能不全に陥る。
+3. **地中潜伏奇襲（Subterranean Ambush）**:
+   * 道路や平原の地下からスピッターワームや中型格闘種が突如浮上し、行軍陣形の中央（司令部・弾薬車）を直接強襲。
+
+---
+
+## 6. 逆襲の終息と「和解・沈静化」プロセス
+
+逆襲は「人類滅亡まで続く泥沼の戦争」ではなく、**「境界の侵犯を排除し、調和を取り戻すための自浄作用」**である。人類側の選択により、逆襲を終わらせて平時友好に戻すことができる。
+
+```text
+ ［逆襲の終息ルート］
+   ├─ ①【武力制圧ルート】
+   │   ・逆襲部隊を全て撃破し、巣窟核を完全に殲滅・解体。
+   │   ・そのタイルの生態圏は消滅し、純粋な「高純度鉱脈」へと転換（Purity / 純正路線）。
+   │
+   ├─ ②【撤退・現状回復ルート】
+   │   ・侵犯していた部隊や重工業施設を撤収・解体。
+   │   ・一定ターン（3〜5ターン）交戦を避けることで、エイリアン側の怒りが冷却。
+   │
+   └─ ③【生態的外交・沈静化ルート (Harmony / 調和路線)】
+       ・フェロモン沈静弾（Calming Pods）の散布。
+       ・高栄養バイオ原質の供出（慰霊・エネルギー還元）。
+       ・刺激値を即座にゼロにリセットし、さらに「共生親和度」を底上げして多種族同盟へ前進。
+```
+
+---
+
+## 7. Bevy ECS 実装データアーキテクチャ (Rust)
+
+ゲームエンジン上でエイリアンの友好度、勢力圏、逆襲モードを軽量に計算・管理するデータ構造。
+
+```rust
+use bevy::prelude::*;
+
+/// エイリアン生態勢力圏コンポーネント（広域ドメインまたはタイル管理）
+#[derive(Component, Debug, Clone, Reflect)]
+pub struct AlienEcologicalDomain {
+    /// 生態ドメイン固有ID
+    pub domain_id: u32,
+    /// 平時友好度 (0: 敵対的 〜 100: 完全共生・不可侵、初期値: 75=温厚)
+    pub friendliness: u8,
+    /// 刺激・警戒値 (0〜100、100で逆襲発動)
+    pub irritation: u8,
+    /// 逆襲状態フラグ
+    pub is_in_retaliation: bool,
+    /// 逆襲ターゲット（最も深刻な被害・公害を与えている人類勢力・タイル）
+    pub primary_grudge_target: Option<Entity>,
+    /// 逆襲持続ターン残数（交戦がなければ毎ターン減少）
+    pub retaliation_turns_remaining: u8,
+}
+
+/// 個別エイリアン戦闘団・個体群の行動ステート
+#[derive(Component, Debug, Clone, Copy, PartialEq, Eq, Reflect)]
+pub enum AlienBehaviorState {
+    /// 友好的徘徊・日向ぼっこ（人類部隊を無視・平和的共存）
+    CoexistingBasking,
+    /// 好奇心による観察（科学探査部隊に接近し遠巻きに眺める）
+    CuriousObservation,
+    /// 縄張り威嚇（接近した人類部隊に低周波で警告）
+    TerritoryWarning,
+    /// 組織的逆襲：兵站線・インフラ襲撃（道路・送電線・補給車を優先攻撃）
+    SupplyLineInterdiction,
+    /// 組織的逆襲：主目標総攻撃（公害発生源や敵軍団への全力強襲）
+    FullRetaliationAssault,
+    /// 沈静化・帰巣（巣窟へ戻り平時へ移行）
+    ReturningToNest,
+}
+
+/// タイルごとのエイリアン刺激要因コンポーネント
+#[derive(Component, Debug, Clone, Default, Reflect)]
+pub struct TileEcologicalStress {
+    /// 排熱・公害指数 (Tier 3〜4重工業で増加)
+    pub thermal_pollution: f32,
+    /// 直近の武力交戦・爆撃ダメージ蓄積
+    pub combat_trauma: f32,
+    /// 生体鉱化嚢胞の掘削・破壊カウント
+    pub mined_cysts_count: u32,
+}
+
+impl AlienEcologicalDomain {
+    /// 毎ターンの環境判定と刺激値更新
+    pub fn update_turn_irritation(&mut self, total_stress: f32, is_under_attack: bool) {
+        if is_under_attack {
+            self.irritation = 100;
+            self.is_in_retaliation = true;
+            self.retaliation_turns_remaining = 8;
+            return;
+        }
+
+        if self.is_in_retaliation {
+            if self.retaliation_turns_remaining > 0 {
+                self.retaliation_turns_remaining -= 1;
+            } else {
+                // 報復期間終了・沈静化
+                self.is_in_retaliation = false;
+                self.irritation = 30; // 警戒レベルまで冷却
+            }
+        } else {
+            // 平時の自然増減（ストレス要因 + 自然減衰）
+            let delta = (total_stress * 10.0) as i8 - 3; // 毎ターン3ポイント自然減衰
+            let new_val = (self.irritation as i16 + delta as i16).clamp(0, 100) as u8;
+            self.irritation = new_val;
+
+            if self.irritation >= 100 {
+                self.is_in_retaliation = true;
+                self.retaliation_turns_remaining = 5;
+            }
+        }
+    }
+
+    /// 行動ステートの決定ロジック
+    pub fn decide_behavior_state(&self, distance_to_human: u32, is_human_hostile: bool) -> AlienBehaviorState {
+        if self.is_in_retaliation {
+            if distance_to_human <= 2 {
+                AlienBehaviorState::FullRetaliationAssault
+            } else {
+                AlienBehaviorState::SupplyLineInterdiction
+            }
+        } else if self.irritation >= 50 {
+            AlienBehaviorState::TerritoryWarning
+        } else if distance_to_human <= 1 {
+            AlienBehaviorState::CuriousObservation
+        } else {
+            AlienBehaviorState::CoexistingBasking
+        }
+    }
+}
+```
+
+---
+
+## 8. ドキュメント相互参照
+
+* [`../../GAME_DESIGN.md`](../../GAME_DESIGN.md) - エイリアンとの関係性システム（セクション 4）
+* [`concept_alien_lifecycle_and_nest_mechanics.md`](./concept_alien_lifecycle_and_nest_mechanics.md) - エイリアン生態ライフサイクル・巣窟運用
+* [`../industry_logistics/concept_mineral_resources_and_alien_concentration.md`](../industry_logistics/concept_mineral_resources_and_alien_concentration.md) - 鉱物資源・エイリアン濃縮鉱床と産業利用仕様書
+* [`../map_tile/concept_tile_centric_expansion.md`](../map_tile/concept_tile_centric_expansion.md) - 脱・都市中心のタイル個別進展と土地利用
+* [`../../specs/RESOURCE_ITEM_DICTIONARY.md`](../../specs/RESOURCE_ITEM_DICTIONARY.md) - 資源・部品・弾薬マスター定義書
