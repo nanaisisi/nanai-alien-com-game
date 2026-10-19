@@ -1,4 +1,4 @@
-﻿# 次期設計計画：陸上戦艦・水陸両用決戦兵站および艦隊・航空隊と空棲・水棲エイリアン整理
+# 次期設計計画：陸上戦艦・水陸両用決戦兵站および艦隊・航空隊と空棲・水棲エイリアン整理
 
 本ドキュメントは、ユーザーからの指示に基づき、次回作業において深掘り・確定を行う設計計画をまとめた作業アジェンダ・検討覚書である。
 
@@ -44,17 +44,17 @@
 - **確定編成（大戦略1コマ）**:
   - **陸上戦闘艦艇 計16隻**: 陸上戦艦 2隻、陸上小型空母 2隻、陸上防空艦 4隻、陸上近接戦闘艦 8隻。
   - **地上随伴部隊**: 機甲大隊 1個（主力戦車 64両）、装甲化大隊 1個（重IFV 32両＋装甲APC 32両＋大隊付自走迫 16両）、偵察戦闘連隊 1個（装輪80両）。
-  - **仕様書**: [`docs/units/toe/ground/regular/toe_corps_land_battleship.md`](../toe_definitions/ground/regular/toe_corps_land_battleship.md) 作成完了。
+  - **仕様書**: [`docs/units/toe/ground/regular/toe_corps_land_battleship.md`](../../units/toe/ground/regular/toe_corps_land_battleship.md) 作成完了。
 
 ### ② 艦隊・航空隊の整理（人類軍団体系の整合）
 
 - **背景と課題**:
-  - [`GAME_DESIGN.md`](../GAME_DESIGN.md) および [`docs/units/toe/`](../toe_definitions/) において、海上戦闘団（全6種）と航空戦闘団（全14種）が定義されているが、陸上軍団（2個師団統合型軍団）との規模感・階層関係（エシュロン）の整合をより精緻にする必要がある。
+  - [`GAME_DESIGN.md`](../../GAME_DESIGN.md) および [`docs/units/INDEX_TOE.md`](../../units/INDEX_TOE.md) において、海上戦闘団（全6種）と航空戦闘団（全14種）が定義されているが、陸上軍団（2個師団統合型軍団）との規模感・階層関係（エシュロン）の整合をより精緻にする必要がある。
   - 特に「空中戦艦航空団」「超大型輸送航空団」「航空艦隊（空母・強襲揚陸艦）」などの戦略アセットと、通常哨戒・護衛アセットの運用コスト・編成スロットを明確に整理する。
 - **直近確定事項**:
   - 通常海上戦闘団（全6種）のピラミッド型固定エシュロン（計62隻＝中核空母/戦艦2＋防空駆逐4＋汎用駆逐8＋フリゲート16＋護衛コルベット32）を策定完了。
 - **長期的な検討課題（Long-term Research & Advanced Systems）**:
-  - 詳細仕様・考察は [`../discussion/military_tactics/concept_advanced_tech_dew_unmanned_and_naval_doctrine.md`](../discussion/military_tactics/concept_advanced_tech_dew_unmanned_and_naval_doctrine.md) を参照。
+  - 詳細仕様・考察は [`../../discussion/military_tactics/concept_advanced_tech_dew_unmanned_and_naval_doctrine.md`](../../discussion/military_tactics/concept_advanced_tech_dew_unmanned_and_naval_doctrine.md) を参照。
   - **水上システム総合運用ドクトリン**:
     - 造船・回航・揚陸連携（臨海造船所建造、陸上戦闘艦の海上フェリー護衛、強襲揚陸）。
     - 海洋工学移動拠点（メガフロート・自走型MOB）との結合、アイアンボトム・サウンド（沈没艦船の海底有限資源化）。
@@ -76,7 +76,7 @@
 ### ③ 空棲・水棲エイリアンの体系化・生態系整理
 
 - **背景と課題**:
-  - 野生エイリアンは人類の通常軍団・艦隊・航空隊と1対1で対応する枠組みが設定されている（[`toe_air_alien_swarm.md`](../toe_definitions/air/alien/toe_air_alien_swarm.md), [`toe_naval_alien_swarm.md`](../toe_definitions/naval/alien/toe_naval_alien_swarm.md)）。
+  - 野生エイリアンは人類の通常軍団・艦隊・航空隊と1対1で対応する枠組みが設定されている（[`toe_air_alien_swarm.md`](../../units/toe/air/alien/toe_air_alien_swarm.md), [`toe_naval_alien_swarm.md`](../../units/toe/naval/alien/toe_naval_alien_swarm.md)）。
   - これをさらに深掘りし、陸棲・水棲・空棲エイリアンの生態学的ヒエラルキー、生息水域・気流層、巣窟（Nest）との連動、および「空棲・水棲エイリアンと人類兵器の混成／融合」における特徴差を明確にする。
 - **検討項目**:
   - **空棲エイリアン**: 高高度浮遊型（気球・クラゲ状レーダー種）、中低空戦闘型（有翼ワイバーン・強酸急降下種）、超巨大浮遊母艦獣。気流観測（大気揺らぎ）による被探知ギミックとの連動。
@@ -90,6 +90,6 @@
 1. **新規作成**:
    - `docs/units/toe/ground/regular/toe_corps_land_battleship.md`（陸上戦艦・水陸両用決戦軍団TO&E仕様書）
 2. **改定・追記**:
-   - [`docs/GAME_DESIGN.md`](../GAME_DESIGN.md): 第3章（部隊・ユニット体系）の艦隊・航空隊・エイリアン対応表の更新および陸上戦艦の追加。
-   - [`docs/INDEX.md`](../INDEX.md): 新規追加ドキュメントのインデックス反映。
+   - [`docs/GAME_DESIGN.md`](../../GAME_DESIGN.md): 第3章（部隊・ユニット体系）の艦隊・航空隊・エイリアン対応表の更新および陸上戦艦の追加。
+   - [`docs/INDEX.md`](../../INDEX.md): 新規追加ドキュメントのインデックス反映。
    - 必要に応じて `docs/units/toe/air/` および `docs/units/toe/naval/` の各仕様書の整合性点検・アップデート。

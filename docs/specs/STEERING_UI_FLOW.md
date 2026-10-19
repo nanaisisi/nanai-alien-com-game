@@ -296,7 +296,7 @@ pub enum FieldModDecision {
 
 ## 8. ドキュメント相互参照
 
-- [`../planning/MISSING_SPECS_EXECUTION_PLAN.md`](../planning/MISSING_SPECS_EXECUTION_PLAN.md) - 不足ドキュメント実行計画
+- [`../planning/completed/MISSING_SPECS_EXECUTION_PLAN.md`](../planning/completed/MISSING_SPECS_EXECUTION_PLAN.md) - 不足ドキュメント実行計画
 - [`../discussion/ui_wiki/concept_doctrine_steering_ui.md`](../discussion/ui_wiki/concept_doctrine_steering_ui.md) - UI設計基本思想
 - [`../discussion/automation/concept_automation_systems.md`](../discussion/automation/concept_automation_systems.md) - 自動化シミュレーション設計
 - [`../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md`](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) - 戦闘団兵站・共食い整備

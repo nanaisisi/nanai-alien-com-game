@@ -1,4 +1,4 @@
-﻿# 未作成・不足ドキュメント体系と開発ロードマップ (Missing Documents & Expansion Roadmap)
+# 未作成・不足ドキュメント体系と開発ロードマップ (Missing Documents & Expansion Roadmap)
 
 本ドキュメントは、本作（4X大戦略＋サブタイル戦術・戦闘団制）における**「現在何が不足しており、今後どのドキュメントを段階的に作成・発展させていくべきか」**を、最新のディレクトリ階層および設計進捗を踏まえて体系的にまとめた設計ロードマップ管理書です。
 
@@ -32,7 +32,7 @@
 
 ### ① 経済・資源品目・物流循環領域（策定済）
 
-- **ドキュメント名**: [`./discussion/industry_logistics/concept_resource_economy_and_logistics.md`](./discussion/industry_logistics/concept_resource_economy_and_logistics.md)（資源カテゴリ・物資格納・食料と弾薬規格の進化流通仕様書）
+- **ドキュメント名**: [`../../discussion/industry_logistics/concept_resource_economy_and_logistics.md`](../../discussion/industry_logistics/concept_resource_economy_and_logistics.md)（資源カテゴリ・物資格納・食料と弾薬規格の進化流通仕様書）
 - **ステータス**: **初版策定済**
 - **策定内容**:
   - **弾薬規格ダイナミクス**: 冷戦直後型母星共通規格から、同時並行開発による分化、後発追従・同盟協定・事実上の標準化による再統合。
@@ -41,7 +41,7 @@
 
 ### ② 技術ツリー・研究開発（R&D）領域（策定済）
 
-- **ドキュメント名**: [`./discussion/world_progression/concept_technology_tree_structure.md`](./discussion/world_progression/concept_technology_tree_structure.md)（研究開発・技術ウェブ構造設計書）
+- **ドキュメント名**: [`../../discussion/world_progression/concept_technology_tree_structure.md`](../../discussion/world_progression/concept_technology_tree_structure.md)（研究開発・技術ウェブ構造設計書）
 - **ステータス**: **初版策定済**
 - **策定内容**:
   - **放射状Web構造**: 中央の降着基盤から4層（Tier 0〜3）に広がる幹技術（Trunk）と葉技術（Leaf）の非線形展開。
@@ -51,7 +51,7 @@
 
 ### ③ 外交危機・偶発紛争（エスカレーション）領域（策定済）
 
-- **ドキュメント名**: [`./discussion/events/concept_diplomatic_incidents_and_crises.md`](./discussion/events/concept_diplomatic_incidents_and_crises.md)（外交危機・偶発紛争およびエスカレーション・ラダー設計書）
+- **ドキュメント名**: [`../../discussion/events/concept_diplomatic_incidents_and_crises.md`](../../discussion/events/concept_diplomatic_incidents_and_crises.md)（外交危機・偶発紛争およびエスカレーション・ラダー設計書）
 - **ステータス**: **初版策定済**
 - **策定内容**:
   - **グレーゾーン事態**: 国境未定地での密輸・不法資源採掘、民間探査船の領犯・拿捕、通商破壊工作。
@@ -60,7 +60,7 @@
 
 ### ④ エイリアン生態サイクル・巣窟（Nest）運用領域（策定済）
 
-- **ドキュメント名**: [`./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md`](./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md)（エイリアン生態ライフサイクル・巣窟運用および環境インタラクション仕様書）
+- **ドキュメント名**: [`../../discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md`](../../discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md)（エイリアン生態ライフサイクル・巣窟運用および環境インタラクション仕様書）
 - **ステータス**: **初版策定済**
 - **策定内容**:
   - **巣窟（Nest）のライフサイクル**: 休眠、活性化、繁殖期、暴走（大侵入/Swarm）のトリガー。
@@ -69,7 +69,7 @@
 
 ### ⑤ プレイヤー操作・ステアリングUI/UX領域（策定済）
 
-- **ドキュメント名**: [`./discussion/ui_wiki/concept_doctrine_steering_ui.md`](./discussion/ui_wiki/concept_doctrine_steering_ui.md)（国家ドクトリン・自動化ステアリングUI/UX仕様書）
+- **ドキュメント名**: [`../../discussion/ui_wiki/concept_doctrine_steering_ui.md`](../../discussion/ui_wiki/concept_doctrine_steering_ui.md)（国家ドクトリン・自動化ステアリングUI/UX仕様書）
 - **ステータス**: **初版策定済**
 - **策定内容**:
   - **「指示せず誘導する」UI設計**: 戦闘団の固定編成や国内産業の自動更新に対し、プレイヤーがどのようなスライダー・ドクトリン方針カードで干渉するか。
@@ -83,24 +83,24 @@
 
 | ドキュメント名（相対パス） | 格納カテゴリ | 概要・達成状況 |
 | :--- | :--- | :--- |
-| **[`./discussion/events/concept_event_catalog_and_chains.md`](./discussion/events/concept_event_catalog_and_chains.md)** | `events/` | 8大ジャンルの具体イベントカタログと不可逆な連鎖イベント（初版完了） |
-| **[`./discussion/world_progression/concept_game_progression_and_victory.md`](./discussion/world_progression/concept_game_progression_and_victory.md)** | `world_progression/` | 動的情勢推移と5大勝利条件、クリア後継続プレイ保証（初版完了） |
-| **[`./discussion/map_tile/concept_tile_centric_expansion.md`](./discussion/map_tile/concept_tile_centric_expansion.md)** | `map_tile/` | 脱・都市中心主義のタイル拡張、物理インフラ延伸（初版完了） |
-| **[`./discussion/map_tile/concept_tile_progression_system.md`](./discussion/map_tile/concept_tile_progression_system.md)** | `map_tile/` | 全タイル共通Tier 0〜4進展、1タイル1部隊制と戦場過密大混戦（初版完了） |
-| **[`./discussion/industry_logistics/concept_bootloader_and_national_supply_chains.md`](./discussion/industry_logistics/concept_bootloader_and_national_supply_chains.md)** | `industry_logistics/` | 機械が機械を作るブートローダー産業、金型・歩留まりと国家サプライチェーン（初版完了） |
-| **[`./discussion/world_progression/concept_demographics_ectogenesis_and_speciation.md`](./discussion/world_progression/concept_demographics_ectogenesis_and_speciation.md)** | `world_progression/` | 人工子宮（エクトジェネシス）による人口爆発と適応種分化（初版完了） |
-| **[`./discussion/industry_logistics/concept_theater_operations_and_joint_sectors.md`](./discussion/industry_logistics/concept_theater_operations_and_joint_sectors.md)** | `industry_logistics/` | 方面軍（Theater Command）組織、専念領域と共同管理領域（初版完了） |
-| **[`./discussion/events/concept_faction_consensus_and_standardization.md`](./discussion/events/concept_faction_consensus_and_standardization.md)** | `events/` | 空気感による完全合意吸収、相手国承認のタイル移管、通信規格調達3方式（初版完了） |
-| **[`./discussion/map_tile/concept_maritime_governance_and_ocean_engineering.md`](./discussion/map_tile/concept_maritime_governance_and_ocean_engineering.md)** | `map_tile/` | 海上統治・海洋工学（埋め立て/固定式/半固定式/メガフロート、海上都市、シーレーン）（初版完了） |
-| **[`./discussion/world_progression/concept_technology_tree_structure.md`](./discussion/world_progression/concept_technology_tree_structure.md)** | `world_progression/` | 研究開発・技術ウェブ（Tech Web）およびアフィニティ進化（初版完了） |
-| **[`./discussion/industry_logistics/concept_doctrine_and_equipment_steering.md`](./discussion/industry_logistics/concept_doctrine_and_equipment_steering.md)** | `industry_logistics/` | 国家制御・多層ステアリングシステム、兵器クラス別RFP制御と移行ラグ（初版完了） |
-| **[`./discussion/events/concept_diplomatic_incidents_and_crises.md`](./discussion/events/concept_diplomatic_incidents_and_crises.md)** | `events/` | 外交危機・偶発紛争およびエスカレーション・ラダー設計書（初版完了） |
-| **[`./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md`](./discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md)** | `world_progression/` | エイリアン生態ライフサイクル・巣窟運用および環境インタラクション仕様書（初版完了） |
-| **[`./discussion/ui_wiki/concept_doctrine_steering_ui.md`](./discussion/ui_wiki/concept_doctrine_steering_ui.md)** | `ui_wiki/` | 国家ドクトリン・自動化ステアリングUI/UX仕様書（初版完了） |
-| **[`./discussion/map_tile/concept_subtile_combat_and_tactical_rules.md`](./discussion/map_tile/concept_subtile_combat_and_tactical_rules.md)** | `map_tile/` | サブタイル戦術戦闘・ターン構造（1親＝12〜15サブ）、増援ラグ、盤外砲撃、施設破壊即時反映（第2シリーズ完了） |
-| **[`./discussion/diplomacy_governance/concept_factions_detail_and_naming.md`](./discussion/diplomacy_governance/concept_factions_detail_and_naming.md)** | `diplomacy_governance/` | 架空6大国家の詳細設定、初期産業ブートローダー、得意モジュール、役職・兵器命名プロトコル（第2シリーズ完了） |
-| **[`./discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md`](./discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)** | `military_tactics/` | 戦闘団16スロット構成（TO&E）、RFP駆動型自動ブロック更新、現場改修承認、新旧混在ペナルティ（第2シリーズ完了） |
-| **[`./discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md`](./discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md)** | `military_tactics/` | 入植産業構造と母星技術ギャップ、兵器世代（Gen 0〜Gen 4）進化体系、虎の子戦略予備と非資源消費初期ユニット（第3シリーズ完了） |
+| **[`../../discussion/events/concept_event_catalog_and_chains.md`](../../discussion/events/concept_event_catalog_and_chains.md)** | `events/` | 8大ジャンルの具体イベントカタログと不可逆な連鎖イベント（初版完了） |
+| **[`../../discussion/world_progression/concept_game_progression_and_victory.md`](../../discussion/world_progression/concept_game_progression_and_victory.md)** | `world_progression/` | 動的情勢推移と5大勝利条件、クリア後継続プレイ保証（初版完了） |
+| **[`../../discussion/map_tile/concept_tile_centric_expansion.md`](../../discussion/map_tile/concept_tile_centric_expansion.md)** | `map_tile/` | 脱・都市中心主義のタイル拡張、物理インフラ延伸（初版完了） |
+| **[`../../discussion/map_tile/concept_tile_progression_system.md`](../../discussion/map_tile/concept_tile_progression_system.md)** | `map_tile/` | 全タイル共通Tier 0〜4進展、1タイル1部隊制と戦場過密大混戦（初版完了） |
+| **[`../../discussion/industry_logistics/concept_bootloader_and_national_supply_chains.md`](../../discussion/industry_logistics/concept_bootloader_and_national_supply_chains.md)** | `industry_logistics/` | 機械が機械を作るブートローダー産業、金型・歩留まりと国家サプライチェーン（初版完了） |
+| **[`../../discussion/world_progression/concept_demographics_ectogenesis_and_speciation.md`](../../discussion/world_progression/concept_demographics_ectogenesis_and_speciation.md)** | `world_progression/` | 人工子宮（エクトジェネシス）による人口爆発と適応種分化（初版完了） |
+| **[`../../discussion/industry_logistics/concept_theater_operations_and_joint_sectors.md`](../../discussion/industry_logistics/concept_theater_operations_and_joint_sectors.md)** | `industry_logistics/` | 方面軍（Theater Command）組織、専念領域と共同管理領域（初版完了） |
+| **[`../../discussion/events/concept_faction_consensus_and_standardization.md`](../../discussion/events/concept_faction_consensus_and_standardization.md)** | `events/` | 空気感による完全合意吸収、相手国承認のタイル移管、通信規格調達3方式（初版完了） |
+| **[`../../discussion/map_tile/concept_maritime_governance_and_ocean_engineering.md`](../../discussion/map_tile/concept_maritime_governance_and_ocean_engineering.md)** | `map_tile/` | 海上統治・海洋工学（埋め立て/固定式/半固定式/メガフロート、海上都市、シーレーン）（初版完了） |
+| **[`../../discussion/world_progression/concept_technology_tree_structure.md`](../../discussion/world_progression/concept_technology_tree_structure.md)** | `world_progression/` | 研究開発・技術ウェブ（Tech Web）およびアフィニティ進化（初版完了） |
+| **[`../../discussion/industry_logistics/concept_doctrine_and_equipment_steering.md`](../../discussion/industry_logistics/concept_doctrine_and_equipment_steering.md)** | `industry_logistics/` | 国家制御・多層ステアリングシステム、兵器クラス別RFP制御と移行ラグ（初版完了） |
+| **[`../../discussion/events/concept_diplomatic_incidents_and_crises.md`](../../discussion/events/concept_diplomatic_incidents_and_crises.md)** | `events/` | 外交危機・偶発紛争およびエスカレーション・ラダー設計書（初版完了） |
+| **[`../../discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md`](../../discussion/world_progression/concept_alien_lifecycle_and_nest_mechanics.md)** | `world_progression/` | エイリアン生態ライフサイクル・巣窟運用および環境インタラクション仕様書（初版完了） |
+| **[`../../discussion/ui_wiki/concept_doctrine_steering_ui.md`](../../discussion/ui_wiki/concept_doctrine_steering_ui.md)** | `ui_wiki/` | 国家ドクトリン・自動化ステアリングUI/UX仕様書（初版完了） |
+| **[`../../discussion/map_tile/concept_subtile_combat_and_tactical_rules.md`](../../discussion/map_tile/concept_subtile_combat_and_tactical_rules.md)** | `map_tile/` | サブタイル戦術戦闘・ターン構造（1親＝12〜15サブ）、増援ラグ、盤外砲撃、施設破壊即時反映（第2シリーズ完了） |
+| **[`../../discussion/diplomacy_governance/concept_factions_detail_and_naming.md`](../../discussion/diplomacy_governance/concept_factions_detail_and_naming.md)** | `diplomacy_governance/` | 架空6大国家の詳細設定、初期産業ブートローダー、得意モジュール、役職・兵器命名プロトコル（第2シリーズ完了） |
+| **[`../../discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md`](../../discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)** | `military_tactics/` | 戦闘団16スロット構成（TO&E）、RFP駆動型自動ブロック更新、現場改修承認、新旧混在ペナルティ（第2シリーズ完了） |
+| **[`../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md`](../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md)** | `military_tactics/` | 入植産業構造と母星技術ギャップ、兵器世代（Gen 0〜Gen 4）進化体系、虎の子戦略予備と非資源消費初期ユニット（第3シリーズ完了） |
 
 ---
 
@@ -126,7 +126,7 @@
 
 【第4シリーズ: システム統合・データ構造・UI操作フロー（次の開発フェーズ・最優先）】
   ※ 詳細は [SECONDARY_MISSING_SPECS.md](./SECONDARY_MISSING_SPECS.md) を参照
-  ├─ ⑩ 戦闘団（TO&E）× 装備更新・兵站ステアリング統合データ仕様書 (SEC-01) ── [策定完了: COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)]
+  ├─ ⑩ 戦闘団（TO&E）× 装備更新・兵站ステアリング統合データ仕様書 (SEC-01) ── [策定完了: COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)]
   │     └─ 16スロット戦闘団のインフラ結合度による自動補給、兵站途絶時の稼働率低下と共食い整備（Cannibalization）のState遷移ロジック
   └─ ⑪ 多層ステアリングUI画面遷移・操作フロー仕様書 (SEC-02)
         └─ 大戦略スライダー、RFP提示、金型転換移行ラグ（Re-tooling）、現場改修（Field Mod）承認ポップアップの画面レイアウトと操作動線

@@ -140,7 +140,7 @@ pub enum TransportMode {
 
 ## 6. ドキュメント相互参照
 
-- [`../planning/MISSING_SPECS_EXECUTION_PLAN.md`](../planning/MISSING_SPECS_EXECUTION_PLAN.md) - 不足ドキュメント実行計画
+- [`../planning/completed/MISSING_SPECS_EXECUTION_PLAN.md`](../planning/completed/MISSING_SPECS_EXECUTION_PLAN.md) - 不足ドキュメント実行計画
 - [`RESOURCE_ITEM_DICTIONARY.md`](./RESOURCE_ITEM_DICTIONARY.md) - 資源・弾薬物理データ辞書
 - [`../units/force/concept_ground_vehicle_chassis_and_variants.md`](../units/force/concept_ground_vehicle_chassis_and_variants.md) - 陸上装甲車両総合仕様書
 - [`../discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md`](../discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md) - Turn 0 初期カタログ検討書

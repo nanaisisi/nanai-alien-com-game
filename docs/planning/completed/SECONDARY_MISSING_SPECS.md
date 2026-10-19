@@ -39,7 +39,7 @@
 
 #### SEC-01: 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書
 
-- **ドキュメント名**: [`../force_structure/COMBAT_GROUP_LOGISTICS_INTEGRATION.md`](../force_structure/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)
+- **ドキュメント名**: [`../../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md`](../../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)
 - **ステータス**: **初版策定済**
 - **目的**: 増強師団・諸兵科連合戦闘団（空地統合・部隊単位体系）のインフラ結合度に応じた自動補給、兵站断絶時の稼働率低下と「共食い整備（Cannibalization）」のステートマシン定義。
 - **主要定義内容**:

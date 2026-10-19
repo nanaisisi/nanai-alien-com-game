@@ -146,7 +146,7 @@ pub fn evaluate_border_friction_system(
 
 ## 5. ドキュメント相互参照
 
-- [`../planning/MISSING_SPECS_EXECUTION_PLAN.md`](../planning/MISSING_SPECS_EXECUTION_PLAN.md) - 不足ドキュメント実行計画
+- [`../planning/completed/MISSING_SPECS_EXECUTION_PLAN.md`](../planning/completed/MISSING_SPECS_EXECUTION_PLAN.md) - 不足ドキュメント実行計画
 - [`../discussion/diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md`](../discussion/diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md) - 失踪者・領土要求検討書
 - [`VICTORY_AND_CRISIS_CONDITIONS.md`](./VICTORY_AND_CRISIS_CONDITIONS.md) - 動的情勢推移・終局仕様書
 - [`STEERING_UI_FLOW.md`](./STEERING_UI_FLOW.md) - 多層ステアリングUI操作フロー仕様書

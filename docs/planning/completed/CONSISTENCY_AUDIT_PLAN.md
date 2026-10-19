@@ -60,14 +60,14 @@ flowchart TD
 
 まずは、ファイルパスや目次の不整合・リンク切れを解消し、仕様探索の基盤を最新化する。
 
-- [x] **1.1 全体目録（[docs/INDEX.md](../INDEX.md)）の構造照合・更新**
+- [x] **1.1 全体目録（[docs/INDEX.md](../../INDEX.md)）の構造照合・更新**
   - 旧 `docs/toe_definitions/` や `docs/force_structure/` 表記を、新ディレクトリ `docs/units/` 構成に更新完了。
   - 新設された装備カタログ（`docs/units/equipment/`）セクションの追加と各仕様書の配置を反映完了。
   - セクション番号の正規化（1〜7）および全内部リンクの疎通確認完了（リンク切れ0件）。
-- [x] **1.2 TO&Eマスター目録（[docs/units/INDEX_TOE.md](../units/INDEX_TOE.md)）と各インデックス照合**
+- [x] **1.2 TO&Eマスター目録（[docs/units/INDEX_TOE.md](../../units/INDEX_TOE.md)）と各インデックス照合**
   - `docs/units/toe_indexes/` 配下の全12インデックス文書内（全86リンク）の疎通確認完了（リンク切れ0件）。
   - `docs/units/toe/` 配下の全62個のTO&E実体ファイルが漏れなく各インデックスから参照されていることを確認完了（網羅率100%）。
-  - [INDEX_TOE.md](../units/INDEX_TOE.md) の記載を最新状況（航空正規軍15文書、旧融合インデックスの世代発展集約）へ同期完了。
+  - [INDEX_TOE.md](../../units/INDEX_TOE.md) の記載を最新状況（航空正規軍15文書、旧融合インデックスの世代発展集約）へ同期完了。
 - [x] **1.3 相対パスおよびリンク記法の確認**
   - `docs/` 配下の全160個のMarkdownファイルを自動検証。`file:///` やユーザー名を含む絶対パスの混入は **0件（完全準拠）** であることを確認完了。
 
@@ -78,13 +78,13 @@ flowchart TD
 直近の主要な意思決定が、全体設計および個別仕様書に矛盾なく浸透しているかを検証・修正する。
 
 - [x] **2.1 融合ユニット（Fusion Units）の通常ツリー上位統合の反映**
-  - [GAME_DESIGN.md](../GAME_DESIGN.md) のセクション 3.1.4, 3.2.3, 3.3.3 において、「独立融合ツリー」を撤廃し「正規軍ツリー上位のGen 3/4近代化改修」として統合されていることを確認。
+  - [GAME_DESIGN.md](../../GAME_DESIGN.md) のセクション 3.1.4, 3.2.3, 3.3.3 において、「独立融合ツリー」を撤廃し「正規軍ツリー上位のGen 3/4近代化改修」として統合されていることを確認。
   - `docs/units/toe/` 内の各仕様書（`toe_corps_fusion_ground.md`, `toe_naval_fusion.md`, `toe_air_fusion.md`）における世代表記（Gen 1〜Gen 4）および「通常ツリー上位近代化（Gen 4）」の位置づけを点検・整備。
   - 陸上Gen 4対応表に「陸上戦艦打撃軍団」の生体甲殻改修を追加し、通常12カテゴリー（正規軍全編成）との整合を完了。
-  - [INDEX_TOE.md](../units/INDEX_TOE.md) および各インデックスの正規軍仕様書数表記（陸上14、航空15、海上7）を「通常＋上位世代発展1」として完全同期。
+  - [INDEX_TOE.md](../../units/INDEX_TOE.md) および各インデックスの正規軍仕様書数表記（陸上14、航空15、海上7）を「通常＋上位世代発展1」として完全同期。
 - [x] **2.2 兵器耐用年数（Weapon Lifespan / Degradation）の定義整合性**
-  - [COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) の基本規定（最長1世紀/100年基準、構造健全度 `structural_integrity`、共食い整備アルゴリズム）と、陸・海・空の正規軍装備仕様書（`ground_regular_equipment.md`, `naval_regular_equipment.md`, `air_regular_equipment.md`）の耐用年数パラメータ（陸上戦艦・決戦艦80〜100年、戦車60〜80年、装甲車・航空機30〜50年、二脚20〜30年）が完全に調和していることを確認。
-  - 編成・エシュロン関連仕様書（[concept_corps_variants.md](../units/force/concept_corps_variants.md), [concept_personnel_and_manning_standards.md](../units/force/concept_personnel_and_manning_standards.md)）に、共食い整備およびフレーム物理的耐用年数（最長1世紀）の相互参照リンクと運用注記を拡充・同期完了。
+  - [COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) の基本規定（最長1世紀/100年基準、構造健全度 `structural_integrity`、共食い整備アルゴリズム）と、陸・海・空の正規軍装備仕様書（`ground_regular_equipment.md`, `naval_regular_equipment.md`, `air_regular_equipment.md`）の耐用年数パラメータ（陸上戦艦・決戦艦80〜100年、戦車60〜80年、装甲車・航空機30〜50年、二脚20〜30年）が完全に調和していることを確認。
+  - 編成・エシュロン関連仕様書（[concept_corps_variants.md](../../units/force/concept_corps_variants.md), [concept_personnel_and_manning_standards.md](../../units/force/concept_personnel_and_manning_standards.md)）に、共食い整備およびフレーム物理的耐用年数（最長1世紀）の相互参照リンクと運用注記を拡充・同期完了。
 
 ---
 
@@ -94,8 +94,8 @@ flowchart TD
 
 - [x] **3.1 陸上装甲車定員・編成単位の統一確認**
   - 下車歩兵定員「固定8名（1個分隊）」および基本小隊「固定4両（中隊16両、大隊64〜80両）」の2進数倍々補完ルールが、全陸上TO&Eおよび車体仕様書で厳格に一致していることを確認。
-  - [ground_regular_equipment.md](../units/equipment/ground/regular/ground_regular_equipment.md) および [concept_ground_vehicle_chassis_and_variants.md](../units/force/concept_ground_vehicle_chassis_and_variants.md) において、自動車化歩兵の基幹である「4×4 LAV（乗員2名＋下車歩兵8名固定）」の定義を明記・同期。
-  - [concept_personnel_and_manning_standards.md](../units/force/concept_personnel_and_manning_standards.md) の主要戦闘車両定員リストに「4×4 LAV（計10名: 乗員2＋下車8）」を追加し、歩兵多層エシュロン全体の定員積算基準を統一。
+  - [ground_regular_equipment.md](../../units/equipment/ground/regular/ground_regular_equipment.md) および [concept_ground_vehicle_chassis_and_variants.md](../../units/force/concept_ground_vehicle_chassis_and_variants.md) において、自動車化歩兵の基幹である「4×4 LAV（乗員2名＋下車歩兵8名固定）」の定義を明記・同期。
+  - [concept_personnel_and_manning_standards.md](../../units/force/concept_personnel_and_manning_standards.md) の主要戦闘車両定員リストに「4×4 LAV（計10名: 乗員2＋下車8）」を追加し、歩兵多層エシュロン全体の定員積算基準を統一。
   - 8×8装輪ファミリーの「基本10大バリアント（＋対空2種）」の表記揺れを整流化。
 - [x] **3.2 共通弾薬口径規格（C表記）の照合**
   - 重榴弾砲規格を全文書で **`160C`**（全周旋回砲塔自走榴弾砲、装輪トラック自走榴弾砲、牽引式榴弾砲）に完全統一し、残存していた旧表記（155C）を排除。
@@ -114,13 +114,13 @@ flowchart TD
 確定した仕様書群と、技術アーキテクチャ（`docs/tech/`）およびRust実装コード間の整合性を担保する。
 
 - [x] **4.1 ECSコンポーネント定義の同期**
-  - [COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) で定義された兵站・整備ステートマシン（`CombatGroupLogistics`, `LogisticsState`, `MaintenanceDoctrine`）を [SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md](../tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md) に完全同期。
-  - 実装コード [`src/unit/types.rs`](../../src/unit/types.rs)、[`src/unit/mod.rs`](../../src/unit/mod.rs)、[`src/unit/spawn.rs`](../../src/unit/spawn.rs) に上記ECSコンポーネントを定義・リフレクト登録・初期スポーン付与し、`cargo check`（警告・エラー0件、終了コード0）での完全整合を確認。
+  - [COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) で定義された兵站・整備ステートマシン（`CombatGroupLogistics`, `LogisticsState`, `MaintenanceDoctrine`）を [SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md](../../tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md) に完全同期。
+  - 実装コード [`src/unit/types.rs`](../../../src/unit/types.rs)、[`src/unit/mod.rs`](../../../src/unit/mod.rs)、[`src/unit/spawn.rs`](../../../src/unit/spawn.rs) に上記ECSコンポーネントを定義・リフレクト登録・初期スポーン付与し、`cargo check`（警告・エラー0件、終了コード0）での完全整合を確認。
 - [x] **4.2 資源・サプライチェーン・兵站ステートマシンの接続**
-  - [RESOURCE_ECONOMY_SYSTEM.md](../specs/RESOURCE_ECONOMY_SYSTEM.md)（資源・サプライチェーン体系）および [RESOURCE_IMPLEMENTATION_BRIDGE.md](../tech/RESOURCE_IMPLEMENTATION_BRIDGE.md)（資源実装橋渡し案 Phase 6）と、[COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) の兵站充足度 $S$（`CombatGroupLogistics.supply_satisfaction`）算出ロジックを接続整合。
+  - [RESOURCE_ECONOMY_SYSTEM.md](../../specs/RESOURCE_ECONOMY_SYSTEM.md)（資源・サプライチェーン体系）および [RESOURCE_IMPLEMENTATION_BRIDGE.md](../../tech/RESOURCE_IMPLEMENTATION_BRIDGE.md)（資源実装橋渡し案 Phase 6）と、[COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) の兵站充足度 $S$（`CombatGroupLogistics.supply_satisfaction`）算出ロジックを接続整合。
   - タイルインフラ結合度・後方補給デポ距離と弾薬・燃料・野戦交換部品の供給ループが、部隊ステートマシン（Normal ➔ Strained ➔ Critical ➔ Exhausted）および自律共食い整備（Cannibalization）に直結する循環モデルの整合性を確認。
 - [x] **4.3 実装タスク・ロードマップへの反映**
-  - [MISSING_DOCUMENTS_ROADMAP.md](./MISSING_DOCUMENTS_ROADMAP.md) および [PENDING_ISSUES.md](./PENDING_ISSUES.md) において、策定済となった最優先仕様書「SEC-01: 戦闘団（TO&E）× 装備更新・兵站ステアリング統合データ仕様書（[COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)）」を「完了・策定済」としてステータスを同期。
+  - [MISSING_DOCUMENTS_ROADMAP.md](./MISSING_DOCUMENTS_ROADMAP.md) および [PENDING_ISSUES.md](../pending/PENDING_ISSUES.md) において、策定済となった最優先仕様書「SEC-01: 戦闘団（TO&E）× 装備更新・兵站ステアリング統合データ仕様書（[COMBAT_GROUP_LOGISTICS_INTEGRATION.md](../../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)）」を「完了・策定済」としてステータスを同期。
   - 次期開発ターゲットである「SEC-02: 多層ステアリングUI仕様」および「SEC-03: 資源・部品・弾薬マスター定義書」への接続を整流化。
 
 ---
@@ -138,8 +138,8 @@ flowchart TD
 
 ## 4. 関連ドキュメント
 
-- [ドキュメント構成・目録 (INDEX.md)](../INDEX.md)
-- [TO&Eマスター目録 (INDEX_TOE.md)](../units/INDEX_TOE.md)
-- [ゲーム企画・コア仕様設計書 (GAME_DESIGN.md)](../GAME_DESIGN.md)
-- [戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)
-- [パス・プライバシー規約](../../.agents/rules/path_privacy.md)
+- [ドキュメント構成・目録 (INDEX.md)](../../INDEX.md)
+- [TO&Eマスター目録 (INDEX_TOE.md)](../../units/INDEX_TOE.md)
+- [ゲーム企画・コア仕様設計書 (GAME_DESIGN.md)](../../GAME_DESIGN.md)
+- [戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)](../../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)
+- [パス・プライバシー規約](../../../.agents/rules/path_privacy.md)

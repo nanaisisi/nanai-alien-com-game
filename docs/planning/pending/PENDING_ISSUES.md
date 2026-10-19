@@ -1,4 +1,4 @@
-﻿# 未確定・検討課題まとめ (Pending Issues & Roadmap)
+# 未確定・検討課題まとめ (Pending Issues & Roadmap)
 
 本ドキュメントは、本作（4X大戦略＋サブタイル戦術・戦闘団制）における**未確定の検討事項、議論が深まっていない論点、および今後の掘り下げロードマップ**を体系的にまとめた検討課題管理書です。
 
@@ -50,7 +50,7 @@
      - 帝国A（第VII神聖皇国主権領）、大公国B（北部諸州立憲公国）、連邦C（中央諸州合衆連邦）、共和国D（西部統一執政共和国）、共同体E（環洋開発共同体同盟）、連合F（新星系協同連合）の深層社会設定、初期ブートローダー産業、得意モジュールを策定。
   2. **国名・役職の命名ルール（確定）**:
      - 公文書フォーマットにおける役職呼称体系および各国固有の兵器命名型式（Designator Standard）を規定。
-  3. 詳細は [`./discussion/diplomacy_governance/concept_factions_detail_and_naming.md`](./discussion/diplomacy_governance/concept_factions_detail_and_naming.md) 参照。
+  3. 詳細は [`../../discussion/diplomacy_governance/concept_factions_detail_and_naming.md`](../../discussion/diplomacy_governance/concept_factions_detail_and_naming.md) 参照。
 
 ---
 
@@ -65,7 +65,7 @@
      - マクロ大戦略、戦域環境、個別兵器クラス別RFP制御（防護/機動/火力の3軸スライダーと共通化拘束）、現場改修の4層構造を策定。
   2. **移行ラグと過渡期整備ペナルティ**:
      - 金型転換（Re-tooling）による歩留まり低下、新型・旧型混在による部品多重化と稼働率ペナルティ、現場発の現地改修（Block Field）の追認メカニクスを規定。
-  3. 詳細は [`./discussion/industry_logistics/concept_doctrine_and_equipment_steering.md`](./discussion/industry_logistics/concept_doctrine_and_equipment_steering.md) 参照。
+  3. 詳細は [`../../discussion/industry_logistics/concept_doctrine_and_equipment_steering.md`](../../discussion/industry_logistics/concept_doctrine_and_equipment_steering.md) 参照。
 
 ---
 
@@ -91,7 +91,7 @@
 - **現状の確定方針**:
   - 一次資源（エネルギー、構造鉱物、機能鉱物、バイオ原質）、二次中間財（基礎部品、論理コア、装甲板、レーション）、消費財（弾薬、燃料、交換部品）の3層体系を確立。
   - 弾薬規格の分化・再統合ダイナミクス、食料3大アプローチ（陸・海・工業）を定義。
-- 詳細は [`./discussion/industry_logistics/concept_resource_economy_and_logistics.md`](./discussion/industry_logistics/concept_resource_economy_and_logistics.md) 参照。
+- 詳細は [`../../discussion/industry_logistics/concept_resource_economy_and_logistics.md`](../../discussion/industry_logistics/concept_resource_economy_and_logistics.md) 参照。
 
 ---
 
@@ -102,7 +102,7 @@
   - 未決着時の戦線膠着（Grinding Combat）と親マップへの持ち越し。
   - 隣接親タイルからの増援進入ラグ（地形・インフラ距離算出モデル）および盤外長距離支援砲撃（Off-Map Fire Support）。
   - サブタイル上の施設破壊（発電所・鉄道・工廠）による親タイルTierおよび稼働率への即時フィードバック。
-- 詳細は [`./discussion/map_tile/concept_subtile_combat_and_tactical_rules.md`](./discussion/map_tile/concept_subtile_combat_and_tactical_rules.md) 参照。
+- 詳細は [`../../discussion/map_tile/concept_subtile_combat_and_tactical_rules.md`](../../discussion/map_tile/concept_subtile_combat_and_tactical_rules.md) 参照。
 
 ---
 
@@ -111,14 +111,14 @@
 - **現状の確定方針**:
   - **自発的失踪者**: 国家体制・ノルマから脱退した非国家集団。民生用重機ベースの現地改造兵器を保有。自国近傍は出身者主体、深部は多国籍混在。
   - **段階的領土要求**: 自然国境に向けた4区分（近傍、超積極的、積極的、消極的）の動的推移と実効支配（前哨基地・哨戒）の必要性。
-- 詳細は [`./discussion/diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md`](./discussion/diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md) 参照。
+- 詳細は [`../../discussion/diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md`](../../discussion/diplomacy_governance/concept_frontier_dissidents_and_territorial_claims.md) 参照。
 
 ---
 
 ### ⑦ 入植地兵器世代と母星技術ギャップ・自動運用の諸課題（確定方針と自動化反映）
 
 - **背景と確定事項**:
-  - 母星の高嶺産業と入植地の未熟なサプライチェーンの落差、兵器世代5段階（Gen 0〜Gen 4）の基本体系を策定（[`concept_frontier_industry_and_weapon_generations.md`](./discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md)）。
+  - 母星の高嶺産業と入植地の未熟なサプライチェーンの落差、兵器世代5段階（Gen 0〜Gen 4）の基本体系を策定（[`../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md`](../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md)）。
   - 非資源消費型初期ユニット（探査バギー、治安警備、監視杭等）と虎の子機甲（Gen 0）の中央待機・戦略予備運用、装備寿命 vs 人間訓練の非対称性を定義。
 - **自動化・ステアリング前提の具体化論点**:
   1. **兵站・インフラ結合による自動補給と活動限界**:
@@ -136,10 +136,10 @@
 
 | 優先度 | ドキュメント / 検討テーマ | 主な定義内容・アクション | ステータス |
 | :----: | :--- | :--- | :---: |
-| **最優先** | **戦闘団 × 兵站ステアリング統合データ仕様書 (SEC-01)** | 16スロット戦闘団のインフラ結合度による自動補給、兵站断絶時の稼働率低下と共食い整備（Cannibalization）のState遷移ロジック（[`COMBAT_GROUP_LOGISTICS_INTEGRATION.md`](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)） | **完了 (策定済)** |
-| **最優先** | **多層ステアリングUI画面遷移・操作フロー仕様書 (SEC-02)** | 大戦略スライダー、RFP提示、金型転換移行ラグ（Re-tooling）、現場改修（Field Mod）承認ポップアップの画面レイアウトと操作動線（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
-| **高** | **資源・部品・弾薬マスター定義書（Data Dictionary） (SEC-03)** | 4種一次資源、中間部品、弾薬規格・燃料・交換部品の具体的な入出力レート・保管容量モデル（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
-| **高** | **初期モジュール・基本シャシー実数値カタログ仕様書 (SEC-04)** | 競技的平等を保証する共通規格、装輪・履帯・多脚スペック差、初期兵装・装甲、Turn 0スターター戦力（[`concept_starter_modules_and_common_chassis_catalog.md`](../discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md) の実数値化） | **構想完了 / 詳細化待機** |
-| **中** | **架空6大国初期保有アセット・スタートアップ仕様書 (SEC-05)** | Turn 0の非資源消費ユニット、虎の子Gen 0戦力の初期配備数、初期ブートローダー工廠値（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
-| **中** | **動的情勢推移・危機（Crisis）・Civ型勝利条件詳細仕様書 (SEC-06)** | 瘴気大侵入、宇宙港再建、軍事制覇、ガイア同化等の判定フラグと、クリア後エンドレス継続プレイ挙動（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
-| **低** | **自発的失踪者・軍閥（第三極）接触・調達・領土要求イベント群 (SEC-07)** | 国境地帯の失踪者コミュニティ遭遇、闇市調達、自然国境に基づく4段階領土主張（Claims）の計算式（詳細は [`./SECONDARY_MISSING_SPECS.md`](./SECONDARY_MISSING_SPECS.md)） | 未着手 |
+| **最優先** | **戦闘団 × 兵站ステアリング統合データ仕様書 (SEC-01)** | 16スロット戦闘団のインフラ結合度による自動補給、兵站断絶時の稼働率低下と共食い整備（Cannibalization）のState遷移ロジック（[`../../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md`](../../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md)） | **完了 (策定済)** |
+| **最優先** | **多層ステアリングUI画面遷移・操作フロー仕様書 (SEC-02)** | 大戦略スライダー、RFP提示、金型転換移行ラグ（Re-tooling）、現場改修（Field Mod）承認ポップアップの画面レイアウトと操作動線（詳細は [`../completed/SECONDARY_MISSING_SPECS.md`](../completed/SECONDARY_MISSING_SPECS.md)） | **完了 (策定済)** |
+| **高** | **資源・部品・弾薬マスター定義書（Data Dictionary） (SEC-03)** | 4種一次資源、中間部品、弾薬規格・燃料・交換部品の具体的な入出力レート・保管容量モデル（詳細は [`../completed/SECONDARY_MISSING_SPECS.md`](../completed/SECONDARY_MISSING_SPECS.md)） | **完了 (策定済)** |
+| **高** | **初期モジュール・基本シャシー実数値カタログ仕様書 (SEC-04)** | 競技的平等を保証する共通規格、装輪・履帯・多脚スペック差、初期兵装・装甲、Turn 0スターター戦力（[`../../discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md`](../../discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md) の実数値化） | **完了 (策定済)** |
+| **中** | **架空6大国初期保有アセット・スタートアップ仕様書 (SEC-05)** | Turn 0の非資源消費ユニット、虎の子Gen 0戦力の初期配備数、初期ブートローダー工廠値（詳細は [`../completed/SECONDARY_MISSING_SPECS.md`](../completed/SECONDARY_MISSING_SPECS.md)） | **完了 (策定済)** |
+| **中** | **動的情勢推移・危機（Crisis）・Civ型勝利条件詳細仕様書 (SEC-06)** | 瘴気大侵入、宇宙港再建、軍事制覇、ガイア同化等の判定フラグと、クリア後エンドレス継続プレイ挙動（詳細は [`../completed/SECONDARY_MISSING_SPECS.md`](../completed/SECONDARY_MISSING_SPECS.md)） | **完了 (策定済)** |
+| **低** | **自発的失踪者・軍閥（第三極）接触・調達・領土要求イベント群 (SEC-07)** | 国境地帯の失踪者コミュニティ遭遇、闇市調達、自然国境に基づく4段階領土主張（Claims）の計算式（詳細は [`../completed/SECONDARY_MISSING_SPECS.md`](../completed/SECONDARY_MISSING_SPECS.md)） | **完了 (策定済)** |

@@ -187,7 +187,7 @@ pub fn spawn_turn_0_starter_entities(
 
 ## 6. ドキュメント相互参照
 
-- [`../planning/MISSING_SPECS_EXECUTION_PLAN.md`](../planning/MISSING_SPECS_EXECUTION_PLAN.md) - 不足ドキュメント実行計画
+- [`../planning/completed/MISSING_SPECS_EXECUTION_PLAN.md`](../planning/completed/MISSING_SPECS_EXECUTION_PLAN.md) - 不足ドキュメント実行計画
 - [`Faction.md`](./Faction.md) - 勢力一覧・基本設定
 - [`CHASSIS_AND_MODULE_CATALOG.md`](./CHASSIS_AND_MODULE_CATALOG.md) - 初期車台・兵装カタログ
 - [`RESOURCE_ITEM_DICTIONARY.md`](./RESOURCE_ITEM_DICTIONARY.md) - 資源・弾薬物理データ辞書

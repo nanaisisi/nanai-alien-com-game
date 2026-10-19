@@ -224,7 +224,7 @@ pub enum CombatIntensity {
 
 ## 6. ドキュメント相互参照
 
-- [`../planning/MISSING_SPECS_EXECUTION_PLAN.md`](../planning/MISSING_SPECS_EXECUTION_PLAN.md) - 不足ドキュメント実行計画
+- [`../planning/completed/MISSING_SPECS_EXECUTION_PLAN.md`](../planning/completed/MISSING_SPECS_EXECUTION_PLAN.md) - 不足ドキュメント実行計画
 - [`RESOURCE_ECONOMY_SYSTEM.md`](./RESOURCE_ECONOMY_SYSTEM.md) - 資源・経済・サプライチェーン体系目録
 - [`STEERING_UI_FLOW.md`](./STEERING_UI_FLOW.md) - 多層ステアリングUI操作フロー仕様書
 - [`../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md`](../units/force/COMBAT_GROUP_LOGISTICS_INTEGRATION.md) - 戦闘団兵站・共食い整備

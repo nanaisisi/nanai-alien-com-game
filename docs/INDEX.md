@@ -60,15 +60,17 @@ docs/
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
 │   ├── RESOURCE_IMPLEMENTATION_BRIDGE.md   # 資源系 実装橋渡し案
 │   └── STARTUP_OPTIONS.md                  # 起動オプション・コマンドライン引数仕様書
-├── planning/                               # 開発計画・ロードマップ・課題管理（8件）
-│   ├── CONSISTENCY_AUDIT_PLAN.md           # 仕様・ドキュメント整合性チェック計画書（本計画）
-│   ├── MISSING_DOCUMENTS_ROADMAP.md        # 未作成・不足ドキュメント体系と開発ロードマップ
-│   ├── MISSING_SPECS_EXECUTION_PLAN.md     # 不足ドキュメント整備・具体化実行計画書
-│   ├── PHASE2_MISSING_SPECS_EXECUTION_PLAN.md # 第2期 不足ドキュメント整備・具象仕様化実行計画書
-│   ├── PENDING_ISSUES.md                   # 未確定・検討課題まとめ
-│   ├── SECONDARY_MISSING_SPECS.md          # 二次的不足ドキュメント・システム統合仕様書体系
-│   ├── SECONDARY_SPECS_EVALUATION.md       # 2次的不足仕様・検討論点と実装アプローチ評価書
-│   └── NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md # 次期設計計画：陸上戦艦・艦隊航空隊整理
+├── planning/                               # 開発計画・ロードマップ・課題管理（完了済み・未完了別）
+│   ├── completed/                          # 完了済み計画書（5件）
+│   │   ├── CONSISTENCY_AUDIT_PLAN.md       # 仕様・ドキュメント整合性チェック計画書
+│   │   ├── MISSING_DOCUMENTS_ROADMAP.md    # 不足ドキュメント体系・ロードマップ（第1〜第3シリーズ）
+│   │   ├── MISSING_SPECS_EXECUTION_PLAN.md # 不足ドキュメント整備・具象化実行計画書（SEC-01〜07）
+│   │   ├── SECONDARY_MISSING_SPECS.md      # 二次的不足ドキュメント・システム統合仕様書体系
+│   │   └── SECONDARY_SPECS_EVALUATION.md   # 2次的不足仕様・検討論点と実装アプローチ評価書
+│   └── pending/                            # 未完了・進行中・次期課題計画書（3件）
+│       ├── PHASE2_MISSING_SPECS_EXECUTION_PLAN.md # 第2期 不足ドキュメント整備・具象仕様化実行計画書（SEC-08〜11）
+│       ├── PENDING_ISSUES.md               # 未確定・検討課題まとめ（論点整理）
+│       └── NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md # 次期設計計画：陸上戦艦・艦隊航空隊整理
 └── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計49件）
     ├── automation/                         # 自動化システム（2件）
     │   ├── concept_automation_systems.md
@@ -424,18 +426,29 @@ docs/
 
 ## 📋 6. 開発計画・ロードマップ・課題（`planning/`）
 
-* **[planning/CONSISTENCY_AUDIT_PLAN.md](./planning/CONSISTENCY_AUDIT_PLAN.md)**：仕様・ドキュメント整合性チェック計画書
-  * ユーザー策定コア文書をマスターとし、周辺・全体文書へ段階的に逆還元（バックフィード）する実行計画と進捗管理。
-* **[planning/MISSING_DOCUMENTS_ROADMAP.md](./planning/MISSING_DOCUMENTS_ROADMAP.md)**：未作成・不足ドキュメント体系と開発ロードマップ
-  * 全体ドキュメントの最新成熟度マトリクス、明確に不足している5大領域（資源品目定義、技術ツリー、外交危機、エイリアン生態巣窟、ステアリングUI）、および開発ロードマップ。
-* **[planning/PENDING_ISSUES.md](./planning/PENDING_ISSUES.md)**：未確定・検討課題まとめ（論点整理）
-  * 歩行兵器の定義と不便さの具現化、国家概念の肉付け、戦闘団×モジュール共通化の接続など、掘り下げ不足な論点と今後の検討課題一覧。
-* **[planning/SECONDARY_MISSING_SPECS.md](./planning/SECONDARY_MISSING_SPECS.md)**：二次的不足ドキュメント・システム統合仕様書体系
-  * 概念・世界観から実装・結合ロジックへの橋渡しに必要な二次的仕様書（兵站状態遷移、UIフロー、データ結合）の整理。
-* **[planning/SECONDARY_SPECS_EVALUATION.md](./planning/SECONDARY_SPECS_EVALUATION.md)**：2次的不足仕様・検討論点と実装アプローチ評価書
-  * 二次的仕様書の各論点（兵站・UI・データ構造）に関する実装アプローチの比較・評価。
-* **[planning/NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md](./planning/NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md)**：次期設計計画：陸上戦艦・艦隊航空隊整理
-  * 航海可能な陸上戦艦、通常艦隊・航空隊の規模エシュロン再編、空棲・水棲エイリアン整理の覚書。
+計画事項を「完了済み（`completed/`）」と「未完了・進行中（`pending/`）」に分類して管理しています。
+
+### 完了済み計画書（`planning/completed/`）
+
+* **[planning/completed/CONSISTENCY_AUDIT_PLAN.md](./planning/completed/CONSISTENCY_AUDIT_PLAN.md)**：仕様・ドキュメント整合性チェック計画書
+  * ユーザー策定コア文書をマスターとし、周辺・全体文書へ段階的に逆還元（バックフィード）する実行計画と全フェーズ検証完了記録。
+* **[planning/completed/MISSING_DOCUMENTS_ROADMAP.md](./planning/completed/MISSING_DOCUMENTS_ROADMAP.md)**：不足ドキュメント体系と開発ロードマップ
+  * 全体ドキュメントの成熟度マトリクス、第1〜第3シリーズ（5大領域・9基本仕様書）の策定完了ロードマップ。
+* **[planning/completed/MISSING_SPECS_EXECUTION_PLAN.md](./planning/completed/MISSING_SPECS_EXECUTION_PLAN.md)**：第1期 不足ドキュメント整備・具象化実行計画書
+  * コアUI動線、資源データ辞書、車台・兵装実数値、勢力スタートアップ、集合意識終局判定、第三極領土主張（`SEC-01`〜`SEC-07`）の全仕様策定完了記録。
+* **[planning/completed/SECONDARY_MISSING_SPECS.md](./planning/completed/SECONDARY_MISSING_SPECS.md)**：二次的不足ドキュメント・システム統合仕様書体系
+  * 概念・世界観から実装・結合ロジックへの橋渡しに必要な二次的仕様書群（`SEC-01`〜`SEC-07`）の構造定義。
+* **[planning/completed/SECONDARY_SPECS_EVALUATION.md](./planning/completed/SECONDARY_SPECS_EVALUATION.md)**：2次的不足仕様・検討論点と実装アプローチ評価書
+  * 二次的仕様書の各論点（ロジック先行、UI体験先行、マスターデータ先行）に関する比較・評価と採用アプローチ記録。
+
+### 未完了・進行中・次期課題計画書（`planning/pending/`）
+
+* **[planning/pending/PHASE2_MISSING_SPECS_EXECUTION_PLAN.md](./planning/pending/PHASE2_MISSING_SPECS_EXECUTION_PLAN.md)**：第2期 不足ドキュメント整備・具象仕様化実行計画書
+  * 戦闘解決・損耗数式（`SEC-08`）、技術ウェブ実データ（`SEC-09`）、エイリアン生態・巣窟挙動（`SEC-10`）、外交緊張度・条約・属国化（`SEC-11`）の具象仕様化ロードマップ。
+* **[planning/pending/PENDING_ISSUES.md](./planning/pending/PENDING_ISSUES.md)**：未確定・検討課題まとめ（論点整理）
+  * 動的情勢推移、Civ型勝利条件のバリエーション、長期的な兵站・自動化ドクトリンの深掘り論点一覧。
+* **[planning/pending/NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md](./planning/pending/NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md)**：次期設計計画：陸上戦艦・艦隊航空隊整理
+  * 航海可能な陸上戦艦打撃軍団の運用、通常艦隊・航空隊の規模エシュロン再編、空棲・水棲エイリアン生態系整理の覚書。
 
 ---
 
