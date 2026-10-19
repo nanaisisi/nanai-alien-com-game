@@ -47,11 +47,23 @@
 
 ## コマンド集
 
+```bash
+# 通常起動
+cargo run
+
+# 起動オプション付き（タイトルをスキップして直接インゲーム画面を起動）
+cargo run -- --state in-game
+
+# 設定画面を直接起動
+cargo run -- -s settings
+
+# コード整形・静的解析
 cargo clippy --fix  --all --allow-dirty
 
 cargo coupling --ai
 
 cargo coupling --japanese --web
+```
 
 ## License
 

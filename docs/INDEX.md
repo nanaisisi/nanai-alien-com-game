@@ -44,17 +44,21 @@ docs/
 │   └── specs/                              # 師団直協・高級装甲兵器仕様書（2件）
 │       ├── AVIATION_ASSETS_AND_DOCTRINE.md # 師団直協航空アセット運用仕様書
 │       └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md # 二脚歩行戦闘車両仕様書
-├── specs/                                  # 共通システム確定・基本仕様書（3件）
+├── specs/                                  # 共通システム確定・基本仕様書（5件）
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
+│   ├── LAND_USE_SYSTEM.md                  # 土地利用・開発システム仕様書
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
+│   ├── STEERING_UI_FLOW.md                 # 多層ステアリングUI画面遷移・操作フロー仕様書
 │   └── WATER_AND_SALINITY_SYSTEM.md        # 水域・塩分濃度システム仕様書
-├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計（3件）
+├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計（4件）
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
-│   └── RESOURCE_IMPLEMENTATION_BRIDGE.md   # 資源系 実装橋渡し案
-├── planning/                               # 開発計画・ロードマップ・課題管理（6件）
+│   ├── RESOURCE_IMPLEMENTATION_BRIDGE.md   # 資源系 実装橋渡し案
+│   └── STARTUP_OPTIONS.md                  # 起動オプション・コマンドライン引数仕様書
+├── planning/                               # 開発計画・ロードマップ・課題管理（7件）
 │   ├── CONSISTENCY_AUDIT_PLAN.md           # 仕様・ドキュメント整合性チェック計画書（本計画）
 │   ├── MISSING_DOCUMENTS_ROADMAP.md        # 未作成・不足ドキュメント体系と開発ロードマップ
+│   ├── MISSING_SPECS_EXECUTION_PLAN.md     # 不足ドキュメント整備・具体化実行計画書
 │   ├── PENDING_ISSUES.md                   # 未確定・検討課題まとめ
 │   ├── SECONDARY_MISSING_SPECS.md          # 二次的不足ドキュメント・システム統合仕様書体系
 │   ├── SECONDARY_SPECS_EVALUATION.md       # 2次的不足仕様・検討論点と実装アプローチ評価書
@@ -148,6 +152,11 @@ docs/
   * 実用塩分単位（PSU / ‰）に基づく4段階水質区分（淡水、汽水、海水、高塩分・塩湖）。
   * カスピ海型巨大内陸湖（汽水）や死海型乾燥塩湖（鉱物資源特化）の環境適応・基礎産出力・戦略的差別化。
   * 3Dマテリアル、ミニマップピクセル描画、およびHUD（PLANET SURVEYOR）への情報統合。
+* **[specs/LAND_USE_SYSTEM.md](./specs/LAND_USE_SYSTEM.md)**：土地利用・開発システム仕様書
+  * 脱・都市中心主義に基づくタイルの地目指定・区画整備（産業・採取・居住・軍事の4大カテゴリ）。
+  * 地形・水系（河川・塩分濃度）と土地利用の適性マトリクスおよび淡水灌漑ボーナス。
+  * Tier 0（未開地）からTier 4（要塞中枢複合）への段階的発展と、地目転換（解体・再整地ラグ、スクラップ回収、Tierリセット）。
+  * 隣接シナジー（集積経済）と公害・エイリアン刺激フリクション、およびBevy ECS実装用データ構造（`LandZoning`, `TileDevelopment`）。
 * **[units/specs/AVIATION_ASSETS_AND_DOCTRINE.md](./units/specs/AVIATION_ASSETS_AND_DOCTRINE.md)**：師団直協航空アセット（戦闘・輸送ヘリ）運用仕様書
   * 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機）の機体スペック・役割定義。
   * CAS（近接航空支援）の一撃離脱・滞空時間制限、対空火網との相互作用。
@@ -402,6 +411,8 @@ docs/
   * Bevy 0.20 新機能（Weak System Ordering、`Val::Em`/`Rem`、`FixedNode`、WESL、標準カメラ等）と現行実装の適合状況、およびUIレスポンシブ化・並列化等の拡張ロードマップ。
 * **[tech/RESOURCE_IMPLEMENTATION_BRIDGE.md](./tech/RESOURCE_IMPLEMENTATION_BRIDGE.md)**：資源系 実装橋渡し案
   * 資源経済設計とBevy実装コードを繋ぐ暫定ブリッジ仕様（データ構造、タイル収支、段階的実装フェーズ計画）。
+* **[tech/STARTUP_OPTIONS.md](./tech/STARTUP_OPTIONS.md)**：起動オプション・コマンドライン引数仕様書
+  * コマンドライン引数（`--state` / `-s`）による初期画面（インゲーム、勢力選択、設定画面等）への直行機能、開発・テスト用ショートカット、デバッグコンソール連携および将来的な拡張CLIオプション（シード値固定・解像度・ヘッドレス等）構想。
 
 ---
 
