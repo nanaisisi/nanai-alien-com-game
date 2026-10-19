@@ -92,8 +92,11 @@ flowchart TD
 
 陸・海・空の各ユニット内部編成仕様（TO&E）と装備カタログ間で、数値・規格の齟齬を解消する。
 
-- [ ] **3.1 陸上装甲車定員・編成単位の統一確認**
-  - 下車歩兵定員「固定8名（1個分隊）」、基本小隊「固定4両」のルールが、全陸上TO&Eおよび装備カタログ（`ground_regular_equipment.md` 等）で厳格に一致しているか。
+- [x] **3.1 陸上装甲車定員・編成単位の統一確認**
+  - 下車歩兵定員「固定8名（1個分隊）」および基本小隊「固定4両（中隊16両、大隊64〜80両）」の2進数倍々補完ルールが、全陸上TO&Eおよび車体仕様書で厳格に一致していることを確認。
+  - [ground_regular_equipment.md](../units/equipment/ground/regular/ground_regular_equipment.md) および [concept_ground_vehicle_chassis_and_variants.md](../units/force/concept_ground_vehicle_chassis_and_variants.md) において、自動車化歩兵の基幹である「4×4 LAV（乗員2名＋下車歩兵8名固定）」の定義を明記・同期。
+  - [concept_personnel_and_manning_standards.md](../units/force/concept_personnel_and_manning_standards.md) の主要戦闘車両定員リストに「4×4 LAV（計10名: 乗員2＋下車8）」を追加し、歩兵多層エシュロン全体の定員積算基準を統一。
+  - 8×8装輪ファミリーの「基本10大バリアント（＋対空2種）」の表記揺れを整流化。
 - [ ] **3.2 共通弾薬口径規格（C表記）の照合**
   - `155C`, `120C`, `35C`, `30C`, `12.7C` 等の口径・モジュール規格が各兵器仕様書で揃っているか。
 - [ ] **3.3 エイリアン群（野生・固有種）の階級・生態パラメータの整合性**
@@ -120,7 +123,7 @@ flowchart TD
 | :--- | :--- | :--- | :---: | :--- |
 | **Phase 1** | 構造・リンク整合 | `docs/INDEX.md`, `docs/units/INDEX_TOE.md` | 完了 | 1.1, 1.2, 1.3 すべて完了（構造基盤整備完了） |
 | **Phase 2** | 思想・概念整合 | `docs/GAME_DESIGN.md`, `docs/units/toe/` | 完了 | 2.1, 2.2 すべて完了（概念レイヤー整合完了） |
-| **Phase 3** | データ・数値整合 | `docs/units/equipment/`, `docs/units/toe/` | 未着手 | 定員8名・小隊4両・口径 |
+| **Phase 3** | データ・数値整合 | `docs/units/equipment/`, `docs/units/toe/` | 進行中 | 3.1完了、3.2・3.3未着手 |
 | **Phase 4** | 実装・技術整合 | `docs/tech/`, `docs/specs/`, `src/` | 未着手 | Bevy ECS・資源橋渡し |
 
 ---
