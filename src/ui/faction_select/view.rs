@@ -3,7 +3,7 @@ use bevy::ui_widgets::Button;
 
 use super::types::*;
 use crate::faction::types::{FactionId, PlayerFaction};
-use crate::map::settings::{MapConfig, MapSize, PlanetEnvironment};
+use crate::map::settings::{LandmassType, MapConfig, MapSize, PlanetEnvironment};
 use crate::ui::theme::UiTheme;
 
 pub fn setup_faction_select_ui(
@@ -314,7 +314,97 @@ pub fn setup_faction_select_ui(
                                     TextColor(text.muted()),
                                 ));
 
-                                // 2. マップサイズ選択 & シード再生成ボタン行
+                                // 2. 陸地形状 (Landmass) 選択行
+                                settings_sec
+                                    .spawn(Node {
+                                        flex_direction: FlexDirection::Column,
+                                        row_gap: Val::Px(4.0),
+                                        margin: UiRect::top(Val::Px(2.0)),
+                                        ..default()
+                                    })
+                                    .with_children(|land_sec| {
+                                        land_sec.spawn((
+                                            Text::new("陸地形状 (LANDMASS):"),
+                                            TextFont {
+                                                font: font_regular.clone().into(),
+                                                font_size: FontSize::Px(12.0),
+                                                ..default()
+                                            },
+                                            TextColor(text.muted()),
+                                        ));
+
+                                        land_sec
+                                            .spawn(Node {
+                                                flex_direction: FlexDirection::Row,
+                                                flex_wrap: FlexWrap::Wrap,
+                                                row_gap: Val::Px(5.0),
+                                                column_gap: Val::Px(5.0),
+                                                ..default()
+                                            })
+                                            .with_children(|land_row| {
+                                                for lm in LandmassType::ALL {
+                                                    let is_active = lm == map_config.landmass;
+                                                    land_row
+                                                        .spawn((
+                                                            Button,
+                                                            SelectAction::ChooseLandmass(lm),
+                                                            LandmassButton(lm),
+                                                            Node {
+                                                                padding: UiRect::axes(
+                                                                    Val::Px(8.0),
+                                                                    Val::Px(4.0),
+                                                                ),
+                                                                border: UiRect::all(Val::Px(
+                                                                    if is_active { 1.5 } else { 1.0 },
+                                                                )),
+                                                                border_radius: BorderRadius::all(Val::Px(
+                                                                    4.0,
+                                                                )),
+                                                                ..default()
+                                                            },
+                                                            BorderColor::all(if is_active {
+                                                                surfaces.accent()
+                                                            } else {
+                                                                surfaces.border()
+                                                            }),
+                                                            BackgroundColor(if is_active {
+                                                                Color::srgba(0.20, 0.35, 0.45, 0.9)
+                                                            } else {
+                                                                surfaces.card()
+                                                            }),
+                                                        ))
+                                                        .with_children(|btn| {
+                                                            btn.spawn((
+                                                                Text::new(lm.name_ja()),
+                                                                TextFont {
+                                                                    font: font_regular.clone().into(),
+                                                                    font_size: FontSize::Px(11.0),
+                                                                    ..default()
+                                                                },
+                                                                TextColor(if is_active {
+                                                                    Color::WHITE
+                                                                } else {
+                                                                    text.main()
+                                                                }),
+                                                            ));
+                                                        });
+                                                }
+                                            });
+
+                                        // 陸地形状の説明テキスト
+                                        land_sec.spawn((
+                                            LandmassDescText,
+                                            Text::new(map_config.landmass.description()),
+                                            TextFont {
+                                                font: font_regular.clone().into(),
+                                                font_size: FontSize::Px(11.5),
+                                                ..default()
+                                            },
+                                            TextColor(text.muted()),
+                                        ));
+                                    });
+
+                                // 3. マップサイズ選択 & シード再生成ボタン行
                                 settings_sec
                                     .spawn(Node {
                                         flex_direction: FlexDirection::Column,

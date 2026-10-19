@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use std::collections::HashMap;
 
 use super::hex::{self, HexCoord};
-use super::settings::{MapConfig, PlanetEnvironment};
+use super::settings::{LandmassType, MapConfig, PlanetEnvironment};
 use super::terrain::TerrainType;
 use super::types::{HEX_RADIUS, HexTile, MapGrid, MapRoot};
 
@@ -105,9 +105,11 @@ pub fn generate_hex_map(
     let env = map_config.environment;
     let base_seed = map_config.seed;
 
+    let landmass = map_config.landmass;
+
     info!(
-        "Generating Cylindrical Overworld Hex Map (Env: {:?}, Width: {}, Height: {}, Seed: {})...",
-        env, map_w, map_h, base_seed
+        "Generating Cylindrical Overworld Hex Map (Env: {:?}, Landmass: {:?}, Width: {}, Height: {}, Seed: {})...",
+        env, landmass, map_w, map_h, base_seed
     );
 
     map_grid.tiles.clear();
@@ -144,14 +146,55 @@ pub fn generate_hex_map(
     let half_h = map_h / 2;
     let mut elevations: HashMap<(i32, i32), f32> = HashMap::new();
     let mut is_land: HashMap<(i32, i32), bool> = HashMap::new();
-    let sea_threshold = env.sea_level_threshold();
+
+    // 環境に応じた基礎海水面
+    let base_sea_threshold = env.sea_level_threshold();
+
+    // 陸地形状タイプ (Landmass) に応じた調整
+    // パンゲアの場合: 大陸中心となる経度をシードから決定
+    let pangaea_center_col = (base_seed.wrapping_mul(1103515245) % (map_w as u32)) as f32;
 
     for row in -half_h..=half_h {
-        let lat_factor = (row.abs() as f32 / half_h as f32).powf(1.8);
+        let lat_ratio = row.abs() as f32 / half_h as f32;
+        let lat_factor = lat_ratio.powf(1.8);
+
         for col in 0..map_w {
             let n = cylinder_noise_with_size(col, row, base_seed, map_w, map_h);
-            // 極地は海洋確率を上げるため標高を低減
-            let elevation = (n - lat_factor * 0.4).clamp(0.0, 1.0);
+
+            let (elevation, sea_threshold) = match landmass {
+                LandmassType::Continents => {
+                    // 標準的な多大陸: 極地低減 + 標準海水面
+                    let elev = (n - lat_factor * 0.40).clamp(0.0, 1.0);
+                    (elev, base_sea_threshold)
+                }
+                LandmassType::Pangaea => {
+                    // 1つの巨大超大陸: 大陸中心(経度)からの最短円周距離を計算
+                    let mut dx = (col as f32 - pangaea_center_col).abs();
+                    if dx > (map_w as f32 / 2.0) {
+                        dx = map_w as f32 - dx;
+                    }
+                    let norm_dist_x = dx / (map_w as f32 / 2.0); // 0.0 (中心) 〜 1.0 (対蹠地)
+                    let center_dist = (norm_dist_x * norm_dist_x + lat_ratio * lat_ratio).sqrt();
+                    // 中心付近を強く盛り上げ、遠方（対蹠地・大洋）を沈める
+                    let pangaea_bias = (1.0 - center_dist * 1.35).clamp(-0.6, 0.4);
+                    let elev = (n * 0.65 + pangaea_bias * 0.55 + 0.15 - lat_factor * 0.25).clamp(0.0, 1.0);
+                    (elev, base_sea_threshold)
+                }
+                LandmassType::SolidLand => {
+                    // 全面陸型: 海水面を大幅に下げ、極地以外はほぼ陸地化（内海や湖水が点在）
+                    let elev = (n - lat_factor * 0.20).clamp(0.0, 1.0);
+                    (elev, (base_sea_threshold * 0.45).min(0.20))
+                }
+                LandmassType::Archipelago => {
+                    // 島嶼群: 海水面を高めに設定し、細かな起伏で多数の島を浮き上がらせる
+                    // 細部ノイズをブレンドして細分化
+                    let detail_n = cylinder_noise_with_size(col, row, base_seed.wrapping_add(99991), map_w, map_h);
+                    let mixed_n = n * 0.55 + detail_n * 0.45;
+                    let elev = (mixed_n - lat_factor * 0.30).clamp(0.0, 1.0);
+                    (elev, (base_sea_threshold * 1.15 + 0.08).clamp(0.52, 0.68))
+                }
+            };
+
             elevations.insert((col, row), elevation);
             is_land.insert((col, row), elevation >= sea_threshold);
         }

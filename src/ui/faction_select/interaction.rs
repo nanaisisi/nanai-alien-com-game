@@ -46,6 +46,20 @@ pub type EnvDescTextQuery<'world, 'state> = Query<
         Without<DetailTitleText>,
         Without<DetailDescText>,
         Without<SeedDisplayText>,
+        Without<LandmassDescText>,
+    ),
+>;
+
+pub type LandmassDescTextQuery<'world, 'state> = Query<
+    'world,
+    'state,
+    &'static mut Text,
+    (
+        With<LandmassDescText>,
+        Without<DetailTitleText>,
+        Without<DetailDescText>,
+        Without<SeedDisplayText>,
+        Without<EnvDescText>,
     ),
 >;
 
@@ -58,6 +72,7 @@ pub type SeedTextQuery<'world, 'state> = Query<
         Without<DetailTitleText>,
         Without<DetailDescText>,
         Without<EnvDescText>,
+        Without<LandmassDescText>,
     ),
 >;
 
@@ -69,7 +84,7 @@ pub type FactionCardsQuery<'world, 'state> = Query<
         &'static mut BorderColor,
         &'static mut BackgroundColor,
     ),
-    (Without<EnvButton>, Without<SizeButton>),
+    (Without<EnvButton>, Without<LandmassButton>, Without<SizeButton>),
 >;
 
 pub type EnvButtonsQuery<'world, 'state> = Query<
@@ -80,7 +95,18 @@ pub type EnvButtonsQuery<'world, 'state> = Query<
         &'static mut BorderColor,
         &'static mut BackgroundColor,
     ),
-    (Without<FactionCard>, Without<SizeButton>),
+    (Without<FactionCard>, Without<LandmassButton>, Without<SizeButton>),
+>;
+
+pub type LandmassButtonsQuery<'world, 'state> = Query<
+    'world,
+    'state,
+    (
+        &'static LandmassButton,
+        &'static mut BorderColor,
+        &'static mut BackgroundColor,
+    ),
+    (Without<FactionCard>, Without<EnvButton>, Without<SizeButton>),
 >;
 
 pub type SizeButtonsQuery<'world, 'state> = Query<
@@ -91,7 +117,7 @@ pub type SizeButtonsQuery<'world, 'state> = Query<
         &'static mut BorderColor,
         &'static mut BackgroundColor,
     ),
-    (Without<FactionCard>, Without<EnvButton>),
+    (Without<FactionCard>, Without<EnvButton>, Without<LandmassButton>),
 >;
 
 pub type DetailPanelBorderQuery<'world, 'state> = Query<
@@ -102,6 +128,7 @@ pub type DetailPanelBorderQuery<'world, 'state> = Query<
         With<DetailPanelRoot>,
         Without<FactionCard>,
         Without<EnvButton>,
+        Without<LandmassButton>,
         Without<SizeButton>,
     ),
 >;
@@ -140,6 +167,19 @@ pub fn faction_select_button_system(
                 } else if is_active {
                     *border_color = BorderColor::all(env.theme_color());
                     *bg_color = BackgroundColor(Color::srgba(0.18, 0.26, 0.38, 0.9));
+                } else {
+                    *border_color = BorderColor::all(surfaces.border());
+                    *bg_color = BackgroundColor(surfaces.card());
+                }
+            }
+            SelectAction::ChooseLandmass(lm) => {
+                let is_active = *lm == map_config.landmass;
+                if is_hover_or_press {
+                    *border_color = BorderColor::all(surfaces.accent());
+                    *bg_color = BackgroundColor(Color::srgba(0.25, 0.40, 0.50, 0.9));
+                } else if is_active {
+                    *border_color = BorderColor::all(surfaces.accent());
+                    *bg_color = BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9));
                 } else {
                     *border_color = BorderColor::all(surfaces.border());
                     *bg_color = BackgroundColor(surfaces.card());
@@ -204,9 +244,11 @@ pub struct FactionSelectUiQueries<'w, 's> {
     pub title_query: DetailTitleTextQuery<'w, 's>,
     pub desc_query: DetailDescTextQuery<'w, 's>,
     pub env_desc_query: EnvDescTextQuery<'w, 's>,
+    pub landmass_desc_query: LandmassDescTextQuery<'w, 's>,
     pub seed_text_query: SeedTextQuery<'w, 's>,
     pub cards_query: FactionCardsQuery<'w, 's>,
     pub env_btn_query: EnvButtonsQuery<'w, 's>,
+    pub landmass_btn_query: LandmassButtonsQuery<'w, 's>,
     pub size_btn_query: SizeButtonsQuery<'w, 's>,
     pub panel_query: DetailPanelBorderQuery<'w, 's>,
 }
@@ -270,6 +312,25 @@ pub fn faction_select_action_system(
                     if is_active {
                         *border_color = BorderColor::all(btn.0.theme_color());
                         *bg_color = BackgroundColor(Color::srgba(0.18, 0.26, 0.38, 0.9));
+                    } else {
+                        *border_color = BorderColor::all(surfaces.border());
+                        *bg_color = BackgroundColor(surfaces.card());
+                    }
+                }
+            }
+            SelectAction::ChooseLandmass(lm) => {
+                map_config.landmass = *lm;
+
+                if let Ok(mut text) = ui.landmass_desc_query.single_mut() {
+                    **text = lm.description().to_string();
+                }
+
+                let surfaces = UiTheme::surfaces();
+                for (btn, mut border_color, mut bg_color) in &mut ui.landmass_btn_query {
+                    let is_active = btn.0 == *lm;
+                    if is_active {
+                        *border_color = BorderColor::all(surfaces.accent());
+                        *bg_color = BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9));
                     } else {
                         *border_color = BorderColor::all(surfaces.border());
                         *bg_color = BackgroundColor(surfaces.card());

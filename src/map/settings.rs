@@ -162,10 +162,52 @@ impl MapSize {
     }
 }
 
+/// 陸地形状タイプ (Landmass)
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Reflect, Default)]
+pub enum LandmassType {
+    /// 多大陸: 複数の広大な大陸と海洋が広がる標準的な配置
+    #[default]
+    Continents,
+    /// パンゲア: 1つの巨大な超大陸と広大な大洋
+    Pangaea,
+    /// 全面陸型: 海洋がほぼ存在せず、惑星全土が広大な大陸地続き
+    SolidLand,
+    /// 島嶼群: 無数の島々・諸島が海に点在する群島地形
+    Archipelago,
+}
+
+impl LandmassType {
+    pub const ALL: [LandmassType; 4] = [
+        LandmassType::Continents,
+        LandmassType::Pangaea,
+        LandmassType::SolidLand,
+        LandmassType::Archipelago,
+    ];
+
+    pub fn name_ja(&self) -> &'static str {
+        match self {
+            Self::Continents => "多大陸 (Continents)",
+            Self::Pangaea => "パンゲア (Pangaea)",
+            Self::SolidLand => "全面陸型 (Solid Land)",
+            Self::Archipelago => "島嶼群 (Islands)",
+        }
+    }
+
+    pub fn description(&self) -> &'static str {
+        match self {
+            Self::Continents => "複数の巨大大陸と大洋がバランスよく広がる標準的な惑星配置。",
+            Self::Pangaea => "巨大な1つの超大陸が広がり、大陸周辺を取り巻く大洋が存在する。",
+            Self::SolidLand => "海が極めて少なく、惑星のほぼ全土が陸続きとなる陸戦特化マップ。",
+            Self::Archipelago => "広大な海洋の中に無数の小島や諸島が散らばる海洋・島嶼マップ。",
+        }
+    }
+}
+
 /// ゲーム中のマップ生成パラメータリソース
 #[derive(Resource, Debug, Clone, Reflect)]
 pub struct MapConfig {
     pub environment: PlanetEnvironment,
+    pub landmass: LandmassType,
     pub size: MapSize,
     pub seed: u32,
 }
@@ -180,6 +222,7 @@ impl Default for MapConfig {
         let initial_seed = (mixed % 90000) + 10000;
         Self {
             environment: PlanetEnvironment::Terra,
+            landmass: LandmassType::Continents,
             size: MapSize::Standard,
             seed: initial_seed,
         }

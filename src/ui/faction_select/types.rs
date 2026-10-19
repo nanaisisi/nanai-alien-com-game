@@ -1,7 +1,7 @@
 use bevy::prelude::*;
 
 use crate::faction::types::FactionId;
-use crate::map::settings::{MapSize, PlanetEnvironment};
+use crate::map::settings::{LandmassType, MapSize, PlanetEnvironment};
 
 #[derive(Resource, Default)]
 pub struct SelectedFactionMenu {
@@ -15,6 +15,7 @@ pub struct FactionSelectRoot;
 pub enum SelectAction {
     Choose(FactionId),
     ChooseEnvironment(PlanetEnvironment),
+    ChooseLandmass(LandmassType),
     ChooseSize(MapSize),
     RerollSeed,
     Confirm,
@@ -37,6 +38,9 @@ pub struct FactionCard(pub FactionId);
 pub struct EnvButton(pub PlanetEnvironment);
 
 #[derive(Component)]
+pub struct LandmassButton(pub LandmassType);
+
+#[derive(Component)]
 pub struct SizeButton(pub MapSize);
 
 #[derive(Component)]
@@ -44,3 +48,6 @@ pub struct SeedDisplayText;
 
 #[derive(Component)]
 pub struct EnvDescText;
+
+#[derive(Component)]
+pub struct LandmassDescText;
