@@ -6,21 +6,75 @@ use super::settings::{MapConfig, PlanetEnvironment};
 use super::terrain::TerrainType;
 use super::types::{HEX_RADIUS, HexTile, MapGrid, MapRoot};
 
+/// 3D格子点ハッシュ関数（シードと3次元格子座標から擬似乱数を生成）
+#[inline]
+fn hash3d(x: i32, y: i32, z: i32, seed: u32) -> f32 {
+    let mut h = seed
+        .wrapping_add((x as u32).wrapping_mul(374761393))
+        .wrapping_add((y as u32).wrapping_mul(668265263))
+        .wrapping_add((z as u32).wrapping_mul(1274126177));
+    h = (h ^ (h >> 13)).wrapping_mul(1103515245);
+    h = h ^ (h >> 16);
+    (h as f32) / (u32::MAX as f32)
+}
+
+/// 3D円筒空間におけるバリューノイズ（X/Z平面で円周、Yで緯度）
+fn sample_value_noise(cx: f32, cy: f32, cz: f32, freq: f32, seed: u32) -> f32 {
+    let px = cx * freq;
+    let py = cy * freq;
+    let pz = cz * freq;
+
+    let x0 = px.floor() as i32;
+    let y0 = py.floor() as i32;
+    let z0 = pz.floor() as i32;
+
+    let fx = px - x0 as f32;
+    let fy = py - y0 as f32;
+    let fz = pz - z0 as f32;
+
+    // Smoothstep補間カーブ (3t^2 - 2t^3)
+    let u = fx * fx * (3.0 - 2.0 * fx);
+    let v = fy * fy * (3.0 - 2.0 * fy);
+    let w = fz * fz * (3.0 - 2.0 * fz);
+
+    let c000 = hash3d(x0, y0, z0, seed);
+    let c100 = hash3d(x0 + 1, y0, z0, seed);
+    let c010 = hash3d(x0, y0 + 1, z0, seed);
+    let c110 = hash3d(x0 + 1, y0 + 1, z0, seed);
+    let c001 = hash3d(x0, y0, z0 + 1, seed);
+    let c101 = hash3d(x0 + 1, y0, z0 + 1, seed);
+    let c011 = hash3d(x0, y0 + 1, z0 + 1, seed);
+    let c111 = hash3d(x0 + 1, y0 + 1, z0 + 1, seed);
+
+    let c00 = c000 * (1.0 - u) + c100 * u;
+    let c10 = c010 * (1.0 - u) + c110 * u;
+    let c01 = c001 * (1.0 - u) + c101 * u;
+    let c11 = c011 * (1.0 - u) + c111 * u;
+
+    let c0 = c00 * (1.0 - v) + c10 * v;
+    let c1 = c01 * (1.0 - v) + c11 * v;
+
+    c0 * (1.0 - w) + c1 * w
+}
+
 /// 周期的な円筒座標におけるハッシュ/疑似乱数（マップ幅・高さ・シード可変）
+/// フラクタル（多重オクターブ）ノイズにより、シード毎に全く異なる大陸・島嶼・起伏を形成する
 pub fn cylinder_noise_with_size(col: i32, row: i32, seed: u32, map_w: i32, map_h: i32) -> f32 {
     use std::f32::consts::PI;
+    // 円筒展開: col が [0, map_w] で 0..2PI を周回するため、東西端が完全につながる
     let theta = (col as f32 / map_w as f32) * 2.0 * PI;
     let cx = theta.cos();
     let cz = theta.sin();
     let cy = row as f32 / (map_h as f32 / 2.0);
 
-    // 複数オクターブの周期的波長
-    let wave1 = (cx * 2.3 + cz * 1.7 + cy * 1.5 + (seed as f32 * 0.1)).sin();
-    let wave2 = (cx * 4.7 - cz * 3.9 + cy * 3.1 + (seed as f32 * 0.3)).sin() * 0.5;
-    let wave3 = (cx * 9.1 + cz * 8.3 - cy * 6.2 + (seed as f32 * 0.7)).sin() * 0.25;
+    // 4オクターブのフラクタル・ブラウン運動 (fBm)
+    let n1 = sample_value_noise(cx, cy, cz, 1.2, seed);
+    let n2 = sample_value_noise(cx, cy, cz, 2.5, seed.wrapping_add(1013904223));
+    let n3 = sample_value_noise(cx, cy, cz, 5.0, seed.wrapping_add(2147483647));
+    let n4 = sample_value_noise(cx, cy, cz, 10.0, seed.wrapping_add(374761393));
 
-    let total = (wave1 + wave2 + wave3) / 1.75; // -1.0 .. 1.0 付近
-    (total * 0.5 + 0.5).clamp(0.0, 1.0)
+    let total = n1 * 0.50 + n2 * 0.28 + n3 * 0.14 + n4 * 0.08;
+    total.clamp(0.0, 1.0)
 }
 
 /// 六角柱の3Dメッシュを生成

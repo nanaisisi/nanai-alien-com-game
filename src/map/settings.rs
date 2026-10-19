@@ -172,10 +172,16 @@ pub struct MapConfig {
 
 impl Default for MapConfig {
     fn default() -> Self {
+        let now = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map(|d| d.as_nanos() as u32)
+            .unwrap_or(1337);
+        let mixed = now.wrapping_mul(1664525).wrapping_add(1013904223);
+        let initial_seed = (mixed % 90000) + 10000;
         Self {
             environment: PlanetEnvironment::Terra,
             size: MapSize::Standard,
-            seed: 1337,
+            seed: initial_seed,
         }
     }
 }
