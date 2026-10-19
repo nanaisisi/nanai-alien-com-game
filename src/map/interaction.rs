@@ -6,7 +6,7 @@ use super::{HEX_RADIUS, MapGrid};
 use crate::camera::MapCamera;
 use crate::state::AppState;
 
-use super::types::{GridOverlayLine, HexTile, MapDisplaySettings, RiverOverlayLine, YieldOverlayTag};
+use super::types::{CanalOverlayLine, GridOverlayLine, HexTile, MapDisplaySettings, RiverOverlayLine, YieldOverlayTag};
 
 pub struct MapInteractionPlugin;
 
@@ -485,7 +485,17 @@ pub fn setup_map_overlays(
             ..default()
         });
 
-        for edge in &map_grid.rivers {
+        // 運河エッジメッシュの生成（人工護岸・深碧の航路ライン）
+        let canal_mat = materials.add(StandardMaterial {
+            base_color: Color::srgba(0.10, 0.75, 0.70, 0.92),
+            perceptual_roughness: 0.15,
+            reflectance: 0.85,
+            unlit: true,
+            cull_mode: None,
+            ..default()
+        });
+
+        for (edge, scale) in &map_grid.rivers {
             let (col_a, _row_a) = edge.tile_a.to_col_row_with_width(map_w);
             let (col_b, row_b) = edge.tile_b.to_col_row_with_width(map_w);
 
@@ -505,7 +515,7 @@ pub fn setup_map_overlays(
             let dir = (pos_b - pos_a).normalize();
             let perp = Vec3::new(-dir.z, 0.0, dir.x);
 
-            let river_width = 0.18;
+            let river_width = scale.visual_width();
             let river_half_len = hex_r * 0.48;
 
             let p0 = edge_center + perp * river_half_len - dir * river_width;
@@ -537,6 +547,62 @@ pub fn setup_map_overlays(
                 Mesh3d(river_mesh_handle),
                 MeshMaterial3d(river_mat.clone()),
                 Transform::from_xyz(section_offset_x, river_y, 0.0),
+                Visibility::Inherited,
+            ));
+        }
+
+        // 運河（Canal）エッジの描画
+        for edge in &map_grid.canals {
+            let (col_a, _row_a) = edge.tile_a.to_col_row_with_width(map_w);
+            let (col_b, row_b) = edge.tile_b.to_col_row_with_width(map_w);
+
+            let mut dc = col_b - col_a;
+            if dc > map_w / 2 {
+                dc -= map_w;
+            } else if dc < -map_w / 2 {
+                dc += map_w;
+            }
+
+            let pos_a = edge.tile_a.to_world_pos(hex_r);
+            let unwrapped_b = HexCoord::from_col_row_unwrapped(col_a + dc, row_b);
+            let pos_b = unwrapped_b.to_world_pos(hex_r);
+
+            let edge_center = (pos_a + pos_b) / 2.0;
+            let dir = (pos_b - pos_a).normalize();
+            let perp = Vec3::new(-dir.z, 0.0, dir.x);
+
+            let canal_width = 0.22;
+            let canal_half_len = hex_r * 0.48;
+
+            let p0 = edge_center + perp * canal_half_len - dir * canal_width;
+            let p1 = edge_center + perp * canal_half_len + dir * canal_width;
+            let p2 = edge_center - perp * canal_half_len + dir * canal_width;
+            let p3 = edge_center - perp * canal_half_len - dir * canal_width;
+
+            let h_a = map_grid.terrain_data.get(&edge.tile_a).map(|t| t.height()).unwrap_or(0.1);
+            let h_b = map_grid.terrain_data.get(&edge.tile_b).map(|t| t.height()).unwrap_or(0.1);
+            let canal_y = h_a.min(h_b) + 0.040;
+
+            use bevy::asset::RenderAssetUsages;
+            use bevy::render::mesh::{Indices, PrimitiveTopology};
+            let mut canal_mesh = Mesh::new(PrimitiveTopology::TriangleList, RenderAssetUsages::default());
+            canal_mesh.insert_attribute(Mesh::ATTRIBUTE_POSITION, vec![
+                [p0.x, 0.0, p0.z],
+                [p1.x, 0.0, p1.z],
+                [p2.x, 0.0, p2.z],
+                [p3.x, 0.0, p3.z],
+            ]);
+            canal_mesh.insert_attribute(Mesh::ATTRIBUTE_NORMAL, vec![[0.0, 1.0, 0.0]; 4]);
+            canal_mesh.insert_attribute(Mesh::ATTRIBUTE_UV_0, vec![[0.0, 0.0]; 4]);
+            canal_mesh.insert_indices(Indices::U32(vec![0, 1, 2, 0, 2, 3]));
+
+            let canal_mesh_handle = meshes.add(canal_mesh);
+
+            commands.spawn((
+                CanalOverlayLine,
+                Mesh3d(canal_mesh_handle),
+                MeshMaterial3d(canal_mat.clone()),
+                Transform::from_xyz(section_offset_x, canal_y, 0.0),
                 Visibility::Inherited,
             ));
         }

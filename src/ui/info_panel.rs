@@ -293,8 +293,23 @@ pub fn update_info_panel_system(
             };
 
             let has_river = map_grid.has_river(&coord);
+            let has_canal = map_grid.has_canal(&coord);
+
             let river_info = if has_river && terrain.is_passable_ground() {
-                "\n\n【水系・河川】\n  河川沿岸 (River Front)\n  淡水アクセスあり（バイオマス+1.0 / 渡河防御有利）"
+                let map_w = map_grid.width.max(1);
+                let scale_name = coord
+                    .neighbors_with_width(map_w)
+                    .iter()
+                    .find_map(|n| map_grid.get_river_between(&coord, n))
+                    .map(|s| s.name_ja())
+                    .unwrap_or("河川 (River)");
+                format!("\n\n【水系・河川】\n  河川沿岸 (River Front: {})\n  淡水アクセスあり（バイオマス+1.0 / 渡河防御有利）", scale_name)
+            } else {
+                String::new()
+            };
+
+            let canal_info = if has_canal {
+                "\n\n【人工水路・運河】\n  運河回廊 (Canal Transit Corridor)\n  地峡開削航路・船舶航行可能（渡河攻撃防御+40%）"
             } else {
                 ""
             };
@@ -314,7 +329,7 @@ pub fn update_info_panel_system(
                  【地形種別】\n  {}\n\
                  【基礎産出】: {}\n\
                  【移動コスト】: {}\n\
-                 【地上移動】: {}{}{}\n\n\
+                 【地上移動】: {}{}{}{}\n\n\
                  【環境特性】\n  エイリアン活動兆候あり\n  資源探査可能",
                 col,
                 row,
@@ -329,7 +344,8 @@ pub fn update_info_panel_system(
                 move_cost_str,
                 passable_str,
                 salinity_info,
-                river_info
+                river_info,
+                canal_info
             );
             **text = info;
         }

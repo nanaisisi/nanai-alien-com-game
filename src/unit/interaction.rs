@@ -662,9 +662,22 @@ fn execute_unit_attack_action(
         return;
     };
 
+    // 渡河・運河戦闘ペナルティ（攻撃側が河川または運河を跨いで近接白兵攻撃する場合）
+    let river_penalty_mult = if !is_ranged && dist == 1 {
+        if let Some(scale) = map_grid.get_river_between(&attacker_coord, &target_coord) {
+            scale.combat_penalty_mult()
+        } else if map_grid.has_canal_between(&attacker_coord, &target_coord) {
+            0.60 // 運河を跨ぐ強襲は-40%ペナルティ
+        } else {
+            1.0
+        }
+    } else {
+        1.0
+    };
+
     // 与ダメージ計算
     let charge_bonus = if !is_ranged && dist == 1 { 1.25 } else { 1.0 };
-    let damage_to_target = ((attacker_power as f32) * (attacker_hp as f32 / 100.0) * charge_bonus
+    let damage_to_target = ((attacker_power as f32) * (attacker_hp as f32 / 100.0) * charge_bonus * river_penalty_mult
         / def_mult)
         .ceil() as u32;
     let damage_to_target = damage_to_target.max(5);
@@ -678,8 +691,8 @@ fn execute_unit_attack_action(
     };
 
     info!(
-        "COMBAT: Attacker dealt {} dmg to Enemy (dist {}). Enemy counter dealt {} dmg.",
-        damage_to_target, dist, damage_to_attacker
+        "COMBAT: Attacker dealt {} dmg to Enemy (dist {}, river_mult: {:.2}). Enemy counter dealt {} dmg.",
+        damage_to_target, dist, river_penalty_mult, damage_to_attacker
     );
 
     // 攻撃側のHPと移動力を反映
@@ -1023,7 +1036,16 @@ pub fn update_reachable_tiles(
                 continue;
             }
 
-            let next_cost = cost + 1; // 現状は1タイルにつき移動コスト1
+            // 渡河および運河横断コストの算出
+            let crossing_penalty = if let Some(scale) = map_grid.get_river_between(&curr, &next_coord) {
+                scale.movement_penalty()
+            } else if map_grid.has_canal_between(&curr, &next_coord) {
+                2 // 運河横断ペナルティ: +2移動力
+            } else {
+                0
+            };
+
+            let next_cost = cost + 1 + crossing_penalty;
             if next_cost <= max_move {
                 let recorded_cost = reachable_tiles.tiles.get(&next_coord).copied();
                 if recorded_cost.is_none() || next_cost < recorded_cost.unwrap() {

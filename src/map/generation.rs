@@ -4,7 +4,7 @@ use std::collections::{HashMap, HashSet, VecDeque};
 use super::hex::{self, HexCoord};
 use super::settings::{LandmassType, MapConfig, PlanetEnvironment};
 use super::terrain::{TerrainType, WaterSalinity};
-use super::types::{HEX_RADIUS, HexEdge, HexTile, MapGrid, MapRoot};
+use super::types::{HEX_RADIUS, HexEdge, HexTile, MapGrid, MapRoot, RiverScale};
 
 /// 3D格子点ハッシュ関数（シードと3次元格子座標から擬似乱数を生成）
 #[inline]
@@ -477,7 +477,7 @@ pub fn generate_hex_map(
     // Step 4: 河川ネットワークの生成 (River Network Generation)
     // 降水量・湿度が高く標高の高い山岳・丘陵を水源（Headwaters）とし、
     // 標高が低く傾斜の急な隣接エッジを下って湖沼（Lake）または外洋（Ocean）へ流下する
-    let mut rivers: HashSet<HexEdge> = HashSet::new();
+    let mut edge_flow_count: HashMap<HexEdge, u32> = HashMap::new();
 
     // 水源候補（標高高 + 湿潤な陸地タイル）
     let mut river_sources = Vec::new();
@@ -537,16 +537,14 @@ pub fn generate_hex_map(
         // 最大 30 ステップ流下
         for _ in 0..30 {
             let edge = HexEdge::new(current_a, current_b);
-            if rivers.contains(&edge) || visited_edges.contains(&edge) {
-                // 既存の川に合流またはループ
-                rivers.insert(edge);
-                river_formed = true;
+            *edge_flow_count.entry(edge).or_insert(0) += 1;
+            river_formed = true;
+
+            if visited_edges.contains(&edge) {
+                // ループ検知
                 break;
             }
-
             visited_edges.insert(edge);
-            rivers.insert(edge);
-            river_formed = true;
 
             // current_a または current_b のどちらかが水域（外洋 Ocean または 湖沼 Lake）に到達したら注水完了
             let t_a = terrain_map.get(&current_a).copied().unwrap_or(TerrainType::Ocean);
@@ -600,8 +598,54 @@ pub fn generate_hex_map(
         }
     }
 
+    // 累積流量（合流回数・流下ステップ）から RiverScale を決定
+    let mut rivers: HashMap<HexEdge, RiverScale> = HashMap::new();
+    for (edge, flow) in edge_flow_count {
+        let scale = if flow >= 4 {
+            RiverScale::Great
+        } else if flow >= 2 {
+            RiverScale::Major
+        } else {
+            RiverScale::Minor
+        };
+        rivers.insert(edge, scale);
+    }
+
     info!("Generated {} river segments across the planet.", rivers.len());
     map_grid.rivers = rivers;
+
+    // Step 5: 運河（Canal）の初期開削候補 / 地峡運河の検出
+    // 2つの別個の水域（海または湖）に挟まれた幅1〜2ヘックスの陸地狭窄部（地峡: Isthmus）を運河として接続
+    let mut canals: HashSet<HexEdge> = HashSet::new();
+    for row in -half_h..=half_h {
+        for col in 0..map_w {
+            let coord = HexCoord::from_col_row_with_width(col, row, map_w);
+            let t = terrain_map[&coord];
+            // 陸地タイルのみ判定
+            if !t.is_passable_ground() {
+                continue;
+            }
+            // 隣接する水域タイルを収集
+            let mut water_neighbors = Vec::new();
+            for n_coord in coord.neighbors_with_width(map_w) {
+                let n_t = terrain_map.get(&n_coord).copied().unwrap_or(TerrainType::Ocean);
+                if matches!(n_t, TerrainType::Ocean | TerrainType::Lake) {
+                    water_neighbors.push(n_coord);
+                }
+            }
+            // 異なる2箇所以上の水域に面している陸地タイルであれば、水域同士を結ぶ運河エッジを開削可能
+            if water_neighbors.len() >= 2 {
+                for wn in water_neighbors {
+                    let edge = HexEdge::new(coord, wn);
+                    if !map_grid.rivers.contains_key(&edge) {
+                        canals.insert(edge);
+                    }
+                }
+            }
+        }
+    }
+    info!("Identified {} canal transit edges across isthmuses.", canals.len());
+    map_grid.canals = canals;
 
     let world_width = hex::map_world_width_with_width(HEX_RADIUS, map_w);
 
@@ -881,16 +925,23 @@ mod tests {
         let edge = HexEdge::new(coord, neighbor);
 
         let mut grid = MapGrid::default();
-        grid.rivers.insert(edge);
+        grid.rivers.insert(edge, RiverScale::Major);
 
         assert!(grid.has_river(&coord));
         assert!(grid.has_river(&neighbor));
         assert!(grid.has_river_between(&coord, &neighbor));
+        assert_eq!(grid.get_river_between(&coord, &neighbor), Some(RiverScale::Major));
 
         // 河川沿岸タイルは淡水アクセスにより食料（バイオマス）+1.0
         let plains = TerrainType::Plains;
         let normal_out = plains.output_with_water_access(None, false);
         let river_out = plains.output_with_water_access(None, true);
         assert_eq!(river_out.biomass, normal_out.biomass + 1.0);
+
+        // 運河（Canal）テスト
+        let canal_edge = HexEdge::new(coord, HexCoord::new(3, 5));
+        grid.canals.insert(canal_edge);
+        assert!(grid.has_canal(&coord));
+        assert!(grid.has_canal_between(&coord, &HexCoord::new(3, 5)));
     }
 }
