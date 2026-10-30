@@ -1,6 +1,6 @@
 # 通常陸上軍団・上位世代発展仕様書（生体技術・異星超克改修 / Gen 4）
 
-本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../GAME_DESIGN.md) のセクション 3.1.4 および [`../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md`](../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md) に基づき、通常軍団ツリーの発展段階（Gen 3 復元 ──► Gen 4 異星超克・特化進化）において、通常陸上軍団（全12カテゴリー）へ適用される生体工学・自己修復装甲・バイオハイブリッド改修仕様を規定するものである。
+本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../../GAME_DESIGN.md) のセクション 3.1.4 および [`../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md`](../../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md) に基づき、通常軍団ツリーの発展段階（Gen 3 復元 ──► Gen 4 異星超克・特化進化）において、通常陸上軍団（全12カテゴリー）へ適用される生体工学・自己修復装甲・バイオハイブリッド改修仕様を規定するものである。
 
 ※独立した別枠ツリーとしての「融合軍団」は煩雑さを避けるため廃止され、プレイヤーが育成した通常軍団の近代化改修・上位世代ユニットとして直接実装・運用される。
 

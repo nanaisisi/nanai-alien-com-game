@@ -118,7 +118,7 @@
 
 ## 5. 関連ドキュメント (References)
 
-- [GAME_DESIGN.md](./../GAME_DESIGN.md)：全体ゲーム設計・補給体系
+- [GAME_DESIGN.md](../../GAME_DESIGN.md)：全体ゲーム設計・補給体系
 - [concept_theater_operations_and_joint_sectors.md](./concept_theater_operations_and_joint_sectors.md)：方面作戦・戦区補給構造
 - [concept_industrial_evolution_and_supply_chains.md](./concept_industrial_evolution_and_supply_chains.md)：産業発展とサプライチェーン
 - [future_concept_subtile_industry.md](./../map_tile/future_concept_subtile_industry.md)：サブタイル・平坦地インフラ配置

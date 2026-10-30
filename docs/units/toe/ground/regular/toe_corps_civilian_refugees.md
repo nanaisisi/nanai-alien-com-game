@@ -2,7 +2,7 @@
 
 (Tier 0-A 民間人・避難民群 専門編制・移動仕様)
 
-本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force_structure/concept_corps_variants.md) に基づき、正規軍のエシュロン体系（Tier 1〜Tier 6）の前段階・基底層に位置する非戦闘ユニット**「民間人・避難民群（Tier 0-A）」**の集団構成、移動特性、救出護衛メカニクス、および都市吸収仕様を規定する個別仕様書である。
+本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force/concept_corps_variants.md) に基づき、正規軍のエシュロン体系（Tier 1〜Tier 6）の前段階・基底層に位置する非戦闘ユニット**「民間人・避難民群（Tier 0-A）」**の集団構成、移動特性、救出護衛メカニクス、および都市吸収仕様を規定する個別仕様書である。
 
 ---
 

@@ -2,7 +2,7 @@
 
 (Tier 2 自動車化軽歩兵軍団 専門編制仕様)
 
-本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force_structure/concept_corps_variants.md) に基づき、4x4軽装甲車（LAV）と牽引火砲を基幹とする高速幹線展開部隊**「自動車化軽歩兵軍団（Motorized Light Infantry Corps / Tier 2 / 2個師団統合型）」**の戦闘序列（TO&E）、4x4プラットフォーム運用、牽引砲陣地展開特性、および2層航空運用を規定する個別仕様書である。
+本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force/concept_corps_variants.md) に基づき、4x4軽装甲車（LAV）と牽引火砲を基幹とする高速幹線展開部隊**「自動車化軽歩兵軍団（Motorized Light Infantry Corps / Tier 2 / 2個師団統合型）」**の戦闘序列（TO&E）、4x4プラットフォーム運用、牽引砲陣地展開特性、および2層航空運用を規定する個別仕様書である。
 
 ---
 

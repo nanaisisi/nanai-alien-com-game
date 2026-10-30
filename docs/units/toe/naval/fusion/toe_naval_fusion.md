@@ -1,6 +1,6 @@
 # 通常海上戦闘団・上位世代発展仕様書（生体技術・耐圧甲殻改修 / Gen 4）
 
-本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../GAME_DESIGN.md) のセクション 3.2.3 および [`../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md`](../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md) に基づき、通常艦隊ツリーの発展段階（Gen 3 復元 ──► Gen 4 異星超克・特化進化）において、通常水上・海洋艦艇へ適用される生体工学・自己修復装甲・無音波動推進改修仕様を規定するものである。
+本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../../GAME_DESIGN.md) のセクション 3.2.3 および [`../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md`](../../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md) に基づき、通常艦隊ツリーの発展段階（Gen 3 復元 ──► Gen 4 異星超克・特化進化）において、通常水上・海洋艦艇へ適用される生体工学・自己修復装甲・無音波動推進改修仕様を規定するものである。
 
 ※独立した別枠ツリーとしての「融合生物艦隊」は廃止され、通常艦隊の近代化改修・上位世代ユニットとして直接実装・運用される。
 

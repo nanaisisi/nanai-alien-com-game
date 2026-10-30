@@ -214,7 +214,7 @@
 
 ## 7. 各種個別仕様書へのリンク
 
-* **常設増強機甲軍団 詳細編成仕様書**: [`../toe_definitions/ground/regular/toe_corps_heavy_armored.md`](../toe_definitions/ground/regular/toe_corps_heavy_armored.md)（戦闘機動8連隊制［4個機甲連隊＋2個装甲化歩兵連隊＋左右両翼偵察連隊: 戦車256両＋重IFV384両＋装甲APC128両＋迫撃224両］基幹、特科・高射連隊、米軍式直協航空連隊32機）
+* **常設増強機甲軍団 詳細編成仕様書**: [`../toe_definitions/ground/regular/toe_corps_heavy_armored.md`](../toe/ground/regular/toe_corps_heavy_armored.md)（戦闘機動8連隊制［4個機甲連隊＋2個装甲化歩兵連隊＋左右両翼偵察連隊: 戦車256両＋重IFV384両＋装甲APC128両＋迫撃224両］基幹、特科・高射連隊、米軍式直協航空連隊32機）
 * **師団階層・RFPサイクル基本仕様**: [`./concept_combat_group_structure_and_rfp_cycle.md`](./concept_combat_group_structure_and_rfp_cycle.md)
 * **兵站・共食い整備統合データ仕様**: [`./COMBAT_GROUP_LOGISTICS_INTEGRATION.md`](./COMBAT_GROUP_LOGISTICS_INTEGRATION.md)
 * **増強軍団TO&Eバリエーション定義**: [`./concept_corps_variants.md`](./concept_corps_variants.md)

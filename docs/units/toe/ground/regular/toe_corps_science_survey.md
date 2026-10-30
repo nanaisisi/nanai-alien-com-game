@@ -1,6 +1,6 @@
 # 調査・科学探査軍団 詳細編成・運用仕様書 (Science & Survey Corps TO&E)
 
-本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md)、および [`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md) に基づき、未知の惑星環境、古代異星遺跡、エイリアン生態系の生息巣窟、特異バイオームの分析・資源発掘を担う専門特務部隊**「調査・科学探査軍団（Science & Survey Corps / 2個師団統合型）」**の戦闘序列（TO&E）、特殊環境防護、分析コンテナ車運用、および護衛編制を規定する個別仕様書である。
+本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md)、および [`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md) に基づき、未知の惑星環境、古代異星遺跡、エイリアン生態系の生息巣窟、特異バイオームの分析・資源発掘を担う専門特務部隊**「調査・科学探査軍団（Science & Survey Corps / 2個師団統合型）」**の戦闘序列（TO&E）、特殊環境防護、分析コンテナ車運用、および護衛編制を規定する個別仕様書である。
 
 ---
 

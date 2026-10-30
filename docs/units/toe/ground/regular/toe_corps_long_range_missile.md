@@ -1,6 +1,6 @@
 # 長距離ミサイル打撃軍団 詳細編成・運用仕様書 (Long-Range Missile Strike Corps TO&E)
 
-本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md)、および [`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md) に基づき、大戦略マップ上で2タイル先などの遠隔タイル・敵防衛中枢・エイリアン巨大巣穴に対してスタンドオフ精密打撃を行う戦略誘導弾部隊**「長距離ミサイル打撃軍団（Long-Range Missile Strike Corps / 2個師団統合型）」**の戦闘序列（TO&E）、TEL（輸送起立発射機）運用、射撃統制キルチェーン、および近接防御護衛編制を規定する個別仕様書である。
+本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md)、および [`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md) に基づき、大戦略マップ上で2タイル先などの遠隔タイル・敵防衛中枢・エイリアン巨大巣穴に対してスタンドオフ精密打撃を行う戦略誘導弾部隊**「長距離ミサイル打撃軍団（Long-Range Missile Strike Corps / 2個師団統合型）」**の戦闘序列（TO&E）、TEL（輸送起立発射機）運用、射撃統制キルチェーン、および近接防御護衛編制を規定する個別仕様書である。
 
 ---
 

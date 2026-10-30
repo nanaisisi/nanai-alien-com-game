@@ -2,7 +2,7 @@
 
 (Methodology for TO&E Cross-Variant Feedback & Architectural Harmonization)
 
-本ドキュメントは、[`toe_corps_heavy_armored.md`](../toe_definitions/ground/regular/toe_corps_heavy_armored.md) および [`concept_corps_and_division_echelons.md`](./concept_corps_and_division_echelons.md) において確立された**「常設増強軍団（2個師団統合制）」の詳細な編制・兵科分担・迫撃火力ドクトリン・左右両翼スクリーン・プラットフォーム共通化思想・戦車車体自走重砲・2層航空運用**を、[`concept_corps_variants.md`](./concept_corps_variants.md) や [`concept_military_echelon_and_combat_groups.md`](./concept_military_echelon_and_combat_groups.md) に定義されている**他のすべての編成（空中機動、二脚混成、装輪機動、歩兵多層エシュロン等）へ体系的かつ破綻なく水平展開（フィードバック）するための評価基準および改定手順**を定義する。
+本ドキュメントは、[`toe_corps_heavy_armored.md`](../toe/ground/regular/toe_corps_heavy_armored.md) および [`concept_corps_and_division_echelons.md`](./concept_corps_and_division_echelons.md) において確立された**「常設増強軍団（2個師団統合制）」の詳細な編制・兵科分担・迫撃火力ドクトリン・左右両翼スクリーン・プラットフォーム共通化思想・戦車車体自走重砲・2層航空運用**を、[`concept_corps_variants.md`](./concept_corps_variants.md) や [`concept_military_echelon_and_combat_groups.md`](./concept_military_echelon_and_combat_groups.md) に定義されている**他のすべての編成（空中機動、二脚混成、装輪機動、歩兵多層エシュロン等）へ体系的かつ破綻なく水平展開（フィードバック）するための評価基準および改定手順**を定義する。
 
 ---
 
@@ -120,6 +120,6 @@
 1. **軍団システム基準の先行確定**:
    - 1ユニット＝2個師団1軍団制、固定8名分隊制、戦車車体自走重砲、多層防空、2層航空運用を前提基準とする。
 2. **マスターTO&E（重機甲軍団）の照合**:
-   - [`toe_corps_heavy_armored.md`](../toe_definitions/ground/regular/toe_corps_heavy_armored.md) において完全な軍団規模の諸元を実証・維持する。
+   - [`toe_corps_heavy_armored.md`](../toe/ground/regular/toe_corps_heavy_armored.md) において完全な軍団規模の諸元を実証・維持する。
 3. **バリエーションTO&Eへの水平展開**:
    - [`concept_corps_variants.md`](./concept_corps_variants.md) および各個別仕様書（`toe_corps_<type>.md`）を順次軍団編成へ改定する。

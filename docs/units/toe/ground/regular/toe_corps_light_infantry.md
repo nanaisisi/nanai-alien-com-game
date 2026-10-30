@@ -2,7 +2,7 @@
 
 (Tier 1 軽歩兵軍団 専門編制仕様)
 
-本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force_structure/concept_corps_variants.md) に基づき、車両が進入不能な山岳、隘路、断崖、密林環境を踏破・浸透・制圧する**「軽歩兵軍団（Light Infantry Corps / Tier 1 / 2個師団統合型）」**の戦闘序列（TO&E）、徒歩行軍特性、分解搬送式火力ドクトリン、および山岳物資空輸運用を規定する個別仕様書である。
+本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force/concept_corps_variants.md) に基づき、車両が進入不能な山岳、隘路、断崖、密林環境を踏破・浸透・制圧する**「軽歩兵軍団（Light Infantry Corps / Tier 1 / 2個師団統合型）」**の戦闘序列（TO&E）、徒歩行軍特性、分解搬送式火力ドクトリン、および山岳物資空輸運用を規定する個別仕様書である。
 
 ---
 

@@ -50,7 +50,7 @@
 
 ## 2. エイリアン戦力体系（TO&E・生体兵装・混成）
 
-各作戦領域におけるエイリアン戦力は、策定済みの部隊編成（[`INDEX_TOE.md`](./INDEX_TOE.md)）と厳密に整合している。
+各作戦領域におけるエイリアン戦力は、策定済みの部隊編成（[`INDEX_TOE.md`](../INDEX_TOE.md)）と厳密に整合している。
 
 ### 2.1 作戦領域別の戦力対応
 
@@ -335,7 +335,7 @@ timeline
 ## 8. 関連ドキュメント
 
 - [`GAME_DESIGN.md`](../../GAME_DESIGN.md) - コアゲームデザイン設計書
-- [`INDEX_TOE.md`](./INDEX_TOE.md) - 内部編成（TO&E）仕様書マスター目録
+- [`INDEX_TOE.md`](../INDEX_TOE.md) - 内部編成（TO&E）仕様書マスター目録
 - [`CHASSIS_AND_MODULE_CATALOG.md`](../../specs/CHASSIS_AND_MODULE_CATALOG.md) - 基本車台・初期兵装カタログ
 - [`THIRD_PARTY_AND_TERRITORIAL_CLAIMS.md`](../../specs/THIRD_PARTY_AND_TERRITORIAL_CLAIMS.md) - 自然国境・領土要求仕様書
 - [`VICTORY_AND_CRISIS_CONDITIONS.md`](../../specs/VICTORY_AND_CRISIS_CONDITIONS.md) - 動的情勢推移・終局仕様書

@@ -1,6 +1,6 @@
 # 常設増強機甲軍団 詳細編成・運用仕様書 (Reinforced Heavy Armored Corps TO&E)
 
-本ドキュメントは、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md) および [`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md) で定義された大戦略1コマの軍事単位のうち、国家正規軍の中核戦略打撃力である**「常設増強機甲軍団（Reinforced Heavy Armored Corps / 2個師団統合型・正面8個機動連隊基幹）」**の詳細な部隊編成（TO&E）、兵科分担、左右両翼偵察戦闘運用、軍団航空隊（32機）＋師団輸送飛行隊（8機×2）の2層航空運用、固定8名下車分隊制、および兵站・共食い整備ダイナミクスを規定する個別仕様書である。
+本ドキュメントは、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md) および [`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md) で定義された大戦略1コマの軍事単位のうち、国家正規軍の中核戦略打撃力である**「常設増強機甲軍団（Reinforced Heavy Armored Corps / 2個師団統合型・正面8個機動連隊基幹）」**の詳細な部隊編成（TO&E）、兵科分担、左右両翼偵察戦闘運用、軍団航空隊（32機）＋師団輸送飛行隊（8機×2）の2層航空運用、固定8名下車分隊制、および兵站・共食い整備ダイナミクスを規定する個別仕様書である。
 
 ---
 
