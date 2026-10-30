@@ -1,6 +1,6 @@
 # 空中機動・空地強襲軍団 詳細編成・運用仕様書 (Airmobile Strike Corps TO&E)
 
-本ドキュメントは、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_toe_feedback_and_cross_echelon_methodology.md`](../../../force_structure/concept_toe_feedback_and_cross_echelon_methodology.md) に基づき、地形制約を無視して電撃的な垂直突入・要衝急襲・後方遮断を遂行する**「空中機動・空地強襲軍団（Airmobile Strike Corps / 2個師団統合型）」**の詳細な戦闘序列（TO&E）、兵科運用メカニクス、航空警戒側翼スクリーン、固定8名下車分隊制、およびFARP（前方給油再武装点）兵站ドクトリンを規定する個別仕様書である。
+本ドキュメントは、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_toe_feedback_and_cross_echelon_methodology.md`](../../../force/concept_toe_feedback_and_cross_echelon_methodology.md) に基づき、地形制約を無視して電撃的な垂直突入・要衝急襲・後方遮断を遂行する**「空中機動・空地強襲軍団（Airmobile Strike Corps / 2個師団統合型）」**の詳細な戦闘序列（TO&E）、兵科運用メカニクス、航空警戒側翼スクリーン、固定8名下車分隊制、およびFARP（前方給油再武装点）兵站ドクトリンを規定する個別仕様書である。
 
 ---
 

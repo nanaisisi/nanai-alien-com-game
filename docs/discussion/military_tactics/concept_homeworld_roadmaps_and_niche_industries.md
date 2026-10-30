@@ -149,6 +149,6 @@ SFや4Xゲームでありがちな「無能な大企業 vs 万能な新興ベン
 
 - [兵器・モジュール共通化と運用経験値システム](./concept_weapon_module_commonality.md)
 - [産業発展ロードマップと兵器世代進化](./concept_frontier_industry_and_weapon_generations.md)
-- [産業基盤構造とモジュール階層設計](./concept_industry_structure.md)
+- [産業基盤構造とモジュール階層設計](../industry_logistics/concept_industry_structure.md)
 - [イベントチェーン・カタログ設計仕様書](./../events/concept_event_catalog_and_chains.md)
 - [国家・派閥詳細および命名型式プロトコル](./../diplomacy_governance/concept_factions_detail_and_naming.md)

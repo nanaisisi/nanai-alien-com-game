@@ -1,6 +1,6 @@
 # 通常航空戦闘団・上位世代発展仕様書（生体技術・可変有機翼改修 / Gen 4）
 
-本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../GAME_DESIGN.md) のセクション 3.3.3 および [`../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md`](../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md) に基づき、通常航空隊ツリーの発展段階（Gen 3 復元 ──► Gen 4 異星超克・特化進化）において、通常航空機へ適用される航空力学・生体翼・自己修復外皮改修仕様を規定するものである。
+本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../../GAME_DESIGN.md) のセクション 3.3.3 および [`../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md`](../../../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md) に基づき、通常航空隊ツリーの発展段階（Gen 3 復元 ──► Gen 4 異星超克・特化進化）において、通常航空機へ適用される航空力学・生体翼・自己修復外皮改修仕様を規定するものである。
 
 ※独立した別枠ツリーとしての「融合生物航空団」は廃止され、通常航空団の近代化改修・上位世代ユニットとして直接実装・運用される。
 

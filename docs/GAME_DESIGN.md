@@ -80,21 +80,21 @@
 
 ### 3.1.1 通常陸上軍団のカテゴリー（歩兵装甲化・自動車化の多層体系）
 
-| 種別 | 主な役割・特徴 | イメージ・構成（2個師団統合軍団） |
-| :--- | :--- | :--- |
-| **民間人・避難民群** | 民間人集団 | 民間人、武装はないか、あっても鉄パイプ、刃物、少数ではチェーンソー、射出工具、猟銃程度（詳細は [`./toe_definitions/ground/regular/toe_corps_civilian_refugees.md`](./toe_definitions/ground/regular/toe_corps_civilian_refugees.md) 参照） |
-| **民兵軍団** | 民間人を軽武装化した民兵部隊 | 自衛民兵大隊、小銃・火炎瓶・軽火器主体、治安維持・拠点自活（詳細は [`./toe_definitions/ground/regular/toe_corps_militia.md`](./toe_definitions/ground/regular/toe_corps_militia.md) 参照） |
-| **軽歩兵軍団** | 徒歩主体の軽歩兵軍団（山岳・隘路・森林への高い適性） | 徒歩行軍ライフル大隊、携帯対戦車（ATM）班、60C/81C軽迫撃砲、車両なし（詳細は [`./toe_definitions/ground/regular/toe_corps_light_infantry.md`](./toe_definitions/ground/regular/toe_corps_light_infantry.md) 参照） |
-| **自動車化軽歩兵軍団** | 4x4軽装甲車（LAV）とトラックによる自動車化部隊。牽引砲のため展開と砲撃回避が苦手 | 4x4軽装甲車歩兵連隊、トラック輸送班、牽引式120C重迫撃砲、牽引式160C榴弾砲、自動車化整備班（詳細は [`./toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md`](./toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md) 参照） |
-| **自動車化歩兵軍団** | 同一の4x4軽装甲車（LAV）基幹にトラック架装自走砲を組み合わせた部隊。非装甲・軽装甲部隊の中では最上位 | 4x4軽装甲車歩兵連隊、8x8トラック架装120C自走迫、160C装輪自走榴弾砲、自動車化整備大隊（詳細は [`./toe_definitions/ground/regular/toe_corps_motorized_infantry.md`](./toe_definitions/ground/regular/toe_corps_motorized_infantry.md) 参照） |
-| **装輪機動軍団（装輪装甲軍団）** | 8x8装輪装甲車（Std-W8）統一。路面での高速急行展開力と前線装甲・火力を両立 | 110C火力戦闘車（MCV）、装輪IFV/APC、装輪自走迫撃砲、装輪自走榴弾砲、装輪ARV、直協航空隊（詳細は [`./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md`](./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md) 参照） |
-| **空中機動・空地強襲軍団** | ヘリコプターやVTOL機による地形無視の垂直急襲・後方遮断部隊 | 空挺軽IFV連隊、空挺超軽量自走迫、強襲航空旅団（VTOL/ヘリ）、吊り下げ榴弾砲、FARP支援群（詳細は [`./toe_definitions/ground/regular/toe_corps_airmobile.md`](./toe_definitions/ground/regular/toe_corps_airmobile.md) 参照） |
-| **装甲化軍団（諸兵科連合装甲軍団）** | 戦車2連隊・装輪偵察2連隊・装甲歩兵連隊によるバランス型装甲軍団。機動・索敵・突破を高度に両立 | 戦車2個連隊（戦車128両＋重IFV128両）、装輪偵察2個連隊（左右両翼スクリーン160両）、装甲歩兵連隊、自走特科・高射連隊、直協航空隊（詳細は [`./toe_definitions/ground/regular/toe_corps_armored.md`](./toe_definitions/ground/regular/toe_corps_armored.md) 参照） |
-| **常設増強機甲軍団（重機甲軍団）** | 戦車4連隊基幹。圧倒的不整地突破力・戦略打撃の中核。左右両翼スクリーンと航空打撃群を完全内包 | 4個諸兵科連合機甲連隊（戦車256両＋重IFV256両＋自走重迫128両）、装甲歩兵2個連隊、左右両翼偵察連隊（装輪160両）、戦車車体160C/210C特科、多層高射連隊、直協航空隊（計48機）（詳細は [toe_corps_heavy_armored.md](./toe_definitions/ground/regular/toe_corps_heavy_armored.md) 参照） |
-| **歩行戦闘車両軍団（二脚歩行混成軍団）** | 装甲車風の二脚歩行戦闘機と戦車・重IFVを小隊混成した歩行兵器打撃軍団。基本的な組織・運用思想は機甲軍団に準じるが、廃墟・瓦礫・段差での死角掃討や短時間跳躍奇襲といった歩行兵器特有の立体機動に優れる | 混成機甲連隊（戦車128両＋通常二脚128機）、跳躍強襲連隊（飛翔二脚128機＋重IFV128両）、左右両翼偵察連隊（装輪160両）、自走特科・高射、軍団航空隊（詳細は [toe_corps_bipedal_assault.md](./toe_definitions/ground/regular/toe_corps_bipedal_assault.md) 参照） |
-| **長距離ミサイル打撃軍団** | 大戦略マップ上で2タイル先などの遠隔タイル・敵拠点・巣穴へスタンドオフ精密打撃を行うミサイル専門部隊。直接交戦を避け、後方から誘導弾による戦域阻止・重要施設破壊を担当 | 重装輪TEL（ミサイル発射機車）、射撃指揮・索敵通信車、弾薬運搬・装填車、近接防衛護衛隊（詳細は [`./toe_definitions/ground/regular/toe_corps_long_range_missile.md`](./toe_definitions/ground/regular/toe_corps_long_range_missile.md) 参照） |
-| **陸上戦艦打撃軍団** | 造船所で建造した陸上戦闘艦群を海路回航・揚陸させ、地上随伴部隊と合流編成した超弩級地上決戦兵器。長距離レールガン砲撃・局所制空防空・機甲打撃を一身に備える | 陸上戦艦2隻、陸上小型空母2隻、陸上防空艦4隻、陸上近接戦闘艦8隻、機甲大隊（戦車64両）、装甲化大隊（IFV/APC64両）、偵察戦闘連隊（装輪80両）（詳細は [toe_corps_land_battleship.md](./toe_definitions/ground/regular/toe_corps_land_battleship.md) 参照） |
-| **調査・科学探査軍団** | 科学探査・遺跡解析・未知バイオーム分析に特化したあらゆる環境で活動可能な調査部隊 | 科学調査探査大隊、環境防護工兵、特殊分析コンテナ、護衛装甲部隊（詳細は [`./toe_definitions/ground/regular/toe_corps_science_survey.md`](./toe_definitions/ground/regular/toe_corps_science_survey.md) 参照） |
+| 種別                                     | 主な役割・特徴                                                                                                                                                                                      | イメージ・構成（2個師団統合軍団）                                                                                                                                                                                                                                         |
+| :--------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **民間人・避難民群**                     | 民間人集団                                                                                                                                                                                          | 民間人、武装はないか、あっても鉄パイプ、刃物、少数ではチェーンソー、射出工具、猟銃程度（詳細は [`./toe_definitions/ground/regular/toe_corps_civilian_refugees.md`](units/toe/ground/regular/toe_corps_civilian_refugees.md) 参照）                                        |
+| **民兵軍団**                             | 民間人を軽武装化した民兵部隊                                                                                                                                                                        | 自衛民兵大隊、小銃・火炎瓶・軽火器主体、治安維持・拠点自活（詳細は [`./toe_definitions/ground/regular/toe_corps_militia.md`](units/toe/ground/regular/toe_corps_militia.md) 参照）                                                                                        |
+| **軽歩兵軍団**                           | 徒歩主体の軽歩兵軍団（山岳・隘路・森林への高い適性）                                                                                                                                                | 徒歩行軍ライフル大隊、携帯対戦車（ATM）班、60C/81C軽迫撃砲、車両なし（詳細は [`./toe_definitions/ground/regular/toe_corps_light_infantry.md`](units/toe/ground/regular/toe_corps_light_infantry.md) 参照）                                                                |
+| **自動車化軽歩兵軍団**                   | 4x4軽装甲車（LAV）とトラックによる自動車化部隊。牽引砲のため展開と砲撃回避が苦手                                                                                                                    | 4x4軽装甲車歩兵連隊、トラック輸送班、牽引式120C重迫撃砲、牽引式160C榴弾砲、自動車化整備班（詳細は [`./toe_definitions/ground/regular/toe_corps_motorized_light_infantry.md`](units/toe/ground/regular/toe_corps_motorized_light_infantry.md) 参照）                       |
+| **自動車化歩兵軍団**                     | 同一の4x4軽装甲車（LAV）基幹にトラック架装自走砲を組み合わせた部隊。非装甲・軽装甲部隊の中では最上位                                                                                                | 4x4軽装甲車歩兵連隊、8x8トラック架装120C自走迫、160C装輪自走榴弾砲、自動車化整備大隊（詳細は [`./toe_definitions/ground/regular/toe_corps_motorized_infantry.md`](units/toe/ground/regular/toe_corps_motorized_infantry.md) 参照）                                        |
+| **装輪機動軍団（装輪装甲軍団）**         | 8x8装輪装甲車（Std-W8）統一。路面での高速急行展開力と前線装甲・火力を両立                                                                                                                           | 110C火力戦闘車（MCV）、装輪IFV/APC、装輪自走迫撃砲、装輪自走榴弾砲、装輪ARV、直協航空隊（詳細は [`./toe_definitions/ground/regular/toe_corps_wheeled_mobile.md`](units/toe/ground/regular/toe_corps_wheeled_mobile.md) 参照）                                             |
+| **空中機動・空地強襲軍団**               | ヘリコプターやVTOL機による地形無視の垂直急襲・後方遮断部隊                                                                                                                                          | 空挺軽IFV連隊、空挺超軽量自走迫、強襲航空旅団（VTOL/ヘリ）、吊り下げ榴弾砲、FARP支援群（詳細は [`./toe_definitions/ground/regular/toe_corps_airmobile.md`](units/toe/ground/regular/toe_corps_airmobile.md) 参照）                                                        |
+| **装甲化軍団（諸兵科連合装甲軍団）**     | 戦車2連隊・装輪偵察2連隊・装甲歩兵連隊によるバランス型装甲軍団。機動・索敵・突破を高度に両立                                                                                                        | 戦車2個連隊（戦車128両＋重IFV128両）、装輪偵察2個連隊（左右両翼スクリーン160両）、装甲歩兵連隊、自走特科・高射連隊、直協航空隊（詳細は [`./toe_definitions/ground/regular/toe_corps_armored.md`](units/toe/ground/regular/toe_corps_armored.md) 参照）                    |
+| **常設増強機甲軍団（重機甲軍団）**       | 戦車4連隊基幹。圧倒的不整地突破力・戦略打撃の中核。左右両翼スクリーンと航空打撃群を完全内包                                                                                                         | 4個諸兵科連合機甲連隊（戦車256両＋重IFV256両＋自走重迫128両）、装甲歩兵2個連隊、左右両翼偵察連隊（装輪160両）、戦車車体160C/210C特科、多層高射連隊、直協航空隊（計48機）（詳細は [toe_corps_heavy_armored.md](units/toe/ground/regular/toe_corps_heavy_armored.md) 参照） |
+| **歩行戦闘車両軍団（二脚歩行混成軍団）** | 装甲車風の二脚歩行戦闘機と戦車・重IFVを小隊混成した歩行兵器打撃軍団。基本的な組織・運用思想は機甲軍団に準じるが、廃墟・瓦礫・段差での死角掃討や短時間跳躍奇襲といった歩行兵器特有の立体機動に優れる | 混成機甲連隊（戦車128両＋通常二脚128機）、跳躍強襲連隊（飛翔二脚128機＋重IFV128両）、左右両翼偵察連隊（装輪160両）、自走特科・高射、軍団航空隊（詳細は [toe_corps_bipedal_assault.md](units/toe/ground/regular/toe_corps_bipedal_assault.md) 参照）                       |
+| **長距離ミサイル打撃軍団**               | 大戦略マップ上で2タイル先などの遠隔タイル・敵拠点・巣穴へスタンドオフ精密打撃を行うミサイル専門部隊。直接交戦を避け、後方から誘導弾による戦域阻止・重要施設破壊を担当                               | 重装輪TEL（ミサイル発射機車）、射撃指揮・索敵通信車、弾薬運搬・装填車、近接防衛護衛隊（詳細は [`./toe_definitions/ground/regular/toe_corps_long_range_missile.md`](units/toe/ground/regular/toe_corps_long_range_missile.md) 参照）                                       |
+| **陸上戦艦打撃軍団**                     | 造船所で建造した陸上戦闘艦群を海路回航・揚陸させ、地上随伴部隊と合流編成した超弩級地上決戦兵器。長距離レールガン砲撃・局所制空防空・機甲打撃を一身に備える                                          | 陸上戦艦2隻、陸上小型空母2隻、陸上防空艦4隻、陸上近接戦闘艦8隻、機甲大隊（戦車64両）、装甲化大隊（IFV/APC64両）、偵察戦闘連隊（装輪80両）（詳細は [toe_corps_land_battleship.md](units/toe/ground/regular/toe_corps_land_battleship.md) 参照）                            |
+| **調査・科学探査軍団**                   | 科学探査・遺跡解析・未知バイオーム分析に特化したあらゆる環境で活動可能な調査部隊                                                                                                                    | 科学調査探査大隊、環境防護工兵、特殊分析コンテナ、護衛装甲部隊（詳細は [`./toe_definitions/ground/regular/toe_corps_science_survey.md`](units/toe/ground/regular/toe_corps_science_survey.md) 参照）                                                                      |
 
 > [!NOTE]
 > **歩行戦闘車両（二脚兵器）の運用位置づけ**:
@@ -104,32 +104,32 @@
 
 惑星固有の生命体が群生・生態系を形成した軍団。人間のような火器体系（機関砲、誘導弾、自走迫撃砲、自走榴弾砲）や指揮通信種は持たず、群生本能と**カマキリ状の鎌腕や爪による格闘戦**を主体とする。戦車型は敵戦車に組み付いて長い時間を掛けて装甲を破壊する。対空種のみ**生体機関砲の近接信管砲弾と生体ミサイル**による本格的な対空迎撃火力を保持。軍団は生物のサイズ・階層（小型・中型・大型・超大型）および専用役割をベースに展開される。
 
-| 種別 | 主な役割・特徴 | イメージ・構成 |
-| :--- | :--- | :--- |
-| **小型エイリアン軍団** | 数千〜数万の小型格闘種による軽量スウォーム軍団。山岳・密林での浸透突撃に優れる | 小型格闘種主体、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_small_swarm.md`](./toe_definitions/ground/alien/toe_alien_corps_small_swarm.md) 参照） |
-| **中型エイリアン軍団** | 中型格闘種（軽装甲車を短時間、装甲車は時間を掛けて解体）を主力とし、小型種を従えたバランス型突撃軍団 | 中型格闘種（装甲車大）基幹、小型格闘種、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_medium_swarm.md`](./toe_definitions/ground/alien/toe_alien_corps_medium_swarm.md) 参照） |
-| **大型エイリアン軍団** | 戦車型（大型格闘種）が敵戦車隊と泥沼の格闘戦を展開しつつ包囲殲滅を図る主力軍団 | 戦車型（大型格闘種）基幹、中型格闘種、小型格闘種、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_heavy_tank.md`](./toe_definitions/ground/alien/toe_alien_corps_heavy_tank.md) 参照） |
-| **超大型エイリアン軍団** | 全高20m級の接近戦巨獣を核とする決戦軍団。圧倒的な巨体質量と巨大鎌腕で敵陣地・戦車を踏み潰す | 超大型接近戦型、護衛格闘種、対空種、大型治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_colossus.md`](./toe_definitions/ground/alien/toe_alien_corps_colossus.md) 参照） |
-| **長距離砲撃軍団** | 超大型ニードル砲撃種を核とする部隊。遠距離からミサイル程度のニードル弾を放物線投射し牽制 | 超大型ニードル砲撃型（ミサイル威力程度）、護衛格闘種、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_needle_artillery.md`](./toe_definitions/ground/alien/toe_alien_corps_needle_artillery.md) 参照） |
-| **陸棲航空格闘軍団** | 有翼格闘種が低空急降下して地上部隊や車両上面を奇襲・切り裂く地上急襲航空群（制空権確保は空棲種の担当） | 陸棲航空型（飛行格闘種）（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_aviation_melee.md`](./toe_definitions/ground/alien/toe_alien_corps_aviation_melee.md) 参照） |
+| 種別                     | 主な役割・特徴                                                                                         | イメージ・構成                                                                                                                                                                                                         |
+| :----------------------- | :----------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **小型エイリアン軍団**   | 数千〜数万の小型格闘種による軽量スウォーム軍団。山岳・密林での浸透突撃に優れる                         | 小型格闘種主体、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_small_swarm.md`](units/toe/ground/alien/toe_alien_corps_small_swarm.md) 参照）                                                 |
+| **中型エイリアン軍団**   | 中型格闘種（軽装甲車を短時間、装甲車は時間を掛けて解体）を主力とし、小型種を従えたバランス型突撃軍団   | 中型格闘種（装甲車大）基幹、小型格闘種、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_medium_swarm.md`](units/toe/ground/alien/toe_alien_corps_medium_swarm.md) 参照）                       |
+| **大型エイリアン軍団**   | 戦車型（大型格闘種）が敵戦車隊と泥沼の格闘戦を展開しつつ包囲殲滅を図る主力軍団                         | 戦車型（大型格闘種）基幹、中型格闘種、小型格闘種、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_heavy_tank.md`](units/toe/ground/alien/toe_alien_corps_heavy_tank.md) 参照）                 |
+| **超大型エイリアン軍団** | 全高20m級の接近戦巨獣を核とする決戦軍団。圧倒的な巨体質量と巨大鎌腕で敵陣地・戦車を踏み潰す            | 超大型接近戦型、護衛格闘種、対空種、大型治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_colossus.md`](units/toe/ground/alien/toe_alien_corps_colossus.md) 参照）                                       |
+| **長距離砲撃軍団**       | 超大型ニードル砲撃種を核とする部隊。遠距離からミサイル程度のニードル弾を放物線投射し牽制               | 超大型ニードル砲撃型（ミサイル威力程度）、護衛格闘種、対空種、治療種（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_needle_artillery.md`](units/toe/ground/alien/toe_alien_corps_needle_artillery.md) 参照） |
+| **陸棲航空格闘軍団**     | 有翼格闘種が低空急降下して地上部隊や車両上面を奇襲・切り裂く地上急襲航空群（制空権確保は空棲種の担当） | 陸棲航空型（飛行格闘種）（詳細は [`./toe_definitions/ground/alien/toe_alien_corps_aviation_melee.md`](units/toe/ground/alien/toe_alien_corps_aviation_melee.md) 参照）                                                 |
 
 ### 3.1.3 多種族混成軍団のカテゴリー
 
 人類と同盟エイリアンを混成した軍団。通常軍団の半分の人員・兵力を同盟エイリアンに置き換えている。
 
-| 種別 | 主な役割・特徴 | イメージ・構成 |
-| :--- | :--- | :--- |
-| **多種族混成偵察軍団** | あらゆる環境での高機動力・高視界・隠蔽性。索敵に特化 | 偵察連隊、エイリアン共生斥候群 |
-| **多種族混成軽歩兵軍団** | 徒歩主体の軽歩兵部隊 | 歩兵連隊、エイリアン軽突撃個体、迫撃砲 |
-| **多種族混成自動車化軽歩兵軍団** | 路面での機動力を持つ。牽引砲のため展開と砲撃回避が苦手 | 軽装甲車歩兵連隊、エイリアン重殻随伴班、牽引重迫撃砲、牽引榴弾砲、自動車化整備班 |
-| **多種族混成自動車化歩兵軍団** | 路面での機動力と展開力に優れ、非装甲化部隊の中では最上位 | 軽装甲車歩兵連隊、自走重迫撃砲、自走榴弾砲、自動車化整備班 |
-| **多種族混成装輪機動軍団** | 装輪装甲車による部隊。路面での機動力と展開力に優れ、装甲と火力を併せ持つ | 装輪装甲MCV（110C）、装輪IFV/APC、装輪自走榴弾砲、共生エイリアン護衛 |
-| **多種族混成航空化機動軍団** | ヘリコプターやVTOL機による航空機動部隊 | 空挺歩兵連隊、飛翔エイリアン混成隊、吊り下げ榴弾砲、航空整備班 |
-| **多種族混成装甲化軍団** | 戦車2連隊・装輪偵察2連隊・装甲歩兵にエイリアン強襲体を複合 | 戦車連隊、装輪偵察連隊、装甲歩兵連隊、エイリアン重撃爪個体、自走特科 |
-| **多種族混成機甲軍団** | 戦車部隊と随伴装甲車化歩兵部隊、超大型エイリアン個体で不整地突破 | 戦車連隊、装軌IFV、巨大生体装甲怪獣、装甲工兵、移動整備班 |
-| **多種族混成歩行戦闘軍団** | 二脚歩行戦闘機と跳躍・多脚エイリアン強襲体の混成打撃部隊 | 二脚歩行戦闘機、生体多脚強襲獣、重IFV、装輪偵察連隊 |
-| **多種族混成長距離ミサイル打撃軍団** | 長距離誘導ミサイルと生体胞子弾道投射による2タイル先へのスタンドオフ精密打撃 | ミサイルTEL発射機車、生体長距離発射個体、射撃指揮通信車、弾薬装填車 |
-| **多種族混成調査軍団** | 科学探査・遺跡解析に特化したあらゆる環境で活動可能な調査隊 | 調査科学班、共生エイリアン分析個体、護衛部隊 |
+| 種別                                 | 主な役割・特徴                                                              | イメージ・構成                                                                   |
+| :----------------------------------- | :-------------------------------------------------------------------------- | :------------------------------------------------------------------------------- |
+| **多種族混成偵察軍団**               | あらゆる環境での高機動力・高視界・隠蔽性。索敵に特化                        | 偵察連隊、エイリアン共生斥候群                                                   |
+| **多種族混成軽歩兵軍団**             | 徒歩主体の軽歩兵部隊                                                        | 歩兵連隊、エイリアン軽突撃個体、迫撃砲                                           |
+| **多種族混成自動車化軽歩兵軍団**     | 路面での機動力を持つ。牽引砲のため展開と砲撃回避が苦手                      | 軽装甲車歩兵連隊、エイリアン重殻随伴班、牽引重迫撃砲、牽引榴弾砲、自動車化整備班 |
+| **多種族混成自動車化歩兵軍団**       | 路面での機動力と展開力に優れ、非装甲化部隊の中では最上位                    | 軽装甲車歩兵連隊、自走重迫撃砲、自走榴弾砲、自動車化整備班                       |
+| **多種族混成装輪機動軍団**           | 装輪装甲車による部隊。路面での機動力と展開力に優れ、装甲と火力を併せ持つ    | 装輪装甲MCV（110C）、装輪IFV/APC、装輪自走榴弾砲、共生エイリアン護衛             |
+| **多種族混成航空化機動軍団**         | ヘリコプターやVTOL機による航空機動部隊                                      | 空挺歩兵連隊、飛翔エイリアン混成隊、吊り下げ榴弾砲、航空整備班                   |
+| **多種族混成装甲化軍団**             | 戦車2連隊・装輪偵察2連隊・装甲歩兵にエイリアン強襲体を複合                  | 戦車連隊、装輪偵察連隊、装甲歩兵連隊、エイリアン重撃爪個体、自走特科             |
+| **多種族混成機甲軍団**               | 戦車部隊と随伴装甲車化歩兵部隊、超大型エイリアン個体で不整地突破            | 戦車連隊、装軌IFV、巨大生体装甲怪獣、装甲工兵、移動整備班                        |
+| **多種族混成歩行戦闘軍団**           | 二脚歩行戦闘機と跳躍・多脚エイリアン強襲体の混成打撃部隊                    | 二脚歩行戦闘機、生体多脚強襲獣、重IFV、装輪偵察連隊                              |
+| **多種族混成長距離ミサイル打撃軍団** | 長距離誘導ミサイルと生体胞子弾道投射による2タイル先へのスタンドオフ精密打撃 | ミサイルTEL発射機車、生体長距離発射個体、射撃指揮通信車、弾薬装填車              |
+| **多種族混成調査軍団**               | 科学探査・遺跡解析に特化したあらゆる環境で活動可能な調査隊                  | 調査科学班、共生エイリアン分析個体、護衛部隊                                     |
 
 ### 3.1.4 通常ツリーの世代発展・生体技術統合（Gen 3〜Gen 4）
 
@@ -139,32 +139,32 @@
 
 #### 3.2.1 通常海上戦闘団（人類通常艦隊）
 
-| 種別 | 主な役割・特徴 | 構成艦艇イメージ（内部2進数・共通階層制） |
-| :--- | :--- | :--- |
-| **民間船艦隊** | 国内・海洋拠点への戦略資源・食料・工業製品の大量海上輸送 | 計32隻（大型コンテナ船 8隻、中型貨物船 16隻、沿岸連絡船 8隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_civilian.md`](./toe_definitions/naval/regular/toe_naval_fleet_civilian.md) 参照） |
-| **武装船艦隊** | 軽火器・コンテナVLSを秘匿仮設した武装商船団・開拓初期護衛 | 計32隻（特設武装貨物船 8隻、武装沿岸艇 16隻、特設護衛船 8隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_armed_merchant.md`](./toe_definitions/naval/regular/toe_naval_fleet_armed_merchant.md) 参照） |
-| **護衛艦隊** | 外洋シーレーンおよび民間船団・移動拠点（MOB）の専従護衛 | 計28隻（汎用駆逐艦 4隻、汎用フリゲート 8隻、護衛コルベット 16隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_escort.md`](./toe_definitions/naval/regular/toe_naval_fleet_escort.md) 参照） |
-| **通常艦隊** | 外洋主力戦闘艦隊。水上打撃戦・制海権掌握・沿岸ミサイル支援 | 計62隻＋32機（小型空母 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_battle.md`](./toe_definitions/naval/regular/toe_naval_fleet_battle.md) 参照） |
-| **戦艦艦隊** | 超重装甲と超大口径電磁砲による決戦艦隊。2タイル沿岸艦砲射撃 | 計62隻（超弩級戦艦 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_battleship.md`](./toe_definitions/naval/regular/toe_naval_fleet_battleship.md) 参照） |
-| **航空艦隊** | 洋上航空打撃拠点。艦載機による広域制空・爆撃および敵前揚陸 | 計62隻＋128機（大型正規空母 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_carrier.md`](./toe_definitions/naval/regular/toe_naval_fleet_carrier.md) 参照） |
+| 種別           | 主な役割・特徴                                              | 構成艦艇イメージ（内部2進数・共通階層制）                                                                                                                                                                                                     |
+| :------------- | :---------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **民間船艦隊** | 国内・海洋拠点への戦略資源・食料・工業製品の大量海上輸送    | 計32隻（大型コンテナ船 8隻、中型貨物船 16隻、沿岸連絡船 8隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_civilian.md`](units/toe/naval/regular/toe_naval_fleet_civilian.md) 参照）                                             |
+| **武装船艦隊** | 軽火器・コンテナVLSを秘匿仮設した武装商船団・開拓初期護衛   | 計32隻（特設武装貨物船 8隻、武装沿岸艇 16隻、特設護衛船 8隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_armed_merchant.md`](units/toe/naval/regular/toe_naval_fleet_armed_merchant.md) 参照）                                 |
+| **護衛艦隊**   | 外洋シーレーンおよび民間船団・移動拠点（MOB）の専従護衛     | 計28隻（汎用駆逐艦 4隻、汎用フリゲート 8隻、護衛コルベット 16隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_escort.md`](units/toe/naval/regular/toe_naval_fleet_escort.md) 参照）                                             |
+| **通常艦隊**   | 外洋主力戦闘艦隊。水上打撃戦・制海権掌握・沿岸ミサイル支援  | 計62隻＋32機（小型空母 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_battle.md`](units/toe/naval/regular/toe_naval_fleet_battle.md) 参照）        |
+| **戦艦艦隊**   | 超重装甲と超大口径電磁砲による決戦艦隊。2タイル沿岸艦砲射撃 | 計62隻（超弩級戦艦 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_battleship.md`](units/toe/naval/regular/toe_naval_fleet_battleship.md) 参照）    |
+| **航空艦隊**   | 洋上航空打撃拠点。艦載機による広域制空・爆撃および敵前揚陸  | 計62隻＋128機（大型正規空母 2隻、防空駆逐艦 4隻、汎用駆逐艦 8隻、汎用フリゲート 16隻、護衛コルベット 32隻）（詳細は [`./toe_definitions/naval/regular/toe_naval_fleet_carrier.md`](units/toe/naval/regular/toe_naval_fleet_carrier.md) 参照） |
 
 #### 3.2.2 野生・固有エイリアン海洋群（エイリアン艦隊）
 
 人類の海上戦闘団と完全に一致する兵種体系を持つ生体海洋群。
 
-| 種別 | 主な役割・特徴（人類艦隊と完全一致） | イメージ・構成 |
-| :--- | :--- | :--- |
-| **エイリアン哨戒艦隊** | 哨戒・近海警戒・索敵に特化した俊敏な海洋生体群 | 小型刺胞遊泳個体、高速遊泳魚雷獣、表層監視種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_patrol.md`](./toe_definitions/naval/alien/toe_alien_fleet_patrol.md) 参照） |
-| **エイリアン護衛艦隊** | 防空・対潜水生体への迎撃と遊泳群護衛を担当 | 棘皮防空個体、超音波迎撃種、中型護衛甲殻獣（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_escort.md`](./toe_definitions/naval/alien/toe_alien_fleet_escort.md) 参照） |
-| **エイリアン通常艦隊** | 外洋での水上打撃・制海権確保を担当する汎用海洋群 | 中型重装甲甲殻獣、強酸投射種、生体魚雷射出種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_regular.md`](./toe_definitions/naval/alien/toe_alien_fleet_regular.md) 参照） |
-| **エイリアン戦艦艦隊** | 超重装甲と長距離生体砲撃・沿岸破壊を担当する決戦海洋群 | 超大型甲殻巨獣（リヴァイアサン級）、重キャビテーション衝撃砲種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_battleship.md`](./toe_definitions/naval/alien/toe_alien_fleet_battleship.md) 参照） |
-| **エイリアン航空艦隊** | 飛行型エイリアンを背部で多数輸送・発進させる海洋生体群 | 浮遊母艦生体（バイオキャリア）、艦載小型飛行種、警戒生体（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_carrier.md`](./toe_definitions/naval/alien/toe_alien_fleet_carrier.md) 参照） |
-| **エイリアン潜水艦隊** | 深海に潜航し、高い隠密性から奇襲雷撃を行う生体潜水群 | 深海潜航巨獣、超音波共鳴種、誘導生体魚雷放出種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_submarine.md`](./toe_definitions/naval/alien/toe_alien_fleet_submarine.md) 参照） |
+| 種別                   | 主な役割・特徴（人類艦隊と完全一致）                   | イメージ・構成                                                                                                                                                                                     |
+| :--------------------- | :----------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **エイリアン哨戒艦隊** | 哨戒・近海警戒・索敵に特化した俊敏な海洋生体群         | 小型刺胞遊泳個体、高速遊泳魚雷獣、表層監視種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_patrol.md`](units/toe/naval/alien/toe_alien_fleet_patrol.md) 参照）                           |
+| **エイリアン護衛艦隊** | 防空・対潜水生体への迎撃と遊泳群護衛を担当             | 棘皮防空個体、超音波迎撃種、中型護衛甲殻獣（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_escort.md`](units/toe/naval/alien/toe_alien_fleet_escort.md) 参照）                             |
+| **エイリアン通常艦隊** | 外洋での水上打撃・制海権確保を担当する汎用海洋群       | 中型重装甲甲殻獣、強酸投射種、生体魚雷射出種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_regular.md`](units/toe/naval/alien/toe_alien_fleet_regular.md) 参照）                         |
+| **エイリアン戦艦艦隊** | 超重装甲と長距離生体砲撃・沿岸破壊を担当する決戦海洋群 | 超大型甲殻巨獣（リヴァイアサン級）、重キャビテーション衝撃砲種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_battleship.md`](units/toe/naval/alien/toe_alien_fleet_battleship.md) 参照） |
+| **エイリアン航空艦隊** | 飛行型エイリアンを背部で多数輸送・発進させる海洋生体群 | 浮遊母艦生体（バイオキャリア）、艦載小型飛行種、警戒生体（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_carrier.md`](units/toe/naval/alien/toe_alien_fleet_carrier.md) 参照）             |
+| **エイリアン潜水艦隊** | 深海に潜航し、高い隠密性から奇襲雷撃を行う生体潜水群   | 深海潜航巨獣、超音波共鳴種、誘導生体魚雷放出種（詳細は [`./toe_definitions/naval/alien/toe_alien_fleet_submarine.md`](units/toe/naval/alien/toe_alien_fleet_submarine.md) 参照）                   |
 
 #### 3.2.3 多種族混成海上戦闘団
 
-| 種別 | 主な役割・特徴 | 構成イメージ |
-| :--- | :--- | :--- |
+| 種別               | 主な役割・特徴                         | 構成イメージ                                         |
+| :----------------- | :------------------------------------- | :--------------------------------------------------- |
 | **多種族混成艦隊** | 人類艦隊と同盟海棲エイリアンの混成艦隊 | 護衛フリゲート、汎用駆逐艦、同盟潜水個体、共生索敵種 |
 
 > **艦艇の生体技術・新工学発展**:
@@ -176,45 +176,45 @@
 
 #### 3.3.1 通常航空戦闘団（人類通常航空隊）
 
-| 種別 | 主な役割・特徴 | 構成機体イメージ |
-| :--- | :--- | :--- |
-| **民間航空団** | 惑星内高速輸送・物資空輸を担当 | 貨物機、旅客機（詳細は [`./toe_definitions/air/regular/toe_air_wing_civilian.md`](./toe_definitions/air/regular/toe_air_wing_civilian.md) 参照） |
-| **武装民間航空団** | 軽武装を施した民間航空機 | 武装貨物機（詳細は [`./toe_definitions/air/regular/toe_air_wing_armed_civilian.md`](./toe_definitions/air/regular/toe_air_wing_armed_civilian.md) 参照） |
-| **輸送航空団** | 陸上部隊を収容でき、不整地着陸能力を持った大型輸送機による航空団 | 軍用輸送機（詳細は [`./toe_definitions/air/regular/toe_air_wing_tactical_transport.md`](./toe_definitions/air/regular/toe_air_wing_tactical_transport.md) 参照） |
-| **哨戒航空団** | 広域索敵・早期警戒を担当 | 早期警戒機（AEW）、対潜哨戒偵察機、大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_patrol_aew.md`](./toe_definitions/air/regular/toe_air_wing_patrol_aew.md) 参照） |
-| **護衛航空団** | 民間航空機の護衛を目的とした小規模な部隊 | 大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_escort.md`](./toe_definitions/air/regular/toe_air_wing_escort.md) 参照） |
-| **迎撃航空団** | 小規模拠点から道路を活用して行動する軽戦闘機隊 | 軽戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_interceptor.md`](./toe_definitions/air/regular/toe_air_wing_interceptor.md) 参照） |
-| **垂直離陸航空団** | SVTOL型戦闘機による戦闘航空団 | SVTOL型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_vstol.md`](./toe_definitions/air/regular/toe_air_wing_vstol.md) 参照） |
-| **戦闘航空団** | 制空権確保および対地攻撃を行う主力航空隊 | 大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_tactical_fighter.md`](./toe_definitions/air/regular/toe_air_wing_tactical_fighter.md) 参照） |
-| **光学・電波ステルス戦闘航空団** | 光学・電波ステルスを装備した戦闘機部隊、コストのわりに戦闘能力は通常と同程度 | 光学迷彩ステルス戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_fighter.md`](./toe_definitions/air/regular/toe_air_wing_stealth_fighter.md) 参照） |
-| **爆撃航空団** | 爆撃機による戦略爆撃を行う航空隊 | 爆撃機、大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_bomber.md`](./toe_definitions/air/regular/toe_air_wing_bomber.md) 参照） |
-| **光学・電波ステルス爆撃航空団** | 光学ステルスを装備した爆撃機と護衛機、爆撃能力は一般爆撃機よりも劣る | 光学迷彩ステルス爆撃機、光学迷彩ステルス戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_bomber.md`](./toe_definitions/air/regular/toe_air_wing_stealth_bomber.md) 参照） |
-| **空中戦艦航空団** | 空中戦艦による接近戦闘を得意とする | 空中戦艦、空中防空駆逐艦、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_aerial_battleship.md`](./toe_definitions/air/regular/toe_air_wing_aerial_battleship.md) 参照） |
-| **空中空母航空団** | 空中空母による航空機の運用を主目的とする。航空拠点としての能力を持つ | 空中空母、大型戦闘機、空中防空駆逐艦、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_aerial_carrier.md`](./toe_definitions/air/regular/toe_air_wing_aerial_carrier.md) 参照） |
-| **光学・電波ステルス偵察航空団** | 敵領空などへの偵察を行う部隊 | 光学ステルス偵察機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_recon.md`](./toe_definitions/air/regular/toe_air_wing_stealth_recon.md) 参照） |
-| **超大型輸送航空団** | 複数の超大型輸送機による部隊の長距離空輸を行う航空団。コストは戦艦艦隊を凌駕する | 超大型輸送機、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md`](./toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md) 参照） |
+| 種別                             | 主な役割・特徴                                                                   | 構成機体イメージ                                                                                                                                                                               |
+| :------------------------------- | :------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **民間航空団**                   | 惑星内高速輸送・物資空輸を担当                                                   | 貨物機、旅客機（詳細は [`./toe_definitions/air/regular/toe_air_wing_civilian.md`](units/toe/air/regular/toe_air_wing_civilian.md) 参照）                                                       |
+| **武装民間航空団**               | 軽武装を施した民間航空機                                                         | 武装貨物機（詳細は [`./toe_definitions/air/regular/toe_air_wing_armed_civilian.md`](units/toe/air/regular/toe_air_wing_armed_civilian.md) 参照）                                               |
+| **輸送航空団**                   | 陸上部隊を収容でき、不整地着陸能力を持った大型輸送機による航空団                 | 軍用輸送機（詳細は [`./toe_definitions/air/regular/toe_air_wing_tactical_transport.md`](units/toe/air/regular/toe_air_wing_tactical_transport.md) 参照）                                       |
+| **哨戒航空団**                   | 広域索敵・早期警戒を担当                                                         | 早期警戒機（AEW）、対潜哨戒偵察機、大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_patrol_aew.md`](units/toe/air/regular/toe_air_wing_patrol_aew.md) 参照）                    |
+| **護衛航空団**                   | 民間航空機の護衛を目的とした小規模な部隊                                         | 大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_escort.md`](units/toe/air/regular/toe_air_wing_escort.md) 参照）                                                               |
+| **迎撃航空団**                   | 小規模拠点から道路を活用して行動する軽戦闘機隊                                   | 軽戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_interceptor.md`](units/toe/air/regular/toe_air_wing_interceptor.md) 参照）                                                       |
+| **垂直離陸航空団**               | SVTOL型戦闘機による戦闘航空団                                                    | SVTOL型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_vstol.md`](units/toe/air/regular/toe_air_wing_vstol.md) 参照）                                                              |
+| **戦闘航空団**                   | 制空権確保および対地攻撃を行う主力航空隊                                         | 大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_tactical_fighter.md`](units/toe/air/regular/toe_air_wing_tactical_fighter.md) 参照）                                           |
+| **光学・電波ステルス戦闘航空団** | 光学・電波ステルスを装備した戦闘機部隊、コストのわりに戦闘能力は通常と同程度     | 光学迷彩ステルス戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_fighter.md`](units/toe/air/regular/toe_air_wing_stealth_fighter.md) 参照）                                 |
+| **爆撃航空団**                   | 爆撃機による戦略爆撃を行う航空隊                                                 | 爆撃機、大型戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_bomber.md`](units/toe/air/regular/toe_air_wing_bomber.md) 参照）                                                       |
+| **光学・電波ステルス爆撃航空団** | 光学ステルスを装備した爆撃機と護衛機、爆撃能力は一般爆撃機よりも劣る             | 光学迷彩ステルス爆撃機、光学迷彩ステルス戦闘機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_bomber.md`](units/toe/air/regular/toe_air_wing_stealth_bomber.md) 参照）           |
+| **空中戦艦航空団**               | 空中戦艦による接近戦闘を得意とする                                               | 空中戦艦、空中防空駆逐艦、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_aerial_battleship.md`](units/toe/air/regular/toe_air_wing_aerial_battleship.md) 参照）       |
+| **空中空母航空団**               | 空中空母による航空機の運用を主目的とする。航空拠点としての能力を持つ             | 空中空母、大型戦闘機、空中防空駆逐艦、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_aerial_carrier.md`](units/toe/air/regular/toe_air_wing_aerial_carrier.md) 参照） |
+| **光学・電波ステルス偵察航空団** | 敵領空などへの偵察を行う部隊                                                     | 光学ステルス偵察機（詳細は [`./toe_definitions/air/regular/toe_air_wing_stealth_recon.md`](units/toe/air/regular/toe_air_wing_stealth_recon.md) 参照）                                         |
+| **超大型輸送航空団**             | 複数の超大型輸送機による部隊の長距離空輸を行う航空団。コストは戦艦艦隊を凌駕する | 超大型輸送機、空中護衛フリゲート（詳細は [`./toe_definitions/air/regular/toe_air_wing_super_heavy_transport.md`](units/toe/air/regular/toe_air_wing_super_heavy_transport.md) 参照）           |
 
 #### 3.3.2 野生・固有エイリアン航空群（エイリアン航空団）
 
 人類の航空戦闘団と完全に一致する兵種体系を持つ生体航空群。
 
-| 種別 | 主な役割・特徴（人類航空団と完全一致） | イメージ・構成 |
-| :--- | :--- | :--- |
-| **エイリアン輸送航空団** | 陸上生体や物資を空輸・不整地に直接降下させる生体輸送群 | 巨大嚢胞飛行獣、生体空輸コンテナ種、護衛飛行種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_transport.md`](./toe_definitions/air/alien/toe_alien_air_wing_transport.md) 参照） |
-| **エイリアン哨戒航空団** | 広域生体レーダー・早期警戒・フェロモン索敵を担当する飛行群 | 大気浮遊巨大クラゲ（生体レーダー個体）、長距離滑空索敵種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_patrol.md`](./toe_definitions/air/alien/toe_alien_air_wing_patrol.md) 参照） |
-| **エイリアン迎撃航空団** | 狭小地や前線巣穴から即時緊急発進する軽量迎撃飛行群 | 小型高速有翼爪獣、生体短距離迎撃針射出種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_interceptor.md`](./toe_definitions/air/alien/toe_alien_air_wing_interceptor.md) 参照） |
-| **エイリアン戦闘航空団** | 制空権確保および地上への急降下襲撃を担当する主力生体飛行群 | 中型重戦闘ワイバーン、強酸弾投射種、格闘鉤爪個体（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_fighter.md`](./toe_definitions/air/alien/toe_alien_air_wing_fighter.md) 参照） |
-| **エイリアンステルス戦闘航空団** | カモフラージュ外皮と生体熱マスキングで敵レーダーを欺瞞する戦闘群 | 光学擬態有翼種、低赤外線放出捕食個体（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_stealth_fighter.md`](./toe_definitions/air/alien/toe_alien_air_wing_stealth_fighter.md) 参照） |
-| **エイリアン爆撃航空団** | 重有機爆弾・強酸カプセルによる地上目標の面制圧・戦略破壊群 | 重爆撃巨大飛行獣、有機クラスター酸爆弾投射種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_bomber.md`](./toe_definitions/air/alien/toe_alien_air_wing_bomber.md) 参照） |
-| **エイリアン空中戦艦航空団** | 圧倒的質量と重生体プラズマ砲で空戦・対地制圧を行う巨大空中生体群 | 超大型空中生体戦艦（リヴァイアサン飛行種）、直協飛行護衛群（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_aerial_battleship.md`](./toe_definitions/air/alien/toe_alien_air_wing_aerial_battleship.md) 参照） |
-| **エイリアン空中空母航空団** | 飛行生体群の生息・発進母体となる超巨大浮遊生体群 | 超巨大気嚢浮遊母艦獣、艦載小型突撃飛行種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_aerial_carrier.md`](./toe_definitions/air/alien/toe_alien_air_wing_aerial_carrier.md) 参照） |
-| **エイリアンステルス偵察航空団** | 敵防空網を潜り抜けて深部索敵を行う光学・電波欺瞞偵察群 | 高度擬態長距離飛行種、生体電波吸収膜保有個体（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_stealth_recon.md`](./toe_definitions/air/alien/toe_alien_air_wing_stealth_recon.md) 参照） |
-| **エイリアン超大型輸送航空団** | 大規模生体軍団を一括して戦域間長距離輸送する超巨大飛行群 | 巨大型嚢胞輸送怪獣、浮遊護衛飛行群（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_super_heavy_transport.md`](./toe_definitions/air/alien/toe_alien_air_wing_super_heavy_transport.md) 参照） |
+| 種別                             | 主な役割・特徴（人類航空団と完全一致）                           | イメージ・構成                                                                                                                                                                                                 |
+| :------------------------------- | :--------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **エイリアン輸送航空団**         | 陸上生体や物資を空輸・不整地に直接降下させる生体輸送群           | 巨大嚢胞飛行獣、生体空輸コンテナ種、護衛飛行種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_transport.md`](units/toe/air/alien/toe_alien_air_wing_transport.md) 参照）                             |
+| **エイリアン哨戒航空団**         | 広域生体レーダー・早期警戒・フェロモン索敵を担当する飛行群       | 大気浮遊巨大クラゲ（生体レーダー個体）、長距離滑空索敵種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_patrol.md`](units/toe/air/alien/toe_alien_air_wing_patrol.md) 参照）                         |
+| **エイリアン迎撃航空団**         | 狭小地や前線巣穴から即時緊急発進する軽量迎撃飛行群               | 小型高速有翼爪獣、生体短距離迎撃針射出種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_interceptor.md`](units/toe/air/alien/toe_alien_air_wing_interceptor.md) 参照）                               |
+| **エイリアン戦闘航空団**         | 制空権確保および地上への急降下襲撃を担当する主力生体飛行群       | 中型重戦闘ワイバーン、強酸弾投射種、格闘鉤爪個体（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_fighter.md`](units/toe/air/alien/toe_alien_air_wing_fighter.md) 参照）                               |
+| **エイリアンステルス戦闘航空団** | カモフラージュ外皮と生体熱マスキングで敵レーダーを欺瞞する戦闘群 | 光学擬態有翼種、低赤外線放出捕食個体（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_stealth_fighter.md`](units/toe/air/alien/toe_alien_air_wing_stealth_fighter.md) 参照）                           |
+| **エイリアン爆撃航空団**         | 重有機爆弾・強酸カプセルによる地上目標の面制圧・戦略破壊群       | 重爆撃巨大飛行獣、有機クラスター酸爆弾投射種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_bomber.md`](units/toe/air/alien/toe_alien_air_wing_bomber.md) 参照）                                     |
+| **エイリアン空中戦艦航空団**     | 圧倒的質量と重生体プラズマ砲で空戦・対地制圧を行う巨大空中生体群 | 超大型空中生体戦艦（リヴァイアサン飛行種）、直協飛行護衛群（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_aerial_battleship.md`](units/toe/air/alien/toe_alien_air_wing_aerial_battleship.md) 参照） |
+| **エイリアン空中空母航空団**     | 飛行生体群の生息・発進母体となる超巨大浮遊生体群                 | 超巨大気嚢浮遊母艦獣、艦載小型突撃飛行種（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_aerial_carrier.md`](units/toe/air/alien/toe_alien_air_wing_aerial_carrier.md) 参照）                         |
+| **エイリアンステルス偵察航空団** | 敵防空網を潜り抜けて深部索敵を行う光学・電波欺瞞偵察群           | 高度擬態長距離飛行種、生体電波吸収膜保有個体（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_stealth_recon.md`](units/toe/air/alien/toe_alien_air_wing_stealth_recon.md) 参照）                       |
+| **エイリアン超大型輸送航空団**   | 大規模生体軍団を一括して戦域間長距離輸送する超巨大飛行群         | 巨大型嚢胞輸送怪獣、浮遊護衛飛行群（詳細は [`./toe_definitions/air/alien/toe_alien_air_wing_super_heavy_transport.md`](units/toe/air/alien/toe_alien_air_wing_super_heavy_transport.md) 参照）                 |
 
 #### 3.3.3 多種族混成航空戦闘団
 
-| 種別 | 主な役割・特徴 | 構成イメージ |
-| :--- | :--- | :--- |
+| 種別                 | 主な役割・特徴                                               | 構成イメージ                                               |
+| :------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- |
 | **多種族混成航空団** | 飛行エイリアンにパイロットが搭乗・サイバネ制御する混成航空隊 | 生体サイボーグ飛行隊、胞子散布バイオファイター、護衛戦闘機 |
 
 > **航空機の生体技術・新工学発展**:

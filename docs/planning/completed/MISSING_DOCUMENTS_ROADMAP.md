@@ -99,7 +99,7 @@
 | **[`../../discussion/ui_wiki/concept_doctrine_steering_ui.md`](../../discussion/ui_wiki/concept_doctrine_steering_ui.md)** | `ui_wiki/` | 国家ドクトリン・自動化ステアリングUI/UX仕様書（初版完了） |
 | **[`../../discussion/map_tile/concept_subtile_combat_and_tactical_rules.md`](../../discussion/map_tile/concept_subtile_combat_and_tactical_rules.md)** | `map_tile/` | サブタイル戦術戦闘・ターン構造（1親＝12〜15サブ）、増援ラグ、盤外砲撃、施設破壊即時反映（第2シリーズ完了） |
 | **[`../../discussion/diplomacy_governance/concept_factions_detail_and_naming.md`](../../discussion/diplomacy_governance/concept_factions_detail_and_naming.md)** | `diplomacy_governance/` | 架空6大国家の詳細設定、初期産業ブートローダー、得意モジュール、役職・兵器命名プロトコル（第2シリーズ完了） |
-| **[`../../discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md`](../../discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)** | `military_tactics/` | 戦闘団16スロット構成（TO&E）、RFP駆動型自動ブロック更新、現場改修承認、新旧混在ペナルティ（第2シリーズ完了） |
+| **[`../../discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md`](../../units/force/concept_combat_group_structure_and_rfp_cycle.md)** | `military_tactics/` | 戦闘団16スロット構成（TO&E）、RFP駆動型自動ブロック更新、現場改修承認、新旧混在ペナルティ（第2シリーズ完了） |
 | **[`../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md`](../../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md)** | `military_tactics/` | 入植産業構造と母星技術ギャップ、兵器世代（Gen 0〜Gen 4）進化体系、虎の子戦略予備と非資源消費初期ユニット（第3シリーズ完了） |
 
 ---

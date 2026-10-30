@@ -174,7 +174,7 @@ Level 2（方面軍主導化）における、マップ直結の大戦略操作�
 
 ## 6. 現場発議（Field Mod）承認ポップアップ動線
 
-前線戦闘団が過酷な環境で生き残るために勝手に考案した現地改修（[`concept_combat_group_structure_and_rfp_cycle.md`](../discussion/military_tactics/concept_combat_group_structure_and_rfp_cycle.md)）に対する政治判断。
+前線戦闘団が過酷な環境で生き残るために勝手に考案した現地改修（[`concept_combat_group_structure_and_rfp_cycle.md`](../units/force/concept_combat_group_structure_and_rfp_cycle.md)）に対する政治判断。
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐

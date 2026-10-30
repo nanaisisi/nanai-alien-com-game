@@ -2,7 +2,7 @@
 
 (Tier 3 自動車化歩兵軍団 専門編制仕様)
 
-本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force_structure/concept_corps_variants.md) に基づき、同一の4x4軽装甲車（LAV）プラットフォームを基幹としつつ、すべての火砲をトラック荷台架装自走砲に換装した非装甲・軽装甲部隊最上位の**「自動車化歩兵軍団（Motorized Infantry Corps / Tier 3 / 2個師団統合型）」**の戦闘序列（TO&E）、即応火力投射、シュート＆スクート戦術、および2層航空運用を規定する個別仕様書である。
+本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force/concept_corps_variants.md) に基づき、同一の4x4軽装甲車（LAV）プラットフォームを基幹としつつ、すべての火砲をトラック荷台架装自走砲に換装した非装甲・軽装甲部隊最上位の**「自動車化歩兵軍団（Motorized Infantry Corps / Tier 3 / 2個師団統合型）」**の戦闘序列（TO&E）、即応火力投射、シュート＆スクート戦術、および2層航空運用を規定する個別仕様書である。
 
 ---
 

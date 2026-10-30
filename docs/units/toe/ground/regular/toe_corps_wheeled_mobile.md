@@ -1,6 +1,6 @@
 # 装輪機動軍団 詳細編成・運用仕様書 (Wheeled Mobile Corps TO&E)
 
-本ドキュメントは、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_toe_feedback_and_cross_echelon_methodology.md`](../../../force_structure/concept_toe_feedback_and_cross_echelon_methodology.md) に基づき、幹線道路網・舗装動脈を利用して戦域へ電撃的に自走急行・緊急展開する**「装輪機動軍団（Wheeled Mobile Corps / 2個師団統合型）」**の詳細な戦闘序列（TO&E）、単一8x8装輪車台ファミリー共通化、打撃連隊と装輪歩兵連隊の各師団4連隊構成、固定8名下車分隊制、および2層航空運用を規定する個別仕様書である。
+本ドキュメントは、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_toe_feedback_and_cross_echelon_methodology.md`](../../../force/concept_toe_feedback_and_cross_echelon_methodology.md) に基づき、幹線道路網・舗装動脈を利用して戦域へ電撃的に自走急行・緊急展開する**「装輪機動軍団（Wheeled Mobile Corps / 2個師団統合型）」**の詳細な戦闘序列（TO&E）、単一8x8装輪車台ファミリー共通化、打撃連隊と装輪歩兵連隊の各師団4連隊構成、固定8名下車分隊制、および2層航空運用を規定する個別仕様書である。
 
 ---
 

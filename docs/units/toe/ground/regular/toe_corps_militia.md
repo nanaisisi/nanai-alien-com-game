@@ -2,7 +2,7 @@
 
 (Tier 0-B 植民地民兵軍団 専門編制仕様)
 
-本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force_structure/concept_corps_variants.md) に基づき、正規軍のエシュロン体系（Tier 1〜Tier 6）の前段階・基底層に位置する準軍事防衛組織**「民兵軍団（Tier 0-B）」**の部隊構成、テクニカル車両運用、治安維持・拠点自活ドクトリン、および正規軍への再編成メカニクスを規定する個別仕様書である。
+本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force/concept_corps_variants.md) に基づき、正規軍のエシュロン体系（Tier 1〜Tier 6）の前段階・基底層に位置する準軍事防衛組織**「民兵軍団（Tier 0-B）」**の部隊構成、テクニカル車両運用、治安維持・拠点自活ドクトリン、および正規軍への再編成メカニクスを規定する個別仕様書である。
 
 ---
 

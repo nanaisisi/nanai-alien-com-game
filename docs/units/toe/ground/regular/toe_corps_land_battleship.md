@@ -1,6 +1,6 @@
 # 陸上戦艦打撃軍団 詳細編成・運用仕様書 (Land Battleship Strike Corps TO&E)
 
-本ドキュメントは、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md) および [`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md) で定義された大戦略1コマの軍事単位のうち、造船所で個別に建造された大型陸上戦闘艦艇を回航・集結させ、陸上随伴部隊と合流して編成される国家戦略決戦兵器**「陸上戦艦打撃軍団（Land Battleship Strike Corps）」**の詳細な部隊編成（TO&E）、兵科分担、建造・回航（フェリー）メカニクス、および運用ドクトリンを規定する仕様書である。
+本ドキュメントは、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md) および [`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md) で定義された大戦略1コマの軍事単位のうち、造船所で個別に建造された大型陸上戦闘艦艇を回航・集結させ、陸上随伴部隊と合流して編成される国家戦略決戦兵器**「陸上戦艦打撃軍団（Land Battleship Strike Corps）」**の詳細な部隊編成（TO&E）、兵科分担、建造・回航（フェリー）メカニクス、および運用ドクトリンを規定する仕様書である。
 
 ---
 

@@ -144,6 +144,6 @@ pub enum AutoBalancingResolution {
 ## 6. 関連ドキュメント
 
 - アーキテクチャ統括: [`../../tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md`](./../../tech/SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md)
-- 国家ドクトリン・ステアリングUI: [`./ui_wiki/concept_doctrine_steering_ui.md`](./ui_wiki/concept_doctrine_steering_ui.md)
-- サプライチェーンとブートローダー産業: [`./industry_logistics/concept_bootloader_and_national_supply_chains.md`](./industry_logistics/concept_bootloader_and_national_supply_chains.md)
-- 合意吸収と通信規格調達: [`./events/concept_faction_consensus_and_standardization.md`](./events/concept_faction_consensus_and_standardization.md)
+- 国家ドクトリン・ステアリングUI: [`./ui_wiki/concept_doctrine_steering_ui.md`](../ui_wiki/concept_doctrine_steering_ui.md)
+- サプライチェーンとブートローダー産業: [`./industry_logistics/concept_bootloader_and_national_supply_chains.md`](../industry_logistics/concept_bootloader_and_national_supply_chains.md)
+- 合意吸収と通信規格調達: [`./events/concept_faction_consensus_and_standardization.md`](../events/concept_faction_consensus_and_standardization.md)

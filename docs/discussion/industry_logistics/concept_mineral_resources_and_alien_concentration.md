@@ -198,7 +198,7 @@ impl ArmorProductionRecipe {
 
 ## 6. ドキュメント相互参照
 
-* [`../specs/RESOURCE_ITEM_DICTIONARY.md`](../specs/RESOURCE_ITEM_DICTIONARY.md) - 資源・部品・弾薬マスター定義書
-* [`../specs/RESOURCE_ECONOMY_SYSTEM.md`](../specs/RESOURCE_ECONOMY_SYSTEM.md) - 資源・経済・サプライチェーン体系目録
-* [`../specs/LAND_USE_SYSTEM.md`](../specs/LAND_USE_SYSTEM.md) - 脱・都市中心型 土地利用・開発システム仕様書
+* [`../specs/RESOURCE_ITEM_DICTIONARY.md`](../../specs/RESOURCE_ITEM_DICTIONARY.md) - 資源・部品・弾薬マスター定義書
+* [`../specs/RESOURCE_ECONOMY_SYSTEM.md`](../../specs/RESOURCE_ECONOMY_SYSTEM.md) - 資源・経済・サプライチェーン体系目録
+* [`../specs/LAND_USE_SYSTEM.md`](../../specs/LAND_USE_SYSTEM.md) - 脱・都市中心型 土地利用・開発システム仕様書
 * [`concept_resource_economy_and_logistics.md`](./concept_resource_economy_and_logistics.md) - 資源モデル基本設計書

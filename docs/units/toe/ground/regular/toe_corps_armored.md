@@ -2,7 +2,7 @@
 
 (Tier 5 諸兵科連合装甲軍団 専門編制仕様)
 
-本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force_structure/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force_structure/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force_structure/concept_corps_variants.md) に基づき、主力戦車2個連隊、広大な左右両翼スクリーン（装輪偵察2個連隊）、および装甲化歩兵2個連隊を統合した高機動バランス型打撃部隊**「装甲化軍団（Armored Corps / Tier 5 / 2個師団統合型）」**の詳細な戦闘序列（TO&E）、諸兵科連合運用、および作戦ドクトリンを規定する個別仕様書である。
+本ドキュメントは、[`../../../GAME_DESIGN.md`](../../../../GAME_DESIGN.md)、[`../../../force_structure/concept_military_echelon_and_combat_groups.md`](../../../force/concept_military_echelon_and_combat_groups.md)、[`../../../force_structure/concept_corps_and_division_echelons.md`](../../../force/concept_corps_and_division_echelons.md)、および [`../../../force_structure/concept_corps_variants.md`](../../../force/concept_corps_variants.md) に基づき、主力戦車2個連隊、広大な左右両翼スクリーン（装輪偵察2個連隊）、および装甲化歩兵2個連隊を統合した高機動バランス型打撃部隊**「装甲化軍団（Armored Corps / Tier 5 / 2個師団統合型）」**の詳細な戦闘序列（TO&E）、諸兵科連合運用、および作戦ドクトリンを規定する個別仕様書である。
 
 ---
 

@@ -1,6 +1,6 @@
 # 二次的不足ドキュメント・システム統合仕様書体系 (Secondary Missing Specifications Architecture)
 
-本ドキュメントは、[`MISSING_DOCUMENTS_ROADMAP.md`](./MISSING_DOCUMENTS_ROADMAP.md) および [`PENDING_ISSUES.md`](./PENDING_ISSUES.md) の議論・課題認識を踏まえ、**「概念・世界観設計（第1〜第3シリーズ）」から「ゲーム実装・データ定義・統合ロジック（第4〜第5シリーズ）」へ橋渡しを行うために必要な【2次的不足ドキュメント群】**を定義・整理した仕様体系書です。
+本ドキュメントは、[`MISSING_DOCUMENTS_ROADMAP.md`](./MISSING_DOCUMENTS_ROADMAP.md) および [`PENDING_ISSUES.md`](../pending/PENDING_ISSUES.md) の議論・課題認識を踏まえ、**「概念・世界観設計（第1〜第3シリーズ）」から「ゲーム実装・データ定義・統合ロジック（第4〜第5シリーズ）」へ橋渡しを行うために必要な【2次的不足ドキュメント群】**を定義・整理した仕様体系書です。
 
 ---
 
@@ -101,7 +101,7 @@
 #### SEC-04: 初期兵器モジュール・車台カタログ詳細実数値仕様書
 
 - **対象ディレクトリ**: `docs/specs/`
-- **目的**: [`concept_starter_modules_and_common_chassis_catalog.md`](../discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md) の数値をゲーム実装用テーブルとして確定。
+- **目的**: [`concept_starter_modules_and_common_chassis_catalog.md`](../../discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md) の数値をゲーム実装用テーブルとして確定。
 - **主要定義内容**:
   1. **3大基本シャシー実数値**:
      - Std-W6（装輪）、Std-T4（履帯）、Std-L4（多脚）の自重、積載限界、最高速度、整備係数、地形走破倍率テーブル。
@@ -202,5 +202,5 @@ flowchart TD
 
 1. **[`MISSING_DOCUMENTS_ROADMAP.md`](./MISSING_DOCUMENTS_ROADMAP.md)**:
    - 「第4シリーズ（統合・データ）」および「第5シリーズ（具体マスター）」としてリストされていた抽象項目を、本仕様書にて `SEC-01` 〜 `SEC-07` の具体的ドキュメントとして再定義・詳細化。
-2. **[`PENDING_ISSUES.md`](./PENDING_ISSUES.md)**:
+2. **[`PENDING_ISSUES.md`](../pending/PENDING_ISSUES.md)**:
    - 未確定論点として残されていた「兵站とインフラ結合」「母星遺産Gen 0の自動共食い整備」「多層ステアリングUIの操作動線」「Civ型クリアと継続プレイ」の実装落とし込み先がすべて確定。
