@@ -77,38 +77,38 @@ flowchart TD
 
 ### ① 資源品目・食料・弾薬ダイナミクス
 
-| ドキュメント | 概要・主要論点 |
-| :--- | :--- |
-| **[concept_resource_economy_and_logistics.md](../discussion/industry_logistics/concept_resource_economy_and_logistics.md)** | **資源モデルの基本設計書**。一次（4種）・二次（4種）・消費財（3種）の3層品目体系。陸・海・工業の食料3大生産方式と異星度（0〜100%）。弾薬規格の分化・再統合。 |
+| ドキュメント                                                                                                                                      | 概要・主要論点                                                                                                                                                                                |
+| :------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[concept_resource_economy_and_logistics.md](../discussion/industry_logistics/concept_resource_economy_and_logistics.md)**                       | **資源モデルの基本設計書**。一次（4種）・二次（4種）・消費財（3種）の3層品目体系。陸・海・工業の食料3大生産方式と異星度（0〜100%）。弾薬規格の分化・再統合。                                  |
 | **[concept_mineral_resources_and_alien_concentration.md](../discussion/industry_logistics/concept_mineral_resources_and_alien_concentration.md)** | **鉱物資源・エイリアン濃縮鉱床と産業利用仕様書**。埋蔵量なし恒久産出、師団規模に見合う産出量レンジ、エイリアン生体鉱化による濃縮集約、ハニーハーベスト vs 巣窟殲滅鉱脈化、3大産業利用ライン。 |
-| **[concept_ammunition_caliber_standards_c.md](../discussion/military_tactics/concept_ammunition_caliber_standards_c.md)** | **弾薬・火砲規格体系（C規格 / 単位：C）仕様書**。1C ≒ 1mm相当の普遍ボア径単位。小火器（6C/8C）から重火砲（210C）までの階層体系と薬莢長非依存クラス設計。 |
+| **[concept_ammunition_caliber_standards_c.md](../discussion/military_tactics/concept_ammunition_caliber_standards_c.md)**                         | **弾薬・火砲規格体系（C規格 / 単位：C）仕様書**。1C ≒ 1mm相当の普遍ボア径単位。小火器（6C/8C）から重火砲（210C）までの階層体系と薬莢長非依存クラス設計。                                      |
 
 ### ② 産業構造・ブートローダー工廠・生産技術
 
-| ドキュメント | 概要・主要論点 |
-| :--- | :--- |
-| **[concept_bootloader_and_national_supply_chains.md](../discussion/industry_logistics/concept_bootloader_and_national_supply_chains.md)** | **機械が機械を作るブートローダー産業仕様書**。工作機械プール、金型、歩留まり、初期母星遺産ストックから現地サプライチェーンへの自立プロセス。 |
-| **[concept_industry_dynamics_novelty_continuity.md](../discussion/industry_logistics/concept_industry_dynamics_novelty_continuity.md)** | **新規性と継続性の産業構造仕様書**。既存金型の高歩留まりによる長寿命プラットフォームと、新世代AI・新物性による初期脆弱性・ライン転換ラグ。 |
-| **[concept_industry_structure.md](../discussion/industry_logistics/concept_industry_structure.md)** | **産業基本ツリー**。素材採掘から精錬、中間部品加工、最終組立に至る多段階産業構造。 |
-| **[concept_homeworld_roadmaps_and_niche_industries.md](../discussion/military_tactics/concept_homeworld_roadmaps_and_niche_industries.md)** | **企業エコシステム仕様書**。母星重工ロードマップ、現地国策重工、民需転用キット、開拓現場の特化ニッチモジュール（深地採石・廃船解体等）。 |
+| ドキュメント                                                                                                                                | 概要・主要論点                                                                                                                               |
+| :------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[concept_bootloader_and_national_supply_chains.md](../discussion/industry_logistics/concept_bootloader_and_national_supply_chains.md)**   | **機械が機械を作るブートローダー産業仕様書**。工作機械プール、金型、歩留まり、初期母星遺産ストックから現地サプライチェーンへの自立プロセス。 |
+| **[concept_industry_dynamics_novelty_continuity.md](../discussion/industry_logistics/concept_industry_dynamics_novelty_continuity.md)**     | **新規性と継続性の産業構造仕様書**。既存金型の高歩留まりによる長寿命プラットフォームと、新世代AI・新物性による初期脆弱性・ライン転換ラグ。   |
+| **[concept_industry_structure.md](../discussion/industry_logistics/concept_industry_structure.md)**                                         | **産業基本ツリー**。素材採掘から精錬、中間部品加工、最終組立に至る多段階産業構造。                                                           |
+| **[concept_homeworld_roadmaps_and_niche_industries.md](../discussion/military_tactics/concept_homeworld_roadmaps_and_niche_industries.md)** | **企業エコシステム仕様書**。母星重工ロードマップ、現地国策重工、民需転用キット、開拓現場の特化ニッチモジュール（深地採石・廃船解体等）。     |
 
 ### ③ 兵器モジュール・シャシー規格・カタログ
 
-| ドキュメント | 概要・主要論点 |
-| :--- | :--- |
-| **[concept_starter_modules_and_common_chassis_catalog.md](../discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md)** | **Turn 0 初期カタログ仕様書**。ISO-Terran Baselineに基づく共通規格。装輪・履帯・多脚の足回りスペック、初期武装・装甲・推進モジュール。 |
-| **[concept_weapon_module_commonality.md](../discussion/military_tactics/concept_weapon_module_commonality.md)** | **モジュール共通化基本設計**。シャシーと兵装モジュールの共通化設計による生産効率・後方互換性向上。 |
-| **[example_weapon_modules_cases.md](../discussion/military_tactics/example_weapon_modules_cases.md)** | **兵装モジュール具体例**。対空砲架、電磁投射レールガン、ミサイルポッド、電子戦装備の実装ケース。 |
-| **[concept_frontier_industry_and_weapon_generations.md](../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md)** | **兵器世代体系（Gen 0〜Gen 4）仕様書**。母星精密遺産（Gen 0）から開拓急造（Gen 1）、現地重工（Gen 2）、復元（Gen 3）、アフィニティ特化（Gen 4）への進化。 |
+| ドキュメント                                                                                                                                      | 概要・主要論点                                                                                                                                            |
+| :------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[concept_starter_modules_and_common_chassis_catalog.md](../discussion/military_tactics/concept_starter_modules_and_common_chassis_catalog.md)** | **Turn 0 初期カタログ仕様書**。ISO-Terran Baselineに基づく共通規格。装輪・履帯・多脚の足回りスペック、初期武装・装甲・推進モジュール。                    |
+| **[concept_weapon_module_commonality.md](../discussion/military_tactics/concept_weapon_module_commonality.md)**                                   | **モジュール共通化基本設計**。シャシーと兵装モジュールの共通化設計による生産効率・後方互換性向上。                                                        |
+| **[example_weapon_modules_cases.md](../discussion/military_tactics/example_weapon_modules_cases.md)**                                             | **兵装モジュール具体例**。対空砲架、電磁投射レールガン、ミサイルポッド、電子戦装備の実装ケース。                                                          |
+| **[concept_frontier_industry_and_weapon_generations.md](../discussion/military_tactics/concept_frontier_industry_and_weapon_generations.md)**     | **兵器世代体系（Gen 0〜Gen 4）仕様書**。母星精密遺産（Gen 0）から開拓急造（Gen 1）、現地重工（Gen 2）、復元（Gen 3）、アフィニティ特化（Gen 4）への進化。 |
 
 ### ④ インフラ網・輸送・兵站・領土進展
 
-| ドキュメント | 概要・主要論点 |
-| :--- | :--- |
-| **[concept_infrastructure_grid_and_transit_artery.md](../discussion/map_tile/concept_infrastructure_grid_and_transit_artery.md)** | **大戦略動脈インフラ仕様書**。道路・鉄道・送電線・光ファイバーの自動一体敷設、1タイル橋、運河、海底HVDC給電、インフラ結合度の伝播。 |
+| ドキュメント                                                                                                                                                    | 概要・主要論点                                                                                                                       |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
+| **[concept_infrastructure_grid_and_transit_artery.md](../discussion/map_tile/concept_infrastructure_grid_and_transit_artery.md)**                               | **大戦略動脈インフラ仕様書**。道路・鉄道・送電線・光ファイバーの自動一体敷設、1タイル橋、運河、海底HVDC給電、インフラ結合度の伝播。  |
 | **[concept_transport_windows_and_infrastructure_bottlenecks.md](../discussion/industry_logistics/concept_transport_windows_and_infrastructure_bottlenecks.md)** | **輸送ウインドウ・兵站ボトルネック仕様書**。インフラ結合度に応じたプッシュ補給レート、輸送容量（帯域幅）制約と前哨の補給途絶リスク。 |
-| **[concept_tile_progression_system.md](../discussion/map_tile/concept_tile_progression_system.md)** | **タイル進展（Tier 0〜4）仕様書**。機能サイトの設営から要塞中枢への発展、インフラ結合度・稼働率・荒廃（デグレード）ルール。 |
-| **[concept_maritime_governance_and_ocean_engineering.md](../discussion/map_tile/concept_maritime_governance_and_ocean_engineering.md)** | **海洋工学・水産資源仕様書**。メガフロート、シーレーン防衛、閉鎖養殖、海洋都市の動力途絶と沈没リスク。 |
+| **[concept_tile_progression_system.md](../discussion/map_tile/concept_tile_progression_system.md)**                                                             | **タイル進展（Tier 0〜4）仕様書**。機能サイトの設営から要塞中枢への発展、インフラ結合度・稼働率・荒廃（デグレード）ルール。          |
+| **[concept_maritime_governance_and_ocean_engineering.md](../discussion/map_tile/concept_maritime_governance_and_ocean_engineering.md)**                         | **海洋工学・水産資源仕様書**。メガフロート、シーレーン防衛、閉鎖養殖、海洋都市の動力途絶と沈没リスク。                               |
 
 ---
 

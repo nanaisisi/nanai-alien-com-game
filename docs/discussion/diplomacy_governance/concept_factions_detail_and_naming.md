@@ -147,14 +147,14 @@
 
 ### 3.1 国家首脳および役職呼称体系
 
-| 勢力 | 国家元首呼称 | 前線最高司令官呼称 | 主力工廠・産業体呼称 |
-| :--- | :--- | :--- | :--- |
-| **帝国A** | 皇太子殿下 (Crown Prince) | 遠征軍総司令・元帥府 | 帝国造兵工廠 (Imperial Arsenal) |
-| **大公国B** | 執政大公 (Lord Protector) | 北部警備軍総督 | ボレアス精密重機 (Boreas Works) |
-| **連邦C** | 連邦大統領 (Federation President) | 大陸派遣軍司令官 | 連邦合同重工業 (Union Heavy Ind.) |
-| **共和国D** | 人民執政長 (Premier Director) | 方面総軍政治委員長 | 第IV国家計画兵器廠 (State Arsenal IV) |
-| **共同体E** | 最高経営会議議長 (Managing Director) | 海洋展開軍統括役員 | 環洋工業シンジケート (Oceanic Corp) |
-| **連合F** | 連合評議会議長 (Concord Chancellor) | 統合防衛軍最高調整官 | 先進戦術システム研究所 (ATSL) |
+| 勢力        | 国家元首呼称                         | 前線最高司令官呼称   | 主力工廠・産業体呼称                  |
+| :---------- | :----------------------------------- | :------------------- | :------------------------------------ |
+| **帝国A**   | 皇太子殿下 (Crown Prince)            | 遠征軍総司令・元帥府 | 帝国造兵工廠 (Imperial Arsenal)       |
+| **大公国B** | 執政大公 (Lord Protector)            | 北部警備軍総督       | ボレアス精密重機 (Boreas Works)       |
+| **連邦C**   | 連邦大統領 (Federation President)    | 大陸派遣軍司令官     | 連邦合同重工業 (Union Heavy Ind.)     |
+| **共和国D** | 人民執政長 (Premier Director)        | 方面総軍政治委員長   | 第IV国家計画兵器廠 (State Arsenal IV) |
+| **共同体E** | 最高経営会議議長 (Managing Director) | 海洋展開軍統括役員   | 環洋工業シンジケート (Oceanic Corp)   |
+| **連合F**   | 連合評議会議長 (Concord Chancellor)  | 統合防衛軍最高調整官 | 先進戦術システム研究所 (ATSL)         |
 
 ### 3.2 兵器命名プロトコル（Designator Standard）
 

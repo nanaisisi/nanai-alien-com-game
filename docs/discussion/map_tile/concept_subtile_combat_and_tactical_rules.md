@@ -209,16 +209,16 @@ pub struct TacticalCombatSession {
     pub current_sub_turn: u8,
     pub max_sub_turns: u8, // 通常 12 ~ 15
     pub weather_and_miasma: TacticalEnvironment,
-    
+
     /// 343マスの戦術盤面
     pub sub_grid: SubTileGrid,
-    
+
     /// 展開中の全戦闘部隊
     pub active_combatants: Vec<TacticalUnitInstance>,
-    
+
     /// 進入待ちの増援キュー
     pub pending_reinforcements: Vec<PendingReinforcement>,
-    
+
     /// 盤外支援火力リスト（隣接タイル砲兵）
     pub off_map_support_assets: Vec<OffMapSupportAsset>,
 }
