@@ -15,7 +15,7 @@ pub fn update_minimap_texture_system(
     outposts_query: Query<&FactionOutpost>,
     player_faction: Res<PlayerFaction>,
 ) {
-    if !minimap_state.needs_update && !territory_map.is_changed() {
+    if !minimap_state.needs_update && !territory_map.is_changed() && !map_grid.is_changed() {
         return;
     }
 
@@ -50,12 +50,12 @@ pub fn update_minimap_texture_system(
     // ミニマップ上端 (py = 0) を画面上部（-Z, row = -half_h）、下端 (py = h - 1) を画面下部（+Z, row = +half_h）
     // 左端 (px = 0) を col = 0、右端 (px = w - 1) を col = map_w - 1
     for py in 0..h {
-        let norm_y = py as f32 / h as f32;
-        let row = -half_h + ((norm_y * (map_h as f32)) as i32).clamp(0, map_h - 1);
+        // Optimize inner loop by avoiding floating point math per pixel
+        let row = -half_h + ((py * map_h as usize / h) as i32).clamp(0, map_h - 1);
 
         for px in 0..w {
-            let norm_x = px as f32 / w as f32;
-            let col = ((norm_x * (map_w as f32)) as i32).clamp(0, map_w - 1);
+            // Optimize inner loop by avoiding floating point math per pixel
+            let col = ((px * map_w as usize / w) as i32).clamp(0, map_w - 1);
 
             let coord = HexCoord::from_col_row_with_width(col, row, map_w);
             let terrain = map_grid
