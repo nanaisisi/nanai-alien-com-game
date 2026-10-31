@@ -65,17 +65,16 @@ docs/
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
 │   ├── RESOURCE_IMPLEMENTATION_BRIDGE.md   # 資源系 実装橋渡し案
 │   └── STARTUP_OPTIONS.md                  # 起動オプション・コマンドライン引数仕様書
-├── planning/                               # 開発計画・ロードマップ・課題管理（完了済み・未完了別）
-│   ├── completed/                          # 完了済み計画書（6件）
-│   │   ├── CONSISTENCY_AUDIT_PLAN.md       # 仕様・ドキュメント整合性チェック計画書
-│   │   ├── MISSING_DOCUMENTS_ROADMAP.md    # 不足ドキュメント体系・ロードマップ（第1〜第3シリーズ）
-│   │   ├── MISSING_SPECS_EXECUTION_PLAN.md # 不足ドキュメント整備・具象化実行計画書（SEC-01〜07）
-│   │   ├── PHASE2_MISSING_SPECS_EXECUTION_PLAN.md # 第2期 不足ドキュメント整備・具象仕様化実行計画書（SEC-08〜11）
-│   │   ├── SECONDARY_MISSING_SPECS.md      # 二次的不足ドキュメント・システム統合仕様書体系
-│   │   └── SECONDARY_SPECS_EVALUATION.md   # 2次的不足仕様・検討論点と実装アプローチ評価書
-│   └── pending/                            # 未完了・進行中・次期課題計画書（2件）
-│       ├── PENDING_ISSUES.md               # 未確定・検討課題まとめ（論点整理）
-│       └── NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md # 次期設計計画：陸上戦艦・艦隊航空隊整理
+├── planning/                               # 開発計画・ロードマップ・課題管理（全完了済み）
+│   └── completed/                          # 完了済み計画書（8件）
+│       ├── CONSISTENCY_AUDIT_PLAN.md       # 仕様・ドキュメント整合性チェック計画書
+│       ├── MISSING_DOCUMENTS_ROADMAP.md    # 不足ドキュメント体系・ロードマップ（第1〜第3シリーズ）
+│       ├── MISSING_SPECS_EXECUTION_PLAN.md # 不足ドキュメント整備・具象化実行計画書（SEC-01〜07）
+│       ├── PHASE2_MISSING_SPECS_EXECUTION_PLAN.md # 第2期 不足ドキュメント整備・具象仕様化実行計画書（SEC-08〜11）
+│       ├── SECONDARY_MISSING_SPECS.md      # 二次的不足ドキュメント・システム統合仕様書体系
+│       ├── SECONDARY_SPECS_EVALUATION.md   # 2次的不足仕様・検討論点と実装アプローチ評価書
+│       ├── PENDING_ISSUES.md               # 確定・検討課題まとめ（論点整理完了）
+│       └── NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md # 設計計画：陸上戦艦・艦隊航空隊整理
 └── discussion/                             # 詳細設計・発展仕様・アイデア検討ドキュメント群（計49件）
     ├── automation/                         # 自動化システム（2件）
     │   ├── concept_automation_systems.md
@@ -455,7 +454,7 @@ docs/
 
 ## 📋 6. 開発計画・ロードマップ・課題（`planning/`）
 
-計画事項を「完了済み（`completed/`）」と「未完了・進行中（`pending/`）」に分類して管理しています。
+すべての計画・課題は検討と策定が完了し、「完了済み（`completed/`）」として管理されています。
 
 ### 完了済み計画書（`planning/completed/`）
 
@@ -471,12 +470,9 @@ docs/
   - 概念・世界観から実装・結合ロジックへの橋渡しに必要な二次的仕様書群（`SEC-01`〜`SEC-07`）の構造定義。
 - **[planning/completed/SECONDARY_SPECS_EVALUATION.md](./planning/completed/SECONDARY_SPECS_EVALUATION.md)**：2次的不足仕様・検討論点と実装アプローチ評価書
   - 二次的仕様書の各論点（ロジック先行、UI体験先行、マスターデータ先行）に関する比較・評価と採用アプローチ記録。
-
-### 未完了・進行中・次期課題計画書（`planning/pending/`）
-
-- **[planning/pending/PENDING_ISSUES.md](./planning/pending/PENDING_ISSUES.md)**：未確定・検討課題まとめ（論点整理）
+- **[planning/completed/PENDING_ISSUES.md](./planning/completed/PENDING_ISSUES.md)**：確定・検討課題まとめ（論点整理完了）
   - 動的情勢推移、Civ型勝利条件のバリエーション、長期的な兵站・自動化ドクトリンの深掘り論点一覧。
-- **[planning/pending/NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md](./planning/pending/NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md)**：次期設計計画：陸上戦艦・艦隊航空隊整理
+- **[planning/completed/NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md](./planning/completed/NEXT_PLAN_LAND_BATTLESHIP_AND_AIR_NAVAL_REORG.md)**：設計計画：陸上戦艦・艦隊航空隊整理
   - 航海可能な陸上戦艦打撃軍団の運用、通常艦隊・航空隊の規模エシュロン再編、空棲・水棲エイリアン生態系整理の覚書。
 
 ---
