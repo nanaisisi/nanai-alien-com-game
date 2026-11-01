@@ -67,7 +67,8 @@ docs/
 │   ├── EXTERNAL_CRATE_EVALUATION.md        # 外部クレート利用・技術検討書
 │   ├── RESOURCE_IMPLEMENTATION_BRIDGE.md   # 資源系 実装橋渡し案
 │   └── STARTUP_OPTIONS.md                  # 起動オプション・コマンドライン引数仕様書
-├── planning/                               # 開発計画・ロードマップ・課題管理（全完了済み）
+├── planning/                               # 開発計画・ロードマップ・課題管理
+│   ├── MASTER_IMPLEMENTATION_PLAN.md       # システム統合・全体実装計画書（Phase 1〜4ロードマップ）
 │   └── completed/                          # 完了済み計画書（8件）
 │       ├── CONSISTENCY_AUDIT_PLAN.md       # 仕様・ドキュメント整合性チェック計画書
 │       ├── MISSING_DOCUMENTS_ROADMAP.md    # 不足ドキュメント体系・ロードマップ（第1〜第3シリーズ）
@@ -467,7 +468,11 @@ docs/
 
 ## 📋 6. 開発計画・ロードマップ・課題（`planning/`）
 
-すべての計画・課題は検討と策定が完了し、「完了済み（`completed/`）」として管理されています。
+確定した仕様体系をRust/Bevy ECS上で段階的に組み上げる全体実装計画書、および策定が完了した過去の計画書群です。
+
+- **[planning/MASTER_IMPLEMENTATION_PLAN.md](./planning/MASTER_IMPLEMENTATION_PLAN.md)**：システム統合・全体実装計画書
+  - 確定仕様書群に基づく全体実装ロードマップ（Phase 1: 資源・インフラ・加工、Phase 2: 戦闘団TO&E・兵站・輸送、Phase 3: 自動戦闘・動態生態系、Phase 4: 技術Web・ステアリングUI・Wiki）。
+  - 各フェーズの詳細実装スコープ、データモデル、および受け入れ・検証基準。
 
 ### 完了済み計画書（`planning/completed/`）
 
