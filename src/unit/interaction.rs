@@ -8,8 +8,8 @@ use crate::map::interaction::{HoveredTile, SelectedTile};
 use crate::state::AppState;
 
 use super::types::{
-    DeploymentStatus, MoveModeState, MoveTargetMarker, RightDragMoveState, SelectedUnit, Unit,
-    UnitActionState, UnitSelectionRing,
+    CombatGroupLogistics, DeploymentStatus, LogisticsState, MoveModeState, MoveTargetMarker,
+    RightDragMoveState, SelectedUnit, Unit, UnitActionState, UnitSelectionRing,
 };
 
 pub struct UnitInteractionPlugin;
@@ -512,6 +512,102 @@ pub fn handle_unit_keyboard_shortcuts(
 
             _ => {}
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::faction::types::FactionId;
+    use crate::faction::{FactionOutpost, FactionResources, TerritoryMap};
+    use crate::unit::CombatGroupType;
+
+    #[test]
+    fn test_process_unit_turn_updates_logistics_normal_and_strained() {
+        let mut app = App::new();
+
+        let mut resources = FactionResources::default();
+        resources.turn = 1;
+        app.insert_resource(resources);
+
+        let mut territory_map = TerritoryMap::default();
+        territory_map
+            .tile_owners
+            .insert(HexCoord::new(0, 0), FactionId::Empire);
+        app.insert_resource(territory_map);
+
+        let map_grid = MapGrid {
+            width: 20,
+            height: 20,
+            ..default()
+        };
+        app.insert_resource(map_grid);
+
+        // 拠点 (0, 0)
+        app.world_mut().spawn(FactionOutpost {
+            faction: FactionId::Empire,
+            name: "Outpost 1".to_string(),
+            coord: HexCoord::new(0, 0),
+            level: 1,
+        });
+
+        // ユニット1: 拠点直近 (0, 0) -> Normal
+        let u1 = app
+            .world_mut()
+            .spawn((
+                Unit::new(
+                    FactionId::Empire,
+                    CombatGroupType::Scout,
+                    HexCoord::new(0, 0),
+                ),
+                CombatGroupLogistics::default(),
+            ))
+            .id();
+
+        // ユニット2: 補給限界外の距離 (10, 10) かつ中立領土 -> 補給断絶 (0.0)
+        let u2 = app
+            .world_mut()
+            .spawn((
+                Unit::new(
+                    FactionId::Empire,
+                    CombatGroupType::Scout,
+                    HexCoord::new(10, 10),
+                ),
+                CombatGroupLogistics::default(),
+            ))
+            .id();
+
+        let mut schedule = Schedule::default();
+        schedule.add_systems(process_unit_turn_updates);
+
+        // ターン1回目実行
+        schedule.run(app.world_mut());
+
+        let l1 = app.world().get::<CombatGroupLogistics>(u1).unwrap();
+        assert_eq!(l1.state, LogisticsState::Normal);
+        assert!(l1.supply_satisfaction >= 0.70);
+
+        let l2 = app.world().get::<CombatGroupLogistics>(u2).unwrap();
+        assert_eq!(l2.state, LogisticsState::Strained);
+        assert_eq!(l2.strained_turns, 1);
+        assert_eq!(l2.supply_satisfaction, 0.0);
+
+        // 2回目実行 (Critical への遷移)
+        app.world_mut().resource_mut::<FactionResources>().turn += 1;
+        schedule.run(app.world_mut());
+        let l2 = app.world().get::<CombatGroupLogistics>(u2).unwrap();
+        assert_eq!(l2.state, LogisticsState::Critical);
+        assert_eq!(l2.strained_turns, 2);
+
+        // 3回目実行 (Exhausted への遷移と移動不可ペナルティ)
+        app.world_mut().resource_mut::<FactionResources>().turn += 1;
+        schedule.run(app.world_mut());
+        let l2 = app.world().get::<CombatGroupLogistics>(u2).unwrap();
+        let u2_unit = app.world().get::<Unit>(u2).unwrap();
+        assert_eq!(l2.state, LogisticsState::Exhausted);
+        assert_eq!(l2.strained_turns, 3);
+        assert_eq!(u2_unit.current_movement, 0);
+        assert!(u2_unit.is_exhausted);
     }
 }
 
@@ -1209,7 +1305,8 @@ pub fn process_unit_turn_updates(
     faction_resources: Res<crate::faction::FactionResources>,
     territory_map: Res<crate::faction::TerritoryMap>,
     map_grid: Res<MapGrid>,
-    mut units: Query<(Entity, &mut Unit)>,
+    outposts_query: Query<&crate::faction::FactionOutpost>,
+    mut units: Query<(Entity, &mut Unit, Option<&mut CombatGroupLogistics>)>,
 ) {
     if !faction_resources.is_changed() {
         return;
@@ -1219,14 +1316,85 @@ pub fn process_unit_turn_updates(
 
     // 敵ユニットの全座標一覧を事前取得（警戒・休眠解除用）
     let enemy_coords: Vec<(crate::faction::types::FactionId, HexCoord)> =
-        units.iter().map(|(_, u)| (u.faction, u.coord)).collect();
+        units.iter().map(|(_, u, _)| (u.faction, u.coord)).collect();
 
-    for (_, mut unit) in &mut units {
+    // 各派閥の拠点座標一覧を事前取得
+    let faction_outposts: Vec<(crate::faction::types::FactionId, HexCoord)> =
+        outposts_query.iter().map(|o| (o.faction, o.coord)).collect();
+
+    for (_, mut unit, mut logistics_opt) in &mut units {
         let fac = unit.faction;
         let coord = unit.coord;
 
         // 1. 移動力リセット
         unit.reset_turn();
+
+        // 兵站（補給充足率・LogisticsState）の更新と移動力ペナルティ適用
+        if let Some(ref mut logistics) = logistics_opt {
+            // 最寄り拠点までの距離
+            let min_dist = faction_outposts
+                .iter()
+                .filter(|(f, _)| *f == fac)
+                .map(|(_, c)| coord.distance_with_width(*c, map_w))
+                .min();
+
+            let supply_range = 6.0; // 基本補給半径: 6タイル
+            let dist_factor = if let Some(dist) = min_dist {
+                (1.0 - (dist as f32 / supply_range)).clamp(0.0, 1.0)
+            } else {
+                0.0
+            };
+
+            let tile_owner = territory_map.get_owner(&coord);
+            let territory_factor = if tile_owner == Some(fac) {
+                1.0
+            } else if tile_owner.is_none() {
+                0.5
+            } else {
+                0.2
+            };
+
+            let satisfaction = (dist_factor * territory_factor).clamp(0.0, 1.0);
+            logistics.supply_satisfaction = satisfaction;
+
+            // 兵站ステートマシン更新
+            if satisfaction >= 0.70 {
+                logistics.state = LogisticsState::Normal;
+                logistics.strained_turns = 0;
+            } else if satisfaction >= 0.30 {
+                logistics.state = LogisticsState::Strained;
+                logistics.strained_turns = logistics.strained_turns.saturating_add(1);
+            } else if satisfaction > 0.0 {
+                logistics.strained_turns = logistics.strained_turns.saturating_add(1);
+                if logistics.strained_turns >= 2 {
+                    logistics.state = LogisticsState::Critical;
+                } else {
+                    logistics.state = LogisticsState::Strained;
+                }
+            } else {
+                // 完全に補給が断絶 (0.0)
+                logistics.strained_turns = logistics.strained_turns.saturating_add(1);
+                if logistics.strained_turns >= 3 {
+                    logistics.state = LogisticsState::Exhausted;
+                } else if logistics.strained_turns >= 2 {
+                    logistics.state = LogisticsState::Critical;
+                } else {
+                    logistics.state = LogisticsState::Strained;
+                }
+            }
+
+            // 兵站状態に応じた移動力ペナルティ
+            match logistics.state {
+                LogisticsState::Critical => {
+                    unit.current_movement = (unit.current_movement / 2).max(1);
+                }
+                LogisticsState::Exhausted => {
+                    unit.current_movement = 0;
+                    unit.is_exhausted = true;
+                }
+                _ => {}
+            }
+        }
 
         // 2. 状態ごとのターン更新処理
         match unit.action_state {

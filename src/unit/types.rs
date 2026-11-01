@@ -185,6 +185,17 @@ pub enum LogisticsState {
     Exhausted,
 }
 
+impl LogisticsState {
+    pub fn display_name(&self) -> &'static str {
+        match self {
+            Self::Normal => "正常 (Normal / 補給充足)",
+            Self::Strained => "圧迫 (Strained / 軽微不足)",
+            Self::Critical => "危機 (Critical / 共食い整備中)",
+            Self::Exhausted => "枯渇 (Exhausted / 移動不能)",
+        }
+    }
+}
+
 /// 国家整備ドクトリン（プレイヤーのマクロステアリング設定値）
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Reflect, Default)]
 pub enum MaintenanceDoctrine {
