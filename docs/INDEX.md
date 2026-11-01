@@ -61,9 +61,10 @@ docs/
 │   ├── THIRD_PARTY_AND_TERRITORIAL_CLAIMS.md # 自発的失踪者・軍閥接触・調達・領土要求仕様書
 │   ├── VICTORY_AND_CRISIS_CONDITIONS.md    # 動的情勢推移・集合意識の処遇および終局仕様書
 │   └── WATER_AND_SALINITY_SYSTEM.md        # 水域・塩分濃度システム仕様書
-├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計（4件）
+├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計（5件）
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
+│   ├── EXTERNAL_CRATE_EVALUATION.md        # 外部クレート利用・技術検討書
 │   ├── RESOURCE_IMPLEMENTATION_BRIDGE.md   # 資源系 実装橋渡し案
 │   └── STARTUP_OPTIONS.md                  # 起動オプション・コマンドライン引数仕様書
 ├── planning/                               # 開発計画・ロードマップ・課題管理（全完了済み）
@@ -454,6 +455,8 @@ docs/
   - システム全体の6層アーキテクチャ（エンジン・空間・経済・軍事・動態・UI）、モジュール間依存関係マトリクス、およびボトムアップ実装ロードマップ。
 - **[tech/BEVY_0_20_INTEGRATION_REVIEW.md](./tech/BEVY_0_20_INTEGRATION_REVIEW.md)**：Bevy 0.20 仕様照合・技術検討書
   - Bevy 0.20 新機能（Weak System Ordering、`Val::Em`/`Rem`、`FixedNode`、WESL、標準カメラ等）と現行実装の適合状況、およびUIレスポンシブ化・並列化等の拡張ロードマップ。
+- **[tech/EXTERNAL_CRATE_EVALUATION.md](./tech/EXTERNAL_CRATE_EVALUATION.md)**：外部クレート利用・技術検討書
+  - 各コードモジュール（ヘックス幾何、地形生成、経路探索、データ管理、UI、乱数、AI等）に対する外部クレートの利用価値・適合性・トレードオフ評価および導入ロードマップ。
 - **[tech/RESOURCE_IMPLEMENTATION_BRIDGE.md](./tech/RESOURCE_IMPLEMENTATION_BRIDGE.md)**：資源系 実装橋渡し案
   - 資源経済設計とBevy実装コードを繋ぐ暫定ブリッジ仕様（データ構造、タイル収支、段階的実装フェーズ計画）。
 - **[tech/STARTUP_OPTIONS.md](./tech/STARTUP_OPTIONS.md)**：起動オプション・コマンドライン引数仕様書
