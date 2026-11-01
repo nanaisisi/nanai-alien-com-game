@@ -72,6 +72,7 @@ impl HexCoord {
 
     /// 立方体座標の s 成分 (q + r + s = 0)
     #[inline]
+    #[allow(dead_code)]
     pub const fn s(self) -> i32 {
         -self.q - self.r
     }

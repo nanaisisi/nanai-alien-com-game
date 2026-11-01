@@ -100,6 +100,7 @@ impl MapGrid {
     }
 
     /// 2つの隣接タイルの境界に河川が流れているか判定
+    #[allow(dead_code)]
     pub fn has_river_between(&self, a: &HexCoord, b: &HexCoord) -> bool {
         let edge = HexEdge::new(*a, *b);
         self.rivers.contains_key(&edge)
