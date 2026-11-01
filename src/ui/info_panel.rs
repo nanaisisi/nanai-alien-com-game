@@ -92,7 +92,7 @@ pub fn cleanup_info_panel_ui(mut commands: Commands, query: Query<Entity, With<I
     }
 }
 
-use crate::unit::{MoveModeState, SelectedUnit, Unit};
+use crate::unit::{CombatGroupLogistics, MoveModeState, SelectedUnit, Unit};
 use bevy::ecs::system::SystemParam;
 
 #[derive(SystemParam)]
@@ -100,7 +100,7 @@ pub struct InfoPanelContext<'w, 's> {
     pub selected: Res<'w, SelectedTile>,
     pub selected_unit: Res<'w, SelectedUnit>,
     pub move_mode: Res<'w, MoveModeState>,
-    pub units_query: Query<'w, 's, &'static Unit>,
+    pub units_query: Query<'w, 's, (&'static Unit, Option<&'static CombatGroupLogistics>)>,
     pub map_grid: Res<'w, MapGrid>,
     pub territory_map: Res<'w, TerritoryMap>,
     pub outposts_query: Query<'w, 's, &'static FactionOutpost>,
@@ -131,7 +131,7 @@ pub fn update_info_panel_system(
 
     // 選択中ユニットの情報を最優先表示
     if let Some(unit_e) = selected_unit.0
-        && let Ok(unit) = units_query.get(unit_e)
+        && let Ok((unit, logistics_opt)) = units_query.get(unit_e)
     {
         let fac = unit.faction;
         let coord = unit.coord;
@@ -162,9 +162,19 @@ pub fn update_info_panel_system(
              [ESC]: 選択解除"
         };
 
+        let logistics_info = if let Some(logistics) = logistics_opt {
+            format!(
+                "  兵站補給: {} (充足率: {:.0}%)\n",
+                logistics.state.display_name(),
+                logistics.supply_satisfaction * 100.0
+            )
+        } else {
+            String::new()
+        };
+
         let info = format!(
             "【部隊選択中】\n  {}\n  所属: 国{}【{}】\n\n\
-             【ステータス】\n  HP: {} / {}\n  残り移動力: {} / {}\n  攻撃力: {} (射程: {}マス)\n  態勢/状態: {}\n  配備状態: {}\n  行動可否: {}\n\n\
+             【ステータス】\n  HP: {} / {}\n  残り移動力: {} / {}\n  攻撃力: {} (射程: {}マス)\n  態勢/状態: {}\n  配備状態: {}\n  行動可否: {}\n{}\n\
              【現在位置】\n  col: {}, row: {} (q: {}, r: {})\n\n\
              {}\n\n\
              ※移動: 右クリックドラッグ（ドラッグ中[M]で移動モードへ移行可）、または [M] キー移動モード",
@@ -184,6 +194,7 @@ pub fn update_info_panel_system(
             } else {
                 "行動可能"
             },
+            logistics_info,
             col,
             row,
             coord.q,
@@ -247,7 +258,11 @@ pub fn update_info_panel_system(
             };
 
             // タイル上の駐留部隊および非表示予備スタック
-            let tile_units: Vec<&Unit> = units_query.iter().filter(|u| u.coord == coord).collect();
+            let tile_units: Vec<&Unit> = units_query
+                .iter()
+                .filter(|(u, _)| u.coord == coord)
+                .map(|(u, _)| u)
+                .collect();
             let unit_str = if !tile_units.is_empty() {
                 let active = tile_units
                     .iter()
