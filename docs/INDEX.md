@@ -164,10 +164,11 @@ docs/
   - 膠着（Grinding Combat）判定と、戦線崩壊時の後退・増援ラグ
   - 盤外からの長距離支援砲撃（Off-map Artillery）のCEPと副次的被害
 - **[specs/TECHNOLOGY_WEB_DATA_TREE.md](./specs/TECHNOLOGY_WEB_DATA_TREE.md)**：技術ウェブ・研究開発データツリー仕様書
-  - 降着基盤から広がる放射状（Radial）ツリー構造と、幹技術（Trunk）／葉技術（Leaf）の定義
-  - アフィニティ（Purity / Harmony / Supremacy）の付与体系
-  - 現場交戦や環境刺激による「自律研究モメンタム」と、国家指導者による「ステアリング」の力学
-  - 敵残骸法医学（Battlefield Forensics）による研究ブースト
+  - 降着基盤から広がる放射状（Radial）ツリー構造（全4Tier・全36ノード完全カタログ）。
+  - 3大アフィニティ（Purity / Harmony / Supremacy）および3大ハイブリッド（Bio-Cyber / Bio-Foundry / Mecha-Purity）の体系。
+  - アフィニティレベル（Lv 1〜10）ごとの進化マイルストーンおよび終局勝利プロジェクト。
+  - 現場交戦・産業・環境刺激による「自律研究モメンタム」と、国家指導者による「ステアリング」の定量的数理モデル（移行ラグ・フリクション）。
+  - 敵残骸法医学（Battlefield Forensics）による研究ブースト算定式と、架空6大国家の初期研究特性マトリクス。
 - **[specs/ALIEN_ECOLOGY_AND_NEST_SYSTEM.md](./specs/ALIEN_ECOLOGY_AND_NEST_SYSTEM.md)**：エイリアン生態ライフサイクル・巣窟（Nest）運用仕様書
   - 巣窟の4段階ライフサイクル（Dormant / Active / Breeding / Swarming）と刺激ヘイト蓄積ロジック
   - 瘴気（Miasma）の自律拡散ダイナミクスと、人類・エイリアンへの影響差異

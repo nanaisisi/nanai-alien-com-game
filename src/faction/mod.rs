@@ -4,6 +4,7 @@ use crate::state::AppState;
 
 pub mod city_mesh;
 pub mod stockpile;
+pub mod tech;
 pub mod territory;
 pub mod types;
 

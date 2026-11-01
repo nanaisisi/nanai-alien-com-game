@@ -167,56 +167,65 @@
 
 ---
 
-### 2.3 技術ウェブ・ノードカタログ試案
+### 2.3 技術ウェブ・全36ノード完全カタログ (Radial 36-Node Registry)
 
-#### Tier 0: 降着基盤 (Landing Core)
+最新の確定技術仕様書（[`TECHNOLOGY_WEB_DATA_TREE.md`](./TECHNOLOGY_WEB_DATA_TREE.md)）およびデータ辞書（[`assets/data/tech_nodes.csv`](../../assets/data/tech_nodes.csv)）に準拠した全36ノードの体系カタログ。
 
-| ノードID    | ノード種別 | 技術名 (和名 / 英名)                      | 前提技術 | 必要RP | 解禁要素 (モジュール / 施設 / レシピ)               | アフィニティ付与 |
-| :---------- | :--------- | :---------------------------------------- | :------- | :----- | :-------------------------------------------------- | :--------------- |
-| `TECH_CORE` | Trunk      | 降着基盤工学 (Colony Landing Core)        | なし     | 0      | 基礎インフラ、探査バギー、初期工作機械、6C/8C小火器 | なし             |
-| `TECH_C_01` | Leaf       | 船体解体冶金 (Salvage Metallurgy)         | `CORE`   | 50     | 構造鉱物回収、簡易溶接装甲、基礎機械部品レシピ      | Purity +1        |
-| `TECH_C_02` | Leaf       | 密閉水耕循環 (Hydroponic Recirc)          | `CORE`   | 50     | 規格化レーション、初期温室ドーム、食料自給          | なし             |
-| `TECH_C_03` | Leaf       | 地表波レーダー (Planetary Radar Survey)   | `CORE`   | 50     | 視界確保、資源探査、瘴気・地質タイルの可視化        | Supremacy +1     |
-| `TECH_C_04` | Leaf       | 原生生体サンプリング (Biosphere Sampling) | `CORE`   | 50     | バイオ原質採取、解毒剤パック、生体分析              | Harmony +1       |
+#### Tier 0: 降着基盤 (Colony Core / 5ノード)
 
-#### Tier 1: 基礎拡張・産業規格化 (Frontier Standardization)
+| ノードID    | 種別  | 技術名 (和名 / 英名)                      | 前提ノード  | 必要RP | 解禁要素 (兵器モジュール / 施設 / レシピ / TO&E)                   | アフィニティ付与 |
+| :---------- | :---- | :---------------------------------------- | :---------- | :----- | :----------------------------------------------------------------- | :--------------- |
+| `TECH_CORE` | Trunk | 降着基盤工学 (Colony Landing Core)        | なし        | 0      | 探査バギー、基礎インフラ、6C/8C小火器、Std-W6/T4車台、民兵軍団TO&E | なし             |
+| `TECH_C_01` | Leaf  | 船体解体冶金 (Salvage Metallurgy)         | `TECH_CORE` | 50     | 構造鉱物回収、粗製溶接装甲 (ARM-01)、基礎機械部品レシピ            | Purity +1        |
+| `TECH_C_02` | Leaf  | 密閉水耕循環 (Hydroponic Recirc)          | `TECH_CORE` | 50     | 規格化レーションレシピ、初期温室ドーム、食料自給施設               | なし             |
+| `TECH_C_03` | Leaf  | 地表波レーダー網 (Planetary Radar Survey) | `TECH_CORE` | 50     | 資源探査視界、瘴気・断層タイルの可視化、WPN-03 (同軸8C)            | Supremacy +1     |
+| `TECH_C_04` | Leaf  | 原生生体サンプリング (Biosphere Sampling) | `TECH_CORE` | 50     | バイオ原質採取リグ、携帯型解毒剤パック、生体分析ドック             | Harmony +1       |
 
-| ノードID      | ノード種別 | 技術名 (和名 / 英名)                          | 前提技術      | 必要RP | 解禁要素 (モジュール / 施設 / レシピ)               | アフィニティ付与 |
-| :------------ | :--------- | :-------------------------------------------- | :------------ | :----- | :-------------------------------------------------- | :--------------- |
-| `TECH_TRK_P1` | Trunk      | 高張力重工冶金 (Heavy Machinery Engineering)  | `TECH_C_01`   | 180    | Gen 1 車台、粗製溶接装甲、装軌/装輪工廠             | Purity +2        |
-| `TECH_LF_P11` | Leaf       | 共通ボルト・規格化令 (Standardized Fasteners) | `TECH_TRK_P1` | 90     | 部品共通化ボーナス+15%、工廠段取り替え工期 -1ターン | Purity +1        |
-| `TECH_LF_P12` | Leaf       | C規格火器・迫撃砲架 (Caliber-C Munitions)     | `TECH_TRK_P1` | 100    | 120C自走迫撃砲、C規格弾薬専用加工ライン             | Purity +2        |
-| `TECH_TRK_H1` | Trunk      | 原生生物ゲノム解析 (Alien Biome Sequencing)   | `TECH_C_04`   | 180    | 瘴気観測所、キチン外骨格切削、バイオ採取リグ        | Harmony +2       |
-| `TECH_LF_H11` | Leaf       | 瘴気解離エアロゾル (Miasma Dissociation)      | `TECH_TRK_H1` | 90     | 携帯型除染キット、軽装歩兵の瘴気ダメージ低減        | Harmony +1       |
-| `TECH_LF_H12` | Leaf       | 現地生体飼料精製 (Bio-Feedstock Extraction)   | `TECH_TRK_H1` | 100    | 異星動植物からのレーション変換（食料生産+25%）      | Harmony +2       |
-| `TECH_TRK_S1` | Trunk      | 分散計算知性 (Distributed Cybernetics)        | `TECH_C_03`   | 180    | 電子・論理コア加工、基礎データリンク、NC工作機械    | Supremacy +2     |
-| `TECH_LF_S11` | Leaf       | 自律工作機械群 (Automated NC Machine Tools)   | `TECH_TRK_S1` | 90     | 下請け町工場の生産スループット+20%                  | Supremacy +1     |
-| `TECH_LF_S12` | Leaf       | 無人監視センサ網 (Unmanned Surveillance Net)  | `TECH_TRK_S1` | 100    | 監視杭、無人小型偵察ドローン小隊、早期警戒視界      | Supremacy +2     |
+#### Tier 1: 基礎拡張・産業規格化 (Frontier Standardization / 9ノード)
 
-#### Tier 2: アフィニティ特化・構造転換 (Paradigm Divergence)
+| ノードID      | 種別  | 技術名 (和名 / 英名)                          | 前提ノード    | 必要RP | 解禁要素 (兵器モジュール / 施設 / レシピ / TO&E)                 | アフィニティ付与 |
+| :------------ | :---- | :-------------------------------------------- | :------------ | :----- | :--------------------------------------------------------------- | :--------------- |
+| `TECH_TRK_P1` | Trunk | 高張力重工冶金 (Heavy Machinery Engineering)  | `TECH_C_01`   | 180    | Gen 1/2 履帯車台、粗鋼重工高炉、装甲化軍団TO&E、HETトレーラー    | Purity +2        |
+| `TECH_LF_P11` | Leaf  | 共通ボルト・規格化令 (Standardized Fasteners) | `TECH_TRK_P1` | 90     | 部品共通化率+15%、工廠段取り替え工期 -1ターン、交換部品消費-10%  | Purity +1        |
+| `TECH_LF_P12` | Leaf  | C規格火器・迫撃砲架 (Caliber-C Munitions)     | `TECH_TRK_P1` | 110    | WPN-02 (80C低圧破砕砲)、120C自走迫撃砲、C規格弾薬専用加工ライン  | Purity +2        |
+| `TECH_TRK_H1` | Trunk | 原生生物ゲノム解析 (Alien Biome Sequencing)   | `TECH_C_04`   | 180    | 瘴気観測所、キチン外骨格切削施設、バイオ採取リグTier 2           | Harmony +2       |
+| `TECH_LF_H11` | Leaf  | 瘴気解離エアロゾル (Miasma Dissociation)      | `TECH_TRK_H1` | 90     | 除染キット、軽歩兵の瘴気非戦闘損耗-50%、酸中和弾                 | Harmony +1       |
+| `TECH_LF_H12` | Leaf  | 現地生体飼料精製 (Bio-Feedstock Extraction)   | `TECH_TRK_H1` | 100    | 異星動植物からのレーション変換（食料産出+25%）、合成燃料代替精製 | Harmony +2       |
+| `TECH_TRK_S1` | Trunk | 分散計算知性 (Distributed Cybernetics)        | `TECH_C_03`   | 180    | 電子・論理コア加工ライン、基礎戦術データリンク、NC工作機械       | Supremacy +2     |
+| `TECH_LF_S11` | Leaf  | 自律NC工作機械群 (Automated NC Tools)         | `TECH_TRK_S1` | 90     | 町工場の生産スループット+20%、工作機械プール拡張                 | Supremacy +1     |
+| `TECH_LF_S12` | Leaf  | 無人監視センサ網 (Unmanned Surveillance Net)  | `TECH_TRK_S1` | 100    | WPN-04 (4連多目的ミサイル)、監視杭、無人小型偵察ドローン小隊     | Supremacy +2     |
 
-| ノードID      | ノード種別 | 技術名 (和名 / 英名)                          | 前提技術                     | 必要RP | 解禁要素 (モジュール / 施設 / レシピ)                | アフィニティ付与  |
-| :------------ | :--------- | :-------------------------------------------- | :--------------------------- | :----- | :--------------------------------------------------- | :---------------- |
-| `TECH_TRK_P2` | Trunk      | 結晶合金・重装甲技術 (Crystalline Metallurgy) | `TECH_TRK_P1`                | 450    | Gen 2/3 主力戦車車台、複合装甲板量産、160C重榴弾砲   | Purity +4         |
-| `TECH_LF_P21` | Leaf       | 大気改変スクラバー (Atmospheric Scrubber)     | `TECH_TRK_P2`                | 220    | 固定式大気浄化塔、隣接タイルの瘴気永久消滅           | Purity +3         |
-| `TECH_LF_P22` | Leaf       | 電熱化学砲ETC (Electro-Thermal Chemical Gun)  | `TECH_TRK_P2`, `TECH_TRK_S1` | 250    | 120C ETC戦車砲、貫徹力大幅向上（Mecha-Purity）       | Purity +2, Sup +2 |
-| `TECH_TRK_H2` | Trunk      | 生体触媒・神経共鳴 (Biocatalytic Synapse)     | `TECH_TRK_H1`                | 450    | 有機触媒リアクター、常温精錬、多種族混成軍団編成     | Harmony +4        |
-| `TECH_LF_H21` | Leaf       | キチン重工複合材 (Chitin-Steel Composite)     | `TECH_TRK_H2`, `TECH_TRK_P1` | 240    | キチン複合装甲（耐熱・耐酸+50%、Bio-Foundry）        | Harm +2, Pur +2   |
-| `TECH_LF_H22` | Leaf       | 誘引フェロモン弾 (Pheromone Ordnance)         | `TECH_TRK_H2`                | 220    | フェロモン弾（野生エイリアンを敵国タイルへ誘導）     | Harmony +3        |
-| `TECH_TRK_S2` | Trunk      | 光論理演算・統合射撃網 (Optical C4I Networks) | `TECH_TRK_S1`                | 450    | 超微細半導体ファブ、全域統合データリンク、歩行戦闘機 | Supremacy +4      |
-| `TECH_LF_S21` | Leaf       | 自律二脚駆動系 (Autonomous Bipedal Actuator)  | `TECH_TRK_S2`                | 240    | 二脚歩行戦闘機モジュール、段差・不整地踏破           | Supremacy +3      |
-| `TECH_LF_S22` | Leaf       | サイバネ神経直結 (Neural Cyber-Link)          | `TECH_TRK_S2`, `TECH_TRK_H1` | 250    | エイリアン遠隔統御、無人機即時リンク（Bio-Cyber）    | Sup +2, Harm +2   |
+#### Tier 2: アフィニティ特化・構造転換 (Paradigm Divergence / 13ノード)
 
-#### Tier 3: 極限物理・惑星特異点 (Apex Singularities)
+| ノードID       | 種別  | 技術名 (和名 / 英名)                           | 前提ノード                   | 必要RP | 解禁要素 (兵器モジュール / 施設 / レシピ / TO&E)                   | アフィニティ付与   |
+| :------------- | :---- | :--------------------------------------------- | :--------------------------- | :----- | :----------------------------------------------------------------- | :----------------- |
+| `TECH_TRK_P2`  | Trunk | 結晶合金・重装甲技術 (Crystalline Metallurgy)  | `TECH_TRK_P1`                | 460    | Gen 3 主力戦車車台、複合装甲板量産 (ARM-02)、160C重自走榴弾砲      | Purity +4          |
+| `TECH_LF_P21`  | Leaf  | 大気改変スクラバー (Atmospheric Scrubber)      | `TECH_TRK_P2`                | 220    | 固定式大気浄化塔、隣接タイルの瘴気永久消滅、母星種子農場           | Purity +3          |
+| `TECH_LF_P22`  | Leaf  | 重軌道動脈鉄道 (Heavy Strategic Rail)          | `TECH_TRK_P2`                | 230    | TRN-02 (重軌道装甲列車)、鉄道幹線インフラ、戦略再配置コスト半減    | Purity +3          |
+| `TECH_TRK_H2`  | Trunk | 生体触媒・神経共鳴 (Biocatalytic Synapse)      | `TECH_TRK_H1`                | 460    | 有機触媒リアクター、常温バイオ精錬、多種族混成軍団TO&E解禁         | Harmony +4         |
+| `TECH_LF_H21`  | Leaf  | 擬態フェロモン弾 (Pheromone Ordnance)          | `TECH_TRK_H2`                | 220    | 誘引フェロモン弾（野生エイリアン誘導）、フェロモン散布キャニスター | Harmony +3         |
+| `TECH_LF_H22`  | Leaf  | 異星藻類光合成槽 (Alien Algae Photobioreactor) | `TECH_TRK_H2`                | 230    | 高密度バイオ燃料プラント、酸素濃縮施設、食料自給力大幅向上         | Harmony +3         |
+| `TECH_TRK_S2`  | Trunk | 光論理演算・統合射撃網 (Optical C4I Networks)  | `TECH_TRK_S1`                | 460    | 超微細半導体ファブ、全域統合データリンク、光速FCS、AESAレーダー    | Supremacy +4       |
+| `TECH_LF_S21`  | Leaf  | 自律二脚歩行駆動系 (Autonomous Bipedal Walker) | `TECH_TRK_S2`                | 240    | Std-L4車台、二脚歩行戦闘車両モジュール、高級装甲・二脚歩行混成軍団 | Supremacy +3       |
+| `TECH_LF_S22`  | Leaf  | 高出力マイクロ波兵装 (HPM Disruption Grid)     | `TECH_TRK_S2`                | 230    | HPM指向性エネルギー兵装、対ドローンスウォーム迎撃網、電子撹乱装置  | Supremacy +3       |
+| `TECH_HYB_PS1` | Leaf  | 電熱化学砲ETC (Electro-Thermal Chemical Gun)   | `TECH_TRK_P2`, `TECH_TRK_S1` | 260    | 120C/140C ETC戦車砲、貫徹力+40%、Mecha-Purity初等ドクトリン        | Purity +2, Sup +2  |
+| `TECH_HYB_PH1` | Leaf  | キチン重工複合装甲 (Chitin-Steel Composite)    | `TECH_TRK_P2`, `TECH_TRK_H1` | 250    | キチン鋼複合装甲モジュール（耐酸・耐熱+50%）、Bio-Foundry初等      | Purity +2, Harm +2 |
+| `TECH_HYB_HS1` | Leaf  | サイバネ神経直結 (Neural Cyber-Link)           | `TECH_TRK_H2`, `TECH_TRK_S1` | 260    | エイリアン遠隔サイバネ統御、神経リンクアビオニクス、Bio-Cyber初等  | Harm +2, Sup +2    |
+| `TECH_HYB_PS2` | Leaf  | 自動装填砲塔システム (Autoloading Turret FCS)  | `TECH_TRK_P1`, `TECH_TRK_S2` | 250    | 完全自動装填160C砲塔、乗員削減(-25%)、連射速度+35%                 | Purity +2, Sup +2  |
 
-| ノードID      | ノード種別 | 技術名 (和名 / 英名)                           | 前提技術      | 必要RP | 解禁要素 (モジュール / 施設 / レシピ)                 | アフィニティ付与 |
-| :------------ | :--------- | :--------------------------------------------- | :------------ | :----- | :---------------------------------------------------- | :--------------- |
-| `TECH_TRK_P3` | Trunk      | 惑星テラフォーミング (Planetary Remodeling)    | `TECH_TRK_P2` | 1200   | 巨大陸上戦艦、軌道アンカー、惑星改造中枢プラント      | Purity +6        |
-| `TECH_LF_P31` | Leaf       | 210C 電磁投射砲 (EM-210C Railgun)              | `TECH_TRK_P3` | 600    | 超大型レールガン、大戦略2タイル先へのスタンドオフ砲撃 | Purity +4        |
-| `TECH_TRK_H3` | Trunk      | 惑星集合意識覚醒 (Planetary Gaia Awakening)    | `TECH_TRK_H2` | 1200   | 生体タイタン共鳴神経、タイタン級使役、完全生体融合    | Harmony +6       |
-| `TECH_LF_H31` | Leaf       | 生体自己修復外皮 (Regenerative Bio-Armor)      | `TECH_TRK_H3` | 600    | 戦闘中・非戦闘時の損耗自動急速再生、酸噴射砲          | Harmony +4       |
-| `TECH_TRK_S3` | Trunk      | 完全自律オムニ知性 (Omni-Autonomous Intellect) | `TECH_TRK_S2` | 1200   | 搭乗員ゼロ完全無人戦闘団、量子ドローン網、AI司令部    | Supremacy +6     |
-| `TECH_LF_S31` | Leaf       | 指向性高出力レーダー網 (DEW Interceptor Grid)  | `TECH_TRK_S3` | 600    | 高出力レーザー迎撃、ドローンスウォーム一括無力化      | Supremacy +4     |
+#### Tier 3: 極限物理・惑星特異点 (Apex Singularities / 9ノード)
+
+| ノードID      | 種別  | 技術名 (和名 / 英名)                             | 前提ノード                    | 必要RP | 解禁要素 (兵器モジュール / 施設 / レシピ / TO&E)                     | アフィニティ付与 |
+| :------------ | :---- | :----------------------------------------------- | :---------------------------- | :----- | :------------------------------------------------------------------- | :--------------- |
+| `TECH_TRK_P3` | Trunk | 惑星テラフォーミング (Planetary Remodeling)      | `TECH_TRK_P2`                 | 1300   | 惑星改造中枢プラント、テラフォーミング勝利プロジェクト、軌道アンカー | Purity +6        |
+| `TECH_LF_P31` | Leaf  | 陸上戦艦・超大口径砲 (Land Battleship & Railgun) | `TECH_TRK_P3`, `TECH_HYB_PS1` | 650    | 陸上戦艦打撃軍団TO&E、EM-210C超大型電磁投射砲、2タイル超砲撃         | Purity +4        |
+| `TECH_LF_P32` | Leaf  | 成層圏オゾン再形成網 (Stratospheric Restoration) | `TECH_TRK_P3`                 | 600    | 紫外線・通信障害恒久消滅、母星型大都市区画整備、人口幸福度向上       | Purity +4        |
+| `TECH_TRK_H3` | Trunk | 惑星ガイア同調 (Ecological Awakening)            | `TECH_TRK_H2`                 | 1300   | 惑星意識同調勝利プロジェクト、生体共振中枢核、瘴気無害化             | Harmony +6       |
+| `TECH_LF_H31` | Leaf  | 生体タイタン共鳴神経 (Titan Neural Harness)      | `TECH_TRK_H3`, `TECH_HYB_HS1` | 650    | 超大型タイタン級（コロッサス）直接使役、融合生物戦闘団TO&E           | Harmony +4       |
+| `TECH_LF_H32` | Leaf  | 自己再生生体外皮 (Regenerative Bio-Armor)        | `TECH_TRK_H3`                 | 600    | 戦闘中・非戦闘時自然急速再生（毎ターン修復+25%）、酸噴射砲           | Harmony +4       |
+| `TECH_TRK_S3` | Trunk | 完全自律オムニ知性 (Omni-Autonomous Intellect)   | `TECH_TRK_S2`                 | 1300   | 全土電脳統御勝利プロジェクト、AI司令部、完全自律戦闘団TO&E           | Supremacy +6     |
+| `TECH_LF_S31` | Leaf  | 指向性高出力レーザー (High-Energy Laser Grid)    | `TECH_TRK_S3`, `TECH_LF_S22`  | 650    | HEL要塞迎撃システム、ミサイル・航空機即時撃墜、弾薬消費ゼロ兵装      | Supremacy +4     |
+| `TECH_LF_S32` | Leaf  | 分散量子知性ファブ (Quantum Autonomous Fabs)     | `TECH_TRK_S3`                 | 600    | 無人完全自動生産（国内全工廠スループット+40%）、工作機械無制限       | Supremacy +4     |
 
 ---
 
