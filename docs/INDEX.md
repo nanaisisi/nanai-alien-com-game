@@ -45,13 +45,14 @@ docs/
 │   └── specs/                              # 師団直協・高級装甲兵器仕様書（2件）
 │       ├── AVIATION_ASSETS_AND_DOCTRINE.md # 師団直協航空アセット運用仕様書
 │       └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md # 二脚歩行戦闘車両仕様書
-├── specs/                                  # 共通システム確定・基本仕様書（14件）
+├── specs/                                  # 共通システム確定・基本仕様書（15件）
 │   ├── ALIEN_ECOLOGY_AND_NEST_SYSTEM.md    # エイリアン生態ライフサイクル・巣窟（Nest）運用仕様書
 │   ├── CHASSIS_AND_MODULE_CATALOG.md       # 初期モジュール・基本車台実数値カタログ仕様書
 │   ├── COMBAT_RESOLUTION_AND_CASUALTY.md   # 戦闘解決・部隊損耗および弾薬消費計算仕様書
 │   ├── DIPLOMATIC_TREATY_AND_ESCALATION.md # 外交エスカレーション・和平条約・属国化交渉仕様書
 │   ├── FACTION_STARTUP_ASSETS.md           # 架空6大国 初期保有アセット・スタートアップ定義書
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
+│   ├── INDUSTRIAL_AND_TECH_TREE_SYSTEM.md  # 産業システムおよび技術ツリー試案仕様書
 │   ├── LAND_USE_SYSTEM.md                  # 土地利用・開発システム仕様書
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
 │   ├── RESOURCE_ITEM_DICTIONARY.md         # 資源・部品・弾薬マスター定義書（物理データ辞書）
@@ -179,6 +180,12 @@ docs/
   - 各国の体制・文化圏背景、母星と入植惑星での外交関係（具体的な国名は未確定・継続検討事項）
   - アフィニティ（思想・適応路線）や経済/軍事ボーナスの基本方向性
   - ゲーム実装用データ: [`../assets/data/factions.csv`](../assets/data/factions.csv), [`../assets/data/city_names.csv`](../assets/data/city_names.csv)（勢力マスター＆全192都市名リスト）
+- **[specs/INDUSTRIAL_AND_TECH_TREE_SYSTEM.md](./specs/INDUSTRIAL_AND_TECH_TREE_SYSTEM.md)**：産業システムおよび技術ツリー試案仕様書
+  - 産業3層構造（基礎産業基盤、重工プラットフォーム、新興特化モジュール）と資源・中間財・兵站消費財の物理加工連鎖。
+  - 工廠ライン管理（段取り替え・金型転換フリクション、学習曲線歩留まり、部品共通化シナジー、ブートローダー工作機械プール）。
+  - 放射状（Radial）Web構造（Tier 0〜3）と3大アフィニティ（Purity, Harmony, Supremacy）＋デュアルハイブリッド体系。
+  - 全Tier網羅の幹（Trunk）・葉（Leaf）技術ノードカタログ、現場自律研究モメンタムと国家ステアリング、戦場残骸解析（Forensics）。
+  - Bevy ECS（`IndustrialProductionLine`, `MachineToolPool`, `TechWebRegistry`, `FactionResearchProgress`）実装データ構造。
 - **[specs/WATER_AND_SALINITY_SYSTEM.md](./specs/WATER_AND_SALINITY_SYSTEM.md)**：水域・塩分濃度システム仕様書
   - 外洋（Ocean）と閉鎖水域（Lake）の水域グラフ連結成分（BFS）自動判定ロジック。
   - 実用塩分単位（PSU / ‰）に基づく4段階水質区分（淡水、汽水、海水、高塩分・塩湖）。
