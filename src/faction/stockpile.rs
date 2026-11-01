@@ -59,17 +59,24 @@ pub fn initialize_outpost_stockpile(
     }
 }
 
-/// ターン進行時に、領有タイルの基礎産出をそのタイルの在庫へ加算する
+/// ターン進行時に、領有タイルの基礎産出を稼働率に応じてタイルの在庫へ加算する
 pub fn accrue_tile_output(
     mut messages: MessageReader<AdvanceTurnMessage>,
     map_grid: Res<MapGrid>,
     territory: Res<TerritoryMap>,
+    operating_grid: Res<crate::faction::upkeep::TileOperatingGrid>,
     mut stockpile: ResMut<TileStockpile>,
 ) {
     for _ in messages.read() {
         for coord in territory.tile_owners.keys() {
             if let Some(terrain) = map_grid.terrain_data.get(coord) {
-                *stockpile.stock.entry(*coord).or_default() += terrain.base_output();
+                let eff = operating_grid.get_state(coord).efficiency;
+                let mut output = terrain.base_output();
+                output.energy *= eff;
+                output.ore *= eff;
+                output.biomass *= eff;
+                output.science *= eff;
+                *stockpile.stock.entry(*coord).or_default() += output;
             }
         }
     }
