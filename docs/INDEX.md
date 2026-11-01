@@ -93,8 +93,10 @@ docs/
     │   ├── concept_event_catalog_and_chains.md
     │   ├── concept_faction_consensus_and_standardization.md
     │   └── concept_diplomatic_incidents_and_crises.md
-    ├── industry_logistics/                 # 産業・サプライチェーン・組織（9件）
+    ├── industry_logistics/                 # 産業・サプライチェーン・組織（11件）
     │   ├── concept_resource_economy_and_logistics.md
+    │   ├── concept_mineral_resources_and_alien_concentration.md
+    │   ├── concept_steel_industry_hydrogen_and_armor.md
     │   ├── concept_industry_structure.md
     │   ├── concept_industry_dynamics_novelty_continuity.md
     │   ├── concept_industrial_evolution_and_supply_chains.md
@@ -599,6 +601,11 @@ docs/
   - エイリアンの生体鉱化作用による鉱物集約（脱皮殻、鉱化嚢胞柱、死骸骨格層）。
   - 資源獲得の2大アプローチ（外縁掠め取りのハニーハーベスト方式 vs 巣窟殲滅・巨大露天鉱脈化）。
   - 産業利用の3大ライン（①不純物濾過による精錬電力60%削減・工期短縮、②バイオ傾斜複合装甲・重徹甲弾芯、③耐腐食レール・生体電磁導線インフラ）。
+- **[concept_steel_industry_hydrogen_and_armor.md](./discussion/industry_logistics/concept_steel_industry_hydrogen_and_armor.md)**
+  - **鋼業・水素直接還元製鉄・電気炉および装甲材工学仕様書**。
+  - コークス高炉脱却と全電化・海水電解水素直接還元（H2-DRI）製鉄モデル。
+  - 電気アーク炉（EAF）による戦場サルベージ屑鉄の100%完全再循環と、真空脱ガス（VD）による水素脆化克服。
+  - 均質圧延装甲（RHA）、多層複合装甲、エイリアン甲殻バイオ傾斜複合装甲の工学特性および世代（Gen 0〜4）進化。
 - **[concept_industry_structure.md](./discussion/industry_logistics/concept_industry_structure.md)**
   - 素材採掘・精錬・中間部品加工・最終製品組立に至る多段階産業ツリーの基本構造。
 - **[concept_industry_dynamics_novelty_continuity.md](./discussion/industry_logistics/concept_industry_dynamics_novelty_continuity.md)**

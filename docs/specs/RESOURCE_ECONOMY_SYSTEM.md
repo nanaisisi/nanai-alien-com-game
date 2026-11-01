@@ -85,12 +85,13 @@ flowchart TD
 
 ### ② 産業構造・ブートローダー工廠・生産技術
 
-| ドキュメント                                                                                                                                | 概要・主要論点                                                                                                                               |
-| :------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[concept_bootloader_and_national_supply_chains.md](../discussion/industry_logistics/concept_bootloader_and_national_supply_chains.md)**   | **機械が機械を作るブートローダー産業仕様書**。工作機械プール、金型、歩留まり、初期母星遺産ストックから現地サプライチェーンへの自立プロセス。 |
-| **[concept_industry_dynamics_novelty_continuity.md](../discussion/industry_logistics/concept_industry_dynamics_novelty_continuity.md)**     | **新規性と継続性の産業構造仕様書**。既存金型の高歩留まりによる長寿命プラットフォームと、新世代AI・新物性による初期脆弱性・ライン転換ラグ。   |
-| **[concept_industry_structure.md](../discussion/industry_logistics/concept_industry_structure.md)**                                         | **産業基本ツリー**。素材採掘から精錬、中間部品加工、最終組立に至る多段階産業構造。                                                           |
-| **[concept_homeworld_roadmaps_and_niche_industries.md](../discussion/military_tactics/concept_homeworld_roadmaps_and_niche_industries.md)** | **企業エコシステム仕様書**。母星重工ロードマップ、現地国策重工、民需転用キット、開拓現場の特化ニッチモジュール（深地採石・廃船解体等）。     |
+| ドキュメント                                                                                                                                | 概要・主要論点                                                                                                                                                                           |
+| :------------------------------------------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[concept_bootloader_and_national_supply_chains.md](../discussion/industry_logistics/concept_bootloader_and_national_supply_chains.md)**   | **機械が機械を作るブートローダー産業仕様書**。工作機械プール、金型、歩留まり、初期母星遺産ストックから現地サプライチェーンへの自立プロセス。                                             |
+| **[concept_industry_dynamics_novelty_continuity.md](../discussion/industry_logistics/concept_industry_dynamics_novelty_continuity.md)**     | **新規性と継続性の産業構造仕様書**。既存金型の高歩留まりによる長寿命プラットフォームと、新世代AI・新物性による初期脆弱性・ライン転換ラグ。                                               |
+| **[concept_industry_structure.md](../discussion/industry_logistics/concept_industry_structure.md)**                                         | **産業基本ツリー**。素材採掘から精錬、中間部品加工、最終組立に至る多段階産業構造。                                                                                                       |
+| **[concept_steel_industry_hydrogen_and_armor.md](../discussion/industry_logistics/concept_steel_industry_hydrogen_and_armor.md)**           | **鋼業・水素直接還元製鉄・電気炉および装甲材工学仕様書**。全電化水素製鉄（H2-DRI）、電気アーク炉（EAF）による戦場サルベージ循環、均質圧延装甲（RHA）・複合装甲・バイオ傾斜複合装甲工学。 |
+| **[concept_homeworld_roadmaps_and_niche_industries.md](../discussion/military_tactics/concept_homeworld_roadmaps_and_niche_industries.md)** | **企業エコシステム仕様書**。母星重工ロードマップ、現地国策重工、民需転用キット、開拓現場の特化ニッチモジュール（深地採石・廃船解体等）。                                                 |
 
 ### ③ 兵器モジュール・シャシー規格・カタログ
 
