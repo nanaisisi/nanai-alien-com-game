@@ -78,23 +78,23 @@ impl HexCoord {
 
     /// 2つのヘックス間の距離（タイル数、横ループ考慮、指定マップ幅）
     pub fn distance_with_width(self, other: HexCoord, map_width: i32) -> i32 {
-        let (_c1, _r1) = self.to_col_row_with_width(map_width);
         let (c2, r2) = other.to_col_row_with_width(map_width);
 
-        let offsets = [-map_width, 0, map_width];
-        let mut min_dist = i32::MAX;
+        let base_q = c2 - (r2 - (r2 & 1)) / 2;
+        let self_s = -self.q - self.r;
+        let dr = (self.r - r2).abs();
 
-        for offset in offsets {
-            let shifted_other = HexCoord::from_col_row_unwrapped(c2 + offset, r2);
-            let dq = (self.q - shifted_other.q).abs();
-            let dr = (self.r - shifted_other.r).abs();
-            let ds = (self.s() - shifted_other.s()).abs();
-            let d = (dq + dr + ds) / 2;
-            if d < min_dist {
-                min_dist = d;
-            }
-        }
-        min_dist
+        let mut min_dist = (self.q - base_q).abs() + (self_s - (-base_q - r2)).abs();
+
+        let q_pos = base_q + map_width;
+        let d_pos = (self.q - q_pos).abs() + (self_s - (-q_pos - r2)).abs();
+        if d_pos < min_dist { min_dist = d_pos; }
+
+        let q_neg = base_q - map_width;
+        let d_neg = (self.q - q_neg).abs() + (self_s - (-q_neg - r2)).abs();
+        if d_neg < min_dist { min_dist = d_neg; }
+
+        (min_dist + dr) / 2
     }
 
     /// 2つのヘックス間の距離（タイル数、横ループ考慮、テスト用）
