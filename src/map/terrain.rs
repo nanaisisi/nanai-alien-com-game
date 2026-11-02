@@ -204,9 +204,10 @@ impl TerrainType {
 
     /// 塩分濃度を考慮した基礎色
     pub fn base_color_with_salinity(&self, salinity: Option<WaterSalinity>) -> Color {
-        match (self, salinity) {
-            (Self::Ocean | Self::Lake, Some(sal)) => sal.color_tint(),
-            _ => self.base_color(),
+        if matches!(self, Self::Ocean | Self::Lake)
+            && let Some(sal) = salinity
+        {
+            return sal.color_tint();
         }
     }
 }
