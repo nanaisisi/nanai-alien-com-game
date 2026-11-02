@@ -209,6 +209,5 @@ impl TerrainType {
         {
             return sal.color_tint();
         }
-        self.base_color()
     }
 }
