@@ -99,7 +99,7 @@ pub struct MiasmaMap {
 impl MiasmaMap {
     pub const MAX_CONCENTRATION: f32 = 1.0;
     pub const DISSIPATION_RATE: f32 = 0.05; // 毎ターンの自然減衰率
-    pub const DIFFUSION_COEFF: f32 = 0.15;  // 隣接タイルへの拡散係数
+    pub const DIFFUSION_COEFF: f32 = 0.15; // 隣接タイルへの拡散係数
 
     #[inline]
     pub fn get(&self, coord: &HexCoord) -> f32 {

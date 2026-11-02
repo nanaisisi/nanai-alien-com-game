@@ -70,8 +70,8 @@ impl PlanetEnvironment {
             Self::Terra => 0.72,
             Self::Arid => 0.75,
             Self::Archipelago => 0.78,
-            Self::ToxicMarsh => 0.80,  // 山岳は少なく湿地が多い
-            Self::Jungle => 0.75,      // 山岳は控えめ、密林が大地を支配
+            Self::ToxicMarsh => 0.80, // 山岳は少なく湿地が多い
+            Self::Jungle => 0.75,     // 山岳は控えめ、密林が大地を支配
         }
     }
 

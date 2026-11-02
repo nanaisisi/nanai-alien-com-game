@@ -515,7 +515,6 @@ pub fn handle_unit_keyboard_shortcuts(
     }
 }
 
-
 /// 次の行動可能な未処理ユニットへフォーカスを移すヘルパー
 fn select_next_ready_unit(
     units: &Query<(Entity, &mut Unit, &mut Transform)>,
@@ -678,9 +677,10 @@ fn execute_unit_attack_action(
 
     // 与ダメージ計算
     let charge_bonus = if !is_ranged && dist == 1 { 1.25 } else { 1.0 };
-    let damage_to_target = ((attacker_power as f32) * (attacker_hp as f32 / 100.0) * charge_bonus * river_penalty_mult
-        / def_mult)
-        .ceil() as u32;
+    let damage_to_target =
+        ((attacker_power as f32) * (attacker_hp as f32 / 100.0) * charge_bonus * river_penalty_mult
+            / def_mult)
+            .ceil() as u32;
     let damage_to_target = damage_to_target.max(5);
 
     // 反撃ダメージ計算（遠隔射撃の場合は反撃なし、近接白兵の場合は反撃あり）
@@ -1038,13 +1038,14 @@ pub fn update_reachable_tiles(
             }
 
             // 渡河および運河横断コストの算出
-            let crossing_penalty = if let Some(scale) = map_grid.get_river_between(&curr, &next_coord) {
-                scale.movement_penalty()
-            } else if map_grid.has_canal_between(&curr, &next_coord) {
-                2 // 運河横断ペナルティ: +2移動力
-            } else {
-                0
-            };
+            let crossing_penalty =
+                if let Some(scale) = map_grid.get_river_between(&curr, &next_coord) {
+                    scale.movement_penalty()
+                } else if map_grid.has_canal_between(&curr, &next_coord) {
+                    2 // 運河横断ペナルティ: +2移動力
+                } else {
+                    0
+                };
 
             let next_cost = cost + 1 + crossing_penalty;
             if next_cost <= max_move {
@@ -1224,8 +1225,10 @@ pub fn process_unit_turn_updates(
         units.iter().map(|(_, u, _)| (u.faction, u.coord)).collect();
 
     // 各派閥の拠点座標一覧を事前取得
-    let faction_outposts: Vec<(crate::faction::types::FactionId, HexCoord)> =
-        outposts_query.iter().map(|o| (o.faction, o.coord)).collect();
+    let faction_outposts: Vec<(crate::faction::types::FactionId, HexCoord)> = outposts_query
+        .iter()
+        .map(|o| (o.faction, o.coord))
+        .collect();
 
     for (_, mut unit, mut logistics_opt) in &mut units {
         let fac = unit.faction;

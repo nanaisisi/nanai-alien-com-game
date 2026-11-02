@@ -35,9 +35,15 @@ impl WaterSalinity {
     pub fn description(&self) -> &'static str {
         match self {
             Self::Fresh => "純度の高い淡水域。生活用水・灌漑に適し、水産バイオマスが極めて豊富。",
-            Self::Brackish => "カスピ海型内陸水域。淡水と塩分が混じり合い特有の魚介生態系と水力エネルギーを保持。",
-            Self::Saline => "典型的な海洋水。豊富な海流エネルギーと広域航路を提供する標準的塩分濃度。",
-            Self::Hypersaline => "死海・グレートソルト湖型。強い塩分により生物生息は限定的だが、晶出鉱物・蒸発塩（生産力）が豊富。",
+            Self::Brackish => {
+                "カスピ海型内陸水域。淡水と塩分が混じり合い特有の魚介生態系と水力エネルギーを保持。"
+            }
+            Self::Saline => {
+                "典型的な海洋水。豊富な海流エネルギーと広域航路を提供する標準的塩分濃度。"
+            }
+            Self::Hypersaline => {
+                "死海・グレートソルト湖型。強い塩分により生物生息は限定的だが、晶出鉱物・蒸発塩（生産力）が豊富。"
+            }
         }
     }
 
@@ -45,20 +51,20 @@ impl WaterSalinity {
     pub fn base_output(&self) -> super::resource::ResourceAmounts {
         use super::resource::ResourceAmounts as R;
         match self {
-            Self::Fresh => R::new(2.0, 0.0, 0.0, 0.0),      // 淡水魚・水源（食料2）
-            Self::Brackish => R::new(1.5, 0.0, 0.5, 0.0),   // 汽水水産（食料1.5）+ 潮汐水流（エネルギー0.5）
-            Self::Saline => R::new(1.0, 0.0, 1.0, 0.0),     // 海洋漁獲（食料1）+ 海流エネルギー（エネルギー1）
-            Self::Hypersaline => R::new(0.0, 2.0, 0.0, 0.0),// 塩・鉱物・リチウム晶出（生産2）
+            Self::Fresh => R::new(2.0, 0.0, 0.0, 0.0), // 淡水魚・水源（食料2）
+            Self::Brackish => R::new(1.5, 0.0, 0.5, 0.0), // 汽水水産（食料1.5）+ 潮汐水流（エネルギー0.5）
+            Self::Saline => R::new(1.0, 0.0, 1.0, 0.0), // 海洋漁獲（食料1）+ 海流エネルギー（エネルギー1）
+            Self::Hypersaline => R::new(0.0, 2.0, 0.0, 0.0), // 塩・鉱物・リチウム晶出（生産2）
         }
     }
 
     /// ホバー・ベースカラーの微細な色調調整
     pub fn color_tint(&self) -> Color {
         match self {
-            Self::Fresh => Color::srgb(0.14, 0.40, 0.50),      // 澄んだ青緑・アクア
-            Self::Brackish => Color::srgb(0.12, 0.32, 0.48),   // カスピ海調の深緑蒼色
-            Self::Saline => Color::srgb(0.10, 0.25, 0.48),     // 外洋ディープブルー
-            Self::Hypersaline => Color::srgb(0.20, 0.45, 0.46),// 塩湖・ターコイズ＆塩結晶ホワイト寄り
+            Self::Fresh => Color::srgb(0.14, 0.40, 0.50), // 澄んだ青緑・アクア
+            Self::Brackish => Color::srgb(0.12, 0.32, 0.48), // カスピ海調の深緑蒼色
+            Self::Saline => Color::srgb(0.10, 0.25, 0.48), // 外洋ディープブルー
+            Self::Hypersaline => Color::srgb(0.20, 0.45, 0.46), // 塩湖・ターコイズ＆塩結晶ホワイト寄り
         }
     }
 }
@@ -169,7 +175,7 @@ impl TerrainType {
             Self::Ocean => R::new(1.0, 0.0, 1.0, 0.0),     // 食料+エネルギー（海流/潮汐）
             Self::Lake => R::new(2.0, 0.0, 0.0, 0.0),      // 淡水資源・豊かな生態系（食料+1）
             Self::ToxicSwamp => R::new(0.0, 0.0, 2.0, 1.0), // 瘴気エネルギー+研究
-            Self::Jungle => R::new(2.0, 1.0, 0.0, 2.0),     // 圧倒的バイオマス(食料2) + 未知ゲノム・生態系(科学2)
+            Self::Jungle => R::new(2.0, 1.0, 0.0, 2.0), // 圧倒的バイオマス(食料2) + 未知ゲノム・生態系(科学2)
         }
     }
 
@@ -198,7 +204,10 @@ impl TerrainType {
 
     /// 塩分濃度を考慮した産出力（水域タイルの場合、塩分特性が反映される）
     #[allow(dead_code)]
-    pub fn output_with_salinity(&self, salinity: Option<WaterSalinity>) -> super::resource::ResourceAmounts {
+    pub fn output_with_salinity(
+        &self,
+        salinity: Option<WaterSalinity>,
+    ) -> super::resource::ResourceAmounts {
         self.output_with_water_access(salinity, false)
     }
 
@@ -209,5 +218,6 @@ impl TerrainType {
         {
             return sal.color_tint();
         }
+        self.base_color()
     }
 }

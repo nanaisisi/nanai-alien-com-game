@@ -16,9 +16,15 @@ pub struct HexEdge {
 impl HexEdge {
     pub fn new(a: HexCoord, b: HexCoord) -> Self {
         if (a.q, a.r) <= (b.q, b.r) {
-            Self { tile_a: a, tile_b: b }
+            Self {
+                tile_a: a,
+                tile_b: b,
+            }
         } else {
-            Self { tile_a: b, tile_b: a }
+            Self {
+                tile_a: b,
+                tile_b: a,
+            }
         }
     }
 }
@@ -89,7 +95,11 @@ pub struct MapGrid {
 impl MapGrid {
     /// 指定タイルが河川に面しているか判定
     pub fn has_river(&self, coord: &HexCoord) -> bool {
-        let w = if self.width > 0 { self.width } else { crate::map::hex::MAP_WIDTH };
+        let w = if self.width > 0 {
+            self.width
+        } else {
+            crate::map::hex::MAP_WIDTH
+        };
         for neighbor in coord.neighbors_with_width(w) {
             let edge = HexEdge::new(*coord, neighbor);
             if self.rivers.contains_key(&edge) {
@@ -114,7 +124,11 @@ impl MapGrid {
 
     /// 指定タイルが運河に面しているか判定
     pub fn has_canal(&self, coord: &HexCoord) -> bool {
-        let w = if self.width > 0 { self.width } else { crate::map::hex::MAP_WIDTH };
+        let w = if self.width > 0 {
+            self.width
+        } else {
+            crate::map::hex::MAP_WIDTH
+        };
         for neighbor in coord.neighbors_with_width(w) {
             let edge = HexEdge::new(*coord, neighbor);
             if self.canals.contains(&edge) {
@@ -172,4 +186,3 @@ pub struct CanalOverlayLine;
 /// タイル産出（Yield）オーバーレイマーカー
 #[derive(Component)]
 pub struct YieldOverlayTag;
-

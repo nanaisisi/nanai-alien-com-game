@@ -130,7 +130,10 @@ impl TechWebRegistry {
             let unlocks = if fields[10].is_empty() {
                 Vec::new()
             } else {
-                fields[10].split(';').map(|s| s.trim().to_string()).collect()
+                fields[10]
+                    .split(';')
+                    .map(|s| s.trim().to_string())
+                    .collect()
             };
 
             nodes.insert(
@@ -185,7 +188,7 @@ impl TechWebRegistry {
                             return Err(format!(
                                 "Cycle detected involving node {} and {}",
                                 node_id, prereq
-                            ))
+                            ));
                         }
                         Some(0) => dfs(p_str, visited, nodes)?,
                         _ => {}
@@ -272,26 +275,27 @@ impl FactionResearchProgress {
         }
 
         // 2. 国家ステアリングRPの集中注入
-        if let Some(target_id) = &self.steering_target {
-            if self.is_researchable(target_id, registry) {
-                let inject_rp = if self.steering_friction_turns > 0 {
-                    self.steering_friction_turns -= 1;
-                    national_rp / 2 // フリクション減衰 (50%)
-                } else {
-                    national_rp
-                };
-                let entry = self.accumulated_rp.entry(target_id.clone()).or_insert(0);
-                *entry += inject_rp;
-            }
+        if let Some(target_id) = &self.steering_target
+            && self.is_researchable(target_id, registry)
+        {
+            let inject_rp = if self.steering_friction_turns > 0 {
+                self.steering_friction_turns -= 1;
+                national_rp / 2 // フリクション減衰 (50%)
+            } else {
+                national_rp
+            };
+            let entry = self.accumulated_rp.entry(target_id.clone()).or_insert(0);
+            *entry += inject_rp;
         }
 
         // 3. 技術完了判定
         let mut newly_unlocked = Vec::new();
         for (tech_id, rp) in &self.accumulated_rp {
-            if let Some(node) = registry.nodes.get(tech_id) {
-                if *rp >= node.required_rp && !self.unlocked_techs.contains(tech_id) {
-                    newly_unlocked.push(tech_id.clone());
-                }
+            if let Some(node) = registry.nodes.get(tech_id)
+                && *rp >= node.required_rp
+                && !self.unlocked_techs.contains(tech_id)
+            {
+                newly_unlocked.push(tech_id.clone());
             }
         }
 

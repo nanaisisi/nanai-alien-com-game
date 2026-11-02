@@ -6,7 +6,10 @@ use super::{HEX_RADIUS, MapGrid};
 use crate::camera::MapCamera;
 use crate::state::AppState;
 
-use super::types::{CanalOverlayLine, GridOverlayLine, HexTile, MapDisplaySettings, RiverOverlayLine, YieldOverlayTag};
+use super::types::{
+    CanalOverlayLine, GridOverlayLine, HexTile, MapDisplaySettings, RiverOverlayLine,
+    YieldOverlayTag,
+};
 
 pub struct MapInteractionPlugin;
 
@@ -441,7 +444,9 @@ pub fn setup_map_overlays(
             // 河川沿岸タイルは淡水アクセスボーナス (+1.0 バイオマス) が付与される
             let has_river = map_grid.has_river(&coord);
             let salinity = map_grid.water_salinity.get(&coord).copied();
-            let (food, prod, energy, science) = terrain.output_with_water_access(salinity, has_river).rounded();
+            let (food, prod, energy, science) = terrain
+                .output_with_water_access(salinity, has_river)
+                .rounded();
             let mut yield_parts = Vec::new();
             if food > 0 {
                 yield_parts.push(format!("{}食", food));
@@ -523,19 +528,33 @@ pub fn setup_map_overlays(
             let p2 = edge_center - perp * river_half_len + dir * river_width;
             let p3 = edge_center - perp * river_half_len - dir * river_width;
 
-            let h_a = map_grid.terrain_data.get(&edge.tile_a).map(|t| t.height()).unwrap_or(0.1);
-            let h_b = map_grid.terrain_data.get(&edge.tile_b).map(|t| t.height()).unwrap_or(0.1);
+            let h_a = map_grid
+                .terrain_data
+                .get(&edge.tile_a)
+                .map(|t| t.height())
+                .unwrap_or(0.1);
+            let h_b = map_grid
+                .terrain_data
+                .get(&edge.tile_b)
+                .map(|t| t.height())
+                .unwrap_or(0.1);
             let river_y = h_a.min(h_b) + 0.035;
 
             use bevy::asset::RenderAssetUsages;
             use bevy::render::mesh::{Indices, PrimitiveTopology};
-            let mut river_mesh = Mesh::new(PrimitiveTopology::TriangleList, RenderAssetUsages::default());
-            river_mesh.insert_attribute(Mesh::ATTRIBUTE_POSITION, vec![
-                [p0.x, 0.0, p0.z],
-                [p1.x, 0.0, p1.z],
-                [p2.x, 0.0, p2.z],
-                [p3.x, 0.0, p3.z],
-            ]);
+            let mut river_mesh = Mesh::new(
+                PrimitiveTopology::TriangleList,
+                RenderAssetUsages::default(),
+            );
+            river_mesh.insert_attribute(
+                Mesh::ATTRIBUTE_POSITION,
+                vec![
+                    [p0.x, 0.0, p0.z],
+                    [p1.x, 0.0, p1.z],
+                    [p2.x, 0.0, p2.z],
+                    [p3.x, 0.0, p3.z],
+                ],
+            );
             river_mesh.insert_attribute(Mesh::ATTRIBUTE_NORMAL, vec![[0.0, 1.0, 0.0]; 4]);
             river_mesh.insert_attribute(Mesh::ATTRIBUTE_UV_0, vec![[0.0, 0.0]; 4]);
             river_mesh.insert_indices(Indices::U32(vec![0, 1, 2, 0, 2, 3]));
@@ -579,19 +598,33 @@ pub fn setup_map_overlays(
             let p2 = edge_center - perp * canal_half_len + dir * canal_width;
             let p3 = edge_center - perp * canal_half_len - dir * canal_width;
 
-            let h_a = map_grid.terrain_data.get(&edge.tile_a).map(|t| t.height()).unwrap_or(0.1);
-            let h_b = map_grid.terrain_data.get(&edge.tile_b).map(|t| t.height()).unwrap_or(0.1);
+            let h_a = map_grid
+                .terrain_data
+                .get(&edge.tile_a)
+                .map(|t| t.height())
+                .unwrap_or(0.1);
+            let h_b = map_grid
+                .terrain_data
+                .get(&edge.tile_b)
+                .map(|t| t.height())
+                .unwrap_or(0.1);
             let canal_y = h_a.min(h_b) + 0.040;
 
             use bevy::asset::RenderAssetUsages;
             use bevy::render::mesh::{Indices, PrimitiveTopology};
-            let mut canal_mesh = Mesh::new(PrimitiveTopology::TriangleList, RenderAssetUsages::default());
-            canal_mesh.insert_attribute(Mesh::ATTRIBUTE_POSITION, vec![
-                [p0.x, 0.0, p0.z],
-                [p1.x, 0.0, p1.z],
-                [p2.x, 0.0, p2.z],
-                [p3.x, 0.0, p3.z],
-            ]);
+            let mut canal_mesh = Mesh::new(
+                PrimitiveTopology::TriangleList,
+                RenderAssetUsages::default(),
+            );
+            canal_mesh.insert_attribute(
+                Mesh::ATTRIBUTE_POSITION,
+                vec![
+                    [p0.x, 0.0, p0.z],
+                    [p1.x, 0.0, p1.z],
+                    [p2.x, 0.0, p2.z],
+                    [p3.x, 0.0, p3.z],
+                ],
+            );
             canal_mesh.insert_attribute(Mesh::ATTRIBUTE_NORMAL, vec![[0.0, 1.0, 0.0]; 4]);
             canal_mesh.insert_attribute(Mesh::ATTRIBUTE_UV_0, vec![[0.0, 0.0]; 4]);
             canal_mesh.insert_indices(Indices::U32(vec![0, 1, 2, 0, 2, 3]));

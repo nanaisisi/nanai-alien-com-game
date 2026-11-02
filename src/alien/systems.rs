@@ -33,7 +33,7 @@ pub fn handle_alien_turn_update(
                 if dist <= 1 {
                     irritation_delta += 15.0; // 隣接タイルに駐留
                 } else if dist <= 2 {
-                    irritation_delta += 5.0;  // 視界・近接圏内
+                    irritation_delta += 5.0; // 視界・近接圏内
                 }
             }
 

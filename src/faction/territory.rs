@@ -127,7 +127,10 @@ pub fn setup_initial_faction_territories(
                 }
             }
             // 万一陸地が一切ない極限ケースのフォールバック
-            warn!("No passable ground tile found for faction {:?} outpost!", faction);
+            warn!(
+                "No passable ground tile found for faction {:?} outpost!",
+                faction
+            );
             HexCoord::from_col_row_with_width(base_col, 0, map_w)
         });
 

@@ -1,5 +1,5 @@
-use std::collections::HashMap;
 use bevy::prelude::*;
+use std::collections::HashMap;
 
 use crate::faction::stockpile::TileStockpile;
 use crate::faction::upkeep::TileOperatingGrid;
@@ -234,7 +234,9 @@ mod tests {
         );
 
         // 原料十分
-        stockpile.stock.insert(coord, ResourceAmounts::new(0.0, 10.0, 10.0, 0.0));
+        stockpile
+            .stock
+            .insert(coord, ResourceAmounts::new(0.0, 10.0, 10.0, 0.0));
 
         ind.process_turn_production(&mut stockpile, &op_grid);
 
@@ -262,7 +264,9 @@ mod tests {
         );
 
         // 原料＋部品
-        stockpile.stock.insert(coord, ResourceAmounts::new(0.0, 5.0, 5.0, 0.0));
+        stockpile
+            .stock
+            .insert(coord, ResourceAmounts::new(0.0, 5.0, 5.0, 0.0));
         ind.advanced_stocks.insert(
             coord,
             AdvancedStock {

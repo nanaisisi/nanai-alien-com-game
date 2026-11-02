@@ -82,7 +82,11 @@ mod tests {
 
     #[test]
     fn test_miasma_hazard_damage_to_unit() {
-        let mut unit = Unit::new(FactionId::Empire, CombatGroupType::LightInfantry, HexCoord::new(0, 0));
+        let mut unit = Unit::new(
+            FactionId::Empire,
+            CombatGroupType::LightInfantry,
+            HexCoord::new(0, 0),
+        );
         let initial_hp = unit.hp;
 
         // 高濃度瘴気(>=0.7)のシミュレート: 最大HPの10%ダメージ

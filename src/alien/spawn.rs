@@ -66,9 +66,7 @@ pub fn spawn_alien_nests(
     let mut chosen_nest_coords: Vec<HexCoord> = Vec::new();
 
     // 簡易決定論的・距離分散選択
-    candidates.sort_by_key(|&(coord, weight)| {
-        ((coord.q * 37 + coord.r * 17).abs() % 100) - weight
-    });
+    candidates.sort_by_key(|&(coord, weight)| ((coord.q * 37 + coord.r * 17).abs() % 100) - weight);
 
     for (candidate, _) in candidates {
         if chosen_nest_coords.len() >= target_nest_count as usize {
@@ -121,12 +119,7 @@ pub fn spawn_alien_nests(
             ))
             .id();
 
-        spawn_nest_model(
-            &mut commands,
-            nest_entity,
-            &mut meshes,
-            &mut materials,
-        );
+        spawn_nest_model(&mut commands, nest_entity, &mut meshes, &mut materials);
     }
 
     info!(

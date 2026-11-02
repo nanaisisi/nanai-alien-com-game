@@ -1,5 +1,5 @@
-use std::collections::HashMap;
 use bevy::prelude::*;
+use std::collections::HashMap;
 
 use crate::faction::infrastructure::InfrastructureGrid;
 use crate::faction::stockpile::TileStockpile;
@@ -82,7 +82,7 @@ impl TileOperatingGrid {
         stockpile: &mut TileStockpile,
         infra: &InfrastructureGrid,
     ) {
-        for (&coord, _faction) in &territory.tile_owners {
+        for &coord in territory.tile_owners.keys() {
             let upkeep = self.upkeeps.get(&coord).copied().unwrap_or_default();
             let conn = infra.get_connectivity(&coord);
 
@@ -140,13 +140,18 @@ mod tests {
         territory.tile_owners.insert(coord, FactionId::Empire);
 
         // 十分な在庫
-        stockpile.stock.insert(coord, ResourceAmounts::new(10.0, 10.0, 10.0, 10.0));
+        stockpile
+            .stock
+            .insert(coord, ResourceAmounts::new(10.0, 10.0, 10.0, 10.0));
         // インフラ結合度 1.0
         infra.connectivity.insert(coord, 1.0);
 
-        grid.set_upkeep(coord, TileUpkeep {
-            cost: ResourceAmounts::new(0.0, 0.0, 2.0, 0.0),
-        });
+        grid.set_upkeep(
+            coord,
+            TileUpkeep {
+                cost: ResourceAmounts::new(0.0, 0.0, 2.0, 0.0),
+            },
+        );
 
         grid.process_turn_upkeep(&territory, &mut stockpile, &infra);
 
@@ -169,11 +174,16 @@ mod tests {
         territory.tile_owners.insert(coord, FactionId::Empire);
 
         // エネルギー在庫が不足
-        stockpile.stock.insert(coord, ResourceAmounts::new(10.0, 10.0, 0.5, 10.0));
+        stockpile
+            .stock
+            .insert(coord, ResourceAmounts::new(10.0, 10.0, 0.5, 10.0));
 
-        grid.set_upkeep(coord, TileUpkeep {
-            cost: ResourceAmounts::new(0.0, 0.0, 2.0, 0.0),
-        });
+        grid.set_upkeep(
+            coord,
+            TileUpkeep {
+                cost: ResourceAmounts::new(0.0, 0.0, 2.0, 0.0),
+            },
+        );
 
         grid.process_turn_upkeep(&territory, &mut stockpile, &infra);
 

@@ -1,10 +1,10 @@
-use std::collections::{HashMap, HashSet, VecDeque};
 use bevy::prelude::*;
+use std::collections::{HashMap, HashSet, VecDeque};
 
 use crate::faction::territory::{FactionOutpost, TerritoryMap};
 use crate::faction::types::FactionId;
-use crate::map::hex::HexCoord;
 use crate::map::MapGrid;
+use crate::map::hex::HexCoord;
 
 /// 動脈インフラの種別
 /// (参照: docs/discussion/map_tile/concept_infrastructure_grid_and_transit_artery.md)
@@ -67,7 +67,9 @@ impl InfrastructureGrid {
     #[allow(dead_code)]
     pub fn has_artery(&self, c1: HexCoord, c2: HexCoord, artery: ArteryType) -> bool {
         let edge = ArteryEdge::new(c1, c2);
-        self.edges.get(&edge).map_or(false, |set| set.contains(&artery))
+        self.edges
+            .get(&edge)
+            .is_some_and(|set| set.contains(&artery))
     }
 
     /// タイルごとの最高インフラ結合度を再計算

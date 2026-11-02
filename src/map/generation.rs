@@ -200,7 +200,8 @@ pub fn generate_hex_map(
                     let center_dist = (norm_dist_x * norm_dist_x + lat_ratio * lat_ratio).sqrt();
                     // 中心付近を強く盛り上げ、遠方（対蹠地・大洋）を沈める
                     let pangaea_bias = (1.0 - center_dist * 1.35).clamp(-0.6, 0.4);
-                    let elev = (n * 0.65 + pangaea_bias * 0.55 + 0.15 - lat_factor * 0.25).clamp(0.0, 1.0);
+                    let elev =
+                        (n * 0.65 + pangaea_bias * 0.55 + 0.15 - lat_factor * 0.25).clamp(0.0, 1.0);
                     (elev, base_sea_threshold)
                 }
                 LandmassType::SolidLand => {
@@ -211,7 +212,13 @@ pub fn generate_hex_map(
                 LandmassType::Archipelago => {
                     // 島嶼群: 海水面を高めに設定し、細かな起伏で多数の島を浮き上がらせる
                     // 細部ノイズをブレンドして細分化
-                    let detail_n = cylinder_noise_with_size(col, row, base_seed.wrapping_add(99991), map_w, map_h);
+                    let detail_n = cylinder_noise_with_size(
+                        col,
+                        row,
+                        base_seed.wrapping_add(99991),
+                        map_w,
+                        map_h,
+                    );
                     let mixed_n = n * 0.55 + detail_n * 0.45;
                     let elev = (mixed_n - lat_factor * 0.30).clamp(0.0, 1.0);
                     (elev, (base_sea_threshold * 1.15 + 0.08).clamp(0.52, 0.68))
@@ -317,12 +324,18 @@ pub fn generate_hex_map(
             while let Some(current) = queue.pop_front() {
                 lake_comp.push(current);
                 let (cc, cr) = current.to_col_row_with_width(map_w);
-                let moist = cylinder_noise_with_size(cc, cr, base_seed.wrapping_add(8888), map_w, map_h);
+                let moist =
+                    cylinder_noise_with_size(cc, cr, base_seed.wrapping_add(8888), map_w, map_h);
                 avg_moisture += moist;
 
                 for n_coord in current.neighbors_with_width(map_w) {
                     let (nc, nr) = n_coord.to_col_row_with_width(map_w);
-                    if nr >= -half_h && nr <= half_h && !is_land[&(nc, nr)] && !is_ocean_tile.get(&n_coord).copied().unwrap_or(true) && lake_component_visited.insert(n_coord) {
+                    if nr >= -half_h
+                        && nr <= half_h
+                        && !is_land[&(nc, nr)]
+                        && !is_ocean_tile.get(&n_coord).copied().unwrap_or(true)
+                        && lake_component_visited.insert(n_coord)
+                    {
                         queue.push_back(n_coord);
                     }
                 }
@@ -487,11 +500,14 @@ pub fn generate_hex_map(
                 continue;
             }
             let elev = elevations[&(col, row)];
-            let moisture = cylinder_noise_with_size(col, row, base_seed.wrapping_add(8888), map_w, map_h);
+            let moisture =
+                cylinder_noise_with_size(col, row, base_seed.wrapping_add(8888), map_w, map_h);
             let coord = HexCoord::from_col_row_with_width(col, row, map_w);
             let terrain = terrain_map[&coord];
 
-            if matches!(terrain, TerrainType::Mountains | TerrainType::Hills) && (moisture > 0.45 || elev > 0.65) {
+            if matches!(terrain, TerrainType::Mountains | TerrainType::Hills)
+                && (moisture > 0.45 || elev > 0.65)
+            {
                 river_sources.push((coord, elev, moisture));
             }
         }
@@ -502,7 +518,9 @@ pub fn generate_hex_map(
     let target_river_count = match env {
         PlanetEnvironment::Arid => (map_w / 7).max(1) as usize,
         PlanetEnvironment::Archipelago => (map_w / 6).max(2) as usize,
-        PlanetEnvironment::Terra | PlanetEnvironment::Jungle | PlanetEnvironment::ToxicMarsh => (map_w / 4).max(3) as usize,
+        PlanetEnvironment::Terra | PlanetEnvironment::Jungle | PlanetEnvironment::ToxicMarsh => {
+            (map_w / 4).max(3) as usize
+        }
     };
 
     let mut river_id = 0;
@@ -547,9 +565,17 @@ pub fn generate_hex_map(
             visited_edges.insert(edge);
 
             // current_a または current_b のどちらかが水域（外洋 Ocean または 湖沼 Lake）に到達したら注水完了
-            let t_a = terrain_map.get(&current_a).copied().unwrap_or(TerrainType::Ocean);
-            let t_b = terrain_map.get(&current_b).copied().unwrap_or(TerrainType::Ocean);
-            if matches!(t_a, TerrainType::Ocean | TerrainType::Lake) && matches!(t_b, TerrainType::Ocean | TerrainType::Lake) {
+            let t_a = terrain_map
+                .get(&current_a)
+                .copied()
+                .unwrap_or(TerrainType::Ocean);
+            let t_b = terrain_map
+                .get(&current_b)
+                .copied()
+                .unwrap_or(TerrainType::Ocean);
+            if matches!(t_a, TerrainType::Ocean | TerrainType::Lake)
+                && matches!(t_b, TerrainType::Ocean | TerrainType::Lake)
+            {
                 // 水域内部に入ったため流下完了
                 break;
             }
@@ -611,7 +637,10 @@ pub fn generate_hex_map(
         rivers.insert(edge, scale);
     }
 
-    info!("Generated {} river segments across the planet.", rivers.len());
+    info!(
+        "Generated {} river segments across the planet.",
+        rivers.len()
+    );
     map_grid.rivers = rivers;
 
     // Step 5: 運河（Canal）の初期開削候補 / 地峡運河の検出
@@ -628,7 +657,10 @@ pub fn generate_hex_map(
             // 隣接する水域タイルを収集
             let mut water_neighbors = Vec::new();
             for n_coord in coord.neighbors_with_width(map_w) {
-                let n_t = terrain_map.get(&n_coord).copied().unwrap_or(TerrainType::Ocean);
+                let n_t = terrain_map
+                    .get(&n_coord)
+                    .copied()
+                    .unwrap_or(TerrainType::Ocean);
                 if matches!(n_t, TerrainType::Ocean | TerrainType::Lake) {
                     water_neighbors.push(n_coord);
                 }
@@ -644,7 +676,10 @@ pub fn generate_hex_map(
             }
         }
     }
-    info!("Identified {} canal transit edges across isthmuses.", canals.len());
+    info!(
+        "Identified {} canal transit edges across isthmuses.",
+        canals.len()
+    );
     map_grid.canals = canals;
 
     let world_width = hex::map_world_width_with_width(HEX_RADIUS, map_w);
@@ -678,7 +713,11 @@ pub fn generate_hex_map(
 
                             let tile_entity = section
                                 .spawn((
-                                    HexTile { coord, terrain, salinity },
+                                    HexTile {
+                                        coord,
+                                        terrain,
+                                        salinity,
+                                    },
                                     Mesh3d(mesh_handle),
                                     MeshMaterial3d(material_handle),
                                     Transform::from_xyz(world_pos.x, height / 2.0, world_pos.z)
@@ -890,8 +929,16 @@ mod tests {
         let lake_coord = HexCoord::from_col_row_with_width(5, 0, w);
         let ocean_coord = HexCoord::from_col_row_with_width(0, -half_h, w);
 
-        assert_eq!(is_ocean_tile.get(&lake_coord), Some(&false), "Inland isolated water should be classified as Lake (freshwater)");
-        assert_eq!(is_ocean_tile.get(&ocean_coord), Some(&true), "Polar/large water body should be classified as Ocean (saltwater)");
+        assert_eq!(
+            is_ocean_tile.get(&lake_coord),
+            Some(&false),
+            "Inland isolated water should be classified as Lake (freshwater)"
+        );
+        assert_eq!(
+            is_ocean_tile.get(&ocean_coord),
+            Some(&true),
+            "Polar/large water body should be classified as Ocean (saltwater)"
+        );
     }
 
     #[test]
@@ -930,7 +977,10 @@ mod tests {
         assert!(grid.has_river(&coord));
         assert!(grid.has_river(&neighbor));
         assert!(grid.has_river_between(&coord, &neighbor));
-        assert_eq!(grid.get_river_between(&coord, &neighbor), Some(RiverScale::Major));
+        assert_eq!(
+            grid.get_river_between(&coord, &neighbor),
+            Some(RiverScale::Major)
+        );
 
         // 河川沿岸タイルは淡水アクセスにより食料（バイオマス）+1.0
         let plains = TerrainType::Plains;

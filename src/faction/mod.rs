@@ -5,20 +5,20 @@ use crate::state::AppState;
 pub mod city_mesh;
 pub mod industry;
 pub mod infrastructure;
-pub mod upkeep;
 pub mod stockpile;
 pub mod tech;
 pub mod territory;
 pub mod types;
+pub mod upkeep;
 
 pub use industry::IndustryGrid;
 pub use infrastructure::InfrastructureGrid;
-pub use upkeep::TileOperatingGrid;
 pub use territory::{
     FactionOutpost, TerritoryMap, TileTerritory, cleanup_territories,
     setup_initial_faction_territories, update_territory_overlays,
 };
 pub use types::{DiplomaticRelation, FactionId, FactionManager, FactionResources, PlayerFaction};
+pub use upkeep::TileOperatingGrid;
 
 pub struct FactionPlugin;
 
@@ -53,7 +53,10 @@ impl Plugin for FactionPlugin {
                 )
                     .run_if(in_state(AppState::InGame)),
             )
-            .add_systems(OnEnter(AppState::Title), (cleanup_territories, reset_faction_phase1_data));
+            .add_systems(
+                OnEnter(AppState::Title),
+                (cleanup_territories, reset_faction_phase1_data),
+            );
     }
 }
 

@@ -89,11 +89,15 @@ impl HexCoord {
 
         let q_pos = base_q + map_width;
         let d_pos = (self.q - q_pos).abs() + (self_s - (-q_pos - r2)).abs();
-        if d_pos < min_dist { min_dist = d_pos; }
+        if d_pos < min_dist {
+            min_dist = d_pos;
+        }
 
         let q_neg = base_q - map_width;
         let d_neg = (self.q - q_neg).abs() + (self_s - (-q_neg - r2)).abs();
-        if d_neg < min_dist { min_dist = d_neg; }
+        if d_neg < min_dist {
+            min_dist = d_neg;
+        }
 
         (min_dist + dr) / 2
     }
