@@ -4,12 +4,12 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-bevy = "0.20.0"
-log = { version = "0.4.34", features = [
+bevy = "0.20.1"
+log = { version = "0.4.35", features = [
     "max_level_debug",
     "release_max_level_warn",
 ] }
-icu_provider = { version = "2.3.1", features = ["logging"] }
+icu_provider = { version = "2.4.0", features = ["logging"] }
 #RUST-SEC
 #RUSTSEC-2026-0344
 # ruzstd = "^0.9.1"
