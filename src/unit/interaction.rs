@@ -515,101 +515,6 @@ pub fn handle_unit_keyboard_shortcuts(
     }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use crate::faction::types::FactionId;
-    use crate::faction::{FactionOutpost, FactionResources, TerritoryMap};
-    use crate::unit::CombatGroupType;
-
-    #[test]
-    fn test_process_unit_turn_updates_logistics_normal_and_strained() {
-        let mut app = App::new();
-
-        let mut resources = FactionResources::default();
-        resources.turn = 1;
-        app.insert_resource(resources);
-
-        let mut territory_map = TerritoryMap::default();
-        territory_map
-            .tile_owners
-            .insert(HexCoord::new(0, 0), FactionId::Empire);
-        app.insert_resource(territory_map);
-
-        let map_grid = MapGrid {
-            width: 20,
-            height: 20,
-            ..default()
-        };
-        app.insert_resource(map_grid);
-
-        // 拠点 (0, 0)
-        app.world_mut().spawn(FactionOutpost {
-            faction: FactionId::Empire,
-            name: "Outpost 1".to_string(),
-            coord: HexCoord::new(0, 0),
-            level: 1,
-        });
-
-        // ユニット1: 拠点直近 (0, 0) -> Normal
-        let u1 = app
-            .world_mut()
-            .spawn((
-                Unit::new(
-                    FactionId::Empire,
-                    CombatGroupType::Scout,
-                    HexCoord::new(0, 0),
-                ),
-                CombatGroupLogistics::default(),
-            ))
-            .id();
-
-        // ユニット2: 補給限界外の距離 (10, 10) かつ中立領土 -> 補給断絶 (0.0)
-        let u2 = app
-            .world_mut()
-            .spawn((
-                Unit::new(
-                    FactionId::Empire,
-                    CombatGroupType::Scout,
-                    HexCoord::new(10, 10),
-                ),
-                CombatGroupLogistics::default(),
-            ))
-            .id();
-
-        let mut schedule = Schedule::default();
-        schedule.add_systems(process_unit_turn_updates);
-
-        // ターン1回目実行
-        schedule.run(app.world_mut());
-
-        let l1 = app.world().get::<CombatGroupLogistics>(u1).unwrap();
-        assert_eq!(l1.state, LogisticsState::Normal);
-        assert!(l1.supply_satisfaction >= 0.70);
-
-        let l2 = app.world().get::<CombatGroupLogistics>(u2).unwrap();
-        assert_eq!(l2.state, LogisticsState::Strained);
-        assert_eq!(l2.strained_turns, 1);
-        assert_eq!(l2.supply_satisfaction, 0.0);
-
-        // 2回目実行 (Critical への遷移)
-        app.world_mut().resource_mut::<FactionResources>().turn += 1;
-        schedule.run(app.world_mut());
-        let l2 = app.world().get::<CombatGroupLogistics>(u2).unwrap();
-        assert_eq!(l2.state, LogisticsState::Critical);
-        assert_eq!(l2.strained_turns, 2);
-
-        // 3回目実行 (Exhausted への遷移と移動不可ペナルティ)
-        app.world_mut().resource_mut::<FactionResources>().turn += 1;
-        schedule.run(app.world_mut());
-        let l2 = app.world().get::<CombatGroupLogistics>(u2).unwrap();
-        let u2_unit = app.world().get::<Unit>(u2).unwrap();
-        assert_eq!(l2.state, LogisticsState::Exhausted);
-        assert_eq!(l2.strained_turns, 3);
-        assert_eq!(u2_unit.current_movement, 0);
-        assert!(u2_unit.is_exhausted);
-    }
-}
 
 /// 次の行動可能な未処理ユニットへフォーカスを移すヘルパー
 fn select_next_ready_unit(
@@ -1473,5 +1378,103 @@ pub fn update_unit_visibility_system(mut query: Query<(&Unit, &mut Visibility), 
         if *visibility != target {
             *visibility = target;
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::faction::types::FactionId;
+    use crate::faction::{FactionOutpost, FactionResources, TerritoryMap};
+    use crate::unit::CombatGroupType;
+
+    #[test]
+    fn test_process_unit_turn_updates_logistics_normal_and_strained() {
+        let mut app = App::new();
+
+        let resources = FactionResources {
+            turn: 1,
+            ..default()
+        };
+        app.insert_resource(resources);
+
+        let mut territory_map = TerritoryMap::default();
+        territory_map
+            .tile_owners
+            .insert(HexCoord::new(0, 0), FactionId::Empire);
+        app.insert_resource(territory_map);
+
+        let map_grid = MapGrid {
+            width: 20,
+            height: 20,
+            ..default()
+        };
+        app.insert_resource(map_grid);
+
+        // 拠点 (0, 0)
+        app.world_mut().spawn(FactionOutpost {
+            faction: FactionId::Empire,
+            name: "Outpost 1".to_string(),
+            coord: HexCoord::new(0, 0),
+            level: 1,
+        });
+
+        // ユニット1: 拠点直近 (0, 0) -> Normal
+        let u1 = app
+            .world_mut()
+            .spawn((
+                Unit::new(
+                    FactionId::Empire,
+                    CombatGroupType::Scout,
+                    HexCoord::new(0, 0),
+                ),
+                CombatGroupLogistics::default(),
+            ))
+            .id();
+
+        // ユニット2: 補給限界外の距離 (10, 10) かつ中立領土 -> 補給断絶 (0.0)
+        let u2 = app
+            .world_mut()
+            .spawn((
+                Unit::new(
+                    FactionId::Empire,
+                    CombatGroupType::Scout,
+                    HexCoord::new(10, 10),
+                ),
+                CombatGroupLogistics::default(),
+            ))
+            .id();
+
+        let mut schedule = Schedule::default();
+        schedule.add_systems(process_unit_turn_updates);
+
+        // ターン1回目実行
+        schedule.run(app.world_mut());
+
+        let l1 = app.world().get::<CombatGroupLogistics>(u1).unwrap();
+        assert_eq!(l1.state, LogisticsState::Normal);
+        assert!(l1.supply_satisfaction >= 0.70);
+
+        let l2 = app.world().get::<CombatGroupLogistics>(u2).unwrap();
+        assert_eq!(l2.state, LogisticsState::Strained);
+        assert_eq!(l2.strained_turns, 1);
+        assert_eq!(l2.supply_satisfaction, 0.0);
+
+        // 2回目実行 (Critical への遷移)
+        app.world_mut().resource_mut::<FactionResources>().turn += 1;
+        schedule.run(app.world_mut());
+        let l2 = app.world().get::<CombatGroupLogistics>(u2).unwrap();
+        assert_eq!(l2.state, LogisticsState::Critical);
+        assert_eq!(l2.strained_turns, 2);
+
+        // 3回目実行 (Exhausted への遷移と移動不可ペナルティ)
+        app.world_mut().resource_mut::<FactionResources>().turn += 1;
+        schedule.run(app.world_mut());
+        let l2 = app.world().get::<CombatGroupLogistics>(u2).unwrap();
+        let u2_unit = app.world().get::<Unit>(u2).unwrap();
+        assert_eq!(l2.state, LogisticsState::Exhausted);
+        assert_eq!(l2.strained_turns, 3);
+        assert_eq!(u2_unit.current_movement, 0);
+        assert!(u2_unit.is_exhausted);
     }
 }
