@@ -31,50 +31,50 @@ pub fn hud_button_interaction_system(mut query: ButtonInteractionQuery) {
         match action {
             HudAction::EndTurn => {
                 if is_pressed {
-                    *bg_color = BackgroundColor(END_TURN_PRESSED);
-                    *border_color = BorderColor::all(Color::WHITE);
+                    bg_color.set_if_neq(BackgroundColor(END_TURN_PRESSED));
+                    border_color.set_if_neq(BorderColor::all(Color::WHITE));
                 } else if is_hovered {
-                    *bg_color = BackgroundColor(END_TURN_HOVER);
-                    *border_color = BorderColor::all(Color::srgb(0.5, 0.95, 0.9));
+                    bg_color.set_if_neq(BackgroundColor(END_TURN_HOVER));
+                    border_color.set_if_neq(BorderColor::all(Color::srgb(0.5, 0.95, 0.9)));
                 } else {
-                    *bg_color = BackgroundColor(END_TURN_NORMAL);
-                    *border_color = BorderColor::all(surfaces.accent());
+                    bg_color.set_if_neq(BackgroundColor(END_TURN_NORMAL));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
                 }
             }
             HudAction::OpenCity => {
                 if is_pressed {
-                    *bg_color = BackgroundColor(standard_btn.pressed());
-                    *border_color = BorderColor::all(Color::WHITE);
+                    bg_color.set_if_neq(BackgroundColor(standard_btn.pressed()));
+                    border_color.set_if_neq(BorderColor::all(Color::WHITE));
                 } else if is_hovered {
-                    *bg_color = BackgroundColor(Color::srgb(0.18, 0.38, 0.48));
-                    *border_color = BorderColor::all(Color::WHITE);
+                    bg_color.set_if_neq(BackgroundColor(Color::srgb(0.18, 0.38, 0.48)));
+                    border_color.set_if_neq(BorderColor::all(Color::WHITE));
                 } else {
-                    *bg_color = BackgroundColor(Color::srgba(0.12, 0.28, 0.38, 0.85));
-                    *border_color = BorderColor::all(surfaces.accent());
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.12, 0.28, 0.38, 0.85)));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
                 }
             }
             HudAction::OpenDiplomacy => {
                 if is_pressed {
-                    *bg_color = BackgroundColor(standard_btn.pressed());
-                    *border_color = BorderColor::all(Color::WHITE);
+                    bg_color.set_if_neq(BackgroundColor(standard_btn.pressed()));
+                    border_color.set_if_neq(BorderColor::all(Color::WHITE));
                 } else if is_hovered {
-                    *bg_color = BackgroundColor(Color::srgb(0.16, 0.35, 0.44));
-                    *border_color = BorderColor::all(Color::WHITE);
+                    bg_color.set_if_neq(BackgroundColor(Color::srgb(0.16, 0.35, 0.44)));
+                    border_color.set_if_neq(BorderColor::all(Color::WHITE));
                 } else {
-                    *bg_color = BackgroundColor(Color::srgba(0.10, 0.25, 0.32, 0.85));
-                    *border_color = BorderColor::all(surfaces.accent());
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.10, 0.25, 0.32, 0.85)));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
                 }
             }
             HudAction::OpenMenu => {
                 if is_pressed {
-                    *bg_color = BackgroundColor(standard_btn.pressed());
-                    *border_color = BorderColor::all(surfaces.accent());
+                    bg_color.set_if_neq(BackgroundColor(standard_btn.pressed()));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
                 } else if is_hovered {
-                    *bg_color = BackgroundColor(standard_btn.hovered());
-                    *border_color = BorderColor::all(surfaces.accent());
+                    bg_color.set_if_neq(BackgroundColor(standard_btn.hovered()));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
                 } else {
-                    *bg_color = BackgroundColor(standard_btn.normal());
-                    *border_color = BorderColor::all(surfaces.border());
+                    bg_color.set_if_neq(BackgroundColor(standard_btn.normal()));
+                    border_color.set_if_neq(BorderColor::all(surfaces.border()));
                 }
             }
         }

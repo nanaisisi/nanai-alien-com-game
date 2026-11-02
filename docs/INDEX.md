@@ -61,12 +61,14 @@ docs/
 │   ├── THIRD_PARTY_AND_TERRITORIAL_CLAIMS.md # 自発的失踪者・軍閥接触・調達・領土要求仕様書
 │   ├── VICTORY_AND_CRISIS_CONDITIONS.md    # 動的情勢推移・集合意識の処遇および終局仕様書
 │   └── WATER_AND_SALINITY_SYSTEM.md        # 水域・塩分濃度システム仕様書
-├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計（4件）
+├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計（5件）
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
+│   ├── EXTERNAL_CRATE_EVALUATION.md        # 外部クレート利用・技術検討書
 │   ├── RESOURCE_IMPLEMENTATION_BRIDGE.md   # 資源系 実装橋渡し案
 │   └── STARTUP_OPTIONS.md                  # 起動オプション・コマンドライン引数仕様書
-├── planning/                               # 開発計画・ロードマップ・課題管理（全完了済み）
+├── planning/                               # 開発計画・ロードマップ・課題管理
+│   ├── MASTER_IMPLEMENTATION_PLAN.md       # システム統合・全体実装計画書（Phase 1〜4ロードマップ）
 │   └── completed/                          # 完了済み計画書（8件）
 │       ├── CONSISTENCY_AUDIT_PLAN.md       # 仕様・ドキュメント整合性チェック計画書
 │       ├── MISSING_DOCUMENTS_ROADMAP.md    # 不足ドキュメント体系・ロードマップ（第1〜第3シリーズ）
@@ -163,10 +165,11 @@ docs/
   - 膠着（Grinding Combat）判定と、戦線崩壊時の後退・増援ラグ
   - 盤外からの長距離支援砲撃（Off-map Artillery）のCEPと副次的被害
 - **[specs/TECHNOLOGY_WEB_DATA_TREE.md](./specs/TECHNOLOGY_WEB_DATA_TREE.md)**：技術ウェブ・研究開発データツリー仕様書
-  - 降着基盤から広がる放射状（Radial）ツリー構造と、幹技術（Trunk）／葉技術（Leaf）の定義
-  - アフィニティ（Purity / Harmony / Supremacy）の付与体系
-  - 現場交戦や環境刺激による「自律研究モメンタム」と、国家指導者による「ステアリング」の力学
-  - 敵残骸法医学（Battlefield Forensics）による研究ブースト
+  - 降着基盤から広がる放射状（Radial）ツリー構造（全4Tier・全36ノード完全カタログ）。
+  - 3大アフィニティ（Purity / Harmony / Supremacy）および3大ハイブリッド（Bio-Cyber / Bio-Foundry / Mecha-Purity）の体系。
+  - アフィニティレベル（Lv 1〜10）ごとの進化マイルストーンおよび終局勝利プロジェクト。
+  - 現場交戦・産業・環境刺激による「自律研究モメンタム」と、国家指導者による「ステアリング」の定量的数理モデル（移行ラグ・フリクション）。
+  - 敵残骸法医学（Battlefield Forensics）による研究ブースト算定式と、架空6大国家の初期研究特性マトリクス。
 - **[specs/ALIEN_ECOLOGY_AND_NEST_SYSTEM.md](./specs/ALIEN_ECOLOGY_AND_NEST_SYSTEM.md)**：エイリアン生態ライフサイクル・巣窟（Nest）運用仕様書
   - 巣窟の4段階ライフサイクル（Dormant / Active / Breeding / Swarming）と刺激ヘイト蓄積ロジック
   - 瘴気（Miasma）の自律拡散ダイナミクスと、人類・エイリアンへの影響差異
@@ -454,6 +457,8 @@ docs/
   - システム全体の6層アーキテクチャ（エンジン・空間・経済・軍事・動態・UI）、モジュール間依存関係マトリクス、およびボトムアップ実装ロードマップ。
 - **[tech/BEVY_0_20_INTEGRATION_REVIEW.md](./tech/BEVY_0_20_INTEGRATION_REVIEW.md)**：Bevy 0.20 仕様照合・技術検討書
   - Bevy 0.20 新機能（Weak System Ordering、`Val::Em`/`Rem`、`FixedNode`、WESL、標準カメラ等）と現行実装の適合状況、およびUIレスポンシブ化・並列化等の拡張ロードマップ。
+- **[tech/EXTERNAL_CRATE_EVALUATION.md](./tech/EXTERNAL_CRATE_EVALUATION.md)**：外部クレート利用・技術検討書
+  - 各コードモジュール（ヘックス幾何、地形生成、経路探索、データ管理、UI、乱数、AI等）に対する外部クレートの利用価値・適合性・トレードオフ評価および導入ロードマップ。
 - **[tech/RESOURCE_IMPLEMENTATION_BRIDGE.md](./tech/RESOURCE_IMPLEMENTATION_BRIDGE.md)**：資源系 実装橋渡し案
   - 資源経済設計とBevy実装コードを繋ぐ暫定ブリッジ仕様（データ構造、タイル収支、段階的実装フェーズ計画）。
 - **[tech/STARTUP_OPTIONS.md](./tech/STARTUP_OPTIONS.md)**：起動オプション・コマンドライン引数仕様書
@@ -463,7 +468,11 @@ docs/
 
 ## 📋 6. 開発計画・ロードマップ・課題（`planning/`）
 
-すべての計画・課題は検討と策定が完了し、「完了済み（`completed/`）」として管理されています。
+確定した仕様体系をRust/Bevy ECS上で段階的に組み上げる全体実装計画書、および策定が完了した過去の計画書群です。
+
+- **[planning/MASTER_IMPLEMENTATION_PLAN.md](./planning/MASTER_IMPLEMENTATION_PLAN.md)**：システム統合・全体実装計画書
+  - 確定仕様書群に基づく全体実装ロードマップ（Phase 1: 資源・インフラ・加工、Phase 2: 戦闘団TO&E・兵站・輸送、Phase 3: 自動戦闘・動態生態系、Phase 4: 技術Web・ステアリングUI・Wiki）。
+  - 各フェーズの詳細実装スコープ、データモデル、および受け入れ・検証基準。
 
 ### 完了済み計画書（`planning/completed/`）
 
@@ -607,7 +616,13 @@ docs/
   - 電気アーク炉（EAF）による戦場サルベージ屑鉄の100%完全再循環と、真空脱ガス（VD）による水素脆化克服。
   - 均質圧延装甲（RHA）、多層複合装甲、エイリアン甲殻バイオ傾斜複合装甲の工学特性および世代（Gen 0〜4）進化。
 - **[concept_industry_structure.md](./discussion/industry_logistics/concept_industry_structure.md)**
-  - 素材採掘・精錬・中間部品加工・最終製品組立に至る多段階産業ツリーの基本構造。
+  - **産業構造の総合設計仕様書**。
+  - 産業3層モデル（Layer 1〜3）と8大産業ジャンル（IND-1〜8）の立体マッピング。
+  - サブタイル・コンビナート（7マス・クラスター）における5大カスケード循環（熱・副生ガス・EAF電炉・冷却水・物流ハブ）。
+  - 段取り替え工期（Tooling Setup Time）とロジスティック学習曲線歩留まりの数理モデル。
+  - 精密産業のテクトニクス・環境振動適応工学（VC-E基準・免震ピット・安全停止ステートマシン）。
+  - 民生基盤（土木・農機・商船）からのデュアルユース自己組織化とブートローダー工作機械プール連動。
+  - 国家産業ステアリング政策レバー（標準化令・免震助成）およびBevy ECSデータアーキテクチャ。
 - **[concept_industry_dynamics_novelty_continuity.md](./discussion/industry_logistics/concept_industry_dynamics_novelty_continuity.md)**
   - **新規性と継続性からみる産業構造仕様書**。
   - 既存規格・工作機械・金型・高歩留まりによる「継続性の慣性・長寿命プラットフォーム」と、新世代AI・新物性による「新規性の特異点・初期脆弱性」の二項対立、および産業移行フェーズ。

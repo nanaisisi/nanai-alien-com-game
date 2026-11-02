@@ -1,5 +1,6 @@
 use bevy::prelude::*;
 
+mod alien;
 mod camera;
 mod faction;
 mod map;
@@ -9,6 +10,7 @@ mod ui;
 mod unit;
 mod world;
 
+use alien::AlienPlugin;
 use camera::CameraPlugin;
 use faction::FactionPlugin;
 use map::MapPlugin;
@@ -43,6 +45,7 @@ fn main() {
             MapPlugin,
             FactionPlugin,
             TurnPlugin,
+            AlienPlugin,
             UnitPlugin,
             GameUiPlugin,
         ))

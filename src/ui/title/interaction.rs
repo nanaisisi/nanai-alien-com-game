@@ -78,11 +78,11 @@ pub fn update_title_focus_highlight_system(
         let is_selected = focus.selected_index == Some(menu_btn.0);
 
         if is_selected {
-            *bg_color = BackgroundColor(standard_btn.hovered());
-            *border_color = BorderColor::all(surfaces.accent());
+            bg_color.set_if_neq(BackgroundColor(standard_btn.hovered()));
+            border_color.set_if_neq(BorderColor::all(surfaces.accent()));
         } else {
-            *bg_color = BackgroundColor(standard_btn.normal());
-            *border_color = BorderColor::all(Color::srgb(0.25, 0.38, 0.50));
+            bg_color.set_if_neq(BackgroundColor(standard_btn.normal()));
+            border_color.set_if_neq(BorderColor::all(Color::srgb(0.25, 0.38, 0.50)));
         }
     }
 }

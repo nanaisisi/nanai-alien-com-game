@@ -476,19 +476,19 @@ fn diplomacy_button_system(mut query: DiplomacyButtonInteractionQuery) {
 
     for (hovered, pressed, action, mut bg_color, mut border_color) in &mut query {
         if pressed.is_some() {
-            *bg_color = BackgroundColor(Color::srgb(0.20, 0.38, 0.50));
+            bg_color.set_if_neq(BackgroundColor(Color::srgb(0.20, 0.38, 0.50)));
         } else if hovered.is_some() {
-            *bg_color = BackgroundColor(Color::srgb(0.16, 0.28, 0.38));
-            *border_color = BorderColor::all(surfaces.accent());
+            bg_color.set_if_neq(BackgroundColor(Color::srgb(0.16, 0.28, 0.38)));
+            border_color.set_if_neq(BorderColor::all(surfaces.accent()));
         } else {
             match action {
                 DiplomacyButtonAction::SendGift => {
-                    *bg_color = BackgroundColor(Color::srgb(0.12, 0.25, 0.32));
-                    *border_color = BorderColor::all(surfaces.accent());
+                    bg_color.set_if_neq(BackgroundColor(Color::srgb(0.12, 0.25, 0.32)));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
                 }
                 _ => {
-                    *bg_color = BackgroundColor(surfaces.card());
-                    *border_color = BorderColor::all(surfaces.border());
+                    bg_color.set_if_neq(BackgroundColor(surfaces.card()));
+                    border_color.set_if_neq(BorderColor::all(surfaces.border()));
                 }
             }
         }

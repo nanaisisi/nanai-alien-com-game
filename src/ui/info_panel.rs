@@ -92,6 +92,7 @@ pub fn cleanup_info_panel_ui(mut commands: Commands, query: Query<Entity, With<I
     }
 }
 
+use crate::alien::{AlienNest, MiasmaMap};
 use crate::unit::{CombatGroupLogistics, MoveModeState, SelectedUnit, Unit};
 use bevy::ecs::system::SystemParam;
 
@@ -104,6 +105,8 @@ pub struct InfoPanelContext<'w, 's> {
     pub map_grid: Res<'w, MapGrid>,
     pub territory_map: Res<'w, TerritoryMap>,
     pub outposts_query: Query<'w, 's, &'static FactionOutpost>,
+    pub miasma_map: Res<'w, MiasmaMap>,
+    pub nests_query: Query<'w, 's, &'static AlienNest>,
 }
 
 /// 選択中タイルの情報を左下HUDに反映
@@ -119,6 +122,8 @@ pub fn update_info_panel_system(
         map_grid,
         territory_map,
         outposts_query,
+        miasma_map,
+        nests_query,
     } = ctx;
 
     if !selected.is_changed() && !selected_unit.is_changed() && !move_mode.is_changed() {
@@ -302,7 +307,11 @@ pub fn update_info_panel_system(
             };
 
             let salinity_info = if let Some(sal) = map_grid.water_salinity.get(&coord) {
-                format!("\n\n【水質・塩分特性】\n  {}\n  {}", sal.name_ja(), sal.description())
+                format!(
+                    "\n\n【水質・塩分特性】\n  {}\n  {}",
+                    sal.name_ja(),
+                    sal.description()
+                )
             } else {
                 String::new()
             };
@@ -318,7 +327,10 @@ pub fn update_info_panel_system(
                     .find_map(|n| map_grid.get_river_between(&coord, n))
                     .map(|s| s.name_ja())
                     .unwrap_or("河川 (River)");
-                format!("\n\n【水系・河川】\n  河川沿岸 (River Front: {})\n  淡水アクセスあり（バイオマス+1.0 / 渡河防御有利）", scale_name)
+                format!(
+                    "\n\n【水系・河川】\n  河川沿岸 (River Front: {})\n  淡水アクセスあり（バイオマス+1.0 / 渡河防御有利）",
+                    scale_name
+                )
             } else {
                 String::new()
             };
@@ -329,23 +341,52 @@ pub fn update_info_panel_system(
                 ""
             };
 
-            let yield_out = terrain.output_with_water_access(
-                map_grid.water_salinity.get(&coord).copied(),
-                has_river,
-            );
+            let yield_out = terrain
+                .output_with_water_access(map_grid.water_salinity.get(&coord).copied(), has_river);
             let yield_str = format!(
                 "バイオマス(食料): {:.1} / 構造鉱物(生産): {:.1} / エネルギー: {:.1} / 科学: {:.1}",
                 yield_out.biomass, yield_out.ore, yield_out.energy, yield_out.science
             );
 
+            // エイリアン巣窟および瘴気情報
+            let miasma_val = miasma_map.get(&coord);
+            let miasma_str = if miasma_val >= 0.7 {
+                format!(
+                    "\n  瘴気濃度: {:.2} (高濃度ハザード・毎ターン大ダメージ)",
+                    miasma_val
+                )
+            } else if miasma_val >= 0.3 {
+                format!(
+                    "\n  瘴気濃度: {:.2} (中濃度ハザード・毎ターン軽度損耗)",
+                    miasma_val
+                )
+            } else if miasma_val > 0.01 {
+                format!("\n  瘴気濃度: {:.2} (微量・安全)", miasma_val)
+            } else {
+                String::new()
+            };
+
+            let nest_str = if let Some(nest) = nests_query.iter().find(|n| n.coord == coord) {
+                format!(
+                    "\n\n【エイリアン巣窟 (Nest #{})】\n  生態フェーズ: {}\n  刺激ヘイト: {:.1} / 100\n  耐久度: {:.0} / {:.0}",
+                    nest.id,
+                    nest.lifecycle.name_ja(),
+                    nest.irritation,
+                    nest.current_hp,
+                    nest.max_hp
+                )
+            } else {
+                String::new()
+            };
+
             let info = format!(
                 "【ヘックス座標】\n  col: {}, row: {} (q: {}, r: {})\n  中心からの距離: {}\n\n\
-                 【領有勢力】\n  {}{}{}\n\n\
+                 【領有勢力】\n  {}{}{}{}\n\n\
                  【地形種別】\n  {}\n\
                  【基礎産出】: {}\n\
                  【移動コスト】: {}\n\
                  【地上移動】: {}{}{}{}\n\n\
-                 【環境特性】\n  エイリアン活動兆候あり\n  資源探査可能",
+                 【環境・生態特性】\n  資源探査可能{}",
                 col,
                 row,
                 coord.q,
@@ -353,6 +394,7 @@ pub fn update_info_panel_system(
                 dist_from_center,
                 owner_str,
                 outpost_str,
+                nest_str,
                 unit_str,
                 terrain.name(),
                 yield_str,
@@ -360,7 +402,8 @@ pub fn update_info_panel_system(
                 passable_str,
                 salinity_info,
                 river_info,
-                canal_info
+                canal_info,
+                miasma_str
             );
             **text = info;
         }
