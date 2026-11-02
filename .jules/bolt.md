@@ -1,29 +1,18 @@
-## 2023-10-27 - `rem_euclid` performance
-**Learning:** `rem_euclid` on integers in Rust is actually reasonably well optimized by LLVM since 1.84+ (we're using nightly), compiling to branching/modulo logic that is very fast. A manual implementation (`a % b` plus `if c < 0 { c += b }`) was slightly slower than `rem_euclid`. Wait, I did benchmark `rem_euclid` previously and it was faster manually when compiling without optimizations, but with `-O` they are roughly equivalent, or `rem_euclid` is actually slightly faster or just as fast, and much more readable. However, there's a big optimization in `distance_with_width`.
+# Bolt Learnings
 
-**Learning 2:** `distance_with_width` on HexCoord is very frequently used.
-The original implementation computes:
-```rust
-    pub fn distance_with_width(self, other: HexCoord, map_width: i32) -> i32 {
-        let (_c1, _r1) = self.to_col_row_with_width(map_width);
-        let (c2, r2) = other.to_col_row_with_width(map_width);
+## 2023-10-27 - `rem_euclid` performance inside hot loops
 
-        let offsets = [-map_width, 0, map_width];
-        let mut min_dist = i32::MAX;
+**Learning:** In highly mathematical games like this 4X hex grid system, avoiding `%` for coordinate wrapping and opting for branching or `.rem_euclid()` only when truly out of bounds can drastically improve layout recalculation performance since it is on the hot path (every rendering frame and pathfinding step).
+**Action:** Use fast path `if val < 0` / `val >= max` checks instead of blindly applying `.rem_euclid()` in spatial coordinates.
 
-        for offset in offsets {
-            let shifted_other = HexCoord::from_col_row_unwrapped(c2 + offset, r2);
-            let dq = (self.q - shifted_other.q).abs();
-            let dr = (self.r - shifted_other.r).abs();
-            let ds = (self.s() - shifted_other.s()).abs();
-            let d = (dq + dr + ds) / 2;
-            if d < min_dist {
-                min_dist = d;
-            }
-        }
-        min_dist
-    }
-```
-Notice `let (_c1, _r1) = self.to_col_row_with_width(map_width);` is completely unused. Computing this takes time!
+## 2025-02-14 - Dead Code in Mathematical Hot Paths
 
+**Learning:** Found unused variable assignments resulting from expensive calculations in `map/hex.rs`. The code was calculating row and column representation including width via `to_col_row_with_width`, but only returning the final distance. The original implementation computes:
+`let (_c1, _r1) = self.to_col_row_with_width(map_width);`
+Notice `let (_c1, _r1)` is completely unused. Computing this takes time!
 **Action:** Remove `self.to_col_row_with_width(map_width)` call inside `distance_with_width`. It's a pure dead-code performance bug.
+
+## 2025-02-14 - Prevent UI Mutation Overhead
+
+**Learning:** Bevy's change detection triggers whenever a mutable reference is dereferenced and assigned to (`*mut_ref = value;`), regardless of whether the value actually changed. This can cause unnecessary layout recalculations and system re-evaluations, which in an interactive game builds up rapidly every frame inside UI interaction query loops.
+**Action:** Use conditional assignment (`if *mut_ref != new_value { *mut_ref = new_value; }`) or Bevy's `set_if_neq()` to prevent unnecessary change detection triggers when updating component state, particularly for `BackgroundColor` and `BorderColor` on UI buttons that are queried every frame.

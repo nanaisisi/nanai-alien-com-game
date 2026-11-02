@@ -199,15 +199,15 @@ pub fn handle_console_close_button(
 
     for (hovered, pressed, mut bg_color) in &mut btn_query {
         if pressed.is_some() {
-            *bg_color = BackgroundColor(BUTTON_PRESSED);
+            bg_color.set_if_neq(BackgroundColor(BUTTON_PRESSED));
             for entity in &console_query {
                 commands.entity(entity).despawn();
             }
             state.is_open = false;
         } else if hovered.is_some() {
-            *bg_color = BackgroundColor(BUTTON_HOVERED);
+            bg_color.set_if_neq(BackgroundColor(BUTTON_HOVERED));
         } else {
-            *bg_color = BackgroundColor(BUTTON_NORMAL);
+            bg_color.set_if_neq(BackgroundColor(BUTTON_NORMAL));
         }
     }
 }

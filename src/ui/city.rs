@@ -711,13 +711,13 @@ pub fn city_modal_button_interaction_system(mut interaction_query: CityButtonInt
     let btn_theme = UiTheme::button(false);
     for (hovered, pressed, mut bg_color, mut border_color) in &mut interaction_query {
         if pressed.is_some() {
-            *bg_color = BackgroundColor(btn_theme.pressed());
+            bg_color.set_if_neq(BackgroundColor(btn_theme.pressed()));
         } else if hovered.is_some() {
-            *bg_color = BackgroundColor(btn_theme.hovered());
-            *border_color = BorderColor::all(surfaces.accent());
+            bg_color.set_if_neq(BackgroundColor(btn_theme.hovered()));
+            border_color.set_if_neq(BorderColor::all(surfaces.accent()));
         } else {
-            *bg_color = BackgroundColor(surfaces.panel());
-            *border_color = BorderColor::all(surfaces.border());
+            bg_color.set_if_neq(BackgroundColor(surfaces.panel()));
+            border_color.set_if_neq(BorderColor::all(surfaces.border()));
         }
     }
 }

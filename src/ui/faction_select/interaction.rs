@@ -84,7 +84,11 @@ pub type FactionCardsQuery<'world, 'state> = Query<
         &'static mut BorderColor,
         &'static mut BackgroundColor,
     ),
-    (Without<EnvButton>, Without<LandmassButton>, Without<SizeButton>),
+    (
+        Without<EnvButton>,
+        Without<LandmassButton>,
+        Without<SizeButton>,
+    ),
 >;
 
 pub type EnvButtonsQuery<'world, 'state> = Query<
@@ -95,7 +99,11 @@ pub type EnvButtonsQuery<'world, 'state> = Query<
         &'static mut BorderColor,
         &'static mut BackgroundColor,
     ),
-    (Without<FactionCard>, Without<LandmassButton>, Without<SizeButton>),
+    (
+        Without<FactionCard>,
+        Without<LandmassButton>,
+        Without<SizeButton>,
+    ),
 >;
 
 pub type LandmassButtonsQuery<'world, 'state> = Query<
@@ -106,7 +114,11 @@ pub type LandmassButtonsQuery<'world, 'state> = Query<
         &'static mut BorderColor,
         &'static mut BackgroundColor,
     ),
-    (Without<FactionCard>, Without<EnvButton>, Without<SizeButton>),
+    (
+        Without<FactionCard>,
+        Without<EnvButton>,
+        Without<SizeButton>,
+    ),
 >;
 
 pub type SizeButtonsQuery<'world, 'state> = Query<
@@ -117,7 +129,11 @@ pub type SizeButtonsQuery<'world, 'state> = Query<
         &'static mut BorderColor,
         &'static mut BackgroundColor,
     ),
-    (Without<FactionCard>, Without<EnvButton>, Without<LandmassButton>),
+    (
+        Without<FactionCard>,
+        Without<EnvButton>,
+        Without<LandmassButton>,
+    ),
 >;
 
 pub type DetailPanelBorderQuery<'world, 'state> = Query<
@@ -149,80 +165,80 @@ pub fn faction_select_button_system(
             SelectAction::Choose(f) => {
                 let is_active = *f == selected_menu.faction;
                 if is_hover_or_press {
-                    *border_color = BorderColor::all(f.accent_color());
-                    *bg_color = BackgroundColor(Color::srgba(0.20, 0.30, 0.42, 0.9));
+                    border_color.set_if_neq(BorderColor::all(f.accent_color()));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.20, 0.30, 0.42, 0.9)));
                 } else if is_active {
-                    *border_color = BorderColor::all(f.primary_color());
-                    *bg_color = BackgroundColor(Color::srgba(0.15, 0.22, 0.32, 0.9));
+                    border_color.set_if_neq(BorderColor::all(f.primary_color()));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.15, 0.22, 0.32, 0.9)));
                 } else {
-                    *border_color = BorderColor::all(surfaces.border());
-                    *bg_color = BackgroundColor(surfaces.card());
+                    border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                    bg_color.set_if_neq(BackgroundColor(surfaces.card()));
                 }
             }
             SelectAction::ChooseEnvironment(env) => {
                 let is_active = *env == map_config.environment;
                 if is_hover_or_press {
-                    *border_color = BorderColor::all(env.theme_color());
-                    *bg_color = BackgroundColor(Color::srgba(0.22, 0.32, 0.45, 0.9));
+                    border_color.set_if_neq(BorderColor::all(env.theme_color()));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.22, 0.32, 0.45, 0.9)));
                 } else if is_active {
-                    *border_color = BorderColor::all(env.theme_color());
-                    *bg_color = BackgroundColor(Color::srgba(0.18, 0.26, 0.38, 0.9));
+                    border_color.set_if_neq(BorderColor::all(env.theme_color()));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.18, 0.26, 0.38, 0.9)));
                 } else {
-                    *border_color = BorderColor::all(surfaces.border());
-                    *bg_color = BackgroundColor(surfaces.card());
+                    border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                    bg_color.set_if_neq(BackgroundColor(surfaces.card()));
                 }
             }
             SelectAction::ChooseLandmass(lm) => {
                 let is_active = *lm == map_config.landmass;
                 if is_hover_or_press {
-                    *border_color = BorderColor::all(surfaces.accent());
-                    *bg_color = BackgroundColor(Color::srgba(0.25, 0.40, 0.50, 0.9));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.25, 0.40, 0.50, 0.9)));
                 } else if is_active {
-                    *border_color = BorderColor::all(surfaces.accent());
-                    *bg_color = BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9)));
                 } else {
-                    *border_color = BorderColor::all(surfaces.border());
-                    *bg_color = BackgroundColor(surfaces.card());
+                    border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                    bg_color.set_if_neq(BackgroundColor(surfaces.card()));
                 }
             }
             SelectAction::ChooseSize(sz) => {
                 let is_active = *sz == map_config.size;
                 if is_hover_or_press {
-                    *border_color = BorderColor::all(surfaces.accent());
-                    *bg_color = BackgroundColor(Color::srgba(0.25, 0.40, 0.50, 0.9));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.25, 0.40, 0.50, 0.9)));
                 } else if is_active {
-                    *border_color = BorderColor::all(surfaces.accent());
-                    *bg_color = BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9)));
                 } else {
-                    *border_color = BorderColor::all(surfaces.border());
-                    *bg_color = BackgroundColor(surfaces.card());
+                    border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                    bg_color.set_if_neq(BackgroundColor(surfaces.card()));
                 }
             }
             SelectAction::RerollSeed => {
                 if is_hover_or_press {
-                    *border_color = BorderColor::all(surfaces.accent());
-                    *bg_color = BackgroundColor(Color::srgba(0.18, 0.28, 0.38, 0.9));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.18, 0.28, 0.38, 0.9)));
                 } else {
-                    *border_color = BorderColor::all(surfaces.border());
-                    *bg_color = BackgroundColor(surfaces.card());
+                    border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                    bg_color.set_if_neq(BackgroundColor(surfaces.card()));
                 }
             }
             SelectAction::Confirm => {
                 if is_pressed {
-                    *bg_color = BackgroundColor(Color::srgb(0.25, 0.65, 0.70));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgb(0.25, 0.65, 0.70)));
                 } else if is_hovered {
-                    *bg_color = BackgroundColor(Color::srgb(0.18, 0.48, 0.55));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgb(0.18, 0.48, 0.55)));
                 } else {
-                    *bg_color = BackgroundColor(Color::srgb(0.12, 0.35, 0.40));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgb(0.12, 0.35, 0.40)));
                 }
             }
             SelectAction::Back => {
                 if is_hover_or_press {
-                    *border_color = BorderColor::all(surfaces.accent());
-                    *bg_color = BackgroundColor(Color::srgb(0.15, 0.24, 0.35));
+                    border_color.set_if_neq(BorderColor::all(surfaces.accent()));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgb(0.15, 0.24, 0.35)));
                 } else {
-                    *border_color = BorderColor::all(surfaces.border());
-                    *bg_color = BackgroundColor(surfaces.card());
+                    border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                    bg_color.set_if_neq(BackgroundColor(surfaces.card()));
                 }
             }
         }
@@ -282,7 +298,7 @@ pub fn faction_select_action_system(
                 }
 
                 if let Ok(mut panel_border) = ui.panel_query.single_mut() {
-                    *panel_border = BorderColor::all(faction.primary_color());
+                    panel_border.set_if_neq(BorderColor::all(faction.primary_color()));
                 }
 
                 let surfaces = UiTheme::surfaces();
@@ -291,11 +307,11 @@ pub fn faction_select_action_system(
                 for (card, mut border_color, mut bg_color) in &mut ui.cards_query {
                     let is_active = card.0 == *faction;
                     if is_active {
-                        *border_color = BorderColor::all(card.0.primary_color());
-                        *bg_color = BackgroundColor(Color::srgba(0.15, 0.22, 0.32, 0.9));
+                        border_color.set_if_neq(BorderColor::all(card.0.primary_color()));
+                        bg_color.set_if_neq(BackgroundColor(Color::srgba(0.15, 0.22, 0.32, 0.9)));
                     } else {
-                        *border_color = BorderColor::all(surfaces.border());
-                        *bg_color = BackgroundColor(surfaces.card());
+                        border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                        bg_color.set_if_neq(BackgroundColor(surfaces.card()));
                     }
                 }
             }
@@ -310,11 +326,11 @@ pub fn faction_select_action_system(
                 for (btn, mut border_color, mut bg_color) in &mut ui.env_btn_query {
                     let is_active = btn.0 == *env;
                     if is_active {
-                        *border_color = BorderColor::all(btn.0.theme_color());
-                        *bg_color = BackgroundColor(Color::srgba(0.18, 0.26, 0.38, 0.9));
+                        border_color.set_if_neq(BorderColor::all(btn.0.theme_color()));
+                        bg_color.set_if_neq(BackgroundColor(Color::srgba(0.18, 0.26, 0.38, 0.9)));
                     } else {
-                        *border_color = BorderColor::all(surfaces.border());
-                        *bg_color = BackgroundColor(surfaces.card());
+                        border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                        bg_color.set_if_neq(BackgroundColor(surfaces.card()));
                     }
                 }
             }
@@ -329,11 +345,11 @@ pub fn faction_select_action_system(
                 for (btn, mut border_color, mut bg_color) in &mut ui.landmass_btn_query {
                     let is_active = btn.0 == *lm;
                     if is_active {
-                        *border_color = BorderColor::all(surfaces.accent());
-                        *bg_color = BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9));
+                        border_color.set_if_neq(BorderColor::all(surfaces.accent()));
+                        bg_color.set_if_neq(BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9)));
                     } else {
-                        *border_color = BorderColor::all(surfaces.border());
-                        *bg_color = BackgroundColor(surfaces.card());
+                        border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                        bg_color.set_if_neq(BackgroundColor(surfaces.card()));
                     }
                 }
             }
@@ -344,11 +360,11 @@ pub fn faction_select_action_system(
                 for (btn, mut border_color, mut bg_color) in &mut ui.size_btn_query {
                     let is_active = btn.0 == *sz;
                     if is_active {
-                        *border_color = BorderColor::all(surfaces.accent());
-                        *bg_color = BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9));
+                        border_color.set_if_neq(BorderColor::all(surfaces.accent()));
+                        bg_color.set_if_neq(BackgroundColor(Color::srgba(0.20, 0.35, 0.45, 0.9)));
                     } else {
-                        *border_color = BorderColor::all(surfaces.border());
-                        *bg_color = BackgroundColor(surfaces.card());
+                        border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                        bg_color.set_if_neq(BackgroundColor(surfaces.card()));
                     }
                 }
             }

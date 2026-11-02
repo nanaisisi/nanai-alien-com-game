@@ -355,11 +355,15 @@ pub fn setup_faction_select_ui(
                                                                     Val::Px(4.0),
                                                                 ),
                                                                 border: UiRect::all(Val::Px(
-                                                                    if is_active { 1.5 } else { 1.0 },
+                                                                    if is_active {
+                                                                        1.5
+                                                                    } else {
+                                                                        1.0
+                                                                    },
                                                                 )),
-                                                                border_radius: BorderRadius::all(Val::Px(
-                                                                    4.0,
-                                                                )),
+                                                                border_radius: BorderRadius::all(
+                                                                    Val::Px(4.0),
+                                                                ),
                                                                 ..default()
                                                             },
                                                             BorderColor::all(if is_active {
@@ -377,7 +381,9 @@ pub fn setup_faction_select_ui(
                                                             btn.spawn((
                                                                 Text::new(lm.name_ja()),
                                                                 TextFont {
-                                                                    font: font_regular.clone().into(),
+                                                                    font: font_regular
+                                                                        .clone()
+                                                                        .into(),
                                                                     font_size: FontSize::Px(11.0),
                                                                     ..default()
                                                                 },
