@@ -218,29 +218,29 @@ pub fn pause_button_interaction_system(
         let surfaces = UiTheme::surfaces();
 
         if pressed.is_some() {
-            *bg_color = BackgroundColor(btn_style.pressed());
+            bg_color.set_if_neq(BackgroundColor(btn_style.pressed()));
             if is_danger {
-                *border_color = BorderColor::all(Color::WHITE);
+                border_color.set_if_neq(BorderColor::all(Color::WHITE));
             } else {
-                *border_color = BorderColor::all(surfaces.accent());
+                border_color.set_if_neq(BorderColor::all(surfaces.accent()));
             }
         } else if hovered.is_some() {
-            *bg_color = BackgroundColor(btn_style.hovered());
+            bg_color.set_if_neq(BackgroundColor(btn_style.hovered()));
             if is_danger {
-                *border_color = BorderColor::all(btn_style.border());
+                border_color.set_if_neq(BorderColor::all(btn_style.border()));
             } else {
-                *border_color = BorderColor::all(surfaces.accent());
+                border_color.set_if_neq(BorderColor::all(surfaces.accent()));
             }
         } else {
             if matches!(action, PauseButtonAction::ConfirmModal) {
-                *bg_color = BackgroundColor(btn_style.normal());
-                *border_color = BorderColor::all(btn_style.border());
+                bg_color.set_if_neq(BackgroundColor(btn_style.normal()));
+                border_color.set_if_neq(BorderColor::all(btn_style.border()));
             } else if is_danger {
-                *bg_color = BackgroundColor(UiTheme::button(false).normal());
-                *border_color = BorderColor::all(Color::srgb(0.55, 0.25, 0.25));
+                bg_color.set_if_neq(BackgroundColor(UiTheme::button(false).normal()));
+                border_color.set_if_neq(BorderColor::all(Color::srgb(0.55, 0.25, 0.25)));
             } else {
-                *bg_color = BackgroundColor(btn_style.normal());
-                *border_color = BorderColor::all(surfaces.border());
+                bg_color.set_if_neq(BackgroundColor(btn_style.normal()));
+                border_color.set_if_neq(BorderColor::all(surfaces.border()));
             }
         }
     }
@@ -405,20 +405,20 @@ pub fn update_pause_focus_highlight_system(
             match modal_btn.0 {
                 PauseModalFocusItem::Confirm => {
                     if is_focused {
-                        *border_color = BorderColor::all(Color::WHITE);
-                        *bg_color = BackgroundColor(danger_btn.hovered());
+                        border_color.set_if_neq(BorderColor::all(Color::WHITE));
+                        bg_color.set_if_neq(BackgroundColor(danger_btn.hovered()));
                     } else {
-                        *border_color = BorderColor::all(danger_btn.border());
-                        *bg_color = BackgroundColor(danger_btn.normal());
+                        border_color.set_if_neq(BorderColor::all(danger_btn.border()));
+                        bg_color.set_if_neq(BackgroundColor(danger_btn.normal()));
                     }
                 }
                 PauseModalFocusItem::Cancel => {
                     if is_focused {
-                        *border_color = BorderColor::all(surfaces.accent());
-                        *bg_color = BackgroundColor(standard_btn.hovered());
+                        border_color.set_if_neq(BorderColor::all(surfaces.accent()));
+                        bg_color.set_if_neq(BackgroundColor(standard_btn.hovered()));
                     } else {
-                        *border_color = BorderColor::all(surfaces.border());
-                        *bg_color = BackgroundColor(standard_btn.normal());
+                        border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                        bg_color.set_if_neq(BackgroundColor(standard_btn.normal()));
                     }
                 }
             }
@@ -433,18 +433,18 @@ pub fn update_pause_focus_highlight_system(
 
             if is_danger {
                 if is_focused {
-                    *border_color = BorderColor::all(danger_btn.border());
-                    *bg_color = BackgroundColor(danger_btn.hovered());
+                    border_color.set_if_neq(BorderColor::all(danger_btn.border()));
+                    bg_color.set_if_neq(BackgroundColor(danger_btn.hovered()));
                 } else {
-                    *border_color = BorderColor::all(Color::srgb(0.55, 0.25, 0.25));
-                    *bg_color = BackgroundColor(standard_btn.normal());
+                    border_color.set_if_neq(BorderColor::all(Color::srgb(0.55, 0.25, 0.25)));
+                    bg_color.set_if_neq(BackgroundColor(standard_btn.normal()));
                 }
             } else if is_focused {
-                *border_color = BorderColor::all(surfaces.accent());
-                *bg_color = BackgroundColor(standard_btn.hovered());
+                border_color.set_if_neq(BorderColor::all(surfaces.accent()));
+                bg_color.set_if_neq(BackgroundColor(standard_btn.hovered()));
             } else {
-                *border_color = BorderColor::all(surfaces.border());
-                *bg_color = BackgroundColor(standard_btn.normal());
+                border_color.set_if_neq(BorderColor::all(surfaces.border()));
+                bg_color.set_if_neq(BackgroundColor(standard_btn.normal()));
             }
         }
     }

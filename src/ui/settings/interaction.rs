@@ -35,27 +35,27 @@ pub fn settings_button_interaction_system(mut query: SettingsButtonInteractionQu
         let is_danger = matches!(action, SettingsButtonAction::ConfirmReturnToTitle);
         if pressed.is_some() {
             if is_danger {
-                *bg_color = BackgroundColor(DANGER_PRESSED_BUTTON);
-                *border_color = BorderColor::all(Color::WHITE);
+                bg_color.set_if_neq(BackgroundColor(DANGER_PRESSED_BUTTON));
+                border_color.set_if_neq(BorderColor::all(Color::WHITE));
             } else {
-                *bg_color = BackgroundColor(PRESSED_BUTTON);
-                *border_color = BorderColor::all(ACCENT_COLOR);
+                bg_color.set_if_neq(BackgroundColor(PRESSED_BUTTON));
+                border_color.set_if_neq(BorderColor::all(ACCENT_COLOR));
             }
         } else if hovered.is_some() {
             if is_danger {
-                *bg_color = BackgroundColor(DANGER_HOVERED_BUTTON);
-                *border_color = BorderColor::all(DANGER_BORDER);
+                bg_color.set_if_neq(BackgroundColor(DANGER_HOVERED_BUTTON));
+                border_color.set_if_neq(BorderColor::all(DANGER_BORDER));
             } else {
-                *bg_color = BackgroundColor(HOVERED_BUTTON);
-                *border_color = BorderColor::all(ACCENT_COLOR);
+                bg_color.set_if_neq(BackgroundColor(HOVERED_BUTTON));
+                border_color.set_if_neq(BorderColor::all(ACCENT_COLOR));
             }
         } else {
             if is_danger {
-                *bg_color = BackgroundColor(DANGER_NORMAL_BUTTON);
-                *border_color = BorderColor::all(DANGER_BORDER);
+                bg_color.set_if_neq(BackgroundColor(DANGER_NORMAL_BUTTON));
+                border_color.set_if_neq(BorderColor::all(DANGER_BORDER));
             } else {
-                *bg_color = BackgroundColor(NORMAL_BUTTON);
-                *border_color = BorderColor::all(BORDER_COLOR);
+                bg_color.set_if_neq(BackgroundColor(NORMAL_BUTTON));
+                border_color.set_if_neq(BorderColor::all(BORDER_COLOR));
             }
         }
     }
@@ -550,20 +550,20 @@ pub fn update_settings_focus_highlight_system(
             match modal_btn.0 {
                 ModalFocusItem::Confirm => {
                     if is_focused {
-                        *border_color = BorderColor::all(Color::WHITE);
-                        *bg_color = BackgroundColor(DANGER_HOVERED_BUTTON);
+                        border_color.set_if_neq(BorderColor::all(Color::WHITE));
+                        bg_color.set_if_neq(BackgroundColor(DANGER_HOVERED_BUTTON));
                     } else {
-                        *border_color = BorderColor::all(DANGER_BORDER);
-                        *bg_color = BackgroundColor(DANGER_NORMAL_BUTTON);
+                        border_color.set_if_neq(BorderColor::all(DANGER_BORDER));
+                        bg_color.set_if_neq(BackgroundColor(DANGER_NORMAL_BUTTON));
                     }
                 }
                 ModalFocusItem::Cancel => {
                     if is_focused {
-                        *border_color = BorderColor::all(ACCENT_COLOR);
-                        *bg_color = BackgroundColor(HOVERED_BUTTON);
+                        border_color.set_if_neq(BorderColor::all(ACCENT_COLOR));
+                        bg_color.set_if_neq(BackgroundColor(HOVERED_BUTTON));
                     } else {
-                        *border_color = BorderColor::all(BORDER_COLOR);
-                        *bg_color = BackgroundColor(NORMAL_BUTTON);
+                        border_color.set_if_neq(BorderColor::all(BORDER_COLOR));
+                        bg_color.set_if_neq(BackgroundColor(NORMAL_BUTTON));
                     }
                 }
             }
@@ -576,26 +576,26 @@ pub fn update_settings_focus_highlight_system(
                 let is_danger = nav_row.0 == SettingsFocusItem::ReturnToTitle;
                 if is_danger {
                     if is_focused {
-                        *border_color = BorderColor::all(DANGER_BORDER);
-                        *bg_color = BackgroundColor(DANGER_HOVERED_BUTTON);
+                        border_color.set_if_neq(BorderColor::all(DANGER_BORDER));
+                        bg_color.set_if_neq(BackgroundColor(DANGER_HOVERED_BUTTON));
                     } else {
-                        *border_color = BorderColor::all(Color::srgb(0.55, 0.25, 0.25));
-                        *bg_color = BackgroundColor(NORMAL_BUTTON);
+                        border_color.set_if_neq(BorderColor::all(Color::srgb(0.55, 0.25, 0.25)));
+                        bg_color.set_if_neq(BackgroundColor(NORMAL_BUTTON));
                     }
                 } else if is_focused {
-                    *border_color = BorderColor::all(ACCENT_COLOR);
-                    *bg_color = BackgroundColor(HOVERED_BUTTON);
+                    border_color.set_if_neq(BorderColor::all(ACCENT_COLOR));
+                    bg_color.set_if_neq(BackgroundColor(HOVERED_BUTTON));
                 } else {
-                    *border_color = BorderColor::all(BORDER_COLOR);
-                    *bg_color = BackgroundColor(NORMAL_BUTTON);
+                    border_color.set_if_neq(BorderColor::all(BORDER_COLOR));
+                    bg_color.set_if_neq(BackgroundColor(NORMAL_BUTTON));
                 }
             } else {
                 if is_focused {
-                    *border_color = BorderColor::all(ACCENT_COLOR);
-                    *bg_color = BackgroundColor(Color::srgba(0.14, 0.20, 0.30, 0.90));
+                    border_color.set_if_neq(BorderColor::all(ACCENT_COLOR));
+                    bg_color.set_if_neq(BackgroundColor(Color::srgba(0.14, 0.20, 0.30, 0.90)));
                 } else {
-                    *border_color = BorderColor::all(Color::NONE);
-                    *bg_color = BackgroundColor(ROW_BG);
+                    border_color.set_if_neq(BorderColor::all(Color::NONE));
+                    bg_color.set_if_neq(BackgroundColor(ROW_BG));
                 }
             }
         }

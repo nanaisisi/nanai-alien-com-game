@@ -307,7 +307,11 @@ pub fn update_info_panel_system(
             };
 
             let salinity_info = if let Some(sal) = map_grid.water_salinity.get(&coord) {
-                format!("\n\n【水質・塩分特性】\n  {}\n  {}", sal.name_ja(), sal.description())
+                format!(
+                    "\n\n【水質・塩分特性】\n  {}\n  {}",
+                    sal.name_ja(),
+                    sal.description()
+                )
             } else {
                 String::new()
             };
@@ -323,7 +327,10 @@ pub fn update_info_panel_system(
                     .find_map(|n| map_grid.get_river_between(&coord, n))
                     .map(|s| s.name_ja())
                     .unwrap_or("河川 (River)");
-                format!("\n\n【水系・河川】\n  河川沿岸 (River Front: {})\n  淡水アクセスあり（バイオマス+1.0 / 渡河防御有利）", scale_name)
+                format!(
+                    "\n\n【水系・河川】\n  河川沿岸 (River Front: {})\n  淡水アクセスあり（バイオマス+1.0 / 渡河防御有利）",
+                    scale_name
+                )
             } else {
                 String::new()
             };
@@ -334,10 +341,8 @@ pub fn update_info_panel_system(
                 ""
             };
 
-            let yield_out = terrain.output_with_water_access(
-                map_grid.water_salinity.get(&coord).copied(),
-                has_river,
-            );
+            let yield_out = terrain
+                .output_with_water_access(map_grid.water_salinity.get(&coord).copied(), has_river);
             let yield_str = format!(
                 "バイオマス(食料): {:.1} / 構造鉱物(生産): {:.1} / エネルギー: {:.1} / 科学: {:.1}",
                 yield_out.biomass, yield_out.ore, yield_out.energy, yield_out.science
@@ -346,9 +351,15 @@ pub fn update_info_panel_system(
             // エイリアン巣窟および瘴気情報
             let miasma_val = miasma_map.get(&coord);
             let miasma_str = if miasma_val >= 0.7 {
-                format!("\n  瘴気濃度: {:.2} (高濃度ハザード・毎ターン大ダメージ)", miasma_val)
+                format!(
+                    "\n  瘴気濃度: {:.2} (高濃度ハザード・毎ターン大ダメージ)",
+                    miasma_val
+                )
             } else if miasma_val >= 0.3 {
-                format!("\n  瘴気濃度: {:.2} (中濃度ハザード・毎ターン軽度損耗)", miasma_val)
+                format!(
+                    "\n  瘴気濃度: {:.2} (中濃度ハザード・毎ターン軽度損耗)",
+                    miasma_val
+                )
             } else if miasma_val > 0.01 {
                 format!("\n  瘴気濃度: {:.2} (微量・安全)", miasma_val)
             } else {
