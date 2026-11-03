@@ -5,6 +5,9 @@ use bevy::prelude::*;
 
 use crate::state::AppState;
 
+// Computed as 14.0 / sqrt(14.0^2 + 12.0^2)
+pub const CAMERA_SIN_ANGLE: f32 = 0.7592566;
+
 pub struct CameraPlugin;
 
 impl Plugin for CameraPlugin {
@@ -177,9 +180,8 @@ fn pan_zoom_camera_system(
                     let world_per_pixel = map_cam.current_viewport_height / h;
                     // カメラの傾き（Y=14, Z=12の斜め見下ろし：約49.4度傾斜）を考慮
                     // 画面上のY移動量をZ平面上でのワールド移動量に正確に変換
-                    let sin_angle = 14.0 / (14.0_f32.powi(2) + 12.0_f32.powi(2)).sqrt();
                     let world_delta_x = delta.x * world_per_pixel;
-                    let world_delta_z = delta.y * world_per_pixel / sin_angle;
+                    let world_delta_z = delta.y * world_per_pixel / CAMERA_SIN_ANGLE;
 
                     // カーソルのドラッグに合わせてマップを直感的に掴んで動かす（ドラッグ方向と逆にカメラ移動）
                     let drag_offset = Vec3::new(-world_delta_x, 0.0, -world_delta_z);
