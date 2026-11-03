@@ -146,10 +146,9 @@ fn handle_tile_hover_and_click(params: MapCursorInteractionParam) {
         if drag_tracker.has_dragged {
             if let Ok(mut map_cam) = map_camera_query.single_mut() {
                 let world_per_pixel = map_cam.current_viewport_height / h;
-                let sin_angle = 14.0 / (14.0_f32.powi(2) + 12.0_f32.powi(2)).sqrt();
                 let delta = cursor_pos - press_pos;
                 let world_delta_x = delta.x * world_per_pixel;
-                let world_delta_z = delta.y * world_per_pixel / sin_angle;
+                let world_delta_z = delta.y * world_per_pixel / crate::camera::CAMERA_SIN_ANGLE;
 
                 let drag_offset = Vec3::new(-world_delta_x, 0.0, -world_delta_z);
                 map_cam.target_focal_point += drag_offset;

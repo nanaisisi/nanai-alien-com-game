@@ -56,8 +56,7 @@ pub fn update_minimap_viewport_system(
     let cam_viewport_h = map_cam.current_viewport_height;
     let cam_w = cam_viewport_h * aspect_ratio;
     // カメラの傾斜（Y=14, Z=12）を考慮して地表面上での実質的な視野長さを計算
-    let sin_angle = 14.0 / (14.0_f32.powi(2) + 12.0_f32.powi(2)).sqrt();
-    let cam_h = cam_viewport_h / sin_angle;
+    let cam_h = cam_viewport_h / crate::camera::CAMERA_SIN_ANGLE;
 
     // ミニマップ上のピクセルサイズ（極端な最小値による正方形化を防ぐため、アスペクト比を保持して最小サイズを制限）
     let raw_box_w = (cam_w / world_width) * MINIMAP_WIDTH;

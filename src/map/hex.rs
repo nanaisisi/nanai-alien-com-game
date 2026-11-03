@@ -4,6 +4,8 @@ use bevy::prelude::*;
 pub const DEFAULT_MAP_WIDTH: i32 = 28;
 pub const DEFAULT_MAP_HEIGHT: i32 = 16;
 
+pub const SQRT_3: f32 = 1.7320508;
+
 /// 後方互換用エイリアス（動的マップサイズ時は MapGrid / MapConfig の幅を参照してください）
 pub const MAP_WIDTH: i32 = DEFAULT_MAP_WIDTH;
 pub const MAP_HEIGHT: i32 = DEFAULT_MAP_HEIGHT;
@@ -132,16 +134,14 @@ impl HexCoord {
     /// x = size * sqrt(3) * (q + r / 2)
     /// z = size * 3/2 * r
     pub fn to_world_pos(self, hex_radius: f32) -> Vec3 {
-        let sqrt3 = 3.0f32.sqrt();
-        let x = hex_radius * sqrt3 * (self.q as f32 + self.r as f32 / 2.0);
+        let x = hex_radius * SQRT_3 * (self.q as f32 + self.r as f32 / 2.0);
         let z = hex_radius * 1.5 * (self.r as f32);
         Vec3::new(x, 0.0, z)
     }
 
     /// 3D ワールド座標 (X, Z) から最も近い HexCoord を逆算（Pointy-topped、指定マップ幅）
     pub fn from_world_pos_with_width(pos: Vec3, hex_radius: f32, map_width: i32) -> Self {
-        let sqrt3 = 3.0f32.sqrt();
-        let q_frac = (sqrt3 / 3.0 * pos.x - 1.0 / 3.0 * pos.z) / hex_radius;
+        let q_frac = (SQRT_3 / 3.0 * pos.x - 1.0 / 3.0 * pos.z) / hex_radius;
         let r_frac = (2.0 / 3.0 * pos.z) / hex_radius;
         let s_frac = -q_frac - r_frac;
 
@@ -171,8 +171,7 @@ impl HexCoord {
 
 /// 指定マップ幅における1周分のワールド横幅（X軸メートル）
 pub fn map_world_width_with_width(hex_radius: f32, map_width: i32) -> f32 {
-    let sqrt3 = 3.0f32.sqrt();
-    hex_radius * sqrt3 * (map_width as f32)
+    hex_radius * SQRT_3 * (map_width as f32)
 }
 
 #[cfg(test)]
