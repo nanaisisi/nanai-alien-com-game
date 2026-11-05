@@ -45,15 +45,17 @@ docs/
 │   └── specs/                              # 師団直協・高級装甲兵器仕様書（2件）
 │       ├── AVIATION_ASSETS_AND_DOCTRINE.md # 師団直協航空アセット運用仕様書
 │       └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md # 二脚歩行戦闘車両仕様書
-├── specs/                                  # 共通システム確定・基本仕様書（15件）
+├── specs/                                  # 共通システム確定・基本仕様書（17件）
 │   ├── ALIEN_ECOLOGY_AND_NEST_SYSTEM.md    # エイリアン生態ライフサイクル・巣窟（Nest）運用仕様書
 │   ├── CHASSIS_AND_MODULE_CATALOG.md       # 初期モジュール・基本車台実数値カタログ仕様書
 │   ├── COMBAT_RESOLUTION_AND_CASUALTY.md   # 戦闘解決・部隊損耗および弾薬消費計算仕様書
 │   ├── DIPLOMATIC_TREATY_AND_ESCALATION.md # 外交エスカレーション・和平条約・属国化交渉仕様書
 │   ├── FACTION_STARTUP_ASSETS.md           # 架空6大国 初期保有アセット・スタートアップ定義書
 │   ├── Faction.md                          # 勢力一覧・固有ボーナス/特性定義
+│   ├── FOG_OF_WAR_AND_RECON_SYSTEM.md      # 戦場の霧・索敵・視界システム仕様書
 │   ├── INDUSTRIAL_AND_TECH_TREE_SYSTEM.md  # 産業システムおよび技術ツリー試案仕様書
 │   ├── LAND_USE_SYSTEM.md                  # 土地利用・開発システム仕様書
+│   ├── REBELLION_AND_LOYALTY_DYNAMICS.md   # 反乱・忠誠度・出身地別反乱力学仕様書
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
 │   ├── RESOURCE_ITEM_DICTIONARY.md         # 資源・部品・弾薬マスター定義書（物理データ辞書）
 │   ├── STEERING_UI_FLOW.md                 # 多層ステアリングUI画面遷移・操作フロー仕様書
@@ -185,6 +187,12 @@ docs/
   - 各国の体制・文化圏背景、母星と入植惑星での外交関係（具体的な国名は未確定・継続検討事項）
   - アフィニティ（思想・適応路線）や経済/軍事ボーナスの基本方向性
   - ゲーム実装用データ: [`../assets/data/factions.csv`](../assets/data/factions.csv), [`../assets/data/city_names.csv`](../assets/data/city_names.csv)（勢力マスター＆全192都市名リスト）
+- **[specs/FOG_OF_WAR_AND_RECON_SYSTEM.md](./specs/FOG_OF_WAR_AND_RECON_SYSTEM.md)**：戦場の霧・索敵・視界システム仕様書
+  - 暗黒（Terra Incognita）・地図記憶（Shrouded）・動体捕捉（Contact）・視認（Visible）・完全走査（DeepScan）の5段階多層探知モデル。
+  - 標高・地形遮蔽度（森林/密林/山岳/瘴気）によるLine of Sight (LOS) 判定規則。
+  - 偵察アセット（地上斥候、直協UAV、高高度衛星、電子戦SIGINT、固定レーダー・ソナー網）。
+  - ステルス率・光学迷彩・電波妨害（ジャミング）とエイリアンの非対称索敵（重機甲の地表振動感知・胞子雲感覚網・岩盤/樹海への生態擬態）。
+  - 大戦略マップとサブタイル（343マス）戦術戦闘の視界・観測班（FO）射撃支援連動、およびBevy ECS実装データ構造案。
 - **[specs/INDUSTRIAL_AND_TECH_TREE_SYSTEM.md](./specs/INDUSTRIAL_AND_TECH_TREE_SYSTEM.md)**：産業システムおよび技術ツリー試案仕様書
   - 産業3層構造（基礎産業基盤、重工プラットフォーム、新興特化モジュール）と資源・中間財・兵站消費財の物理加工連鎖。
   - 工廠ライン管理（段取り替え・金型転換フリクション、学習曲線歩留まり、部品共通化シナジー、ブートローダー工作機械プール）。
@@ -201,6 +209,11 @@ docs/
   - 地形・水系（河川・塩分濃度）と土地利用の適性マトリクスおよび淡水灌漑ボーナス。
   - Tier 0（未開地）からTier 4（要塞中枢複合）への段階的発展と、地目転換（解体・再整地ラグ、スクラップ回収、Tierリセット）。
   - 隣接シナジー（集積経済）と公害・エイリアン刺激フリクション、およびBevy ECS実装用データ構造（`LandZoning`, `TileDevelopment`）。
+- **[specs/REBELLION_AND_LOYALTY_DYNAMICS.md](./specs/REBELLION_AND_LOYALTY_DYNAMICS.md)**：反乱・忠誠度・出身地別反乱力学仕様書
+  - 単なる乱数暴動を排し、「独立派（Secessionist）」と「反独立・本国維持派（Loyalist）」の政治二極化をモデル化。
+  - 軍団・部隊人員の出身地構成（本国直轄地、安定開拓州、辺境採掘地、被占領地）に基づく忠誠度・抗命リスク。
+  - 兵站断絶・見殺し損耗・「同胞鎮圧命令」による忠誠度急落と、4段階エスカレーション（動揺・抗命・サボタージュ・統制崩壊）。
+  - 「無駄死にの拒絶」に基づく多数派の集団逃亡（Mass Desertion）・兵器遺棄・部隊機能麻痺、および失踪者コミュニティへの人口流入メカニクス。
 - **[units/specs/AVIATION_ASSETS_AND_DOCTRINE.md](./units/specs/AVIATION_ASSETS_AND_DOCTRINE.md)**：師団直協航空アセット（戦闘・輸送ヘリ）運用仕様書
   - 師団直協航空連隊（計32機: 戦闘飛行隊×2＋輸送飛行隊×2、1個飛行隊＝8機）の機体スペック・役割定義。
   - CAS（近接航空支援）の一撃離脱・滞空時間制限、対空火網との相互作用。
