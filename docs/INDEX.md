@@ -45,7 +45,7 @@ docs/
 │   └── specs/                              # 師団直協・高級装甲兵器仕様書（2件）
 │       ├── AVIATION_ASSETS_AND_DOCTRINE.md # 師団直協航空アセット運用仕様書
 │       └── HIGH_TIER_BIPEDAL_COMBAT_WALKER.md # 二脚歩行戦闘車両仕様書
-├── specs/                                  # 共通システム確定・基本仕様書（17件）
+├── specs/                                  # 共通システム確定・基本仕様書（18件）
 │   ├── ALIEN_ECOLOGY_AND_NEST_SYSTEM.md    # エイリアン生態ライフサイクル・巣窟（Nest）運用仕様書
 │   ├── CHASSIS_AND_MODULE_CATALOG.md       # 初期モジュール・基本車台実数値カタログ仕様書
 │   ├── COMBAT_RESOLUTION_AND_CASUALTY.md   # 戦闘解決・部隊損耗および弾薬消費計算仕様書
@@ -59,6 +59,7 @@ docs/
 │   ├── RESOURCE_ECONOMY_SYSTEM.md          # 資源・経済・サプライチェーン体系目録
 │   ├── RESOURCE_ITEM_DICTIONARY.md         # 資源・部品・弾薬マスター定義書（物理データ辞書）
 │   ├── STEERING_UI_FLOW.md                 # 多層ステアリングUI画面遷移・操作フロー仕様書
+│   ├── SUPREMACY_AFFINITY_DOCTRINE.md      # 至高指向（Supremacy）思想・軍事教義・社会変容仕様書
 │   ├── TECHNOLOGY_WEB_DATA_TREE.md         # 技術ウェブ・研究開発データツリー仕様書
 │   ├── THIRD_PARTY_AND_TERRITORIAL_CLAIMS.md # 自発的失踪者・軍閥接触・調達・領土要求仕様書
 │   ├── VICTORY_AND_CRISIS_CONDITIONS.md    # 動的情勢推移・集合意識の処遇および終局仕様書
@@ -172,6 +173,12 @@ docs/
   - アフィニティレベル（Lv 1〜10）ごとの進化マイルストーンおよび終局勝利プロジェクト。
   - 現場交戦・産業・環境刺激による「自律研究モメンタム」と、国家指導者による「ステアリング」の定量的数理モデル（移行ラグ・フリクション）。
   - 敵残骸法医学（Battlefield Forensics）による研究ブースト算定式と、架空6大国家の初期研究特性マトリクス。
+- **[specs/SUPREMACY_AFFINITY_DOCTRINE.md](./specs/SUPREMACY_AFFINITY_DOCTRINE.md)**：至高指向（Supremacy）思想・軍事教義・社会変容仕様書
+  - 「なぜ人類が過酷な惑星環境で肉体を捨て、機械・量子論理を選ぶのか」という思想的必然性と人道主義の倒錯。
+  - 分散量子データリンク、サイバネティクス義体、消灯型全自動工廠の3大ピラー。
+  - Lv 1（自動化支援）からLv 10（全土電脳統御）に至る4段階の社会変容・軍事TO&Eの無人化推移。
+  - 純血（Purity: 肉体維持・テラフォーミング）および調和（Harmony: 生体適応）との思想闘争・対立ドラマツルギー。
+  - 人員定員（Tooth）の消滅、反乱・出身地摩擦の無効化と引き換えとなるサイバー・EMP脆弱性、ハイブリッド（Mecha-Purity / Bio-Cyber）体系。
 - **[specs/ALIEN_ECOLOGY_AND_NEST_SYSTEM.md](./specs/ALIEN_ECOLOGY_AND_NEST_SYSTEM.md)**：エイリアン生態ライフサイクル・巣窟（Nest）運用仕様書
   - 巣窟の4段階ライフサイクル（Dormant / Active / Breeding / Swarming）と刺激ヘイト蓄積ロジック
   - 瘴気（Miasma）の自律拡散ダイナミクスと、人類・エイリアンへの影響差異
