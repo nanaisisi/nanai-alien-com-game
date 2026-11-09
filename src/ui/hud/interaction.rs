@@ -218,25 +218,31 @@ pub fn update_hud_display_system(
     }
 
     for (mut text, label) in &mut query {
-        match label {
+        let new_text = match label {
             HudLabel::Turn => {
-                **text = format!("TURN {:02}", resources.turn);
+                format!("TURN {:02}", resources.turn)
             }
             HudLabel::Energy => {
-                **text = format!("{} (+{})", resources.energy, resources.energy_per_turn);
+                format!("{} (+{})", resources.energy, resources.energy_per_turn)
             }
             HudLabel::Production => {
-                **text = format!(
+                format!(
                     "{} (+{})",
                     resources.production, resources.production_per_turn
-                );
+                )
             }
             HudLabel::Science => {
-                **text = format!("{} (+{})", resources.science, resources.science_per_turn);
+                format!("{} (+{})", resources.science, resources.science_per_turn)
             }
             HudLabel::Food => {
-                **text = format!("{} (+{})", resources.food, resources.food_per_turn);
+                format!("{} (+{})", resources.food, resources.food_per_turn)
             }
+        };
+
+        // Optimize: Prevent unconditional string assignment to avoid triggering Bevy's change detection
+        // and subsequent expensive UI layout recalculations and glyph remeasurement every frame.
+        if **text != new_text {
+            **text = new_text;
         }
     }
 }
