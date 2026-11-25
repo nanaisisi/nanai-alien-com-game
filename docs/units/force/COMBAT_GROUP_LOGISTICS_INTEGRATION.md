@@ -1,8 +1,8 @@
-# 戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
+# 3軍統合（陸・海・空）戦闘団（TO&E）× 兵站・装備更新統合データ仕様書 (SEC-01)
 
-(Combat Group TO&E, Logistics Infrastructure & Cannibalization Specification)
+(Tri-Service Combined Arms TO&E, Logistics Infrastructure & Cannibalization Specification)
 
-本作（4X大戦略＋諸兵科連合戦闘団制＋脱都市タイル進展）における**「戦闘団（小隊・中隊・大隊階層）の内部データ構造、インフラ結合度に応じた自動補給、兵站途絶時の稼働率低下、および現場判断による共食い整備（Cannibalization）のステートマシン」**を定義する統合仕様書である。
+本作（4X大戦略＋諸兵科連合戦闘団制＋脱都市タイル進展）における**「3軍（陸上戦闘団・海洋艦隊・航空団）の内部データ構造、各ドメインに応じた自動補給・洋上補給・空中給油、兵站途絶時の稼働率低下、現場判断による共食い整備（陸軍）およびドック・基地回航（海軍・空軍）のステートマシン」**を定義する統合仕様書である。
 
 ---
 
@@ -249,18 +249,119 @@ flowchart TD
 
 ---
 
-## 6. 実装用コンポーネント・システム対応（Bevy ECS）
+## 6. 3軍（陸・海・空）統合兵站モデルの対比と非対称性
+
+本作における兵站・修理システムは、陸軍の「現場共食い整備」のみならず、現代軍事力学および大戦略自動化（HoI式×方面軍統合）に則った海軍・空軍固有の兵站制約をモデル化している。
+
+### 6.1 方面軍（Theater）による基地・海域・空域の自動アサイン
+
+プレイヤーが艦隊や航空団を1つずつ手動で「この基地に配属し、この海域・空域へ任務指定する」といったマイクロマネジメントは行わない。
+本作の**「方面軍（Theater Command）システム」**に基づき、高位の作戦領域（Sectors）とドクトリンを指定するだけで、司令部AIが直下の3軍部隊・基地・任務を**自律的に自動アサイン・再配分**する。
+
+```mermaid
+flowchart TD
+    Player["プレイヤー国家 / 大本営<br/>(方面軍の設置・管轄タイルの指定・作戦方針)"] --> Theater["【方面軍司令部 (Theater HQ)】<br/>管轄内の全陸上部隊・港湾・基地・海空域を統轄"]
+    
+    Theater --> AutoArmy["陸軍: 戦闘団の前線自動進出・兵站線追従"]
+    Theater --> AutoNaval["海軍: 最寄り軍港の自動選定 ➔ 担当海域へ哨戒自動アサイン"]
+    Theater --> AutoAir["空軍: 滑走路キャパに応じた基地分散 ➔ 空域任務へ自動アサイン"]
+    
+    AutoNaval --> CycleNaval["被弾・弾薬切れ ➔ 自動で空きドック/消磁所へ回航 ➔ 直ったら自動復帰"]
+    AutoAir --> CycleAir["推進剤・弾薬消費 ➔ 自動RTB ➔ 再整備後、自動で再出撃"]
+```
+
+1. **海軍の自動アサインと回航サイクル**:
+   - 方面軍管轄下の海洋タイルに対し、所属艦隊が「哨戒（Patrol）」「迎撃（Strike）」「通商護衛（Escort）」へ自動配分される。
+   - 母港は**「管轄内でドック・消磁能力に空きがある最寄りの軍港／前進泊地」が司令部AIにより自動紐付け**される。
+   - 中破・大破・弾薬枯渇時は**自動で回航ステート（InTransit）に切り替わって母港へ後退**し、浮ドック修繕や船体消磁が完了すると、プレイヤーの手を煩わせることなく**自動で元の任務海域へ再進出**する。
+2. **空軍の基地分散と自動ソアティ生成**:
+   - 方面軍内の空軍基地（正規基地・道路滑走路）の「滑走路キャパシティ」および「燃料パイプライン接続状況」を参照し、戦闘機隊・爆撃機隊が自動で最適基地へ分散駐留（過密ペナルティの自動回避）。
+   - 管轄空域での航空優勢（CAP）や近接航空支援（CAS）任務へ自動出撃し、燃料・残弾消費後は自動でRTB（基地帰投）。整備完了次第、自動で次期ソアティが生成される。
+
+---
+
+### 6.2 3軍兵站特性マトリクス
+
+| 項目 | 陸軍（地上増強師団） | 海軍（艦隊） | 空軍（航空団） |
+| :--- | :--- | :--- | :--- |
+| **主戦力単位** | 常設増強師団 / 軍団 | 通常艦隊 / 航空艦隊 / 戦艦艦隊 | 戦闘航空団 / 迎撃航空団 / 輸送航空団 |
+| **補給の基盤（起点）** | 前線兵站デポ / 補給工廠 | 軍港 / 臨海工廠 / MOB（洋上基地） | 正規空軍基地 / 前線飛行場 / 空母 |
+| **現場での受給手段** | 道路・鉄道・パイプライン網の自動プッシュ | 随伴補給艦による洋上補給（UNREP） | 空中給油機（Tanker: 燃料のみ） |
+| **現場での修理可否** | **現場で可能**（ARV・移動工作車、共食い整備） | **現場不可**（ダメコンによる沈没防止・機関バイパスのみ） | **現場不可**（緊急着陸かベイルアウト） |
+| **被弾・損傷時の対応** | 前線で耐えて自力修理・居座り | **母港・浮ドック・仮設泊地への「回航」** | **母基地・滑走路への「帰投（RTB）」** |
+| **ニコイチ（共食い）修復** | **前線・野戦で即時実行**（ARV） | **工廠・浮ドック等の整備拠点で実行**（艦首/機関/VLS移植） | **空軍基地・デポで実行**（主翼/エンジン/FCS移植） |
+| **前進設営アセット** | 野戦補給デポ、工兵架橋 | **浮ドック ＋ 起重機船**（仮設泊地開設） | **道路滑走路、移動式整備トラック** |
+| **兵站途絶時の末路** | 停止 ➔ 共食い ➔ 白兵・投降・自爆 | 弾薬・燃料枯渇 ➔ 母港強制後退 | **地上待機（Grounded: 飛べない鉄屑化）** |
+
+---
+
+### 6.2 海軍の補給・損傷修繕仕様（回航と前進泊地アセット）
+
+現代艦艇は複合素材・電子戦アレイ・精密機関の塊であり、洋上での本格修理（工作艦による旋盤作業など）は不可能である。
+
+1. **洋上補給（UNREP: Underway Replenishment）の厳格な範囲限定**:
+   - 艦隊に随伴する補給艦モジュール（または民間コンテナ船団）から補給可能なのは、**「艦艇燃料（重油・核推進剤）」「ミサイル・弾薬」「真水・食料・交換用簡易アセンブリ」**のみに限定される。
+   - 浸水、主装甲貫通、主機（タービン）損傷、フェーズドアレイ破損などの「構造修理」は洋上補給艦では一切行えない。
+2. **回航ステート（Transit / Limp Home）**:
+   - 艦艇が「中破・大破」または「弾薬完全枯渇」となった場合、現場での居座りは行えず、**最寄りの修繕可能拠点へ「回航（自動後退）」**ステートに移行する。
+   - 回航中は最大速力が半減し、護衛部隊による対潜・防空アンブレラがなければ敵哨戒潜水艦・航空攻撃に対して極めて脆弱となる。
+3. **前進泊地アセット（浮ドック・起重機船）**:
+   - 本土の本格海軍工廠（固定乾ドック）は建造・全快修理が可能だが、戦線から遠い。
+   - プレイヤーは工廠から**「浮ドック（Floating Drydock）」および「起重機船（Crane Vessel）」**を任意の島嶼部・沿岸タイル、または洋上浮体基地（MOB）へ曳航・展開することで、**「仮設前進修繕泊地」**を開設できる。
+   - これにより、大破艦艇を遠方の本土まで戻さずに中破〜大破修理・VLS再装填を行わせ、前線復帰時間を劇的に短縮可能となる。
+4. **整備拠点（工廠・浮ドック）におけるニコイチ修復（Depot Cannibalization）**:
+   - 洋上現場では不可能なニコイチ修復も、**「母港工廠や浮ドック・起重機船のある整備拠点」に回航収容された後であれば実行可能**となる。
+   - 例: 艦首を吹き飛ばされた艦艇と、艦尾・機関室を大破した同型艦をドック内で切断・接合（英海軍駆逐艦ズビアン［Zulu＋Nubian］や、米原潜サンフランシスコ［ホノルルの艦首ブロックを移植］等の実例）。
+   - ただし、大掛かりな切断・ブロック移植や原子炉・機関系のオーバーホールを伴う修復は、前進泊地の浮ドックでは対応しきれず、本土の大規模海軍工廠（大型乾ドック）への長期間入渠が必要となる。
+   - 新品艦の建造待ち（多数ターン）をスキップし、大破艦2隻から稼働艦1隻を再生させる緊急工廠処理として機能する（残された1隻はフレーム化／廃艦解体資材へ）。
+5. **船体消磁（Hull Degaussing / Deperming）および異星磁気環境への適応**:
+   - 鋼製水上艦や潜水艦は航行に伴い船体に地磁気（または異星固有の強磁場）を帯磁し、**磁気機雷・磁気探知（MAD: Magnetic Anomaly Detector）や生体磁気感知エイリアンに対する被探知・被雷リスク**が徐々に上昇する。
+   - **船体消磁所（Degaussing Range / Facility）**: 本土主要軍港または特定の前進整備デポに配備。入渠・回航時に定期的に船体消磁処理を行うことで、ステルス性・対機雷生残性をリセット・維持する。
+   - 船体消磁インフラを欠いた前進泊地で長期間運用し続けると、「磁気シグネチャ肥大化」ペナルティが蓄積する。
+
+---
+
+### 6.3 空軍の補給・ソアティ生成仕様（基地依存とターンアラウンド）
+
+空軍戦力は空中に居座り続けることはできず、**「基地出撃 ➔ 空域作戦 ➔ 基地帰投（RTB） ➔ 再整備（ターンアラウンド）」**のループによって管理される。
+
+1. **空中補給の限界**:
+   - 空中給油機によって作戦半径の延伸や滞空時間の延長は可能だが、空中での兵装再装填や修理は不可能。弾薬を使い果たした機体は即座に母基地へRTBする。
+2. **ソアティ生成率（Sortie Generation Rate）と地上待機（Grounded）**:
+   - 航空団の戦力発揮は、母基地への「高純度航空推進剤」および「精密誘導弾」のインフラ結合度に直結する。
+   - 基地への兵站パイプラインや輸送路が破壊された場合、機体自体が無傷であっても**「燃料・弾薬欠品による地上待機（Grounded）」**となり、出撃可能率がゼロ（制空権の即時喪失）となる。
+3. **基地インフラ等級と前線展開**:
+   - **正規空軍基地（大型舗装滑走路＋防護シェルター）**: 大型爆撃機・大型輸送機・ステルス機の運用・重整備が可能。
+   - **道路滑走路（Highway Strip）/ 前線簡易飛行場**: 軽迎撃機・SVTOL機のみが運用可能。移動式整備トラックにより燃料・弾薬の急速補給（ホットピット給油）を行うが、重整備は不可。
+   - **損傷機の後方回送**: 被弾・不時着した機体は前線では修理できず、大型輸送機（C-17級）や地上重トレーラーによって本土の航空工廠へ回送（Transit）される。
+4. **航空基地・デポにおけるニコイチ修復（Hangar Cannibalization）**:
+   - 上空や前線簡易滑走路では行えないが、**「母基地格納庫や後方航空デポ」**において、被弾損傷機や部品欠損機同士のパーツ取り（エンジン・レーダー・主翼の移植）が日常的に行われる。
+   - 補給線が細く新品部品が届かない遠隔基地でも、損傷した2〜3機から1機の完全稼働機を仕立て上げ、即応迎撃体制（ソアティ数）を死守する現場判断として再現される。
+
+---
+
+## 7. 実装用コンポーネント・システム対応（Bevy ECS）
 
 ```rust
 use bevy::prelude::*;
 
-/// 戦闘団の兵站・補給ステータスコンポーネント
+/// 3軍共通：軍種ドメイン
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum MilitaryDomain {
+    Ground, // 陸上（戦闘団）
+    Naval,  // 海洋（艦隊）
+    Air,    // 航空（航空団）
+}
+
+/// 戦闘団・艦隊・航空団の兵站ステータスコンポーネント
 #[derive(Component, Debug)]
-pub struct CombatGroupLogistics {
-    pub supply_satisfaction: f32,      // 0.00..=1.00
+pub struct ForceLogistics {
+    pub domain: MilitaryDomain,
+    pub supply_satisfaction: f32,      // 0.00..=1.00 (補給充足率 / 基地充足率)
     pub strained_turns: u8,            // 連続兵站圧迫ターン数
-    pub state: LogisticsState,         // Normal, Strained, Critical, Exhausted
-    pub doctrine: MaintenanceDoctrine, // SurvivalFirst, Preservation, StrictModular
+    pub state: LogisticsState,         // Normal, Strained, Critical, Exhausted, InTransit
+    pub doctrine: MaintenanceDoctrine, // SurvivalFirst, PlatformPreservation, StrictModular
+    pub base_entity: Option<Entity>,   // 母港 / 母基地 / 補給デポ
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -269,6 +370,7 @@ pub enum LogisticsState {
     Strained,
     Critical,
     Exhausted,
+    InTransit { destination: Entity }, // 海軍の母港回航、空軍のRTB・後方回送
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -278,13 +380,41 @@ pub enum MaintenanceDoctrine {
     StrictModularDiscipline,
 }
 
-/// 毎ターンの兵站評価および自律共食い整備システム
-pub fn evaluate_combat_group_logistics_system(
-    mut query: Query<(&mut CombatGroupLogistics, &mut Vec<SubUnit>)>,
-    tile_infrastructure_query: Query<&TileInfrastructureGrid>,
+/// 海軍前進泊地アセットコンポーネント
+#[derive(Component, Debug)]
+pub struct ForwardNavalAnchorage {
+    pub has_floating_drydock: bool,  // 浮ドック（中破・大破ドック修理可能）
+    pub has_crane_vessel: bool,      // 起重機船（大型モジュール換装・VLS再装填可能）
+    pub has_degaussing_range: bool,  // 船体消磁所（磁気シグネチャ・磁気機雷リスクの除去）
+    pub repair_speed_mult: f32,      // 本土工廠比 (例: 0.60〜0.80)
+}
+
+/// 空軍基地インフラコンポーネント
+#[derive(Component, Debug)]
+pub struct AirbaseInfrastructure {
+    pub runway_tier: RunwayTier,     // HighwayStrip, StandardRunway, StrategicHardened
+    pub fuel_pipeline_connected: bool, // 航空推進剤パイプライン接続
+    pub sortie_generation_rate: f32, // ターンあたり出撃可能率 (0.00..=1.00)
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum RunwayTier {
+    HighwayStrip,       // 道路滑走路（軽迎撃機・SVTOL・即席給油のみ）
+    StandardRunway,     // 通常舗装滑走路（戦闘機・中型輸送機）
+    StrategicHardened,  // 戦略地下シェルター付き滑走路（重爆撃機・大型輸送機・全快ドック）
+}
+
+/// 毎ターンの兵站評価および3軍自律システム
+pub fn evaluate_force_logistics_system(
+    mut logistics_query: Query<(&mut ForceLogistics, &mut Vec<SubUnit>)>,
+    anchorage_query: Query<&ForwardNavalAnchorage>,
+    airbase_query: Query<&AirbaseInfrastructure>,
+    tile_infra_query: Query<&TileInfrastructureGrid>,
 ) {
-    // 1. 各タイルのインフラ結合度・距離から supply_satisfaction を算出
-    // 2. ステートマシンの遷移判定 (Normal ➔ Strained ➔ Critical ➔ Exhausted)
-    // 3. Critical 時、ドクトリンに応じた自動共食い整備 (Cannibalization) の実行
+    // 1. ドメイン（陸・海・空）に応じた補給充足率・出撃可能率の算出
+    // 2. 状態遷移:
+    //    - 陸軍: 補給断絶 ➔ Critical時に自律共食い整備 (Cannibalization)
+    //    - 海軍: 中破/弾薬枯渇 ➔ 最寄りの工廠または浮ドック泊地への回航 (InTransit)
+    //    - 空軍: 作戦終了 ➔ 母基地RTB、推進剤不足時の地上待機 (Grounded)
 }
 ```
