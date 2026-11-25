@@ -112,6 +112,11 @@ pub fn update_minimap_viewport_system(
         let current_hex =
             HexCoord::from_world_pos_with_width(map_cam.current_focal_point, HEX_RADIUS, map_w);
         let (c, r) = current_hex.to_col_row_with_width(map_w);
-        **text = format!("COL {:02} ROW {:+02}", c, r);
+        let new_text = format!("COL {:02} ROW {:+02}", c, r);
+        // Optimize: Prevent unconditional string assignment to avoid triggering Bevy's change detection
+        // and subsequent expensive UI layout recalculations and glyph remeasurement every frame.
+        if **text != new_text {
+            **text = new_text;
+        }
     }
 }

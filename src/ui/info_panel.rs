@@ -206,7 +206,10 @@ pub fn update_info_panel_system(
             coord.r,
             mode_guide
         );
-        **text = info;
+
+        if **text != info {
+            **text = info;
+        }
         return;
     }
 
@@ -405,9 +408,14 @@ pub fn update_info_panel_system(
                 canal_info,
                 miasma_str
             );
-            **text = info;
+            if **text != info {
+                **text = info;
+            }
         }
     } else {
-        **text = "タイルをクリックして詳細情報を表示".to_string();
+        let default_text = "タイルをクリックして詳細情報を表示";
+        if **text != default_text {
+            **text = default_text.to_string();
+        }
     }
 }

@@ -20,3 +20,7 @@ Notice `let (_c1, _r1)` is completely unused. Computing this takes time!
 ## 2026-11-03 - Precompute floating point math constants in high-frequency camera and map systems
 **Learning:** In standard Rust, functions like `f32::sqrt()` and `f32::powi()` cannot be used in `const` declarations. Expressions like `14.0 / (14.0_f32.powi(2) + 12.0_f32.powi(2)).sqrt()` or `3.0f32.sqrt()` were executed every frame multiple times (camera updates and minimizing rendering). Depending on compilation levels, LLVM might not perfectly constant-fold these, causing unnecessary overhead.
 **Action:** Always extract invariant floating-point math out of systems that run every frame or map tile generation loops. Hardcode the pre-computed float literal as a `pub const` with a comment indicating the original formula (e.g. `// Computed as 14.0 / sqrt(14.0^2 + 12.0^2)`).
+
+## 2026-11-09 - [Bevy: Avoid Unconditional Text Modifications]
+**Learning:** In Bevy, unconditionally assigning a string to a `Text` component (e.g., `**text = new_value;`) via `DerefMut` flags the component as changed. If done every frame, it forces the UI layout system to recalculate layout and remeasure glyphs, causing a significant performance bottleneck.
+**Action:** Always conditionally assign strings to `Text` components only when the new string differs from the current one (e.g., `if **text != new_text { **text = new_text; }`).

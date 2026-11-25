@@ -297,6 +297,11 @@ pub fn handle_console_keyboard_input(
 
     // 入力テキスト表示の更新
     for mut text in &mut ui.input_text {
-        **text = format!("{}_", state.input_text);
+        let new_text = format!("{}_", state.input_text);
+        // Optimize: Prevent unconditional string assignment to avoid triggering Bevy's change detection
+        // and subsequent expensive UI layout recalculations and glyph remeasurement every frame.
+        if **text != new_text {
+            **text = new_text;
+        }
     }
 }

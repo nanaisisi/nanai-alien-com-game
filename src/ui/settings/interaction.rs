@@ -210,47 +210,51 @@ pub fn update_settings_display_system(
     }
 
     for (mut text, marker) in &mut query {
-        match marker {
+        let new_text = match marker {
             SettingValueLabel::MasterVolume => {
-                **text = format!("{}%", settings.master_volume);
+                format!("{}%", settings.master_volume)
             }
             SettingValueLabel::BgmVolume => {
-                **text = format!("{}%", settings.bgm_volume);
+                format!("{}%", settings.bgm_volume)
             }
             SettingValueLabel::SfxVolume => {
-                **text = format!("{}%", settings.sfx_volume);
+                format!("{}%", settings.sfx_volume)
             }
             SettingValueLabel::Resolution => {
                 let res = RESOLUTION_PRESETS[settings.resolution_index];
-                **text = format!("{}x{}", res.0, res.1);
+                format!("{}x{}", res.0, res.1)
             }
             SettingValueLabel::Fullscreen => {
-                **text = if settings.fullscreen {
+                if settings.fullscreen {
                     "フルスクリーン".to_string()
                 } else {
                     "ウィンドウ".to_string()
-                };
+                }
             }
             SettingValueLabel::FpsLimit => {
-                **text = settings.fps_limit.display_label().to_string();
+                settings.fps_limit.display_label().to_string()
             }
             SettingValueLabel::Vsync => {
-                **text = if settings.vsync {
+                if settings.vsync {
                     "有効 (ON)".to_string()
                 } else {
                     "無効 (OFF)".to_string()
-                };
+                }
             }
             SettingValueLabel::Shadows => {
-                **text = if settings.shadows_enabled {
+                if settings.shadows_enabled {
                     "有効 (ON)".to_string()
                 } else {
                     "無効 (OFF)".to_string()
-                };
+                }
             }
             SettingValueLabel::AntiAliasing => {
-                **text = settings.anti_aliasing.display_label().to_string();
+                settings.anti_aliasing.display_label().to_string()
             }
+        };
+
+        if **text != new_text {
+            **text = new_text;
         }
     }
 }
