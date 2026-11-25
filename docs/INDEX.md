@@ -64,7 +64,8 @@ docs/
 │   ├── THIRD_PARTY_AND_TERRITORIAL_CLAIMS.md # 自発的失踪者・軍閥接触・調達・領土要求仕様書
 │   ├── VICTORY_AND_CRISIS_CONDITIONS.md    # 動的情勢推移・集合意識の処遇および終局仕様書
 │   └── WATER_AND_SALINITY_SYSTEM.md        # 水域・塩分濃度システム仕様書
-├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計（5件）
+├── tech/                                   # 技術検討・アーキテクチャ仕様・実装設計（6件）
+│   ├── AUTOMATION_EXECUTION_ARCHITECTURE.md # 自動化システム実行順序・実装アーキテクチャ仕様書
 │   ├── SYSTEM_ARCHITECTURE_AND_DEPENDENCIES.md # 全体実装依存関係・アーキテクチャ仕様書
 │   ├── BEVY_0_20_INTEGRATION_REVIEW.md     # Bevy 0.20 仕様照合・技術検討書
 │   ├── EXTERNAL_CRATE_EVALUATION.md        # 外部クレート利用・技術検討書
